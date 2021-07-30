@@ -1,0 +1,45 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+/*
+01. Base, variables
+02. Typographya
+03. Auth views
+*/
+
+
+// 01. Base, variables
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 100%; // 16px
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+
+// 02. Typography
+.pointer {
+	cursor: pointer;
+}
+
+// 03. Auth views
+.auth-background {
+	background-color: #1a232f;
+	background-image: -moz-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+	background-image: -webkit-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+	background-image: -o-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+	background-image: -ms-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+	background-image: radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+}
