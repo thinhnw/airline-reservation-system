@@ -6,11 +6,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import store from '@/store'
 export default {
 	computed: {
 		...mapGetters({
 			isSpinning: 'app/isSpinning'
 		})
+	},
+	async mounted() {
+		try {
+			await store.dispatch('auth/me')
+		} catch (err) {
+			console.error(err)
+		}
 	}
 }
 </script>

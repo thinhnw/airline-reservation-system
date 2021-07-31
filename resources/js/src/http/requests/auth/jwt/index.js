@@ -44,6 +44,9 @@ export default {
       return Promise.reject(error)
     })
   },
+  me() {
+    return axios.post('/api/auth/me')
+  },
   login (email, pwd) {
     console.log('LOGIN')
     return axios.post('/api/auth/login', {

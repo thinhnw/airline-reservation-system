@@ -32,6 +32,21 @@ export default {
     })
   },
 
+  me({ commit }) {
+    return new Promise((resolve, reject) => {
+      jwt.me()
+        .then(res => {
+          // Update user details
+          commit('UPDATE_USER_INFO', res.data.userInfo)
+          resolve(res)
+        })
+        .catch(err => {
+          commit('CLEAR_USER_INFO')
+          reject(err)
+        })
+    })
+  },
+
 
   // JWT
   loginJWT ({ commit }, payload) {
