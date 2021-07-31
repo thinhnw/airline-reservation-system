@@ -11,6 +11,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./resources/js/src/store/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -70,7 +78,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
+    isAdmin: 'auth/isAdmin',
+    isLogged: 'auth/isLogged',
+    isMeFetched: 'auth/isMeFetched'
+  })),
+  mounted: function mounted() {
+    console.log('logged', this.isLogged);
+    console.log('is me fetched', this.isMeFetched);
+    console.log('is admin', this.isAdmin);
+
+    if (this.isLogged && this.isMeFetched) {
+      if (!this.isAdmin) this.$router.push({
+        name: 'errors-not-authorized'
+      });
+    } else if (!this.isLogged) {
+      this.$router.push({
+        name: 'errors-not-authorized'
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -90,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*\r\n * Sidebar\r\n */\n.sidebar[data-v-0872e9d8] {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 100; /* Behind the navbar */\r\n  padding: 0;\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky[data-v-0872e9d8] {\r\n  position: sticky;\r\n  top: 48px; /* Height of navbar */\r\n  height: calc(100vh - 48px);\r\n  padding-top: .5rem;\r\n  overflow-x: hidden;\r\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link[data-v-0872e9d8] {\r\n  font-weight: 500;\r\n  color: #333;\n}\n.sidebar .nav-link .feather[data-v-0872e9d8] {\r\n  margin-right: 4px;\r\n  color: #999;\n}\n.sidebar .nav-link.active[data-v-0872e9d8] {\r\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather[data-v-0872e9d8],\r\n.sidebar .nav-link.active .feather[data-v-0872e9d8] {\r\n  color: inherit;\n}\n.sidebar-heading[data-v-0872e9d8] {\r\n  font-size: .75rem;\r\n  text-transform: uppercase;\n}\r\n\r\n/*\r\n * Navbar\r\n */\n.navbar-brand[data-v-0872e9d8] {\r\n  padding-top: .75rem;\r\n  padding-bottom: .75rem;\r\n  font-size: 1rem;\r\n  background-color: rgba(0, 0, 0, .25);\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control[data-v-0872e9d8] {\r\n  padding: .75rem 1rem;\r\n  border-width: 0;\r\n  border-radius: 0;\n}\n.form-control-dark[data-v-0872e9d8] {\r\n  color: #fff;\r\n  background-color: rgba(255, 255, 255, .1);\r\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark[data-v-0872e9d8]:focus {\r\n  border-color: transparent;\r\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\r\n\r\n/*\r\n * Utilities\r\n */\n.border-top[data-v-0872e9d8] { border-top: 1px solid #e5e5e5;\n}\n.border-bottom[data-v-0872e9d8] { border-bottom: 1px solid #e5e5e5;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*\r\n * Sidebar\r\n */\n.sidebar[data-v-0872e9d8] {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 100; /* Behind the navbar */\r\n  padding: 0;\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky[data-v-0872e9d8] {\r\n  position: sticky;\r\n  top: 48px; /* Height of navbar */\r\n  height: calc(100vh - 48px);\r\n  padding-top: .5rem;\r\n  overflow-x: hidden;\r\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link[data-v-0872e9d8] {\r\n  font-weight: 500;\r\n  color: #333;\n}\n.sidebar .nav-link .feather[data-v-0872e9d8] {\r\n  margin-right: 4px;\r\n  color: #999;\n}\n.sidebar .nav-link.active[data-v-0872e9d8] {\r\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather[data-v-0872e9d8],\r\n.sidebar .nav-link.active .feather[data-v-0872e9d8] {\r\n  color: inherit;\n}\n.sidebar-heading[data-v-0872e9d8] {\r\n  font-size: .75rem;\r\n  text-transform: uppercase;\n}\r\n\r\n/*\r\n * Navbar\r\n */\n.navbar-brand[data-v-0872e9d8] {\r\n  padding-top: .75rem;\r\n  padding-bottom: .75rem;\r\n  font-size: 1rem;\r\n  background-color: rgba(0, 0, 0, .25);\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control[data-v-0872e9d8] {\r\n  padding: .75rem 1rem;\r\n  border-width: 0;\r\n  border-radius: 0;\n}\n.form-control-dark[data-v-0872e9d8] {\r\n  color: #fff;\r\n  background-color: rgba(255, 255, 255, .1);\r\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark[data-v-0872e9d8]:focus {\r\n  border-color: transparent;\r\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\r\n\r\n/*\r\n * Utilities\r\n */\n.border-top[data-v-0872e9d8] { border-top: 1px solid #e5e5e5;\n}\n.border-bottom[data-v-0872e9d8] { border-bottom: 1px solid #e5e5e5;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -224,62 +257,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-100" }, [
-    _c(
-      "nav",
-      {
-        staticClass: "navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"
-      },
-      [
+  return _vm.isAdmin
+    ? _c("div", { staticClass: "h-100" }, [
         _c(
-          "a",
+          "nav",
           {
-            staticClass: "navbar-brand col-sm-3 col-md-2 mr-0",
-            attrs: { href: "#" }
+            staticClass:
+              "navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"
           },
-          [_vm._v("Avia Airways")]
+          [
+            _c(
+              "a",
+              {
+                staticClass: "navbar-brand col-sm-3 col-md-2 mr-0",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Avia Airways")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control form-control-dark w-100",
+              attrs: {
+                type: "text",
+                placeholder: "Search",
+                "aria-label": "Search"
+              }
+            }),
+            _vm._v(" "),
+            _c("ul", { staticClass: "navbar-nav px-3" }, [
+              _c(
+                "li",
+                { staticClass: "nav-item text-nowrap" },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      attrs: { squared: "", variant: "dark" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$store.dispatch("auth/logout")
+                        }
+                      }
+                    },
+                    [_vm._v("\n\t\t\t\t\t\tSign out\n\t\t\t\t\t")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
         ),
         _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control form-control-dark w-100",
-          attrs: { type: "text", placeholder: "Search", "aria-label": "Search" }
-        }),
-        _vm._v(" "),
-        _c("ul", { staticClass: "navbar-nav px-3" }, [
-          _c("li", { staticClass: "nav-item text-nowrap" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _c(
-              "span",
+              "main",
               {
-                staticClass: "link-primary pointer",
-                on: {
-                  click: function($event) {
-                    return _vm.$store.dispatch("auth/logout")
-                  }
-                }
+                staticClass: "col-md-9 ml-sm-auto col-lg-10 pt-3 px-4",
+                attrs: { role: "main" }
               },
-              [_vm._v("Sign out")]
+              [_c("router-view")],
+              1
             )
           ])
         ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "main",
-          {
-            staticClass: "col-md-9 ml-sm-auto col-lg-10 pt-3 px-4",
-            attrs: { role: "main" }
-          },
-          [_c("router-view")],
-          1
-        )
       ])
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {

@@ -1,11 +1,13 @@
 <template>	
-	<div class="h-100">
+	<div class="h-100" v-if="isAdmin">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Avia Airways</a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-					<span class="link-primary pointer" @click="$store.dispatch('auth/logout')">Sign out</span>
+					<b-button @click="$store.dispatch('auth/logout')" squared variant="dark">
+						Sign out
+					</b-button>
         </li>
       </ul>
     </nav>
@@ -58,7 +60,26 @@
 </template>
 
 <script>
+import store from '@/store'
+import { mapGetters } from 'vuex'
 export default {
+	computed: {
+		...mapGetters({
+			isAdmin: 'auth/isAdmin',
+			isLogged: 'auth/isLogged',
+			isMeFetched: 'auth/isMeFetched',
+		})
+	},
+	mounted() {
+		console.log('logged', this.isLogged)
+		console.log('is me fetched', this.isMeFetched)
+		console.log('is admin', this.isAdmin)
+		if (this.isLogged && this.isMeFetched) {
+			if (!this.isAdmin) this.$router.push({ name: 'errors-not-authorized' })
+		} else if (!this.isLogged) {
+			this.$router.push({ name: 'errors-not-authorized' })
+		}
+	}
 }
 </script>
 

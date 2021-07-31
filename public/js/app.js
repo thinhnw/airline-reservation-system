@@ -1878,38 +1878,58 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
-    isSpinning: 'app/isSpinning'
-  })),
-  mounted: function mounted() {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return _store__WEBPACK_IMPORTED_MODULE_1__.default.dispatch('auth/me');
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+    isSpinning: 'app/isSpinning',
+    isLogged: 'auth/isLogged',
+    isMeFetched: 'auth/isMeFetched'
+  })), {}, {
+    canBeRendered: function canBeRendered() {
+      if (this.isLogged && this.isMeFetched) return true;
+      return !this.isLogged;
+    }
+  }),
+  methods: {
+    fetchMe: function fetchMe() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _store__WEBPACK_IMPORTED_MODULE_1__.default.commit('app/SET_SPINNER', true);
+                _context.next = 4;
+                return _store__WEBPACK_IMPORTED_MODULE_1__.default.dispatch('auth/me');
 
-            case 3:
-              _context.next = 8;
-              break;
+              case 4:
+                _context.next = 9;
+                break;
 
-            case 5:
-              _context.prev = 5;
-              _context.t0 = _context["catch"](0);
-              console.error(_context.t0);
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
 
-            case 8:
-            case "end":
-              return _context.stop();
+              case 9:
+                _context.prev = 9;
+                _store__WEBPACK_IMPORTED_MODULE_1__.default.commit('app/SET_SPINNER', false);
+                return _context.finish(9);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
           }
-        }
-      }, _callee, null, [[0, 5]]);
-    }))();
+        }, _callee, null, [[0, 6, 9, 12]]);
+      }))();
+    }
+  },
+  created: function created() {
+    if (this.isLogged) this.fetchMe();
   }
 });
 
@@ -2162,9 +2182,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/Index.vue */ "./resources/js/src/views/admin/Index.vue"));
     },
-    beforeEnter: function beforeEnter(to, from, next) {
-      if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isAdmin"]) next();else next('/errors/not-authorized');
-    },
     children: [{
       path: 'dashboard',
       name: 'admin-dashboard',
@@ -2410,14 +2427,15 @@ __webpack_require__.r(__webpack_exports__);
     return state.userInfo;
   },
   isLogged: function isLogged(state) {
-    var _state$userInfo;
-
-    return (_state$userInfo = state.userInfo) === null || _state$userInfo === void 0 ? void 0 : _state$userInfo.id;
+    return state.isLogged;
   },
   isAdmin: function isAdmin(state) {
-    var _state$userInfo2;
+    var _state$userInfo;
 
-    return ((_state$userInfo2 = state.userInfo) === null || _state$userInfo2 === void 0 ? void 0 : _state$userInfo2.user_type) === 'admin';
+    return ((_state$userInfo = state.userInfo) === null || _state$userInfo === void 0 ? void 0 : _state$userInfo.user_type) === 'admin';
+  },
+  isMeFetched: function isMeFetched(state) {
+    return state.isMeFetched;
   }
 });
 
@@ -2440,21 +2458,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   SET_BEARER: function SET_BEARER(state, accessToken) {
+    state.isLogged = true;
     localStorage.setItem('accessToken', accessToken);
     _axios__WEBPACK_IMPORTED_MODULE_0__.default.defaults.headers.common.Authorization = "Bearer ".concat(accessToken);
   },
   UPDATE_USER_INFO: function UPDATE_USER_INFO(state, userInfo) {
-    console.log('UPDATE', userInfo);
-    localStorage.setItem('userInfo', JSON.stringify(userInfo || {})); // state.userInfo = userInfo
+    console.log('UPDATE', userInfo); // localStorage.setItem('userInfo', JSON.stringify(userInfo || {}))
 
+    state.isMeFetched = true;
     Object.keys(userInfo).forEach(function (key) {
       vue__WEBPACK_IMPORTED_MODULE_1__.default.set(state.userInfo, key, userInfo[key]);
     });
   },
   CLEAR_USER_INFO: function CLEAR_USER_INFO(state) {
     state.userInfo = {};
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('userInfo');
+    state.isLogged = false;
+    state.isMeFetched = false;
+    localStorage.removeItem('accessToken'); // localStorage.removeItem('userInfo')
   }
 });
 
@@ -2474,7 +2494,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // userInfo: JSON.parse(localStorage.getItem('userInfo') || '{}'),
   // adminInfo: JSON.parse(localStorage.getItem('adminInfo') || '{}'),
-  userInfo: {}
+  userInfo: {},
+  isLogged: localStorage.getItem('accessToken') ? true : false,
+  isMeFetched: false
 });
 
 /***/ }),
@@ -49580,8 +49602,11 @@ var render = function() {
         "bg-color": "#18191a"
       }
     },
-    [_c("router-view")],
-    1
+    [
+      _vm.canBeRendered
+        ? _c("div", { staticClass: "h-100" }, [_c("router-view")], 1)
+        : _vm._e()
+    ]
   )
 }
 var staticRenderFns = []

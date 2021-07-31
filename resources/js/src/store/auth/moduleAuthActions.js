@@ -49,7 +49,10 @@ export default {
           }
 
         })
-        .catch(error => { reject(error) })
+        .catch(error => { 
+
+          reject(error) 
+        })
     })
   },
   registerUserJWT ({ commit }, payload) {
@@ -71,7 +74,10 @@ export default {
 
           resolve(response)
         })
-        .catch(error => { reject(error) })
+        .catch(error => { 
+
+          reject(error) 
+        })
     })
   },
   fetchAccessToken () {

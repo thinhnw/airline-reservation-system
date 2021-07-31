@@ -28,10 +28,6 @@ const router = new VueRouter({
 			path: '/admin',
 			name: 'admin',
 			component: () => import('./views/admin/Index.vue'),
-			beforeEnter: (to, from, next) => {
-				if (store.getters['auth/isAdmin']) next()
-				else next('/errors/not-authorized')
-			},
 			children: [
 				{
 					path: 'dashboard',
