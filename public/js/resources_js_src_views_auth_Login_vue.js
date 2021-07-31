@@ -112,6 +112,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[2, 7, 11, 14]]);
       }))();
     }
+  },
+  mounted: function mounted() {
+    console.log(this.$route);
   }
 });
 
@@ -365,18 +368,20 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "small",
-                      [
-                        _vm._v("Don't have an account?\n\t\t\t\t\t\t"),
-                        _c("router-link", { attrs: { to: "register" } }, [
-                          _vm._v("Sign up")
-                        ])
-                      ],
-                      1
-                    )
-                  ])
+                  _vm.$route.name != "admin-login"
+                    ? _c("div", [
+                        _c(
+                          "small",
+                          [
+                            _vm._v("Don't have an account?\n\t\t\t\t\t\t"),
+                            _c("router-link", { attrs: { to: "register" } }, [
+                              _vm._v("Sign up")
+                            ])
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
                 ],
                 1
               )

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -26,22 +27,27 @@ const router = new VueRouter({
 		{
 			path: '/admin',
 			name: 'admin',
-			redirect: '/admin/login',
 			component: () => import('./views/admin/Index.vue'),
+			beforeEnter: (to, from, next) => {
+				if (store.getters['auth/isAdmin']) next()
+				else next('/errors/not-authorized')
+			},
 			children: [
 				{
-					path: 'login',
-					name: 'admin-login',
-					component: () => import('./views/auth/Login.vue')
-				},
-				{
-					path: 'register',
-					name: 'admin-register',
-					component: () => import('./views/auth/Register.vue')
+					path: 'dashboard',
+					name: 'admin-dashboard',
+					component: () => import('./views/admin/dashboard/Dashboard.vue')
 				},
 			]
+		},
+
+		{
+			path: '/errors/not-authorized',
+			name: 'errors-not-authorized',
+			component: () => import('./views/errors/NotAuthorized.vue')
 		}
 	]
 })
+
 
 export default router

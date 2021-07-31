@@ -4,40 +4,12 @@ import router from '@/router'
 
 export default {
  
-  updateUsername ({ commit }, payload) {
-    payload.user.updateProfile({
-      displayName: payload.displayName
-    }).then(() => {
-
-      // If username update is success
-      // update in localstorage
-      const newUserData = Object.assign({}, payload.user.providerData[0])
-      newUserData.displayName = payload.displayName
-      commit('UPDATE_USER_INFO', newUserData, {root: true})
-
-      // If reload is required to get fresh data after update
-      // Reload current page
-      if (payload.isReloadRequired) {
-        router.push(router.currentRoute.query.to || '/')
-      }
-    }).catch((err) => {
-      payload.notify({
-        time: 8800,
-        title: 'Error',
-        text: err.message,
-        iconPack: 'feather',
-        icon: 'icon-alert-circle',
-        color: 'danger'
-      })
-    })
-  },
-
   me({ commit }) {
     return new Promise((resolve, reject) => {
       jwt.me()
         .then(res => {
           // Update user details
-          commit('UPDATE_USER_INFO', res.data.userInfo)
+          commit('UPDATE_USER_INFO', res.data)
           resolve(res)
         })
         .catch(err => {
@@ -66,7 +38,10 @@ export default {
 
 
             // Navigate User to homepage
-            router.push(router.currentRoute.query.to || '/')
+            if (response.data.userInfo.user_type === 'customer')
+              router.push(router.currentRoute.query.to || '/')
+            else 
+              router.push(router.currentRoute.query.to || '/admin/dashboard')
 
             resolve(response)
           } else {
@@ -110,6 +85,7 @@ export default {
       jwt.logout()
         .then(response => {
           // Update data in localStorage
+          router.push('/')
           commit('CLEAR_USER_INFO')
           resolve(response)
         })

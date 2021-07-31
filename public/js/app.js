@@ -2129,12 +2129,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./resources/js/src/store/index.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_2__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
   mode: 'history',
   base: '/',
   routes: [{
@@ -2157,23 +2159,25 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
   }, {
     path: '/admin',
     name: 'admin',
-    redirect: '/admin/login',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/Index.vue */ "./resources/js/src/views/admin/Index.vue"));
     },
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isAdmin"]) next();else next('/errors/not-authorized');
+    },
     children: [{
-      path: 'login',
-      name: 'admin-login',
+      path: 'dashboard',
+      name: 'admin-dashboard',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Login.vue */ "./resources/js/src/views/auth/Login.vue"));
-      }
-    }, {
-      path: 'register',
-      name: 'admin-register',
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Register_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Register.vue */ "./resources/js/src/views/auth/Register.vue"));
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_dashboard_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/dashboard/Dashboard.vue */ "./resources/js/src/views/admin/dashboard/Dashboard.vue"));
       }
     }]
+  }, {
+    path: '/errors/not-authorized',
+    name: 'errors-not-authorized',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_src_views_errors_NotAuthorized_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/errors/NotAuthorized.vue */ "./resources/js/src/views/errors/NotAuthorized.vue"));
+    }
   }]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -2306,40 +2310,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  updateUsername: function updateUsername(_ref, payload) {
+  me: function me(_ref) {
     var commit = _ref.commit;
-    payload.user.updateProfile({
-      displayName: payload.displayName
-    }).then(function () {
-      // If username update is success
-      // update in localstorage
-      var newUserData = Object.assign({}, payload.user.providerData[0]);
-      newUserData.displayName = payload.displayName;
-      commit('UPDATE_USER_INFO', newUserData, {
-        root: true
-      }); // If reload is required to get fresh data after update
-      // Reload current page
-
-      if (payload.isReloadRequired) {
-        _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');
-      }
-    })["catch"](function (err) {
-      payload.notify({
-        time: 8800,
-        title: 'Error',
-        text: err.message,
-        iconPack: 'feather',
-        icon: 'icon-alert-circle',
-        color: 'danger'
-      });
-    });
-  },
-  me: function me(_ref2) {
-    var commit = _ref2.commit;
     return new Promise(function (resolve, reject) {
       _http_requests_auth_jwt_index_js__WEBPACK_IMPORTED_MODULE_0__.default.me().then(function (res) {
         // Update user details
-        commit('UPDATE_USER_INFO', res.data.userInfo);
+        commit('UPDATE_USER_INFO', res.data);
         resolve(res);
       })["catch"](function (err) {
         commit('CLEAR_USER_INFO');
@@ -2348,8 +2324,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   // JWT
-  loginJWT: function loginJWT(_ref3, payload) {
-    var commit = _ref3.commit;
+  loginJWT: function loginJWT(_ref2, payload) {
+    var commit = _ref2.commit;
     return new Promise(function (resolve, reject) {
       _http_requests_auth_jwt_index_js__WEBPACK_IMPORTED_MODULE_0__.default.login(payload.userDetails.email, payload.userDetails.password).then(function (response) {
         // If there's user data in response
@@ -2360,7 +2336,7 @@ __webpack_require__.r(__webpack_exports__);
 
           commit('UPDATE_USER_INFO', response.data.userInfo); // Navigate User to homepage
 
-          _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');
+          if (response.data.userInfo.user_type === 'customer') _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');else _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/admin/dashboard');
           resolve(response);
         } else {
           reject({
@@ -2372,8 +2348,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
   },
-  registerUserJWT: function registerUserJWT(_ref4, payload) {
-    var commit = _ref4.commit;
+  registerUserJWT: function registerUserJWT(_ref3, payload) {
+    var commit = _ref3.commit;
     var _payload$userDetails = payload.userDetails,
         firstName = _payload$userDetails.firstName,
         lastName = _payload$userDetails.lastName,
@@ -2401,11 +2377,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
   },
-  logout: function logout(_ref5) {
-    var commit = _ref5.commit;
+  logout: function logout(_ref4) {
+    var commit = _ref4.commit;
     return new Promise(function (resolve, reject) {
       _http_requests_auth_jwt_index_js__WEBPACK_IMPORTED_MODULE_0__.default.logout().then(function (response) {
         // Update data in localStorage
+        _router__WEBPACK_IMPORTED_MODULE_1__.default.push('/');
         commit('CLEAR_USER_INFO');
         resolve(response);
       })["catch"](function (error) {
@@ -2436,6 +2413,11 @@ __webpack_require__.r(__webpack_exports__);
     var _state$userInfo;
 
     return (_state$userInfo = state.userInfo) === null || _state$userInfo === void 0 ? void 0 : _state$userInfo.id;
+  },
+  isAdmin: function isAdmin(state) {
+    var _state$userInfo2;
+
+    return ((_state$userInfo2 = state.userInfo) === null || _state$userInfo2 === void 0 ? void 0 : _state$userInfo2.user_type) === 'admin';
   }
 });
 
@@ -2490,7 +2472,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  userInfo: JSON.parse(localStorage.getItem('userInfo') || '{}')
+  // userInfo: JSON.parse(localStorage.getItem('userInfo') || '{}'),
+  // adminInfo: JSON.parse(localStorage.getItem('adminInfo') || '{}'),
+  userInfo: {}
 });
 
 /***/ }),
@@ -66293,7 +66277,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1,"resources_js_src_views_admin_dashboard_Dashboard_vue":1,"resources_js_src_views_errors_NotAuthorized_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

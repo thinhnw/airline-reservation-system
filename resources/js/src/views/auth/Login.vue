@@ -18,7 +18,7 @@
 							<b-button type="submit" variant="primary" class="w-100">Login</b-button>
 						</b-form-group>
 					</b-form>
-					<div>
+					<div v-if="$route.name != 'admin-login'">
 						<small>Don't have an account?
 							<router-link to="register">Sign up</router-link>
 						</small>
@@ -62,6 +62,9 @@ export default {
 				this.$store.commit('app/SET_SPINNER', false)
 			}
     },
+	},
+	mounted() {
+		console.log(this.$route)
 	}
 }
 </script>
