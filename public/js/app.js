@@ -2188,6 +2188,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_dashboard_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/dashboard/Dashboard.vue */ "./resources/js/src/views/admin/dashboard/Dashboard.vue"));
       }
+    }, {
+      path: 'airport',
+      name: 'admin-airport',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_airports_Airports_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/airports/Airports.vue */ "./resources/js/src/views/admin/airports/Airports.vue"));
+      }
     }]
   }, {
     path: '/errors/not-authorized',
@@ -66302,7 +66308,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1,"resources_js_src_views_admin_dashboard_Dashboard_vue":1,"resources_js_src_views_errors_NotAuthorized_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1,"resources_js_src_views_admin_dashboard_Dashboard_vue":1,"resources_js_src_views_admin_airports_Airports_vue":1,"resources_js_src_views_errors_NotAuthorized_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
