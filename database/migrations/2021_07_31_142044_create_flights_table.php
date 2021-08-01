@@ -18,8 +18,8 @@ class CreateFlightsTable extends Migration
             $table->string('flight_number');
             $table->unsignedBigInteger('departure_id')->nullable();
             $table->unsignedBigInteger('destination_id')->nullable();
-            $table->string('departure_time');
-            $table->string('arrival_time');
+            $table->dateTime('departure_time');
+            $table->dateTime('arrival_time');
             $table->timestamps();
         });
     }

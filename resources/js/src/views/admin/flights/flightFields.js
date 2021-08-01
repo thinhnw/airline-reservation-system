@@ -9,18 +9,18 @@ export default [
 	},
 	{
 		label: 'Departure',
-		key: 'departure_id'
+		key: 'departure'
 	},
 	{
-		label: 'Departure Time',
+		label: 'Departure Date Time (UTC)',
 		key: 'departure_time'
 	},
 	{
 		label: 'Destination',
-		key: 'destination_id'
+		key: 'destination'
 	},
 	{
-		label: 'Arrival Time',
+		label: 'Arrival Date Time (UTC)',
 		key: 'arrival_time'
 	},
 	{

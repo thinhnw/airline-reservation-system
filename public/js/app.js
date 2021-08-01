@@ -66378,10 +66378,8 @@ var index = {
 /******/ 	(() => {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
-/******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1,"resources_js_src_views_admin_dashboard_Dashboard_vue":1,"resources_js_src_views_admin_flights_Flights_vue":1,"resources_js_src_views_errors_NotAuthorized_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "js/chunks/" + chunkId + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	

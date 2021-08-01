@@ -10007,6 +10007,7 @@ h3 {
 02. Typography
 03. Auth views
 04. Forms
+05. Buttons
 */
 * {
   margin: 0;
@@ -10042,4 +10043,16 @@ html, body {
 }
 .v-select .vs__dropdown-toggle .vs__search::placeholder {
   color: var(--gray);
+}
+
+.btn-icon {
+  transition: 0.1s ease-in;
+}
+.btn-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.btn-icon:active {
+  transform: scale(1);
 }
