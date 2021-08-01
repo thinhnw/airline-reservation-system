@@ -1,7 +1,10 @@
 <template>	
 	<div class="h-100" v-if="isAdmin">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Avia Airways</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+        <img src="/favicon.ico" alt="">
+        Avia Airways
+      </a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -18,34 +21,40 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
+                <router-link to="/admin/dashboard" class="nav-link">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-analytics mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Dashboard
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Orders
-                </a>
+                <router-link to="/admin/reservations" class="nav-link">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-clipboard-list mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Reservations
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Products
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Integrations
-                </a>
+                <router-link to="/admin/flights" class="nav-link">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-plane-departure mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Flights
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
             </ul>
           </div>

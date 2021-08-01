@@ -10,8 +10,9 @@
 
 /*
 01. Base, variables
-02. Typographya
+02. Typography
 03. Auth views
+04. Forms
 */
 
 
@@ -42,4 +43,19 @@ html, body {
 	background-image: -o-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
 	background-image: -ms-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
 	background-image: radial-gradient(center center,circle cover,#273648,#0d1218 100%);
+}
+
+
+// 04. Forms
+.v-select {
+	.vs__dropdown-toggle {
+		border-radius: 0;
+		padding-top: 4px;
+		background-color: white;
+		.vs__search {
+			&::placeholder {
+				color: var(--gray);
+			}
+		}
+	}
 }

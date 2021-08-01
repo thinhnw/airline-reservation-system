@@ -34,6 +34,11 @@ const router = new VueRouter({
 					name: 'admin-dashboard',
 					component: () => import('./views/admin/dashboard/Dashboard.vue')
 				},
+				{
+					path: 'flights',
+					name: 'admin-flights',
+					component: () => import('./views/admin/flights/Flights.vue')
+				},
 			]
 		},
 

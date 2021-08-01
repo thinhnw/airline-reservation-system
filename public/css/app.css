@@ -10004,8 +10004,9 @@ h3 {
 }
 /*
 01. Base, variables
-02. Typographya
+02. Typography
 03. Auth views
+04. Forms
 */
 * {
   margin: 0;
@@ -10026,4 +10027,19 @@ html, body {
 .auth-background {
   background-color: #1a232f;
   background-image: radial-gradient(center center, circle cover, #273648, #0d1218 100%);
+}
+
+.v-select .vs__dropdown-toggle {
+  border-radius: 0;
+  padding-top: 4px;
+  background-color: white;
+}
+.v-select .vs__dropdown-toggle .vs__search::-moz-placeholder {
+  color: var(--gray);
+}
+.v-select .vs__dropdown-toggle .vs__search:-ms-input-placeholder {
+  color: var(--gray);
+}
+.v-select .vs__dropdown-toggle .vs__search::placeholder {
+  color: var(--gray);
 }
