@@ -14,6 +14,7 @@
 03. Auth views
 04. Forms
 05. Buttons
+06. Table
 */
 
 
@@ -29,7 +30,6 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
-
 
 // 02. Typography
 .pointer {
@@ -61,6 +61,10 @@ html, body {
 	}
 }
 
+.form-control {
+	border-radius: 0 !important;
+}
+
 // 05. Buttons
 .btn-icon {
   transition: 0.1s ease-in;
@@ -73,3 +77,18 @@ html, body {
     transform: scale(1);
   }
 }
+
+
+// 06. Table
+.table {
+	tbody {
+		tr {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+
+// 07. Tabs

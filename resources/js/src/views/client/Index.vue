@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid">
+	<div class="container-fluid px-0">
 		<TopNav />
 		<router-view></router-view>
 	</div>
@@ -9,7 +9,7 @@
 import TopNav from '@/components/partials/TopNav.vue'
 export default {
 	components: {
-		TopNav
+		TopNav,
 	},
 
 }

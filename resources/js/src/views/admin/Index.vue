@@ -21,7 +21,8 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <router-link to="/admin/dashboard" class="nav-link">
+                <router-link to="/admin/dashboard" class="nav-link" :class="{ 'text-warning': $route.name === 'admin-dashboard' }">
+
                   <b-row>
                     <b-col cols="2" xl="1">
                       <i class="fal fa-analytics mr-3"></i>
@@ -33,7 +34,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/admin/reservations" class="nav-link">
+                <router-link to="/admin/reservations" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-reservations' }">
                   <b-row>
                     <b-col cols="2" xl="1">
                       <i class="fal fa-clipboard-list mr-3"></i>
@@ -45,7 +46,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/admin/flights" class="nav-link">
+                <router-link to="/admin/flights" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-flights' }">
                   <b-row>
                     <b-col cols="2" xl="1">
                       <i class="fal fa-plane-departure mr-3"></i>

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AirportController;
+use App\Models\Airport;
 use Illuminate\Http\Request;
 
-class AirportControllerController extends Controller
+class AirportController extends Controller
 {
     //
     public function all(){
-        $data=AirportController::paginate(10);
+        $data=Airport::paginate(10);
         $airport=null;
         return view("airports",["data"=>$data,'airport'=>$airport]);
     }
 
 //    GET_DATA
     public function index(){
-        $data=AirportController::all();
+        $data=Airport::all();
         return response()->json([
             'status'=>true,
             'message'=>'Success',
@@ -26,7 +26,7 @@ class AirportControllerController extends Controller
 
 //    EDIT
     public function edit($id){
-        $airport=AirportController::findOrFail($id);
+        $airport=Airport::findOrFail($id);
         return response()->json([
             'airport'=>$airport
         ]);
@@ -35,7 +35,7 @@ class AirportControllerController extends Controller
 
 //    UPDATE
     public function update($id,Request $request){
-        $airport=AirportController::findOrFail($id);
+        $airport=Airport::findOrFail($id);
         $airport->update([
             'code'=>$request->post('code'),
             'name'=>$request->post('name'),
@@ -54,7 +54,7 @@ class AirportControllerController extends Controller
 
 //    DELETE
     public function delete($id){
-        $airport=AirportController::findOrFail($id);
+        $airport=Airport::findOrFail($id);
         $airport->delete();
         return response()->json('successfully deleted');
     }
@@ -62,7 +62,7 @@ class AirportControllerController extends Controller
 //    SAVE
     public function save(Request $request){
         try {
-            AirportController::create([
+            Airport::create([
                 'code' => $request->post('code'),
                 'name' => $request->post('name'),
                 'cityCode' => $request->post('cityCode'),

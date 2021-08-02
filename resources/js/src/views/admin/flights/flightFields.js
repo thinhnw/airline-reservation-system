@@ -1,3 +1,4 @@
+import moment from 'moment'
 export default [
 	{
 		label: 'ID',
@@ -9,19 +10,25 @@ export default [
 	},
 	{
 		label: 'Departure',
-		key: 'departure'
+		key: 'departure',
+		formatter(value) {
+			return value.label
+		}
 	},
 	{
-		label: 'Departure Date Time (UTC)',
-		key: 'departure_time'
+		label: 'Departure Datetime (GMT)',
+		key: 'departure_time',
 	},
 	{
 		label: 'Destination',
-		key: 'destination'
+		key: 'destination',
+		formatter(value) {
+			return value.label
+		}
 	},
 	{
-		label: 'Arrival Date Time (UTC)',
-		key: 'arrival_time'
+		label: 'Arrival Datetime (GMT)',
+		key: 'arrival_time',
 	},
 	{
 		label: '',

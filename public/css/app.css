@@ -10008,6 +10008,7 @@ h3 {
 03. Auth views
 04. Forms
 05. Buttons
+06. Table
 */
 * {
   margin: 0;
@@ -10045,6 +10046,10 @@ html, body {
   color: var(--gray);
 }
 
+.form-control {
+  border-radius: 0 !important;
+}
+
 .btn-icon {
   transition: 0.1s ease-in;
 }
@@ -10055,4 +10060,8 @@ html, body {
 }
 .btn-icon:active {
   transform: scale(1);
+}
+
+.table tbody tr:hover {
+  cursor: pointer;
 }

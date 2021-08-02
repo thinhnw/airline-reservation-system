@@ -2169,7 +2169,15 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
     path: '/',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/Index.vue */ "./resources/js/src/views/client/Index.vue"));
-    }
+    },
+    redirect: '/home',
+    children: [{
+      path: 'home',
+      name: 'home',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_home_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/home/Home.vue */ "./resources/js/src/views/client/home/Home.vue"));
+      }
+    }]
   }, {
     path: '/login',
     name: 'login',
@@ -2201,8 +2209,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_flights_Flights_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/flights/Flights.vue */ "./resources/js/src/views/admin/flights/Flights.vue"));
       }
     }, {
-      path: 'airports',
-      name: 'admin-airports',
+      path: 'airport',
+      name: 'admin-airport',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_airports_Airports_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/airports/Airports.vue */ "./resources/js/src/views/admin/airports/Airports.vue"));
       }
@@ -66296,12 +66304,15 @@ var index = {
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -66469,6 +66480,15 @@ var index = {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	

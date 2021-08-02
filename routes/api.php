@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FlightController;
-use App\Http\Controllers\AirportControllerController;
+use App\Http\Controllers\AirportController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,8 +31,9 @@ Route::group([
     
 });
 
-Route::resource('flights', FlightController::class);
-});
+Route::resource('flights', FlightController::class)->middleware('api');
+Route::resource('airports', AirportController::class)->middleware('api');
+
 Route::get("/api-airport",[AirportControllerController::class,"index"]);
 Route::get("/airport",[AirportControllerController::class,'all']);
 Route::get('/airport/edit/{id}',[AirportControllerController::class,'edit']);

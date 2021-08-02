@@ -109,6 +109,31 @@ class FlightController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            $request->validate([
+                'flight_number' => 'required',
+                'departure_id' => 'required',
+                'destination_id' => 'required',
+                'departure_time' => 'required|date',
+                'arrival_time' => 'required|date'
+            ]);
+
+            $flight = Flight::find($id);
+            $flight->flight_number = $request->flight_number;
+            $flight->departure_id = $request->departure_id;
+            $flight->destination_id = $request->destination_id;
+            $flight->departure_time = Carbon::parse($request->departure_time)->format('Y-m-d H:i:s');
+            $flight->arrival_time = Carbon::parse($request->arrival_time)->format('Y-m-d H:i:s');
+
+            $flight->update();
+            return response()->json([
+                'flight' => $flight
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 
     /**

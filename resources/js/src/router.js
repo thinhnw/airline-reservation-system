@@ -10,7 +10,15 @@ const router = new VueRouter({
 	routes: [
 		{
 			path: '/',
-			component: () => import('./views/client/Index.vue')
+			component: () => import('./views/client/Index.vue'),
+			redirect: '/home',
+			children: [
+				{
+					path: 'home',
+					name: 'home',
+					component: () => import('./views/client/home/Home.vue')
+				},
+			]
 		},
 
 		{
@@ -23,7 +31,6 @@ const router = new VueRouter({
 			name: 'register',
 			component: () => import('./views/auth/Register.vue')
 		},
-
 		{
 			path: '/admin',
 			name: 'admin',
@@ -40,8 +47,8 @@ const router = new VueRouter({
 					component: () => import('./views/admin/flights/Flights.vue')
 				},
 				{
-						path: 'airports',
-						name: 'admin-airports',
+						path: 'airport',
+						name: 'admin-airport',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
 			]

@@ -1,30 +1,64 @@
 <template>
-	<div class="w-100">
-		<div class="container">
-			<div class="row">
-				<div class="col d-flex justify-content-end">
-					<div v-if="!isLogged">
-						<router-link to="login" class="mr-2">
-							<small>Login</small>
-						</router-link>
-						<router-link to="register">
-							<small>
-								Register
-							</small>
-						</router-link>
-					</div>
-					<div v-else>
-						<small>Hello, {{ userInfo.first_name + ' ' + userInfo.last_name }}</small>
-						<small class="mx-2">|</small>
-						<a class="link-primary pointer" @click="logout">
-							<small>
-								Logout
-							</small>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="top-nav">
+		<b-container class="px-0">
+			<b-row>
+				<b-col class="d-flex justify-content-end px-0">
+					<b-navbar toggleable="lg" type="dark" variant="transparent" class="w-100">
+						<b-navbar-brand href="#" class="d-flex align-items-center mr-5">
+							<img src="/favicon.ico" alt="" width="20px">
+							<div class="ml-2">
+								<em style="font-size: 30px" class="font-weight-bold text-white">
+									AVIA AIRWAYS
+								</em>
+							</div>
+						</b-navbar-brand>
+
+						<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+						<b-collapse id="nav-collapse" is-nav class="pl-5">
+							<b-navbar-nav>
+								<b-nav-item>
+									<router-link class="text-light" to="/">Home</router-link>
+								</b-nav-item>
+								<b-nav-item>
+									<router-link class="text-light px-3" to="/">About Us</router-link>
+								</b-nav-item>
+								<b-nav-item>
+									<router-link class="text-light" to="/">Contact Us</router-link>
+								</b-nav-item>
+							</b-navbar-nav>
+							<!-- Right aligned nav items -->
+							<b-navbar-nav class="ml-auto">
+								<b-nav-item>
+									<div class="d-flex justify-content-end">
+										<div v-if="!isLogged">
+											<router-link to="login" class="text-white">
+												<small>Login</small>
+											</router-link>
+											<small class="mx-2">|</small>
+											<router-link to="register" class="text-white">
+												<small>
+													Register
+												</small>
+											</router-link>
+										</div>
+										<div v-else>
+											<small><em class="text-white">Hello, {{ userInfo.first_name + ' ' + userInfo.last_name }}</em></small>
+											<small class="mx-2">|</small>
+											<a class="text-white pointer" @click="logout">
+												<small>
+													Logout
+												</small>
+											</a>
+										</div>
+									</div>
+								</b-nav-item>
+							</b-navbar-nav>
+						</b-collapse>
+					</b-navbar>
+				</b-col>
+			</b-row>
+		</b-container>
 	</div>
 </template>
 
@@ -45,6 +79,17 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.top-nav {
+	width: 100%;
+	background: transparent;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	color: white;
+	border-bottom: 1px solid #4d668f;
+	.navbar-collapse {
+		font-size: 1.1rem;
+	}
+}
 </style>
