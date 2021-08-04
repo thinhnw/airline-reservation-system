@@ -33,9 +33,6 @@ Route::get("/api-airport",[AirportControllerController::class,"index"]);
 Route::get("/airport",[AirportControllerController::class,'all']);
 Route::get('/airport/edit/{id}',[AirportControllerController::class,'edit']);
 Route::post('/airport/update/{id}',[AirportControllerController::class,'update']);
-Route::get('/airport/cancel',function (){
-    return redirect()->to('http://127.0.0.1:8000/admin/airport');
-});
 Route::delete('/airport/delete/{id}',[AirportControllerController::class,'delete']);
 Route::post('/airport/save',[AirportControllerController::class,'save']);
 
