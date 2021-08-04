@@ -179,8 +179,7 @@ export default {
     },
     methods:{
         cancel(){
-
-            this.dataEdit={}
+            this.$emit('updateDataEdit')
             this.dataCreate={}
             this.$emit('setShown',false)
         },
@@ -189,8 +188,8 @@ export default {
             axios.post(uri_cr,this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created",JSON.parse(response.config.data));
-
             });
+            this.dataCreate={}
         },
         updateData(id){
             let uri_u = `http://127.0.0.1:8000/api/airport/update/${id}`;
@@ -198,6 +197,7 @@ export default {
                 console.log(response)
                 this.$emit("updated",JSON.parse(response.config.data));
             });
+            this.$emit('updateDataEdit')
         },
     },
 
