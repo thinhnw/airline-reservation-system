@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AirportControllerController;
+use App\Http\Controllers\FlightController;
+use App\Http\Controllers\AirportController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,10 +30,14 @@ Route::group([
     Route::post('register', [ AuthController::class, 'register' ] );
 
 });
-Route::get("/api-airport",[AirportControllerController::class,"index"]);
-Route::get("/airport",[AirportControllerController::class,'all']);
-Route::get('/airport/edit/{id}',[AirportControllerController::class,'edit']);
-Route::post('/airport/update/{id}',[AirportControllerController::class,'update']);
-Route::delete('/airport/delete/{id}',[AirportControllerController::class,'delete']);
-Route::post('/airport/save',[AirportControllerController::class,'save']);
+
+Route::resource('flights', FlightController::class)->middleware('api');
+Route::resource('airports', AirportController::class)->middleware('api');
+
+Route::get("/api-airport",[AirportController::class,"index"]);
+Route::get("/airport",[AirportController::class,'all']);
+Route::get('/airport/edit/{id}',[AirportController::class,'edit']);
+Route::post('/airport/update/{id}',[AirportController::class,'update']);
+Route::delete('/airport/delete/{id}',[AirportController::class,'delete']);
+Route::post('/airport/save',[AirportController::class,'save']);
 

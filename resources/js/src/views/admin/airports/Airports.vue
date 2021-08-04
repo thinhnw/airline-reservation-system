@@ -17,6 +17,7 @@
             @updated="listUpdated"
             :shownForm="shown"
             @setShown="setShown"
+            @updateDataEdit="updateDataEdit"
             @created="listCreated"/>
         </div>
     </div>
@@ -64,6 +65,9 @@ export default {
         },
         setShown(res){
           return this.shown=res
+        },
+        updateDataEdit(){
+            return this.dataEdit="";
         }
     }
 
