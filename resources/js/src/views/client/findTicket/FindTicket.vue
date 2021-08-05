@@ -10,7 +10,7 @@
         </div>
         <form action="push" class="selectResult">
           <div class="mb-1">
-            <b-button @click="Collap == true ? true : false" v-b-toggle.collapse-3 class=" w-100 text-left p-2 d-flex justify-content-between">
+            <b-button v-b-toggle.collapse-3 class=" w-100 text-left p-2 d-flex justify-content-between">
               Modify Search
               <p v-html="html"></p>
             </b-button>
@@ -62,7 +62,7 @@
             </b-collapse>
           </div>
           <div class="mb-1">
-            <b-button @click="Collap" v-b-toggle.collapse-4 class=" w-100 text-left p-2  d-flex justify-content-between">
+            <b-button v-b-toggle.collapse-4 class=" w-100 text-left p-2  d-flex justify-content-between">
               Price :
               <p v-html="html"></p>
             </b-button>
@@ -78,7 +78,7 @@
             </b-collapse>
           </div>
           <div class="mb-1">
-            <b-button @click="Collap" v-b-toggle.collapse-5 class=" w-100 text-left p-2  d-flex justify-content-between ">
+            <b-button v-b-toggle.collapse-5 class=" w-100 text-left p-2  d-flex justify-content-between ">
               Flight stops :
               <p v-html="html"></p>
             </b-button>
@@ -98,7 +98,7 @@
             </b-collapse>
           </div>
           <div class="mb-1">
-            <b-button @click="Collap" v-b-toggle.collapse-6 class=" w-100 text-left p-2  d-flex justify-content-between ">
+            <b-button v-b-toggle.collapse-6 class=" w-100 text-left p-2  d-flex justify-content-between ">
               Flight Type :
               <p v-html="html"></p>
             </b-button>
@@ -118,7 +118,7 @@
             </b-collapse>
           </div>
           <div class="mb-1">
-            <b-button @click="Collap" v-b-toggle.collapse-7 class=" w-100 text-left p-2  d-flex justify-content-between ">
+            <b-button v-b-toggle.collapse-7 class=" w-100 text-left p-2  d-flex justify-content-between ">
               Air Line :
               <p v-html="html"></p>
             </b-button>
@@ -472,7 +472,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .mainFindTicket{
   padding: 50px 0;
   .Result{
@@ -485,6 +484,18 @@ export default {
     }
   }
   .selectResult{
+      .mb-1{
+          #collapse-7{
+              .mb-3{
+                  .custom-control-inline{
+                      display: block !important;
+                  }
+                  .custom-control{
+                      display: block !important;
+                  }
+              }
+          }
+      }
     span{
       line-height: 24px;
     }
@@ -620,7 +631,6 @@ export default {
         color: #FDB714;
       }
     }
-
   }
   p{
     margin-bottom: 0;
@@ -632,5 +642,12 @@ export default {
   .noFlight{
     background-color: #ffffff;
   }
+    .custom-control-inline{
+        display: block !important;
+    }
+    .custom-control{
+        display: block !important;
+    }
 }
+
 </style>
