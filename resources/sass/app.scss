@@ -61,6 +61,10 @@ html, body {
 	}
 }
 
+.form-control {
+	border-radius: 0 !important;
+}
+
 // 05. Buttons
 .btn-icon {
   transition: 0.1s ease-in;
