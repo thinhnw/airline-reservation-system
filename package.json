@@ -1,34 +1,41 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "axios": "^0.21.1",
-        "bootstrap": "^4.6.0",
-        "jquery": "^3.6",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "popper.js": "^1.16.1",
-        "postcss": "^8.1.14",
-        "resolve-url-loader": "^3.1.2",
-        "sass": "^1.32.11",
-        "sass-loader": "^11.0.1",
-        "vue": "^2.6.14",
-        "vue-loader": "^15.9.7",
-        "vue-template-compiler": "^2.6.12"
-    },
-    "dependencies": {
-        "bootstrap-vue": "^2.21.2",
-        "moment": "^2.29.1",
-        "vue-router": "^3.5.2",
-        "vue-select": "^3.12.2",
-        "vuex": "^3.6.2"
-    }
+  "private": true,
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "dev": "npm run development",
+    "development": "mix",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000"
+  },
+  "dependencies": {
+    "bootstrap-vue": "^2.21.2",
+    "eslint": "^7.32.0",
+    "eslint-loader": "^4.0.2",
+    "moment": "^2.29.1",
+    "vue-router": "^3.5.2",
+    "vue-select": "^3.12.2",
+    "vue2-collapse": "^1.0.15",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "jquery": "^3.6",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
+    "vue": "^2.6.14",
+    "vue-loader": "^15.9.7",
+    "vue-template-compiler": "^2.6.12"
+  }
 }

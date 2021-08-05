@@ -58,7 +58,13 @@ const router = new VueRouter({
 			path: '/errors/not-authorized',
 			name: 'errors-not-authorized',
 			component: () => import('./views/errors/NotAuthorized.vue')
-		}
+		},
+        {
+            path: '/FindTicket',
+            name: 'FindTicket',
+            component: () => import('./views/client/findTicket/FindTicket')
+        }
+
 	]
 })
 

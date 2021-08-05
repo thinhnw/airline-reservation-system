@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_admin_airports_Airports_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_client_findTicket_FindTicket_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -508,10 +508,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -524,17 +524,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".mainFindTicket[data-v-2672a3f5] {\n  padding: 50px 0;\n}\n.mainFindTicket .Result[data-v-2672a3f5] {\n  background-color: #ffffff;\n  padding: 15px;\n  border-radius: 5px;\n}\n.mainFindTicket .Result i[data-v-2672a3f5] {\n  color: #FDB714;\n  font-size: 20px;\n}\n.mainFindTicket .selectResult span[data-v-2672a3f5] {\n  line-height: 24px;\n}\n.mainFindTicket .selectResult .btn-secondary[data-v-2672a3f5] {\n  padding: 15px !important;\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #ffffff;\n}\n.mainFindTicket .selectResult button[data-v-2672a3f5]:focus {\n  box-shadow: none !important;\n  border: none !important;\n  outline: none !important;\n}\n.mainFindTicket .selectResult .collapse-3[data-v-2672a3f5] {\n  background-color: #ffffff;\n  padding: 20px 15px;\n}\n.mainFindTicket .selectResult .range-value[data-v-2672a3f5] {\n  position: absolute;\n  top: -2rem;\n}\n.mainFindTicket .selectResult .range-value.min[data-v-2672a3f5] {\n  left: 0;\n}\n.mainFindTicket .selectResult .range-value.max[data-v-2672a3f5] {\n  right: 0;\n}\n.mainFindTicket .selectResult .track-container[data-v-2672a3f5] {\n  margin-top: 50px;\n  width: 100%;\n  position: relative;\n  cursor: pointer;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-2672a3f5],\n.mainFindTicket .selectResult .track-highlight[data-v-2672a3f5] {\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-2672a3f5] {\n  background-color: #ddd;\n}\n.mainFindTicket .selectResult .track-highlight[data-v-2672a3f5] {\n  background-color: #01B7F2;\n  z-index: 2;\n}\n.mainFindTicket .selectResult .track-btn[data-v-2672a3f5] {\n  border-radius: 50px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: none;\n  cursor: pointer;\n  display: block;\n  position: absolute;\n  z-index: 2;\n  width: 1.5rem;\n  height: 1.5rem;\n  top: calc(-50% - 0.25rem);\n  margin-left: -1rem;\n  border: none;\n  background-color: black;\n  touch-action: pan-x;\n  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease;\n}\n.mainFindTicket .selectResult #collapse-6 .bv-no-focus-ring .custom-control-inline[data-v-2672a3f5] {\n  background-color: #333333;\n}\n.mainFindTicket .TicketList[data-v-2672a3f5] {\n  background-color: #ffffff;\n  padding: 16px;\n}\n.mainFindTicket .TicketList .text12px[data-v-2672a3f5] {\n  font-size: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-2672a3f5] {\n  background-color: #D9D9D9;\n  color: #ffffff;\n  font-size: 12px;\n  padding: 5px 10px;\n  margin-left: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-2672a3f5]:hover {\n  background-color: #FDB714;\n  cursor: pointer;\n}\n.mainFindTicket .TicketList .in4Flight[data-v-2672a3f5] {\n  border-top: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow[data-v-2672a3f5] {\n  text-align: center !important;\n  justify-content: center !important;\n  display: flex !important;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-2672a3f5] {\n  background-color: #D9D9D9;\n  padding: 5px 20px;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-2672a3f5]:hover {\n  background-color: #98CE44;\n}\n.mainFindTicket .TicketList .in4Flight .text12px[data-v-2672a3f5] {\n  font-size: 12px;\n}\n.mainFindTicket .TicketList .in4Flight .smallText[data-v-2672a3f5] {\n  font-size: 12px;\n  padding: 0 5px;\n  color: #01b7f2;\n}\n.mainFindTicket .TicketList .in4Flight .col-md-3[data-v-2672a3f5] {\n  text-align: center;\n  padding: 10px 5px;\n  border-right: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .icoinFly[data-v-2672a3f5] {\n  transform: rotate(-45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .icoinLanding[data-v-2672a3f5] {\n  transform: rotate(45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .fa-clock[data-v-2672a3f5] {\n  color: #FDB714;\n}\n.mainFindTicket p[data-v-2672a3f5] {\n  margin-bottom: 0;\n}\n.mainFindTicket label[data-v-2672a3f5] {\n  display: block !important;\n  cursor: pointer;\n}\n.mainFindTicket .noFlight[data-v-2672a3f5] {\n  background-color: #ffffff;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".mainFindTicket[data-v-4caca5b5] {\n  padding: 50px 0;\n}\n.mainFindTicket .Result[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 15px;\n  border-radius: 5px;\n}\n.mainFindTicket .Result i[data-v-4caca5b5] {\n  color: #FDB714;\n  font-size: 20px;\n}\n.mainFindTicket .selectResult span[data-v-4caca5b5] {\n  line-height: 24px;\n}\n.mainFindTicket .selectResult .btn-secondary[data-v-4caca5b5] {\n  padding: 15px !important;\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #ffffff;\n}\n.mainFindTicket .selectResult button[data-v-4caca5b5]:focus {\n  box-shadow: none !important;\n  border: none !important;\n  outline: none !important;\n}\n.mainFindTicket .selectResult .collapse-3[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 20px 15px;\n}\n.mainFindTicket .selectResult .range-value[data-v-4caca5b5] {\n  position: absolute;\n  top: -2rem;\n}\n.mainFindTicket .selectResult .range-value.min[data-v-4caca5b5] {\n  left: 0;\n}\n.mainFindTicket .selectResult .range-value.max[data-v-4caca5b5] {\n  right: 0;\n}\n.mainFindTicket .selectResult .track-container[data-v-4caca5b5] {\n  margin-top: 50px;\n  width: 100%;\n  position: relative;\n  cursor: pointer;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5],\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5] {\n  background-color: #ddd;\n}\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  background-color: #01B7F2;\n  z-index: 2;\n}\n.mainFindTicket .selectResult .track-btn[data-v-4caca5b5] {\n  border-radius: 50px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: none;\n  cursor: pointer;\n  display: block;\n  position: absolute;\n  z-index: 2;\n  width: 1.5rem;\n  height: 1.5rem;\n  top: calc(-50% - 0.25rem);\n  margin-left: -1rem;\n  border: none;\n  background-color: black;\n  touch-action: pan-x;\n  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease;\n}\n.mainFindTicket .selectResult #collapse-6 .bv-no-focus-ring .custom-control-inline[data-v-4caca5b5] {\n  background-color: #333333;\n}\n.mainFindTicket .TicketList[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 16px;\n}\n.mainFindTicket .TicketList .text12px[data-v-4caca5b5] {\n  font-size: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  color: #ffffff;\n  font-size: 12px;\n  padding: 5px 10px;\n  margin-left: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5]:hover {\n  background-color: #FDB714;\n  cursor: pointer;\n}\n.mainFindTicket .TicketList .in4Flight[data-v-4caca5b5] {\n  border-top: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow[data-v-4caca5b5] {\n  text-align: center !important;\n  justify-content: center !important;\n  display: flex !important;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  padding: 5px 20px;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5]:hover {\n  background-color: #98CE44;\n}\n.mainFindTicket .TicketList .in4Flight .text12px[data-v-4caca5b5] {\n  font-size: 12px;\n}\n.mainFindTicket .TicketList .in4Flight .smallText[data-v-4caca5b5] {\n  font-size: 12px;\n  padding: 0 5px;\n  color: #01b7f2;\n}\n.mainFindTicket .TicketList .in4Flight .col-md-3[data-v-4caca5b5] {\n  text-align: center;\n  padding: 10px 5px;\n  border-right: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .icoinFly[data-v-4caca5b5] {\n  transform: rotate(-45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .icoinLanding[data-v-4caca5b5] {\n  transform: rotate(45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .fa-clock[data-v-4caca5b5] {\n  color: #FDB714;\n}\n.mainFindTicket p[data-v-4caca5b5] {\n  margin-bottom: 0;\n}\n.mainFindTicket label[data-v-4caca5b5] {\n  display: block !important;\n  cursor: pointer;\n}\n.mainFindTicket .noFlight[data-v-4caca5b5] {\n  background-color: #ffffff;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -543,7 +543,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_style_index_0_id_4caca5b5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&");
 
             
 
@@ -552,27 +552,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_style_index_0_id_4caca5b5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_style_index_0_id_4caca5b5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./resources/js/src/views/admin/airports/Airports.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/Airports.vue ***!
-  \************************************************************/
+/***/ "./resources/js/src/views/client/findTicket/FindTicket.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/src/views/client/findTicket/FindTicket.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Airports.vue?vue&type=template&id=2672a3f5&scoped=true& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true&");
-/* harmony import */ var _Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Airports.vue?vue&type=script&lang=js& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js&");
-/* harmony import */ var _Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
+/* harmony import */ var _FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true& */ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true&");
+/* harmony import */ var _FindTicket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FindTicket.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FindTicket_vue_vue_type_style_index_0_id_4caca5b5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& */ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -583,70 +583,70 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _FindTicket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "2672a3f5",
+  "4caca5b5",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/src/views/admin/airports/Airports.vue"
+component.options.__file = "resources/js/src/views/client/findTicket/FindTicket.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FindTicket.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
-/***/ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!**********************************************************************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \**********************************************************************************************************************/
+/***/ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************!*\
+  !*** ./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_style_index_0_id_4caca5b5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=style&index=0&id=4caca5b5&lang=scss&scoped=true&");
 
 
 /***/ }),
 
-/***/ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true& ***!
-  \*******************************************************************************************************/
+/***/ "./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true& ***!
+  \************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=template&id=2672a3f5&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FindTicket_vue_vue_type_template_id_4caca5b5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/findTicket/FindTicket.vue?vue&type=template&id=4caca5b5&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -669,11 +669,7 @@ var render = function() {
             _c("div", { staticClass: "Result mb-2" }, [
               _c("p", [
                 _c("i", { staticClass: "fad fa-search-location" }),
-                _vm._v(
-                  " \n                    " +
-                    _vm._s(_vm.Result) +
-                    "\n                "
-                )
+                _vm._v(" \n            " + _vm._s(_vm.Result) + "\n          ")
               ])
             ]),
             _vm._v(" "),
@@ -696,12 +692,15 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2 d-flex justify-content-between"
+                          " w-100 text-left p-2 d-flex justify-content-between",
+                        on: {
+                          click: function($event) {
+                            _vm.Collap == true ? true : false
+                          }
+                        }
                       },
                       [
-                        _vm._v(
-                          "\n                        Modify Search\n                        "
-                        ),
+                        _vm._v("\n              Modify Search\n              "),
                         _c("p", { domProps: { innerHTML: _vm._s(_vm.html) } })
                       ]
                     ),
@@ -838,12 +837,11 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between"
+                          " w-100 text-left p-2  d-flex justify-content-between",
+                        on: { click: _vm.Collap }
                       },
                       [
-                        _vm._v(
-                          "\n                        Price :\n                        "
-                        ),
+                        _vm._v("\n              Price :\n              "),
                         _c("p", { domProps: { innerHTML: _vm._s(_vm.html) } })
                       ]
                     ),
@@ -922,7 +920,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        Flight stops :\n                        "
+                          "\n              Flight stops :\n              "
                         ),
                         _c("p", { domProps: { innerHTML: _vm._s(_vm.html) } })
                       ]
@@ -979,12 +977,11 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between "
+                          " w-100 text-left p-2  d-flex justify-content-between ",
+                        on: { click: _vm.Collap }
                       },
                       [
-                        _vm._v(
-                          "\n                        Flight Type :\n                        "
-                        ),
+                        _vm._v("\n              Flight Type :\n              "),
                         _c("p", { domProps: { innerHTML: _vm._s(_vm.html) } })
                       ]
                     ),
@@ -1040,12 +1037,11 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between "
+                          " w-100 text-left p-2  d-flex justify-content-between ",
+                        on: { click: _vm.Collap }
                       },
                       [
-                        _vm._v(
-                          "\n                        Air Line :\n                        "
-                        ),
+                        _vm._v("\n              Air Line :\n              "),
                         _c("p", { domProps: { innerHTML: _vm._s(_vm.html) } })
                       ]
                     ),
@@ -1190,7 +1186,7 @@ var render = function() {
                                 [
                                   _c("b-button", { staticClass: "bookNow" }, [
                                     _vm._v(
-                                      "\n                                    Book Now\n                                "
+                                      "\n                    Book Now\n                  "
                                     )
                                   ])
                                 ],

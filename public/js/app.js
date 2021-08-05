@@ -2221,6 +2221,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_errors_NotAuthorized_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/errors/NotAuthorized.vue */ "./resources/js/src/views/errors/NotAuthorized.vue"));
     }
+  }, {
+    path: '/FindTicket',
+    name: 'FindTicket',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_findTicket_FindTicket_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/findTicket/FindTicket */ "./resources/js/src/views/client/findTicket/FindTicket.vue"));
+    }
   }]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
