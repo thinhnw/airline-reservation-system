@@ -10046,10 +10046,6 @@ html, body {
   color: var(--gray);
 }
 
-.form-control {
-  border-radius: 0 !important;
-}
-
 .btn-icon {
   transition: 0.1s ease-in;
 }
