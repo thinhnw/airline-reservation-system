@@ -524,7 +524,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".mainFindTicket[data-v-4caca5b5] {\n  padding: 50px 0;\n}\n.mainFindTicket .Result[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 15px;\n  border-radius: 5px;\n}\n.mainFindTicket .Result i[data-v-4caca5b5] {\n  color: #FDB714;\n  font-size: 20px;\n}\n.mainFindTicket .selectResult span[data-v-4caca5b5] {\n  line-height: 24px;\n}\n.mainFindTicket .selectResult .btn-secondary[data-v-4caca5b5] {\n  padding: 15px !important;\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #ffffff;\n}\n.mainFindTicket .selectResult button[data-v-4caca5b5]:focus {\n  box-shadow: none !important;\n  border: none !important;\n  outline: none !important;\n}\n.mainFindTicket .selectResult .collapse-3[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 20px 15px;\n}\n.mainFindTicket .selectResult .range-value[data-v-4caca5b5] {\n  position: absolute;\n  top: -2rem;\n}\n.mainFindTicket .selectResult .range-value.min[data-v-4caca5b5] {\n  left: 0;\n}\n.mainFindTicket .selectResult .range-value.max[data-v-4caca5b5] {\n  right: 0;\n}\n.mainFindTicket .selectResult .track-container[data-v-4caca5b5] {\n  margin-top: 50px;\n  width: 100%;\n  position: relative;\n  cursor: pointer;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5],\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5] {\n  background-color: #ddd;\n}\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  background-color: #01B7F2;\n  z-index: 2;\n}\n.mainFindTicket .selectResult .track-btn[data-v-4caca5b5] {\n  border-radius: 50px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: none;\n  cursor: pointer;\n  display: block;\n  position: absolute;\n  z-index: 2;\n  width: 1.5rem;\n  height: 1.5rem;\n  top: calc(-50% - 0.25rem);\n  margin-left: -1rem;\n  border: none;\n  background-color: black;\n  touch-action: pan-x;\n  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease;\n}\n.mainFindTicket .selectResult #collapse-6 .bv-no-focus-ring .custom-control-inline[data-v-4caca5b5] {\n  background-color: #333333;\n}\n.mainFindTicket .TicketList[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 16px;\n}\n.mainFindTicket .TicketList .text12px[data-v-4caca5b5] {\n  font-size: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  color: #ffffff;\n  font-size: 12px;\n  padding: 5px 10px;\n  margin-left: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5]:hover {\n  background-color: #FDB714;\n  cursor: pointer;\n}\n.mainFindTicket .TicketList .in4Flight[data-v-4caca5b5] {\n  border-top: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow[data-v-4caca5b5] {\n  text-align: center !important;\n  justify-content: center !important;\n  display: flex !important;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  padding: 5px 20px;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5]:hover {\n  background-color: #98CE44;\n}\n.mainFindTicket .TicketList .in4Flight .text12px[data-v-4caca5b5] {\n  font-size: 12px;\n}\n.mainFindTicket .TicketList .in4Flight .smallText[data-v-4caca5b5] {\n  font-size: 12px;\n  padding: 0 5px;\n  color: #01b7f2;\n}\n.mainFindTicket .TicketList .in4Flight .col-md-3[data-v-4caca5b5] {\n  text-align: center;\n  padding: 10px 5px;\n  border-right: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .icoinFly[data-v-4caca5b5] {\n  transform: rotate(-45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .icoinLanding[data-v-4caca5b5] {\n  transform: rotate(45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .fa-clock[data-v-4caca5b5] {\n  color: #FDB714;\n}\n.mainFindTicket p[data-v-4caca5b5] {\n  margin-bottom: 0;\n}\n.mainFindTicket label[data-v-4caca5b5] {\n  display: block !important;\n  cursor: pointer;\n}\n.mainFindTicket .noFlight[data-v-4caca5b5] {\n  background-color: #ffffff;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".mainFindTicket[data-v-4caca5b5] {\n  padding: 50px 0;\n}\n.mainFindTicket .Result[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 15px;\n  border-radius: 5px;\n}\n.mainFindTicket .Result i[data-v-4caca5b5] {\n  color: #FDB714;\n  font-size: 20px;\n}\n.mainFindTicket .selectResult .mb-1 #collapse-7 .mb-3 .custom-control-inline[data-v-4caca5b5] {\n  display: block !important;\n}\n.mainFindTicket .selectResult .mb-1 #collapse-7 .mb-3 .custom-control[data-v-4caca5b5] {\n  display: block !important;\n}\n.mainFindTicket .selectResult span[data-v-4caca5b5] {\n  line-height: 24px;\n}\n.mainFindTicket .selectResult .btn-secondary[data-v-4caca5b5] {\n  padding: 15px !important;\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #ffffff;\n}\n.mainFindTicket .selectResult button[data-v-4caca5b5]:focus {\n  box-shadow: none !important;\n  border: none !important;\n  outline: none !important;\n}\n.mainFindTicket .selectResult .collapse-3[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 20px 15px;\n}\n.mainFindTicket .selectResult .range-value[data-v-4caca5b5] {\n  position: absolute;\n  top: -2rem;\n}\n.mainFindTicket .selectResult .range-value.min[data-v-4caca5b5] {\n  left: 0;\n}\n.mainFindTicket .selectResult .range-value.max[data-v-4caca5b5] {\n  right: 0;\n}\n.mainFindTicket .selectResult .track-container[data-v-4caca5b5] {\n  margin-top: 50px;\n  width: 100%;\n  position: relative;\n  cursor: pointer;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5],\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 0.5rem;\n}\n.mainFindTicket .selectResult .track[data-v-4caca5b5] {\n  background-color: #ddd;\n}\n.mainFindTicket .selectResult .track-highlight[data-v-4caca5b5] {\n  background-color: #01B7F2;\n  z-index: 2;\n}\n.mainFindTicket .selectResult .track-btn[data-v-4caca5b5] {\n  border-radius: 50px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  outline: none;\n  cursor: pointer;\n  display: block;\n  position: absolute;\n  z-index: 2;\n  width: 1.5rem;\n  height: 1.5rem;\n  top: calc(-50% - 0.25rem);\n  margin-left: -1rem;\n  border: none;\n  background-color: black;\n  touch-action: pan-x;\n  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease;\n}\n.mainFindTicket .selectResult #collapse-6 .bv-no-focus-ring .custom-control-inline[data-v-4caca5b5] {\n  background-color: #333333;\n}\n.mainFindTicket .TicketList[data-v-4caca5b5] {\n  background-color: #ffffff;\n  padding: 16px;\n}\n.mainFindTicket .TicketList .text12px[data-v-4caca5b5] {\n  font-size: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  color: #ffffff;\n  font-size: 12px;\n  padding: 5px 10px;\n  margin-left: 10px;\n}\n.mainFindTicket .TicketList .boxin4[data-v-4caca5b5]:hover {\n  background-color: #FDB714;\n  cursor: pointer;\n}\n.mainFindTicket .TicketList .in4Flight[data-v-4caca5b5] {\n  border-top: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow[data-v-4caca5b5] {\n  text-align: center !important;\n  justify-content: center !important;\n  display: flex !important;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5] {\n  background-color: #D9D9D9;\n  padding: 5px 20px;\n}\n.mainFindTicket .TicketList .in4Flight .boxBookNow .bookNow[data-v-4caca5b5]:hover {\n  background-color: #98CE44;\n}\n.mainFindTicket .TicketList .in4Flight .text12px[data-v-4caca5b5] {\n  font-size: 12px;\n}\n.mainFindTicket .TicketList .in4Flight .smallText[data-v-4caca5b5] {\n  font-size: 12px;\n  padding: 0 5px;\n  color: #01b7f2;\n}\n.mainFindTicket .TicketList .in4Flight .col-md-3[data-v-4caca5b5] {\n  text-align: center;\n  padding: 10px 5px;\n  border-right: 1px solid rgba(180, 180, 180, 0.3);\n}\n.mainFindTicket .TicketList .in4Flight .icoinFly[data-v-4caca5b5] {\n  transform: rotate(-45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .icoinLanding[data-v-4caca5b5] {\n  transform: rotate(45deg);\n  color: #FDB714;\n}\n.mainFindTicket .TicketList .in4Flight .fa-clock[data-v-4caca5b5] {\n  color: #FDB714;\n}\n.mainFindTicket p[data-v-4caca5b5] {\n  margin-bottom: 0;\n}\n.mainFindTicket label[data-v-4caca5b5] {\n  display: block !important;\n  cursor: pointer;\n}\n.mainFindTicket .noFlight[data-v-4caca5b5] {\n  background-color: #ffffff;\n}\n.mainFindTicket .custom-control-inline[data-v-4caca5b5] {\n  display: block !important;\n}\n.mainFindTicket .custom-control[data-v-4caca5b5] {\n  display: block !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -692,12 +692,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2 d-flex justify-content-between",
-                        on: {
-                          click: function($event) {
-                            _vm.Collap == true ? true : false
-                          }
-                        }
+                          " w-100 text-left p-2 d-flex justify-content-between"
                       },
                       [
                         _vm._v("\n              Modify Search\n              "),
@@ -837,8 +832,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between",
-                        on: { click: _vm.Collap }
+                          " w-100 text-left p-2  d-flex justify-content-between"
                       },
                       [
                         _vm._v("\n              Price :\n              "),
@@ -915,8 +909,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between ",
-                        on: { click: _vm.Collap }
+                          " w-100 text-left p-2  d-flex justify-content-between "
                       },
                       [
                         _vm._v(
@@ -977,8 +970,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between ",
-                        on: { click: _vm.Collap }
+                          " w-100 text-left p-2  d-flex justify-content-between "
                       },
                       [
                         _vm._v("\n              Flight Type :\n              "),
@@ -1037,8 +1029,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          " w-100 text-left p-2  d-flex justify-content-between ",
-                        on: { click: _vm.Collap }
+                          " w-100 text-left p-2  d-flex justify-content-between "
                       },
                       [
                         _vm._v("\n              Air Line :\n              "),
