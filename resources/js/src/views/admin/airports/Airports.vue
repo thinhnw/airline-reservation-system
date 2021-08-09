@@ -89,7 +89,7 @@ export default {
         }
     },
     created() {
-        let uri = '/api/api-airport';
+        let uri = '/api/airports';
         axios.get(uri).then(res => {
             this.airports.push(...res.data.airports)
         });

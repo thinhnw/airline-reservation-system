@@ -36,6 +36,16 @@ html, body {
 	cursor: pointer;
 }
 
+.font-small {
+	font-size: 0.75rem !important;
+}
+.font-large {
+	font-size: 1.25rem !important;
+}
+.font-larger {
+	font-size: 1.5rem !important;
+}
+
 // 03. Auth views
 .auth-background {
 	background-color: #1a232f;

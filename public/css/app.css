@@ -10026,6 +10026,18 @@ html, body {
   cursor: pointer;
 }
 
+.font-small {
+  font-size: 0.75rem !important;
+}
+
+.font-large {
+  font-size: 1.25rem !important;
+}
+
+.font-larger {
+  font-size: 1.5rem !important;
+}
+
 .auth-background {
   background-color: #1a232f;
   background-image: radial-gradient(center center, circle cover, #273648, #0d1218 100%);
@@ -10044,6 +10056,10 @@ html, body {
 }
 .v-select .vs__dropdown-toggle .vs__search::placeholder {
   color: var(--gray);
+}
+
+.form-control {
+  border-radius: 0 !important;
 }
 
 .btn-icon {

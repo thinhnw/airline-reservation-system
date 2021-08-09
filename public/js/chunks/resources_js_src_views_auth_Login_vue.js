@@ -357,7 +357,11 @@ var render = function() {
                             "b-button",
                             {
                               staticClass: "w-100",
-                              attrs: { type: "submit", variant: "primary" }
+                              attrs: {
+                                type: "submit",
+                                squared: "",
+                                variant: "primary"
+                              }
                             },
                             [_vm._v("Login")]
                           )

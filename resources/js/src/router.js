@@ -47,8 +47,8 @@ const router = new VueRouter({
 					component: () => import('./views/admin/flights/Flights.vue')
 				},
 				{
-						path: 'airport',
-						name: 'admin-airport',
+						path: 'airports',
+						name: 'admin-airports',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
 			]

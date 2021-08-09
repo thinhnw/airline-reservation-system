@@ -31,7 +31,9 @@ Route::group([
     
 });
 
+Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
 Route::resource('flights', FlightController::class)->middleware('api');
+
 Route::resource('airports', AirportController::class)->middleware('api');
 
 Route::get("/api-airport",[AirportControllerController::class,"index"]);

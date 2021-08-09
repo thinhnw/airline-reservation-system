@@ -3,11 +3,14 @@
 		<div class="banner">
 			<b-container class="h-100 px-0">
 				<b-row class="h-100">
-					<b-col class="d-flex align-items-center h-100">
+					<b-col cols="12" class="d-flex align-items-center h-100 px-0">
 						<b-card class="w-100 form-card pb-3" no-body>
 							<b-tabs justified class="main-tabs" content-class="pt-3">
 								<b-tab title="Book">
-									<SearchFlightsForm />	
+									<SearchFlightsForm 
+										:airports="airports"
+										@list-flights="handleListingFlights"
+									/>	
 								</b-tab>
 								<b-tab title="My Trips"></b-tab>
 								<b-tab title="Check-in"></b-tab>
@@ -18,14 +21,56 @@
 				</b-row>
 			</b-container>
 		</div>
+		<FlightList v-if="showFlightList" 
+			:airports="airports"
+			:details="flightsDetails"
+		/>	
 	</div>
 </template>
 
 <script>
 import SearchFlightsForm from './SearchFlightsForm.vue'
+import FlightList from './FlightList.vue'
+import axios from '@/axios'
 export default {
 	components: {
-		SearchFlightsForm
+		SearchFlightsForm,
+		FlightList
+	},
+	data() {
+		return {
+			fetchedAirports: [],
+			showFlightList: false,
+			flightsDetails: null
+		}
+	},
+	methods: {
+		async fetchAirports() {
+			try {
+				let res = await axios.get('/api/airports')
+				this.fetchedAirports = res.data.airports
+			} catch (error) {
+				console.error(error)	
+			}
+		},
+		handleListingFlights(event) {
+			console.log('event', event)
+			this.flightsDetails = event
+			this.showFlightList = true
+		}
+	},
+	computed: {
+		airports() {
+			return this.fetchedAirports.map(airport => {
+				return {
+					...airport,
+					label: `${airport.cityName} ${airport.code}`
+				}
+			})
+		},
+	},
+	mounted() {
+		this.fetchAirports()
 	}
 }
 </script>

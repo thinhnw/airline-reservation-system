@@ -1,5 +1,5 @@
 <template>
-	<div class="top-nav">
+	<div class="top-nav" :class="{ 'bg-primary': isScrolled }">
 		<b-container class="px-0">
 			<b-row>
 				<b-col class="d-flex justify-content-end px-0">
@@ -65,6 +65,11 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
+	data() {
+		return {
+			isScrolled: false
+		}
+	},
 	computed: {
 		...mapGetters({
 			userInfo: 'auth/userInfo',
@@ -75,6 +80,13 @@ export default {
 		...mapActions({
 			logout: 'auth/logout'
 		})
+	},
+	mounted() {
+		window.onscroll = () => {
+			if (window.pageYOffset >= 100) {
+				this.isScrolled = true
+			} else this.isScrolled = false
+		}
 	}
 }
 </script>

@@ -114,7 +114,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   created: function created() {
     var _this = this;
 
-    var uri = '/api/api-airport';
+    var uri = '/api/airports';
     axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
       var _this$airports;
 
