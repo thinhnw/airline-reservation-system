@@ -1,9 +1,8 @@
 <template>
     <div>
+        <button @click="shownForm()">{{shown?'Close':'Add Airport'}}</button>
 
-        <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button>
-        <div>
-        <ListAirport
+        <ListUser
             @setDataEdit="setDataEdit"
             :created="created"
             :updated="updated "
@@ -12,29 +11,25 @@
             @resultCreate="resultCreate"
             @setShown="setShown"
         />
-        <Create_and_Edit
+        <CreateAndEdit
             :dataEdit="dataEdit"
             @updated="listUpdated"
             :shownForm="shown"
             @setShown="setShown"
             @updateDataEdit="updateDataEdit"
-            @created="listCreated"/>
-        </div>
+            @created="listCreated"
+        />
+
     </div>
 </template>
 
 <script>
 
-
-import ListAirport from "./ListAirport";
-import Create_and_Edit from "./Create_and_edit";
-
+import ListUser from "./ListUser";
+import CreateAndEdit from "./CreateAndEdit";
 export default {
-    name: "Airports",
-    components:{
-        Create_and_Edit,
-        ListAirport
-    },
+    name: "User",
+    components: {CreateAndEdit, ListUser},
     data(){
         return{
             dataEdit:"",
@@ -45,7 +40,7 @@ export default {
     },
     methods:{
         setDataEdit(data){
-             this.dataEdit=data;
+            this.dataEdit=data;
         },
         listUpdated(res){
             return this.updated=res;
@@ -63,15 +58,12 @@ export default {
             return this.shown=!this.shown;
         },
         setShown(res){
-          return this.shown=res
+            return this.shown=res
         },
         updateDataEdit(){
             return this.dataEdit="";
         }
     }
-
-
-
 }
 </script>
 
