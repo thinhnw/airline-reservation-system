@@ -29,10 +29,9 @@ Route::group([
     Route::post('refresh-token', [ AuthController::class, 'refresh']);
     Route::post('me', [ AuthController::class, 'me' ] );
     Route::post('register', [ AuthController::class, 'register' ] );
-    
+
 });
 
-Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
 Route::resource('flights', FlightController::class)->middleware('api');
 //airport
 Route::resource('airports', AirportController::class)->middleware('api');

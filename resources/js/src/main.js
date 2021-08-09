@@ -21,10 +21,6 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-import vSelect from 'vue-select'
-Vue.component('v-select', vSelect)
-import 'vue-select/dist/vue-select.css';
-
 
 // Vue Router
 import router from './router'

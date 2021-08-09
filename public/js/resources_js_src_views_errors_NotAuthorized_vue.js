@@ -17,11 +17,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -110,20 +105,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "text-center" },
-    [
-      _c("div", [_vm._v("\n\tYOU ARE NOT AUTHORIZED\n\t")]),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn btn-outline-primary", attrs: { to: "/" } },
-        [_vm._v(" \n\t\tHOME\n\t")]
-      )
-    ],
-    1
-  )
+  return _c("div", { staticClass: "text-center" }, [
+    _vm._v("\n\tYOU ARE NOT AUTHORIZED\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

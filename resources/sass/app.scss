@@ -10,11 +10,8 @@
 
 /*
 01. Base, variables
-02. Typography
+02. Typographya
 03. Auth views
-04. Forms
-05. Buttons
-06. Table
 */
 
 
@@ -31,19 +28,10 @@ html, body {
 	width: 100%;
 }
 
+
 // 02. Typography
 .pointer {
 	cursor: pointer;
-}
-
-.font-small {
-	font-size: 0.75rem !important;
-}
-.font-large {
-	font-size: 1.25rem !important;
-}
-.font-larger {
-	font-size: 1.5rem !important;
 }
 
 // 03. Auth views
@@ -55,50 +43,3 @@ html, body {
 	background-image: -ms-radial-gradient(center center,circle cover,#273648,#0d1218 100%);
 	background-image: radial-gradient(center center,circle cover,#273648,#0d1218 100%);
 }
-
-
-// 04. Forms
-.v-select {
-	.vs__dropdown-toggle {
-		border-radius: 0;
-		padding-top: 4px;
-		background-color: white;
-		.vs__search {
-			&::placeholder {
-				color: var(--gray);
-			}
-		}
-	}
-}
-
-.form-control {
-	border-radius: 0 !important;
-}
-
-// 05. Buttons
-.btn-icon {
-  transition: 0.1s ease-in;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-  &:active {
-    transform: scale(1);
-  }
-}
-
-
-// 06. Table
-.table {
-	tbody {
-		tr {
-			&:hover {
-				cursor: pointer;
-			}
-		}
-	}
-}
-
-
-// 07. Tabs
