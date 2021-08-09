@@ -1,7 +1,10 @@
-<template>	
+<template>
 	<div class="h-100" v-if="isAdmin">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Avia Airways</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+        <img src="/favicon.ico" alt="">
+        Avia Airways
+      </a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -18,35 +21,66 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
+                <router-link to="/admin/dashboard" class="nav-link" :class="{ 'text-warning': $route.name === 'admin-dashboard' }">
+
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-analytics mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Dashboard
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Orders
-                </a>
+                <router-link to="/admin/reservations" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-reservations' }">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-clipboard-list mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Reservations
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Products
-                </a>
+                <router-link to="/admin/flights" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-flights' }">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fal fa-plane-departure mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Flights
+                    </b-col>
+                  </b-row>
+                </router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Customers
-                </a>
+                <router-link to="/admin/airport" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-airport' }">
+                    <b-row>
+                        <b-col cols="2" xl="1">
+                            <i class="fal fa-building"></i>
+                        </b-col>
+                        <b-col>
+                            Airport
+                        </b-col>
+                    </b-row>
+                </router-link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Integrations
-                </a>
-              </li>
+                <li class="nav-item">
+                    <router-link to="/admin/user" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-user' }">
+                        <b-row>
+                            <b-col cols="2" xl="1">
+                                <i class="fal fa-user"></i>
+                            </b-col>
+                            <b-col>
+                                User
+                            </b-col>
+                        </b-row>
+                    </router-link>
+                </li>
             </ul>
           </div>
         </nav>

@@ -1,0 +1,141 @@
+<template>
+    <div :class="shownForm?'col-md-8':'col-md-12'" style="float:left;padding: 0 20px">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody v-for="(rs,index) in this.customers" :key="index">
+            <tr>
+                <td>{{rs.first_name}}</td>
+                <td>{{rs.last_name}}</td>
+                <td>{{rs.gender}}</td>
+                <td>{{rs.email}}</td>
+                <td>
+                    <button @click="editData(rs.id)">Sửa</button>
+                    <button @click="deleteData(rs.id)">Xóa</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <paginate
+            :page-count="rows"
+            :page-range="pageRange"
+            :margin-pages="2"
+            :click-handler="clickCallback"
+            :prev-text="'<<'"
+            :next-text="'>>'"
+            :container-class="'pagination'"
+            :page-class="'page-item'"
+        >
+        </paginate>
+        {{created?listCreated():null}}
+        {{updated?listUpdated():null}}
+
+    </div>
+
+</template>
+
+<script>
+import Paginate from "vuejs-paginate";
+import axios from "axios";
+
+export default {
+    name: "ListUser",
+    components:{
+        Paginate
+    },
+    props:['created','updated','shownForm'],
+    data(){
+        return{
+            customers:[],
+            pageRange: 5,
+            rows:0
+
+
+        }
+    },
+    created() {
+        let uri = '/api/api-customer';
+        axios.get(uri).then(res => {
+            console.log(res)
+            this.rows=res.data.customers.last_page;
+            this.customers.push(...res.data.customers.data)
+        });
+    },
+    methods:{
+        clickCallback(pageNum){
+            let uri = '/api/api-customer?page='+(pageNum);
+            axios.get(uri).then(res => {
+                this.customers=[];
+                this.customers.push(...res.data.customers.data);
+            });
+        },
+        deleteData(id){
+            let uri = `http://127.0.0.1:8000/api/customer/delete/${id}`;
+            axios.delete(uri).then(() => {
+                this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
+                this.dataEdit.splice(this.customers.findIndex(customer => {
+                    customer.id === this.dataEdit.id;
+                }), 1)
+            });
+            this.$emit('setShown',false)
+
+        },
+        editData(id){
+            let uri = `http://127.0.0.1:8000/api/customer/edit/${id}`;
+            axios.get(uri).then(res=>{
+                this.dataEdit={};
+                this.dataEdit=res.data.customer;
+                this.$emit('setDataEdit',this.dataEdit)
+                console.log(res)
+            })
+            this.$emit('setShown',true)
+        },
+        listCreated(){
+            if (this.created){
+                let uri = '/api/api-customer';
+                axios.get(uri).then(res => {
+                    console.log(res)
+                    this.rows=0;
+                    this.customers=[];
+                    this.rows=res.data.customers.last_page;
+                    this.customers.push(...res.data.customers.data)
+                    return this.$emit("resultCreate");
+
+                });
+            }
+        },
+        listUpdated(){
+            if (this.updated){
+                this.customers.splice(
+                    this.customers.findIndex(
+                        customer => customer.id === this.updated.id),
+                    1,this.updated)
+                return this.$emit("resultUpdate");
+            }
+        }
+    }
+}
+</script>
+
+<style scoped>
+.pagination >>> li{
+    border: 1px solid gray;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.pagination >>> .active{
+    color: white;
+    background-color: dodgerblue;
+}
+</style>

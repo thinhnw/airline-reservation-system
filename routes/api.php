@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,12 +33,20 @@ Route::group([
 });
 
 Route::resource('flights', FlightController::class)->middleware('api');
+//airport
 Route::resource('airports', AirportController::class)->middleware('api');
-
 Route::get("/api-airport",[AirportController::class,"index"]);
-Route::get("/airport",[AirportController::class,'all']);
 Route::get('/airport/edit/{id}',[AirportController::class,'edit']);
 Route::post('/airport/update/{id}',[AirportController::class,'update']);
 Route::delete('/airport/delete/{id}',[AirportController::class,'delete']);
 Route::post('/airport/save',[AirportController::class,'save']);
+//customer
+Route::resource('customer', CustomerController::class)->middleware('api');
+Route::get("/api-customer",[CustomerController::class,"index"]);
+Route::get("/customer/findUser/{id}",[CustomerController::class,"findUser"]);
+Route::get("/customer",[CustomerController::class,'all']);
+Route::get('/customer/edit/{id}',[CustomerController::class,'edit']);
+Route::post('/customer/update/{id}',[CustomerController::class,'update']);
+Route::delete('/customer/delete/{id}',[CustomerController::class,'delete']);
+Route::post('/customer/save',[CustomerController::class,'save']);
 
