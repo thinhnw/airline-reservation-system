@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class AirportController extends Controller
 {
-    //
-    public function all(){
-        $data=Airport::paginate(10);
-        $airport=null;
-        return view("airports",["data"=>$data,'airport'=>$airport]);
-    }
 
 //    GET_DATA
     public function index(){

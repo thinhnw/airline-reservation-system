@@ -43,7 +43,7 @@
 											</router-link>
 										</div>
 										<div v-else>
-											<small><em class="text-white">Hello, {{ userInfo.first_name + ' ' + userInfo.last_name }}</em></small>
+											<small><em class="text-white" @click="editDetail()">Hello, {{ userInfo.first_name + ' ' + userInfo.last_name }}</em></small>
 											<small class="mx-2">|</small>
 											<a class="text-white pointer" @click="logout">
 												<small>
@@ -79,7 +79,10 @@ export default {
 	methods: {
 		...mapActions({
 			logout: 'auth/logout'
-		})
+		}),
+		editDetail(){
+			this.$router.push({path:`information/edit`})
+		}
 	},
 	mounted() {
 		window.onscroll = () => {

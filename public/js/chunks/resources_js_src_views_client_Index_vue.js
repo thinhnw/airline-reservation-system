@@ -119,9 +119,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     userInfo: 'auth/userInfo',
     isLogged: 'auth/isLogged'
   })),
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)({
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)({
     logout: 'auth/logout'
-  })),
+  })), {}, {
+    editDetail: function editDetail() {
+      this.$router.push({
+        path: "information/edit"
+      });
+    }
+  }),
   mounted: function mounted() {
     var _this = this;
 
@@ -734,7 +740,14 @@ var render = function() {
                                           _c("small", [
                                             _c(
                                               "em",
-                                              { staticClass: "text-white" },
+                                              {
+                                                staticClass: "text-white",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.editDetail()
+                                                  }
+                                                }
+                                              },
                                               [
                                                 _vm._v(
                                                   "Hello, " +

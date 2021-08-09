@@ -1,4 +1,4 @@
-<template>	
+<template>
 	<div class="h-100" v-if="isAdmin">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
@@ -69,6 +69,18 @@
                   </b-row>
                 </router-link>
               </li>
+                <li class="nav-item">
+                    <router-link to="/admin/user" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-user' }">
+                        <b-row>
+                            <b-col cols="2" xl="1">
+                                <i class="fal fa-user"></i>
+                            </b-col>
+                            <b-col>
+                                User
+                            </b-col>
+                        </b-row>
+                    </router-link>
+                </li>
             </ul>
           </div>
         </nav>
