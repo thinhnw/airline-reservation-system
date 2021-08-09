@@ -103,24 +103,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Airports",
@@ -237,8 +219,251 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-md-8",
+        staticStyle: { float: "right", padding: "0 20px" }
+      },
+      [
+        _c(
+          "table",
+          { staticClass: "table table-bordered" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(this.airports, function(rs, index) {
+              return _c("tbody", { key: index }, [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(rs.code))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(rs.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(rs.cityName))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(rs.countryName))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("a", { attrs: { href: _vm.editData(rs.id) } }, [
+                      _vm._v("Sửa")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteData(rs.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Xóa")]
+                    )
+                  ])
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-md-4",
+        staticStyle: { float: "left", padding: "0 20px" }
+      },
+      [
+        _c("form", [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "col-md-4 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefault01" } }, [
+                _vm._v("First name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationDefault01",
+                  placeholder: "First name",
+                  value: "Mark",
+                  required: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefault02" } }, [
+                _vm._v("Last name")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationDefault02",
+                  placeholder: "Last name",
+                  value: "Otto",
+                  required: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefaultUsername" } }, [
+                _vm._v("Username")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group" }, [
+                _c("div", { staticClass: "input-group-prepend" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "input-group-text",
+                      attrs: { id: "inputGroupPrepend2" }
+                    },
+                    [_vm._v("@")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "validationDefaultUsername",
+                    placeholder: "Username",
+                    "aria-describedby": "inputGroupPrepend2",
+                    required: ""
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "col-md-6 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefault03" } }, [
+                _vm._v("City")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationDefault03",
+                  placeholder: "City",
+                  required: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-3 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefault04" } }, [
+                _vm._v("State")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationDefault04",
+                  placeholder: "State",
+                  required: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-3 mb-3" }, [
+              _c("label", { attrs: { for: "validationDefault05" } }, [
+                _vm._v("Zip")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationDefault05",
+                  placeholder: "Zip",
+                  required: ""
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                staticClass: "form-check-input",
+                attrs: {
+                  type: "checkbox",
+                  value: "",
+                  id: "invalidCheck2",
+                  required: ""
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "invalidCheck2" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Agree to terms and conditions\n                    "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Submit form")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("code")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("cityName")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("countryName")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  }
+]
+render._withStripped = true
 
 
 

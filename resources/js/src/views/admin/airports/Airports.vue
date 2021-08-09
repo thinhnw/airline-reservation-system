@@ -72,24 +72,6 @@
 
             </table>
 
-        <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button>
-        <div>
-        <ListAirport
-            @setDataEdit="setDataEdit"
-            :created="created"
-            :updated="updated "
-            :shownForm="shown"
-            @resultUpdate="resultUpdate"
-            @resultCreate="resultCreate"
-            @setShown="setShown"
-        />
-        <Create_and_Edit
-            :dataEdit="dataEdit"
-            @updated="listUpdated"
-            :shownForm="shown"
-            @setShown="setShown"
-            @updateDataEdit="updateDataEdit"
-            @created="listCreated"/>
         </div>
     </div>
 </template>

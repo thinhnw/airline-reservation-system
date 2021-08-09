@@ -2177,12 +2177,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_home_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/home/Home.vue */ "./resources/js/src/views/client/home/Home.vue"));
       }
-    }, {
-      path: 'information/edit',
-      name: 'user-edit',
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_user_information_UserEditInformation_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/user_information/UserEditInformation.vue */ "./resources/js/src/views/client/user_information/UserEditInformation.vue"));
-      }
     }]
   }, {
     path: '/login',
@@ -2215,16 +2209,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_flights_Flights_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/flights/Flights.vue */ "./resources/js/src/views/admin/flights/Flights.vue"));
       }
     }, {
-      path: 'airport',
-      name: 'admin-airport',
+      path: 'airports',
+      name: 'admin-airports',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_airports_Airports_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/airports/Airports.vue */ "./resources/js/src/views/admin/airports/Airports.vue"));
-      }
-    }, {
-      path: 'user',
-      name: 'admin-user',
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_user_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/user/User.vue */ "./resources/js/src/views/admin/user/User.vue"));
       }
     }]
   }, {
