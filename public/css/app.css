@@ -10004,7 +10004,7 @@ h3 {
 }
 /*
 01. Base, variables
-02. Typography
+02. Typographya
 03. Auth views
 04. Forms
 05. Buttons
@@ -10025,18 +10025,6 @@ html, body {
 
 .pointer {
   cursor: pointer;
-}
-
-.font-small {
-  font-size: 0.75rem !important;
-}
-
-.font-large {
-  font-size: 1.25rem !important;
-}
-
-.font-larger {
-  font-size: 1.5rem !important;
 }
 
 .auth-background {

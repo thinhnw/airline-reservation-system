@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airport;
+use App\Models\AirportController;
 use Illuminate\Http\Request;
 
-class AirportController extends Controller
+class AirportControllerController extends Controller
 {
+    //
+    public function all(){
+        $data=AirportController::paginate(10);
+        $airport=null;
+        return view("airports",["data"=>$data,'airport'=>$airport]);
+    }
 
 //    GET_DATA
     public function index(){
-        $data=Airport::paginate(10);
+        $data=AirportController::paginate(10);
         return response()->json([
 
             'airports'=>$data
@@ -19,7 +25,7 @@ class AirportController extends Controller
 
 //    EDIT
     public function edit($id){
-        $airport=Airport::findOrFail($id);
+        $airport=AirportController::findOrFail($id);
         return response()->json([
             'airport'=>$airport
         ]);
@@ -28,7 +34,7 @@ class AirportController extends Controller
 
 //    UPDATE
     public function update($id,Request $request){
-        $airport=Airport::find($id);
+        $airport=AirportController::find($id);
         $airport->update($request->all());
         return response()->json('successfully updated');
 
@@ -36,7 +42,7 @@ class AirportController extends Controller
 
 //    DELETE
     public function delete($id){
-        $airport=Airport::findOrFail($id);
+        $airport=AirportController::findOrFail($id);
         $airport->delete();
         return response()->json('successfully deleted');
     }
@@ -44,7 +50,7 @@ class AirportController extends Controller
 //    SAVE
     public function save(Request $request){
         try {
-            Airport::create(
+            AirportController::create(
                 $request->all()
             );
         }

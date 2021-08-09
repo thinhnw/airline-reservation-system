@@ -18,6 +18,11 @@ const router = new VueRouter({
 					name: 'home',
 					component: () => import('./views/client/home/Home.vue')
 				},
+                {
+                    path: 'information/edit',
+                    name: 'user-edit',
+                    component: () => import('./views/client/user_information/UserEditInformation.vue')
+                },
 			]
 		},
 
@@ -31,9 +36,11 @@ const router = new VueRouter({
 			name: 'register',
 			component: () => import('./views/auth/Register.vue')
 		},
+
 		{
 			path: '/admin',
 			name: 'admin',
+
 			component: () => import('./views/admin/Index.vue'),
 			children: [
 				{
@@ -47,10 +54,17 @@ const router = new VueRouter({
 					component: () => import('./views/admin/flights/Flights.vue')
 				},
 				{
-						path: 'airports',
-						name: 'admin-airports',
+						path: 'airport',
+						name: 'admin-airport',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
+                {
+                    path: 'user',
+                    name: 'admin-user',
+                    component: () => import('./views/admin/user/User.vue')
+                },
+
+
 			]
 		},
 
