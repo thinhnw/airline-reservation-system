@@ -80,6 +80,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -123,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*\r\n * Sidebar\r\n */\n.sidebar[data-v-0872e9d8] {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 100; /* Behind the navbar */\r\n  padding: 0;\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky[data-v-0872e9d8] {\r\n  position: sticky;\r\n  top: 48px; /* Height of navbar */\r\n  height: calc(100vh - 48px);\r\n  padding-top: .5rem;\r\n  overflow-x: hidden;\r\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link[data-v-0872e9d8] {\r\n  font-weight: 500;\r\n  color: #333;\n}\n.sidebar .nav-link .feather[data-v-0872e9d8] {\r\n  margin-right: 4px;\r\n  color: #999;\n}\n.sidebar .nav-link.active[data-v-0872e9d8] {\r\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather[data-v-0872e9d8],\r\n.sidebar .nav-link.active .feather[data-v-0872e9d8] {\r\n  color: inherit;\n}\n.sidebar-heading[data-v-0872e9d8] {\r\n  font-size: .75rem;\r\n  text-transform: uppercase;\n}\r\n\r\n/*\r\n * Navbar\r\n */\n.navbar-brand[data-v-0872e9d8] {\r\n  padding-top: .75rem;\r\n  padding-bottom: .75rem;\r\n  font-size: 1rem;\r\n  background-color: rgba(0, 0, 0, .25);\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control[data-v-0872e9d8] {\r\n  padding: .75rem 1rem;\r\n  border-width: 0;\r\n  border-radius: 0;\n}\n.form-control-dark[data-v-0872e9d8] {\r\n  color: #fff;\r\n  background-color: rgba(255, 255, 255, .1);\r\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark[data-v-0872e9d8]:focus {\r\n  border-color: transparent;\r\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\r\n\r\n/*\r\n * Utilities\r\n */\n.border-top[data-v-0872e9d8] { border-top: 1px solid #e5e5e5;\n}\n.border-bottom[data-v-0872e9d8] { border-bottom: 1px solid #e5e5e5;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*\r\n * Sidebar\r\n */\n.sidebar[data-v-0872e9d8] {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 100; /* Behind the navbar */\r\n  padding: 0;\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky[data-v-0872e9d8] {\r\n  position: sticky;\r\n  top: 48px; /* Height of navbar */\r\n  height: calc(100vh - 48px);\r\n  padding-top: .5rem;\r\n  overflow-x: hidden;\r\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link[data-v-0872e9d8] {\r\n  font-weight: 500;\r\n  color: #333;\n}\n.sidebar .nav-link .feather[data-v-0872e9d8] {\r\n  margin-right: 4px;\r\n  color: #999;\n}\n.sidebar .nav-link.active[data-v-0872e9d8] {\r\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather[data-v-0872e9d8],\r\n.sidebar .nav-link.active .feather[data-v-0872e9d8] {\r\n  color: inherit;\n}\n.sidebar-heading[data-v-0872e9d8] {\r\n  font-size: .75rem;\r\n  text-transform: uppercase;\n}\r\n\r\n/*\r\n * Navbar\r\n */\n.navbar-brand[data-v-0872e9d8] {\r\n  padding-top: .75rem;\r\n  padding-bottom: .75rem;\r\n  font-size: 1rem;\r\n  background-color: rgba(0, 0, 0, .25);\r\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control[data-v-0872e9d8] {\r\n  padding: .75rem 1rem;\r\n  border-width: 0;\r\n  border-radius: 0;\n}\n.form-control-dark[data-v-0872e9d8] {\r\n  color: #fff;\r\n  background-color: rgba(255, 255, 255, .1);\r\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark[data-v-0872e9d8]:focus {\r\n  border-color: transparent;\r\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\r\n\r\n/*\r\n * Utilities\r\n */\n.border-top[data-v-0872e9d8] { border-top: 1px solid #e5e5e5;\n}\n.border-bottom[data-v-0872e9d8] { border-bottom: 1px solid #e5e5e5;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -266,14 +300,7 @@ var render = function() {
               "navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"
           },
           [
-            _c(
-              "a",
-              {
-                staticClass: "navbar-brand col-sm-3 col-md-2 mr-0",
-                attrs: { href: "#" }
-              },
-              [_vm._v("Avia Airways")]
-            ),
+            _vm._m(0),
             _vm._v(" "),
             _c("input", {
               staticClass: "form-control form-control-dark w-100",
@@ -310,7 +337,205 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "container-fluid" }, [
           _c("div", { staticClass: "row" }, [
-            _vm._m(0),
+            _c(
+              "nav",
+              { staticClass: "col-md-2 d-none d-md-block bg-light sidebar" },
+              [
+                _c("div", { staticClass: "sidebar-sticky" }, [
+                  _c("ul", { staticClass: "nav flex-column" }, [
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            class: {
+                              "text-warning":
+                                _vm.$route.name === "admin-dashboard"
+                            },
+                            attrs: { to: "/admin/dashboard" }
+                          },
+                          [
+                            _c(
+                              "b-row",
+                              [
+                                _c("b-col", { attrs: { cols: "2", xl: "1" } }, [
+                                  _c("i", {
+                                    staticClass: "fal fa-analytics mr-3"
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("b-col", [
+                                  _vm._v(
+                                    "\n                      Dashboard\n                    "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            class: {
+                              "text-warning":
+                                _vm.$route.name === "admin-reservations"
+                            },
+                            attrs: { to: "/admin/reservations" }
+                          },
+                          [
+                            _c(
+                              "b-row",
+                              [
+                                _c("b-col", { attrs: { cols: "2", xl: "1" } }, [
+                                  _c("i", {
+                                    staticClass: "fal fa-clipboard-list mr-3"
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("b-col", [
+                                  _vm._v(
+                                    "\n                      Reservations\n                    "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            class: {
+                              "text-warning":
+                                _vm.$route.name === "admin-flights"
+                            },
+                            attrs: { to: "/admin/flights" }
+                          },
+                          [
+                            _c(
+                              "b-row",
+                              [
+                                _c("b-col", { attrs: { cols: "2", xl: "1" } }, [
+                                  _c("i", {
+                                    staticClass: "fal fa-plane-departure mr-3"
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("b-col", [
+                                  _vm._v(
+                                    "\n                      Flights\n                    "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            class: {
+                              "text-warning":
+                                _vm.$route.name === "admin-airport"
+                            },
+                            attrs: { to: "/admin/airport" }
+                          },
+                          [
+                            _c(
+                              "b-row",
+                              [
+                                _c("b-col", { attrs: { cols: "2", xl: "1" } }, [
+                                  _c("i", { staticClass: "fal fa-building" })
+                                ]),
+                                _vm._v(" "),
+                                _c("b-col", [
+                                  _vm._v(
+                                    "\n                            Airport\n                        "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      { staticClass: "nav-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            class: {
+                              "text-warning": _vm.$route.name === "admin-user"
+                            },
+                            attrs: { to: "/admin/user" }
+                          },
+                          [
+                            _c(
+                              "b-row",
+                              [
+                                _c("b-col", { attrs: { cols: "2", xl: "1" } }, [
+                                  _c("i", { staticClass: "fal fa-user" })
+                                ]),
+                                _vm._v(" "),
+                                _c("b-col", [
+                                  _vm._v(
+                                    "\n                                User\n                            "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]
+            ),
             _vm._v(" "),
             _c(
               "main",
@@ -332,53 +557,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
-      { staticClass: "col-md-2 d-none d-md-block bg-light sidebar" },
+      "a",
+      {
+        staticClass: "navbar-brand col-sm-3 col-md-2 mr-0",
+        attrs: { href: "#" }
+      },
       [
-        _c("div", { staticClass: "sidebar-sticky" }, [
-          _c("ul", { staticClass: "nav flex-column" }, [
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                { staticClass: "nav-link active", attrs: { href: "#" } },
-                [
-                  _vm._v("\n                  Dashboard "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _vm._v("\n                  Orders\n                ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _vm._v("\n                  Products\n                ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _vm._v("\n                  Customers\n                ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _vm._v("\n                  Reports\n                ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _vm._v("\n                  Integrations\n                ")
-              ])
-            ])
-          ])
-        ])
+        _c("img", { attrs: { src: "/favicon.ico", alt: "" } }),
+        _vm._v("\n        Avia Airways\n      ")
       ]
     )
   }
