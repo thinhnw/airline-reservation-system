@@ -1,8 +1,9 @@
 <template>
-    <div class="col-md-4" style="float:right;padding: 0 20px" v-if="shownForm">
-        <form @submit.prevent="Object.keys(dataEdit).length!==0?updateData(dataEdit.id):createData()" >
-            <div class="col-md-2">
-                <label class="form-label">Code</label>
+    <div class="col-md-4 box-CUD py-3" style="float:right;padding: 0 20px" v-show="shownForm">
+        <form @submit.prevent="Object.keys(dataEdit).length!==0?updateData(dataEdit.id):createData()">
+            <button class="btn btn-danger mb-3 float-right" type="button" @click="cancel()">X</button>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Code</span>
                 <input name="code"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.code"
@@ -14,10 +15,9 @@
                        type="text"
                        class="form-control"
                        required>
-
             </div>
-            <div class="col-md-9">
-                <label class="form-label">Name</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">name</span>
                 <input name="name"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.name"
@@ -30,10 +30,9 @@
                        type="text"
                        class="form-control"
                        required>
-
             </div>
-            <div class="col-md-2">
-                <label  class="form-label">City Code</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">City Code</span>
                 <input name="cityCode"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.cityCode"
@@ -44,10 +43,10 @@
                        v-model="dataCreate.cityCode"
                        type="text" class="form-control"
                        required>
-
             </div>
-            <div class="col-md-9">
-                <label  class="form-label">City Name</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon10">City Name</span>
+                <label class="form-label"></label>
                 <input name="cityName"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.cityName"
@@ -57,11 +56,9 @@
                        v-else placeholder="cityName"
                        v-model="dataCreate.cityName"
                        type="text" class="form-control"
-                       required>
-
-            </div>
-            <div class="col-md-3">
-                <label  class="form-label">Country Code</label>
+                       required>            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon4">Country Code</span>
                 <input name="countryCode"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.countryCode"
@@ -74,8 +71,8 @@
                        type="text" class="form-control"
                        required>
             </div>
-            <div class="col-md-8">
-                <label class="form-label">Country Name</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon5">Country Name</span>
                 <input name="countryName"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.countryName"
@@ -88,9 +85,8 @@
                        class="form-control"
                        required>
             </div>
-
-            <div class="col-md-3">
-                <label  class="form-label">Time Zone</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon6">Time Zone</span>
                 <input name="timezone"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.timezone"
@@ -104,8 +100,8 @@
                        class="form-control"
                        required>
             </div>
-            <div class="col-md-2">
-                <label  class="form-label">Latitude</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon7">Latitude</span>
                 <input name="lat"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.lat"
@@ -121,8 +117,8 @@
                        class="form-control"
                        required>
             </div>
-            <div class="col-md-2">
-                <label  class="form-label">Longitude</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon8">Longitude</span>
                 <input name="lon"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.lon"
@@ -138,8 +134,8 @@
                        class="form-control"
                        required>
             </div>
-            <div class="col-md-3">
-                <label  class="form-label">Number Airport</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon9">Number Airport</span>
                 <input name="numAirports"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.numAirports"
@@ -155,12 +151,9 @@
                        class="form-control"
                        required>
             </div>
-
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update </button>
-                <button class="btn btn-primary" type="submit" v-else > Add </button>
-                <button  class="btn btn-danger" type="button" @click="cancel()">Cancel</button>
-
+            <div class="">
+                <button class="btn btn-primary" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update</button>
+                <button class="btn btn-primary" type="submit" v-else> Add</button>
             </div>
         </form>
     </div>
@@ -171,31 +164,31 @@ import axios from "axios";
 
 export default {
     name: "create_and_Edit",
-    props:['dataEdit','shownForm'],
-    data(){
-        return{
+    props: ['dataEdit', 'shownForm'],
+    data() {
+        return {
             dataCreate: {},
         }
     },
-    methods:{
-        cancel(){
+    methods: {
+        cancel() {
             this.$emit('updateDataEdit')
-            this.dataCreate={}
-            this.$emit('setShown',false)
+            this.dataCreate = {}
+            this.$emit('setShown', false)
         },
-        createData(){
+        createData() {
             let uri_cr = `http://127.0.0.1:8000/api/airport/save`;
-            axios.post(uri_cr,this.dataCreate).then((response) => {
+            axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
-                this.$emit("created",JSON.parse(response.config.data));
+                this.$emit("created", JSON.parse(response.config.data));
             });
-            this.dataCreate={}
+            this.dataCreate = {}
         },
-        updateData(id){
+        updateData(id) {
             let uri_u = `http://127.0.0.1:8000/api/airport/update/${id}`;
-            axios.post(uri_u,this.dataEdit).then((response) => {
+            axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
-                this.$emit("updated",JSON.parse(response.config.data));
+                this.$emit("updated", JSON.parse(response.config.data));
             });
             this.$emit('updateDataEdit')
         },
@@ -205,5 +198,13 @@ export default {
 </script>
 
 <style scoped>
-
+.box-CUD {
+    position: absolute;
+    width: 500px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);
+}
 </style>
