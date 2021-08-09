@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <button @click="shownForm()">{{shown?'Close':'Add Airport'}}</button>
+        <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button>
         <div>
         <ListAirport
             @setDataEdit="setDataEdit"
