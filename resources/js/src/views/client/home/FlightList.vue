@@ -1,8 +1,8 @@
 <template>
-	<div class="flight-list">
+	<div class="flight-list py-5">
 		<b-container>
 			<b-row>
-				<b-col class="pt-5">
+				<b-col cols="12">
 					<div class="w-100 text-center">
 						<h3>Select your departure flight from</h3>
 						<h3>
@@ -10,50 +10,27 @@
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<p>Number of Flights: {{ details.flightsDeparture.length }}</p>
+						<div v-if="details.flightsDeparture.length > 0"> 
+							<p>Number of Flights: {{ details.flightsDeparture.length }}</p>
+						</div>
+						<div v-else class="text-center">
+							<em>There aren't any flights from
+								{{ airportFrom.cityName }} to {{ airportTo.cityName }}
+								on your selected date</em>
+						</div>
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
 							<b-card 
-								v-for="flight, index in details.flightsDeparture"
+								v-for="flight, index in computedFlightsDeparture"
 								:key="index"
 								class="flight-item" 
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
-										<div class="flight-time-text">
-											{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
-										</div>
-										<div>
-											{{ flight.origin.cityName }}
-										</div>
-										<div class="font-small">
-											{{ flight.flight_number }} Airbus A350-900
-										</div>
-									</b-col>
-									<b-col cols="3" class="text-center">
-										<div>
-											<i class="fal fa-clock"></i>
-										</div>
-										<div>
-											{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
-										</div>
-									</b-col>
-									<b-col cols="3" class="text-right">
-										<div class="flight-time-text">
-											{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
-										</div>
-										<div>
-											{{ flight.destination.cityName }}
-										</div>
-										<div class="font-small">
-											Operated by: Avia Airways
-										</div>
-									</b-col>
-									<b-col cols="3">
 										<b-form-radio
-											v-model="ticketDeparture"
-											:value="index"
+											v-model="selectedFlightDeparture"
+											:value="flight.id"
 											button
 											button-variant="outline-primary"
 											class="flight-radio-button"
@@ -74,14 +51,71 @@
 											</div>
 										</b-form-radio>
 									</b-col>
+									<b-col cols="6">
+										<b-row>
+											<b-col cols="5">
+												<div class="flight-time-text">
+													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
+												</div>
+												<div>
+													{{ flight.origin.cityName }}
+												</div>
+												<div class="font-small">
+													{{ flight.flight_number }} Airbus A350-900
+												</div>
+											</b-col>
+											<b-col cols="2" class="text-center">
+												<div>
+													<i class="fal fa-clock"></i>
+												</div>
+												<div>
+													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+												</div>
+											</b-col>
+											<b-col cols="5" class="text-right">
+												<div class="flight-time-text">
+													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
+												</div>
+												<div>
+													{{ flight.destination.cityName }}
+												</div>
+												<div class="font-small">
+													Operated by: Avia Airways
+												</div>
+											</b-col>
+										</b-row>
+									</b-col>
+									<b-col cols="3">
+										<div class="font-small mb-2">
+											<i class="fal fa-suitcase-rolling"></i>
+											40kg checked baggage 
+										</div>
+										<div class="font-small mb-2">
+											<i class="fal fa-briefcase"></i>
+											Pieces 2, Total weight 15kg hand baggage
+										</div>
+										<div class="font-small mb-2">
+											<i class="fal fa-chair-office"></i>
+											Complimentary seat selection
+										</div>
+										<div class="font-small">
+											<i class="fal fa-key"></i>
+											Lounge access included
+										</div>
+									</b-col>
 								</b-row>
 							</b-card>
 						</b-form-group>
 					</div>
 				</b-col>
+				<b-col cols="12" class="text-center" v-if="selectedFlightDeparture > -1 && details.flightsDeparture.length > 1">
+					<b-button variant="outline-warning" type="button" @click="selectedFlightDeparture = -1">
+						View other flights
+					</b-button>
+				</b-col>
 			</b-row>
-			<b-row v-if="details.trip_type === 'Return'">
-				<b-col class="pt-5">
+			<b-row v-if="details.trip_type == 'Return'">
+				<b-col cols="12" class="pt-5">
 					<div class="w-100 text-center">
 						<h3>Select your return flight from</h3>
 						<h3>
@@ -89,50 +123,27 @@
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<p>Number of Flights: {{ details.flightsReturn.length }}</p>
+						<div v-if="details.flightsReturn.length > 0"> 
+							<p>Number of Flights: {{ details.flightsReturn.length }}</p>
+						</div>
+						<div v-else class="text-center">
+							<em>There aren't any flights from
+								{{ airportTo.cityName }} to {{ airportFrom.cityName }}
+								on your selected date</em>
+						</div>
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
 							<b-card 
-								v-for="flight, index in details.flightsReturn"
+								v-for="flight, index in computedFlightsReturn"
 								:key="index"
 								class="flight-item" 
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
-										<div class="flight-time-text">
-											{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
-										</div>
-										<div>
-											{{ flight.origin.cityName }}
-										</div>
-										<div>
-											{{ flight.flight_number }} Airbus A350-900
-										</div>
-									</b-col>
-									<b-col cols="3" class="text-center">
-										<div>
-											<i class="fal fa-clock"></i>
-										</div>
-										<div>
-											{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
-										</div>
-									</b-col>
-									<b-col cols="3" class="text-right">
-										<div class="flight-time-text">
-											{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
-										</div>
-										<div>
-											{{ flight.destination.cityName }}
-										</div>
-										<div>
-											Operated by: Avia Airways
-										</div>
-									</b-col>
-									<b-col cols="3">
 										<b-form-radio
-											v-model="ticketReturn"
-											:value="index"
+											v-model="selectedFlightReturn"
+											:value="flight.id"
 											button
 											button-variant="outline-primary"
 											class="flight-radio-button"
@@ -153,13 +164,76 @@
 											</div>
 										</b-form-radio>
 									</b-col>
+									<b-col cols="6">
+										<b-row>
+											<b-col cols="5">
+												<div class="flight-time-text">
+													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
+												</div>
+												<div>
+													{{ flight.origin.cityName }}
+												</div>
+												<div class="font-small">
+													{{ flight.flight_number }} Airbus A350-900
+												</div>
+											</b-col>
+											<b-col cols="2" class="text-center">
+												<div>
+													<i class="fal fa-clock"></i>
+												</div>
+												<div>
+													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+												</div>
+											</b-col>
+											<b-col cols="5" class="text-right">
+												<div class="flight-time-text">
+													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
+												</div>
+												<div>
+													{{ flight.destination.cityName }}
+												</div>
+												<div class="font-small">
+													Operated by: Avia Airways
+												</div>
+											</b-col>
+										</b-row>
+									</b-col>
+									<b-col cols="3">
+										<div class="font-small mb-2">
+											<i class="fal fa-suitcase-rolling"></i>
+											40kg checked baggage 
+										</div>
+										<div class="font-small mb-2">
+											<i class="fal fa-briefcase"></i>
+											Pieces 2, Total weight 15kg hand baggage
+										</div>
+										<div class="font-small mb-2">
+											<i class="fal fa-chair-office"></i>
+											Complimentary seat selection
+										</div>
+										<div class="font-small">
+											<i class="fal fa-key"></i>
+											Lounge access included
+										</div>
+									</b-col>
 								</b-row>
 							</b-card>
 						</b-form-group>
 					</div>
 				</b-col>
+				<b-col cols="12" class="text-center" v-if="selectedFlightReturn > -1 && details.flightsReturn.length > 1">
+					<b-button variant="outline-warning" type="button" @click="selectedFlightReturn = -1">
+						View other flights
+					</b-button>
+				</b-col>
 			</b-row>
-			
+			<b-row v-if="selectedFlightDeparture > -1 && selectedFlightReturn > -1">
+				<b-col cols="12">
+					<b-button class="w-100 mx-0" variant="warning">
+						CONTINUE
+					</b-button>
+				</b-col>
+			</b-row>
 		</b-container>
 	</div>
 </template>
@@ -167,13 +241,17 @@
 <script>
 export default {
 	props: {
-		details: Object,
+		details: {
+			type: Object,
+			default: () => {}
+		},
 		airports: Array
 	},
 	data() {
 		return {
-			ticketDeparture: -1,
-			ticketReturn: -1,
+			selectedFlightDeparture: -1,
+			selectedFlightReturn: -1,
+			bookingStep: 0, // -1: Not yet, 0. Searched, 1. Selected Flights and clicked continue, 2. Require passengers info
 		}
 	},
 	methods: {
@@ -187,21 +265,22 @@ export default {
 		}
 	},
 	computed: {
-		fields() {
-			return [
-				{ key: 'flight_number', label: 'Flight Number' },
-				{ key: 'departure_time', label: 'Departure Time' },
-				{ key: 'arrival_time', label: 'Departure Time' },
-				{ key: 'duration', label: 'Duration' },
-				{ key: 'seat_count', label: 'Remaining Seats' }
-			]
-		},
 		airportFrom() {
 			return this.airports.find(airport => airport.id == this.details.from_airport_id) || {}
 		},
 		airportTo() {
 			return this.airports.find(airport => airport.id == this.details.to_airport_id) || {}
-		}
+		},
+		computedFlightsDeparture() {
+			if (this.selectedFlightDeparture > -1) 
+				return this.details.flightsDeparture.filter(flight => flight.id == this.selectedFlightDeparture)
+			return this.details.flightsDeparture
+		},
+		computedFlightsReturn() {
+			if (this.selectedFlightReturn > -1) 
+				return this.details.flightsReturn.filter(flight => flight.id == this.selectedFlightReturn)
+			return this.details.flightsReturn
+		},
 	},
 	mounted() {
 	}

@@ -1,242 +1,6 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_client_home_Home_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    details: Object,
-    airports: Array
-  },
-  data: function data() {
-    return {
-      ticketDeparture: -1,
-      ticketReturn: -1
-    };
-  },
-  methods: {
-    getDifferenceBetweenTwoDates: function getDifferenceBetweenTwoDates(a, b) {
-      var date1 = new Date(a);
-      var date2 = new Date(b);
-      var diffTime = Math.abs(date2 - date1);
-      var diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
-      var diffMinutes = diffTime % (1000 * 60 * 60) * 60;
-      return diffHours + 'h ' + diffMinutes + 'm';
-    }
-  },
-  computed: {
-    fields: function fields() {
-      return [{
-        key: 'flight_number',
-        label: 'Flight Number'
-      }, {
-        key: 'departure_time',
-        label: 'Departure Time'
-      }, {
-        key: 'arrival_time',
-        label: 'Departure Time'
-      }, {
-        key: 'duration',
-        label: 'Duration'
-      }, {
-        key: 'seat_count',
-        label: 'Remaining Seats'
-      }];
-    },
-    airportFrom: function airportFrom() {
-      var _this = this;
-
-      return this.airports.find(function (airport) {
-        return airport.id == _this.details.from_airport_id;
-      }) || {};
-    },
-    airportTo: function airportTo() {
-      var _this2 = this;
-
-      return this.airports.find(function (airport) {
-        return airport.id == _this2.details.to_airport_id;
-      }) || {};
-    }
-  },
-  mounted: function mounted() {}
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=script&lang=js& ***!
@@ -250,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SearchFlightsForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchFlightsForm.vue */ "./resources/js/src/views/client/home/SearchFlightsForm.vue");
-/* harmony import */ var _FlightList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightList.vue */ "./resources/js/src/views/client/home/FlightList.vue");
+/* harmony import */ var _FlightBooking_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightBooking.vue */ "./resources/js/src/views/client/home/FlightBooking.vue");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -294,19 +58,137 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     SearchFlightsForm: _SearchFlightsForm_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    FlightList: _FlightList_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    FlightBooking: _FlightBooking_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
       fetchedAirports: [],
-      showFlightList: false,
-      flightsDetails: null
+      // flightsDetails: null,
+      flightsDetails: {
+        "from_airport_id": 1934,
+        "to_airport_id": 2307,
+        "trip_type": "Return",
+        "departure_date": "2021-08-19",
+        "return_date": "2021-08-21",
+        "passenger_count": 2,
+        "class": "Business",
+        "flightsDeparture": [{
+          "id": 4,
+          "flight_number": "RU66",
+          "departure_id": 1934,
+          "destination_id": 2307,
+          "departure_time": "2021-08-19 11:00:00",
+          "arrival_time": "2021-08-19 13:00:00",
+          "created_at": "2021-08-07T07:08:26.000000Z",
+          "updated_at": "2021-08-07T07:08:26.000000Z",
+          "economy_seat_count": 312,
+          "business_seat_count": 42,
+          "origin": {
+            "id": 1934,
+            "code": "LED",
+            "name": "Pulkovo Airport",
+            "cityCode": "LED",
+            "cityName": "St Petersburg",
+            "countryName": "RUSSIA",
+            "countryCode": "RU",
+            "timezone": "4",
+            "lat": "59.800292",
+            "lon": "30.262503",
+            "numAirports": 2,
+            "city": "true",
+            "created_at": null,
+            "updated_at": null,
+            "label": "St Petersburg LED"
+          },
+          "destination": {
+            "id": 2307,
+            "code": "SVO",
+            "name": "Sheremetyevo Airport",
+            "cityCode": "MOW",
+            "cityName": "Moscow",
+            "countryName": "RUSSIA",
+            "countryCode": "RU",
+            "timezone": "4",
+            "lat": "55.972642",
+            "lon": "37.414589",
+            "numAirports": 3,
+            "city": "",
+            "created_at": null,
+            "updated_at": null,
+            "label": "Moscow SVO"
+          }
+        }, {
+          "id": 7,
+          "flight_number": "RU345",
+          "departure_id": 1934,
+          "destination_id": 2307,
+          "departure_time": "2021-08-19 23:00:00",
+          "arrival_time": "2021-08-20 01:00:00",
+          "created_at": "2021-08-08T10:24:51.000000Z",
+          "updated_at": "2021-08-08T10:24:51.000000Z",
+          "economy_seat_count": 312,
+          "business_seat_count": 42,
+          "origin": {
+            "id": 1934,
+            "code": "LED",
+            "name": "Pulkovo Airport",
+            "cityCode": "LED",
+            "cityName": "St Petersburg",
+            "countryName": "RUSSIA",
+            "countryCode": "RU",
+            "timezone": "4",
+            "lat": "59.800292",
+            "lon": "30.262503",
+            "numAirports": 2,
+            "city": "true",
+            "created_at": null,
+            "updated_at": null,
+            "label": "St Petersburg LED"
+          },
+          "destination": {
+            "id": 2307,
+            "code": "SVO",
+            "name": "Sheremetyevo Airport",
+            "cityCode": "MOW",
+            "cityName": "Moscow",
+            "countryName": "RUSSIA",
+            "countryCode": "RU",
+            "timezone": "4",
+            "lat": "55.972642",
+            "lon": "37.414589",
+            "numAirports": 3,
+            "city": "",
+            "created_at": null,
+            "updated_at": null,
+            "label": "Moscow SVO"
+          }
+        }],
+        "flightsReturn": [{
+          "id": 8,
+          "flight_number": "RU 556",
+          "departure_id": 2307,
+          "destination_id": 1934,
+          "departure_time": "2021-08-21 22:00:00",
+          "arrival_time": "2021-08-21 23:00:00",
+          "created_at": "2021-08-09T03:13:31.000000Z",
+          "updated_at": "2021-08-09T03:13:31.000000Z",
+          "economy_seat_count": 312,
+          "business_seat_count": 42,
+          "origin": "Moscow SVO",
+          "destination": "St Petersburg LED"
+        }]
+      },
+      bookingStep: 0 // -1: Not yet, 0. Searched, 1. Selected Flights and clicked continue, 2. Require passengers info
+
     };
   },
   methods: {
@@ -345,7 +227,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     handleListingFlights: function handleListingFlights(event) {
       console.log('event', event);
       this.flightsDetails = event;
-      this.showFlightList = true;
+      this.bookingStep = 0;
     }
   },
   computed: {
@@ -494,6 +376,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -532,7 +433,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 // 	to_airport_id: this.form.toCity.id,
                 // 	trip_type: this.form.tripType,
                 // 	departure_date: this.form.departureDate,
-                // 	passenger_count: this.passengerCount
+                // 	passenger_count: this.passengerCount,
+                // 	class: this.class
                 // }
                 filter = {
                   from_airport_id: 1934,
@@ -540,7 +442,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   trip_type: 'Return',
                   departure_date: '2021-08-19',
                   return_date: '2021-08-21',
-                  passenger_count: 2
+                  passenger_count: 2,
+                  "class": 'Business'
                 }; // if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
 
                 _context.next = 4;
@@ -600,29 +503,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".flight-list[data-v-fc15b678] {\n  background: #F2F3FA;\n}\n.flight-item[data-v-fc15b678] {\n  width: 100%;\n  margin-bottom: 20px;\n  border-radius: 10px;\n  border: none;\n}\n.flight-item .flight-time-text[data-v-fc15b678] {\n  font-size: 1.5rem;\n  color: var(--primary);\n}\n.flight-item .flight-radio-button[data-v-fc15b678] {\n  width: 100%;\n}\n.flight-item .flight-radio-button[data-v-fc15b678] label.btn {\n  width: 100%;\n  border-radius: 10px;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss& ***!
@@ -666,35 +546,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "label[data-v-5476a3f9] {\n  font-size:
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_style_index_0_id_fc15b678_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_style_index_0_id_fc15b678_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_style_index_0_id_fc15b678_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -756,42 +607,35 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/js/src/views/client/home/FlightList.vue":
-/*!***********************************************************!*\
-  !*** ./resources/js/src/views/client/home/FlightList.vue ***!
-  \***********************************************************/
+/***/ "./resources/js/src/views/client/home/FlightBooking.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightBooking.vue ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FlightList.vue?vue&type=template&id=fc15b678&scoped=true& */ "./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true&");
-/* harmony import */ var _FlightList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FlightList.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&");
-/* harmony import */ var _FlightList_vue_vue_type_style_index_0_id_fc15b678_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& */ "./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-;
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _FlightList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__.default)(
+  script,
+  render,
+  staticRenderFns,
   false,
   null,
-  "fc15b678",
+  null,
   null
   
 )
 
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/src/views/client/home/FlightList.vue"
+component.options.__file = "resources/js/src/views/client/home/FlightBooking.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -876,21 +720,6 @@ component.options.__file = "resources/js/src/views/client/home/SearchFlightsForm
 
 /***/ }),
 
-/***/ "./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/src/views/client/home/Home.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/src/views/client/home/Home.vue?vue&type=script&lang=js& ***!
@@ -921,18 +750,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&":
-/*!*********************************************************************************************************************!*\
-  !*** ./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& ***!
-  \*********************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_style_index_0_id_fc15b678_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=style&index=0&id=fc15b678&scoped=true&lang=scss&");
-
-
-/***/ }),
-
 /***/ "./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss&":
 /*!***************************************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss& ***!
@@ -953,22 +770,6 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchFlightsForm_vue_vue_type_style_index_0_id_5476a3f9_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SearchFlightsForm.vue?vue&type=style&index=0&id=5476a3f9&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SearchFlightsForm.vue?vue&type=style&index=0&id=5476a3f9&scoped=true&lang=scss&");
-
-
-/***/ }),
-
-/***/ "./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true& ***!
-  \******************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightList_vue_vue_type_template_id_fc15b678_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightList.vue?vue&type=template&id=fc15b678&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true&");
 
 
 /***/ }),
@@ -1005,512 +806,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true&":
-/*!*********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true& ***!
-  \*********************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "flight-list" },
-    [
-      _c(
-        "b-container",
-        [
-          _c(
-            "b-row",
-            [
-              _c("b-col", { staticClass: "pt-5" }, [
-                _c("div", { staticClass: "w-100 text-center" }, [
-                  _c("h3", [_vm._v("Select your departure flight from")]),
-                  _vm._v(" "),
-                  _c("h3", [
-                    _vm._v(
-                      "\n\t\t\t\t\t\t" +
-                        _vm._s(_vm.airportFrom.cityName) +
-                        " to " +
-                        _vm._s(_vm.airportTo.cityName) +
-                        "\n\t\t\t\t\t"
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-100 text-left" }, [
-                  _c("p", [
-                    _vm._v(
-                      "Number of Flights: " +
-                        _vm._s(_vm.details.flightsDeparture.length)
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "w-100" },
-                  [
-                    _c(
-                      "b-form-group",
-                      { staticClass: "w-100" },
-                      _vm._l(_vm.details.flightsDeparture, function(
-                        flight,
-                        index
-                      ) {
-                        return _c(
-                          "b-card",
-                          { key: index, staticClass: "flight-item" },
-                          [
-                            _c(
-                              "b-row",
-                              { staticClass: "w-100 mx-0 text-left" },
-                              [
-                                _c("b-col", { attrs: { cols: "3" } }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "flight-time-text" },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t" +
-                                          _vm._s(
-                                            flight.departure_time.split(" ")[1]
-                                          ) +
-                                          " " +
-                                          _vm._s(flight.origin.code) +
-                                          "\n\t\t\t\t\t\t\t\t\t"
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t" +
-                                        _vm._s(flight.origin.cityName) +
-                                        "\n\t\t\t\t\t\t\t\t\t"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "font-small" }, [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t" +
-                                        _vm._s(flight.flight_number) +
-                                        " Airbus A350-900\n\t\t\t\t\t\t\t\t\t"
-                                    )
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "b-col",
-                                  {
-                                    staticClass: "text-center",
-                                    attrs: { cols: "3" }
-                                  },
-                                  [
-                                    _c("div", [
-                                      _c("i", { staticClass: "fal fa-clock" })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t" +
-                                          _vm._s(
-                                            _vm.getDifferenceBetweenTwoDates(
-                                              flight.departure_time,
-                                              flight.arrival_time
-                                            )
-                                          ) +
-                                          "\n\t\t\t\t\t\t\t\t\t"
-                                      )
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-col",
-                                  {
-                                    staticClass: "text-right",
-                                    attrs: { cols: "3" }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "flight-time-text" },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t\t\t\t\t\t\t\t\t" +
-                                            _vm._s(
-                                              flight.arrival_time.split(" ")[1]
-                                            ) +
-                                            " " +
-                                            _vm._s(flight.destination.code) +
-                                            "\n\t\t\t\t\t\t\t\t\t"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t" +
-                                          _vm._s(flight.destination.cityName) +
-                                          "\n\t\t\t\t\t\t\t\t\t"
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "font-small" }, [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\tOperated by: Avia Airways\n\t\t\t\t\t\t\t\t\t"
-                                      )
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-col",
-                                  { attrs: { cols: "3" } },
-                                  [
-                                    _c(
-                                      "b-form-radio",
-                                      {
-                                        staticClass: "flight-radio-button",
-                                        attrs: {
-                                          value: index,
-                                          button: "",
-                                          "button-variant": "outline-primary"
-                                        },
-                                        model: {
-                                          value: _vm.ticketDeparture,
-                                          callback: function($$v) {
-                                            _vm.ticketDeparture = $$v
-                                          },
-                                          expression: "ticketDeparture"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "text-center" },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass: "font-large mb-3"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n\t\t\t\t\t\t\t\t\t\t\t\tBusiness\n\t\t\t\t\t\t\t\t\t\t\t"
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "mb-3" }, [
-                                              _vm._v(
-                                                "\n\t\t\t\t\t\t\t\t\t\t\t\t1000\n\t\t\t\t\t\t\t\t\t\t\t\t"
-                                              ),
-                                              _c(
-                                                "span",
-                                                { staticClass: "font-larger" },
-                                                [_vm._v("USD")]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", [
-                                              _c("small", [
-                                                _vm._v(
-                                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\tTotal price for all passengers\n\t\t\t\t\t\t\t\t\t\t\t\t"
-                                                )
-                                              ])
-                                            ])
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      }),
-                      1
-                    )
-                  ],
-                  1
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.details.trip_type === "Return"
-            ? _c(
-                "b-row",
-                [
-                  _c("b-col", { staticClass: "pt-5" }, [
-                    _c("div", { staticClass: "w-100 text-center" }, [
-                      _c("h3", [_vm._v("Select your return flight from")]),
-                      _vm._v(" "),
-                      _c("h3", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t" +
-                            _vm._s(_vm.airportTo.cityName) +
-                            " to " +
-                            _vm._s(_vm.airportFrom.cityName) +
-                            "\n\t\t\t\t\t"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "w-100 text-left" }, [
-                      _c("p", [
-                        _vm._v(
-                          "Number of Flights: " +
-                            _vm._s(_vm.details.flightsReturn.length)
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "w-100" },
-                      [
-                        _c(
-                          "b-form-group",
-                          { staticClass: "w-100" },
-                          _vm._l(_vm.details.flightsReturn, function(
-                            flight,
-                            index
-                          ) {
-                            return _c(
-                              "b-card",
-                              { key: index, staticClass: "flight-item" },
-                              [
-                                _c(
-                                  "b-row",
-                                  { staticClass: "w-100 mx-0 text-left" },
-                                  [
-                                    _c("b-col", { attrs: { cols: "3" } }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "flight-time-text" },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                flight.departure_time.split(
-                                                  " "
-                                                )[1]
-                                              ) +
-                                              " " +
-                                              _vm._s(flight.origin.code) +
-                                              "\n\t\t\t\t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _vm._v(
-                                          "\n\t\t\t\t\t\t\t\t\t\t" +
-                                            _vm._s(flight.origin.cityName) +
-                                            "\n\t\t\t\t\t\t\t\t\t"
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _vm._v(
-                                          "\n\t\t\t\t\t\t\t\t\t\t" +
-                                            _vm._s(flight.flight_number) +
-                                            " Airbus A350-900\n\t\t\t\t\t\t\t\t\t"
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b-col",
-                                      {
-                                        staticClass: "text-center",
-                                        attrs: { cols: "3" }
-                                      },
-                                      [
-                                        _c("div", [
-                                          _c("i", {
-                                            staticClass: "fal fa-clock"
-                                          })
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.getDifferenceBetweenTwoDates(
-                                                  flight.departure_time,
-                                                  flight.arrival_time
-                                                )
-                                              ) +
-                                              "\n\t\t\t\t\t\t\t\t\t"
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b-col",
-                                      {
-                                        staticClass: "text-right",
-                                        attrs: { cols: "3" }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flight-time-text" },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  flight.arrival_time.split(
-                                                    " "
-                                                  )[1]
-                                                ) +
-                                                " " +
-                                                _vm._s(
-                                                  flight.destination.code
-                                                ) +
-                                                "\n\t\t\t\t\t\t\t\t\t"
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                flight.destination.cityName
-                                              ) +
-                                              "\n\t\t\t\t\t\t\t\t\t"
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t\t\t\t\t\tOperated by: Avia Airways\n\t\t\t\t\t\t\t\t\t"
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b-col",
-                                      { attrs: { cols: "3" } },
-                                      [
-                                        _c(
-                                          "b-form-radio",
-                                          {
-                                            staticClass: "flight-radio-button",
-                                            attrs: {
-                                              value: index,
-                                              button: "",
-                                              "button-variant":
-                                                "outline-primary"
-                                            },
-                                            model: {
-                                              value: _vm.ticketReturn,
-                                              callback: function($$v) {
-                                                _vm.ticketReturn = $$v
-                                              },
-                                              expression: "ticketReturn"
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "text-center" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "font-large mb-3"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n\t\t\t\t\t\t\t\t\t\t\t\tBusiness\n\t\t\t\t\t\t\t\t\t\t\t"
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "mb-3" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t1000\n\t\t\t\t\t\t\t\t\t\t\t\t"
-                                                    ),
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          "font-larger"
-                                                      },
-                                                      [_vm._v("USD")]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("div", [
-                                                  _c("small", [
-                                                    _vm._v(
-                                                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\tTotal price for all passengers\n\t\t\t\t\t\t\t\t\t\t\t\t"
-                                                    )
-                                                  ])
-                                                ])
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          }),
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=template&id=aa6b8316&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=template&id=aa6b8316&scoped=true& ***!
@@ -1526,89 +821,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "home-component" } },
-    [
-      _c(
-        "div",
-        { staticClass: "banner" },
-        [
-          _c(
-            "b-container",
-            { staticClass: "h-100 px-0" },
-            [
-              _c(
-                "b-row",
-                { staticClass: "h-100" },
-                [
-                  _c(
-                    "b-col",
-                    {
-                      staticClass: "d-flex align-items-center h-100 px-0",
-                      attrs: { cols: "12" }
-                    },
-                    [
-                      _c(
-                        "b-card",
-                        {
-                          staticClass: "w-100 form-card pb-3",
-                          attrs: { "no-body": "" }
-                        },
-                        [
-                          _c(
-                            "b-tabs",
-                            {
-                              staticClass: "main-tabs",
-                              attrs: { justified: "", "content-class": "pt-3" }
-                            },
-                            [
-                              _c(
-                                "b-tab",
-                                { attrs: { title: "Book" } },
-                                [
-                                  _c("SearchFlightsForm", {
-                                    attrs: { airports: _vm.airports },
-                                    on: {
-                                      "list-flights": _vm.handleListingFlights
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("b-tab", { attrs: { title: "My Trips" } }),
-                              _vm._v(" "),
-                              _c("b-tab", { attrs: { title: "Check-in" } }),
-                              _vm._v(" "),
-                              _c("b-tab", { attrs: { title: "Flight Status" } })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm.showFlightList
-        ? _c("FlightList", {
-            attrs: { airports: _vm.airports, details: _vm.flightsDetails }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+  return _c("div", { attrs: { id: "home-component" } }, [
+    _c(
+      "div",
+      { staticClass: "banner" },
+      [
+        _c(
+          "b-container",
+          { staticClass: "h-100 px-0" },
+          [
+            _c(
+              "b-row",
+              { staticClass: "h-100" },
+              [
+                _c(
+                  "b-col",
+                  {
+                    staticClass: "d-flex align-items-center h-100 px-0",
+                    attrs: { cols: "12" }
+                  },
+                  [
+                    _c(
+                      "b-card",
+                      {
+                        staticClass: "w-100 form-card pb-3",
+                        attrs: { "no-body": "" }
+                      },
+                      [
+                        _c(
+                          "b-tabs",
+                          {
+                            staticClass: "main-tabs",
+                            attrs: { justified: "", "content-class": "pt-3" }
+                          },
+                          [
+                            _c(
+                              "b-tab",
+                              { attrs: { title: "Book" } },
+                              [
+                                _c("SearchFlightsForm", {
+                                  attrs: { airports: _vm.airports },
+                                  on: {
+                                    "list-flights": _vm.handleListingFlights
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("b-tab", { attrs: { title: "My Trips" } }),
+                            _vm._v(" "),
+                            _c("b-tab", { attrs: { title: "Check-in" } }),
+                            _vm._v(" "),
+                            _c("b-tab", { attrs: { title: "Flight Status" } })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _vm.bookingStep >= 0
+          ? _c("FlightBooking", {
+              attrs: { airports: _vm.airports, details: _vm.flightsDetails }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1664,11 +960,38 @@ var render = function() {
                         staticClass: "from-city-select",
                         attrs: {
                           options: _vm.airports,
+                          required: "",
                           label: "label",
                           placeholder: "From Airport/City",
                           clearable: false,
                           filterBy: _vm.airportFilterBy
                         },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "search",
+                            fn: function(ref) {
+                              var attributes = ref.attributes
+                              var events = ref.events
+                              return [
+                                _c(
+                                  "input",
+                                  _vm._g(
+                                    _vm._b(
+                                      {
+                                        staticClass: "vs__search",
+                                        attrs: { required: !_vm.form.fromCity }
+                                      },
+                                      "input",
+                                      attributes,
+                                      false
+                                    ),
+                                    events
+                                  )
+                                )
+                              ]
+                            }
+                          }
+                        ]),
                         model: {
                           value: _vm.form.fromCity,
                           callback: function($$v) {
@@ -1702,6 +1025,32 @@ var render = function() {
                           clearable: false,
                           filterBy: _vm.airportFilterBy
                         },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "search",
+                            fn: function(ref) {
+                              var attributes = ref.attributes
+                              var events = ref.events
+                              return [
+                                _c(
+                                  "input",
+                                  _vm._g(
+                                    _vm._b(
+                                      {
+                                        staticClass: "vs__search",
+                                        attrs: { required: !_vm.form.toCity }
+                                      },
+                                      "input",
+                                      attributes,
+                                      false
+                                    ),
+                                    events
+                                  )
+                                )
+                              ]
+                            }
+                          }
+                        ]),
                         model: {
                           value: _vm.form.toCity,
                           callback: function($$v) {
