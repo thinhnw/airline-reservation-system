@@ -21,27 +21,149 @@
 				</b-row>
 			</b-container>
 		</div>
-		<FlightList v-if="showFlightList" 
-			:airports="airports"
-			:details="flightsDetails"
-		/>	
+		<div>
+			<FlightBooking v-if="bookingStep >= 0" 
+				:airports="airports"
+				:details="flightsDetails"
+			/>	
+			
+		</div>
 	</div>
 </template>
 
 <script>
 import SearchFlightsForm from './SearchFlightsForm.vue'
-import FlightList from './FlightList.vue'
+import FlightBooking from './FlightBooking.vue'
 import axios from '@/axios'
 export default {
 	components: {
 		SearchFlightsForm,
-		FlightList
+		FlightBooking
 	},
 	data() {
 		return {
 			fetchedAirports: [],
-			showFlightList: false,
-			flightsDetails: null
+			// flightsDetails: null,
+			flightsDetails: {
+    "from_airport_id": 1934,
+    "to_airport_id": 2307,
+    "trip_type": "Return",
+    "departure_date": "2021-08-19",
+    "return_date": "2021-08-21",
+    "passenger_count": 2,
+    "class": "Business",
+    "flightsDeparture": [
+        {
+            "id": 4,
+            "flight_number": "RU66",
+            "departure_id": 1934,
+            "destination_id": 2307,
+            "departure_time": "2021-08-19 11:00:00",
+            "arrival_time": "2021-08-19 13:00:00",
+            "created_at": "2021-08-07T07:08:26.000000Z",
+            "updated_at": "2021-08-07T07:08:26.000000Z",
+            "economy_seat_count": 312,
+            "business_seat_count": 42,
+            "origin": {
+                "id": 1934,
+                "code": "LED",
+                "name": "Pulkovo Airport",
+                "cityCode": "LED",
+                "cityName": "St Petersburg",
+                "countryName": "RUSSIA",
+                "countryCode": "RU",
+                "timezone": "4",
+                "lat": "59.800292",
+                "lon": "30.262503",
+                "numAirports": 2,
+                "city": "true",
+                "created_at": null,
+                "updated_at": null,
+                "label": "St Petersburg LED"
+            },
+            "destination": {
+                "id": 2307,
+                "code": "SVO",
+                "name": "Sheremetyevo Airport",
+                "cityCode": "MOW",
+                "cityName": "Moscow",
+                "countryName": "RUSSIA",
+                "countryCode": "RU",
+                "timezone": "4",
+                "lat": "55.972642",
+                "lon": "37.414589",
+                "numAirports": 3,
+                "city": "",
+                "created_at": null,
+                "updated_at": null,
+                "label": "Moscow SVO"
+            }
+        },
+        {
+            "id": 7,
+            "flight_number": "RU345",
+            "departure_id": 1934,
+            "destination_id": 2307,
+            "departure_time": "2021-08-19 23:00:00",
+            "arrival_time": "2021-08-20 01:00:00",
+            "created_at": "2021-08-08T10:24:51.000000Z",
+            "updated_at": "2021-08-08T10:24:51.000000Z",
+            "economy_seat_count": 312,
+            "business_seat_count": 42,
+            "origin": {
+                "id": 1934,
+                "code": "LED",
+                "name": "Pulkovo Airport",
+                "cityCode": "LED",
+                "cityName": "St Petersburg",
+                "countryName": "RUSSIA",
+                "countryCode": "RU",
+                "timezone": "4",
+                "lat": "59.800292",
+                "lon": "30.262503",
+                "numAirports": 2,
+                "city": "true",
+                "created_at": null,
+                "updated_at": null,
+                "label": "St Petersburg LED"
+            },
+            "destination": {
+                "id": 2307,
+                "code": "SVO",
+                "name": "Sheremetyevo Airport",
+                "cityCode": "MOW",
+                "cityName": "Moscow",
+                "countryName": "RUSSIA",
+                "countryCode": "RU",
+                "timezone": "4",
+                "lat": "55.972642",
+                "lon": "37.414589",
+                "numAirports": 3,
+                "city": "",
+                "created_at": null,
+                "updated_at": null,
+                "label": "Moscow SVO"
+            }
+        }
+    ],
+    "flightsReturn": [
+        {
+            "id": 8,
+            "flight_number": "RU 556",
+            "departure_id": 2307,
+            "destination_id": 1934,
+            "departure_time": "2021-08-21 22:00:00",
+            "arrival_time": "2021-08-21 23:00:00",
+            "created_at": "2021-08-09T03:13:31.000000Z",
+            "updated_at": "2021-08-09T03:13:31.000000Z",
+            "economy_seat_count": 312,
+            "business_seat_count": 42,
+            "origin": "Moscow SVO",
+            "destination": "St Petersburg LED"
+        }
+    ]
+},
+			bookingStep: 0, // -1: Not yet, 0. Searched, 1. Selected Flights and clicked continue, 2. Require passengers info
 		}
 	},
 	methods: {
@@ -56,7 +178,7 @@ export default {
 		handleListingFlights(event) {
 			console.log('event', event)
 			this.flightsDetails = event
-			this.showFlightList = true
+			this.bookingStep = 0
 		}
 	},
 	computed: {

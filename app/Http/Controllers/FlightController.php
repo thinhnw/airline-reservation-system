@@ -186,9 +186,9 @@ class FlightController extends Controller
         $departure_date = $filter->departure_date;
         $flights = Flight::where([
             ['departure_id', '=', $from_airport_id],
-            // ['destination_id', '=', $to_airport_id],
-            // ['departure_time', '>=', $departure_date . ' 00:00:00'],
-            // ['departure_time', '<=', $departure_date . ' 23:59:59'],
+            ['destination_id', '=', $to_airport_id],
+            ['departure_time', '>=', $departure_date . ' 00:00:00'],
+            ['departure_time', '<=', $departure_date . ' 23:59:59'],
         ])->get();
         return $flights;
 

@@ -8,12 +8,22 @@
 						<v-select
 							v-model="form.fromCity"
 							:options="airports"
+							required
 							label="label"
 							placeholder="From Airport/City"
 							:clearable="false"
 							:filterBy="airportFilterBy"
 							class="from-city-select"
-						></v-select>
+						>
+							<template #search="{attributes, events}">
+								<input
+									class="vs__search"
+									:required="!form.fromCity"
+									v-bind="attributes"
+									v-on="events"
+								/>
+							</template>
+						</v-select>
 					</b-form-group>
 				</div>
 				<div style="width: 220px">
@@ -27,7 +37,16 @@
 							:clearable="false"
 							:filterBy="airportFilterBy"
 							class="to-city-select"
-						></v-select>
+						>
+							<template #search="{attributes, events}">
+								<input
+									class="vs__search"
+									:required="!form.toCity"
+									v-bind="attributes"
+									v-on="events"
+								/>
+							</template>
+						</v-select>
 					</b-form-group>
 				</div>
 				<div style="width: 130px">
@@ -135,7 +154,8 @@ export default {
 				// 	to_airport_id: this.form.toCity.id,
 				// 	trip_type: this.form.tripType,
 				// 	departure_date: this.form.departureDate,
-				// 	passenger_count: this.passengerCount
+				// 	passenger_count: this.passengerCount,
+				// 	class: this.class
 				// }
 				let filter = {
 					from_airport_id: 1934,
@@ -143,7 +163,8 @@ export default {
 					trip_type: 'Return',
 					departure_date: '2021-08-19',
 					return_date: '2021-08-21',
-					passenger_count: 2 
+					passenger_count: 2,
+					class: 'Business'
 				}
 				// if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
 				let res = await axios.get(`/api/flights/search?filter=${JSON.stringify(filter)}`)	

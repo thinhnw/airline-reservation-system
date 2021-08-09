@@ -15,6 +15,7 @@
 04. Forms
 05. Buttons
 06. Table
+07. Cards
 */
 
 
@@ -101,4 +102,8 @@ html, body {
 }
 
 
-// 07. Tabs
+// 07. Cards 
+.card {
+	border: none;
+	border-radius: 10px;
+}

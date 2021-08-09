@@ -10009,6 +10009,7 @@ h3 {
 04. Forms
 05. Buttons
 06. Table
+07. Cards
 */
 * {
   margin: 0;
@@ -10076,4 +10077,9 @@ html, body {
 
 .table tbody tr:hover {
   cursor: pointer;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
 }
