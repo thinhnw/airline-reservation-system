@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4 box-CUD py-3" style="float:right;padding: 0 20px" v-show="shownForm">
+    <div class="col-md-4 box-CUD py-3" v-show="shownForm">
         <form @submit.prevent="Object.keys(dataEdit).length!==0?updateData(dataEdit.id):createData()">
             <button class="btn btn-danger mb-3 float-right" type="button" @click="cancel()">X</button>
             <div class="input-group mb-3">

@@ -134,6 +134,6 @@ export default {
 }
 .pagination >>> .active{
     color: white;
-    background-color: dodgerblue;
+    background-color: #ffc107;
 }
 </style>

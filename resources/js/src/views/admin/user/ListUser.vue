@@ -1,5 +1,5 @@
 <template>
-    <div :class="shownForm?'col-md-8':'col-md-12'" style="float:left;padding: 0 20px">
+    <div class="col-md-12 p-0">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -17,8 +17,8 @@
                 <td>{{rs.gender}}</td>
                 <td>{{rs.email}}</td>
                 <td>
-                    <button @click="editData(rs.id)">Sửa</button>
-                    <button @click="deleteData(rs.id)">Xóa</button>
+                    <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
+                    <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>
                 </td>
             </tr>
             </tbody>
@@ -56,8 +56,6 @@ export default {
             customers:[],
             pageRange: 5,
             rows:0
-
-
         }
     },
     created() {
@@ -136,6 +134,6 @@ export default {
 }
 .pagination >>> .active{
     color: white;
-    background-color: dodgerblue;
+    background-color: #ffc107;
 }
 </style>
