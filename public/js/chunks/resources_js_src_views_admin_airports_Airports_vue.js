@@ -11,22 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ListAirport_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListAirport.vue */ "./resources/js/src/views/admin/airports/ListAirport.vue");
-/* harmony import */ var _CreateAndEdit_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAndEdit.vue */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
+/* harmony import */ var _ListAirport__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListAirport */ "./resources/js/src/views/admin/airports/ListAirport.vue");
+/* harmony import */ var _CreateAndEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAndEdit */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue");
 //
 //
 //
@@ -51,42 +37,47 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Airports",
   components: {
-    ListAirport: _ListAirport_vue__WEBPACK_IMPORTED_MODULE_0__.default,
-    CreateAndEdit: _CreateAndEdit_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    CreateAndEdit: _CreateAndEdit__WEBPACK_IMPORTED_MODULE_1__.default,
+    ListAirport: _ListAirport__WEBPACK_IMPORTED_MODULE_0__.default
   },
   data: function data() {
     return {
-      airports: []
+      dataEdit: "",
+      updated: "",
+      created: "",
+      shown: false
     };
   },
-  created: function created() {
-    var _this = this;
-
-    var uri = '/api/airports';
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(uri).then(function (res) {
-      var _this$airports;
-
-      (_this$airports = _this.airports).push.apply(_this$airports, _toConsumableArray(res.data.airports));
-    });
-    console.log(this.airports);
-  },
   methods: {
-    editData: function editData(id) {
-      return "http://127.0.0.1:8000/api/airport/edit/".concat(id);
+    setDataEdit: function setDataEdit(data) {
+      this.dataEdit = data;
     },
-    deleteData: function deleteData(id) {
-      var _this2 = this;
-
-      var uri = "http://127.0.0.1:8000/api/airport/delete/".concat(id);
-      axios__WEBPACK_IMPORTED_MODULE_2___default().delete(uri).then(function (rs) {
-        _this2.airports.splice(id, 1);
-      });
+    listUpdated: function listUpdated(res) {
+      return this.updated = res;
+    },
+    listCreated: function listCreated(res) {
+      return this.created = res;
+    },
+    resultUpdate: function resultUpdate() {
+      return this.updated = false;
+    },
+    resultCreate: function resultCreate() {
+      return this.created = false;
+    },
+    shownForm: function shownForm() {
+      return this.shown = !this.shown;
+    },
+    setShown: function setShown(res) {
+      return this.shown = res;
+    },
+    updateDataEdit: function updateDataEdit() {
+      return this.dataEdit = "";
     }
   }
 });

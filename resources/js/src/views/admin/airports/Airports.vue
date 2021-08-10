@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button>
         <div>
         <ListAirport
@@ -23,43 +24,50 @@
 </template>
 
 <script>
-import ListAirport from './ListAirport.vue'
-import CreateAndEdit from './CreateAndEdit.vue'
-
-import axios from "axios";
-
+import ListAirport from "./ListAirport";
+import CreateAndEdit from "./CreateAndEdit";
 export default {
     name: "Airports",
-    components: {
-        ListAirport, CreateAndEdit
+    components:{
+        CreateAndEdit,
+        ListAirport
     },
     data(){
         return{
-            airports:[],
+            dataEdit:"",
+            updated:"",
+            created:"",
+            shown:false,
         }
-    },
-    created() {
-        let uri = '/api/airports';
-        axios.get(uri).then(res => {
-            this.airports.push(...res.data.airports)
-        });
-        console.log(this.airports)
     },
     methods:{
-        editData(id){
-            return `http://127.0.0.1:8000/api/airport/edit/${id}`
+        setDataEdit(data){
+             this.dataEdit=data;
         },
-        deleteData(id){
-            let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
-            axios.delete(uri).then((rs) => {
-                this.airports.splice(id, 1);
-            });
+        listUpdated(res){
+            return this.updated=res;
+        },
+        listCreated(res){
+            return this.created=res;
+        },
+        resultUpdate(){
+            return this.updated=false;
+        },
+        resultCreate(){
+            return this.created=false;
+        },
+        shownForm(){
+            return this.shown=!this.shown;
+        },
+        setShown(res){
+          return this.shown=res
+        },
+        updateDataEdit(){
+            return this.dataEdit="";
         }
     }
-
 }
 </script>
 
 <style scoped>
-
 </style>
