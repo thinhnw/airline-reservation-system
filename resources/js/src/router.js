@@ -26,6 +26,7 @@ const router = new VueRouter({
 			]
 		},
 
+
 		{
 			path: '/login',
 			name: 'login',
@@ -58,6 +59,7 @@ const router = new VueRouter({
 						name: 'admin-airport',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
+
                 {
                     path: 'user',
                     name: 'admin-user',
