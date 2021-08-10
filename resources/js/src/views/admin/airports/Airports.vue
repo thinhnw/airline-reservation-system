@@ -11,7 +11,7 @@
             @resultCreate="resultCreate"
             @setShown="setShown"
         />
-        <Create_and_Edit
+        <CreateAndEdit
             :dataEdit="dataEdit"
             @updated="listUpdated"
             :shownForm="shown"
@@ -23,12 +23,16 @@
 </template>
 
 <script>
-
+import ListAirport from './ListAirport.vue'
+import CreateAndEdit from './CreateAndEdit.vue'
 
 import axios from "axios";
 
 export default {
     name: "Airports",
+    components: {
+        ListAirport, CreateAndEdit
+    },
     data(){
         return{
             airports:[],
