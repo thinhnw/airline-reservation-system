@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class CustomerController extends Controller
 {
@@ -19,6 +20,14 @@ class CustomerController extends Controller
         $customer=Customer::findOrFail($id);
         return response()->json([
             'customer'=>$customer
+        ]);
+    }
+    public function checkPass(Request $request,$id){
+        $customer=Customer::findOrFail($id);
+        $result=Hash::check($request->password,$customer->password);
+        return response()->json([
+            'customer'=>$customer,
+            'result'=>$result
         ]);
     }
 //    EDIT
@@ -60,7 +69,7 @@ class CustomerController extends Controller
                 'last_name'=>$request->last_name,
                 'gender'=>$request->gender,
                 'email'=>$request->email,
-                'user_type'=>$request->user_type,
+                'user_type'=>"Customer",
                 'password'=>Hash::make($request->password)
                 ]
             );

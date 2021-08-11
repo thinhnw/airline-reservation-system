@@ -3,9 +3,25 @@
         <div class="banner">
             <b-container class="h-100 px-0">
                 <b-row class="h-100">
+                    <b-alert class="w-100 alertSubmit" variant="success" v-show="showAlertSuccess" show="">{{messageSuccess}}</b-alert>
+                    <b-alert class="w-100 alertSubmit" variant="danger" v-show="showAlertError" show="">{{messageError}} </b-alert>
                     <b-col class="d-flex align-items-center h-100 ">
                         <div class="w-100">
-                            <b-form @submit="onSubmit(userInfo.id)" @reset="onReset" v-if="show" class="formStyle">
+                            <b-form @submit.prevent="checkUserPassword(userInfo.id)" @reset="onReset" v-if="showCheckPass"  class="formStyle">
+                                <b-form-group id="input-group-2" label="Please enter your password:" label-for="input-2">
+                                    <b-form-input
+                                        id="input-2"
+                                        v-model="userPassword"
+                                        placeholder="Enter password"
+                                        required
+                                        type="password"
+                                    ></b-form-input>
+                                </b-form-group>
+
+                                <b-button type="submit" variant="primary">Submit</b-button>
+                                <b-button type="reset" variant="danger">Cancel</b-button>
+                            </b-form>
+                            <b-form @submit.prevent="onSubmit(userInfo.id)" @reset="onReset" v-if="!showCheckPass"  class="formStyle">
 
                                 <b-form-group id="input-group-2" label="First Name:" label-for="input-2">
                                     <b-form-input
@@ -64,7 +80,6 @@
                                 <b-button type="submit" variant="primary">Submit</b-button>
                                 <b-button type="reset" variant="danger">Cancel</b-button>
                             </b-form>
-
                         </div>
                     </b-col>
                 </b-row>
@@ -92,7 +107,13 @@ export default {
                 { item: 'female', name: 'Female' },
             ],
             selected:'',
-            show: true
+            userPassword:'',
+            showAlertSuccess:false,
+            showAlertError:false,
+            messageSuccess:"",
+            messageError:"",
+            showCheckPass:true,
+
         }
     },
     computed: {
@@ -109,37 +130,69 @@ export default {
             this.form.lastName=res.data.customer.last_name;
             this.selected=res.data.customer.gender.toLowerCase();
             this.form.password=res.data.customer.password;
+            console.log("pass "+res.data.customer.password)
         });
     },
     methods: {
-
-        onSubmit(id) {
-            const data={
-                email:this.form.email,
-                first_name: this.form.firstName,
-                last_name:this.form.lastName,
-                password:this.form.password,
-                gender:this.selected
-            };
-            let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
-            axios.post(uri_u ,data).then((response) => {
-                this.$router.push({name: 'home'});
+        checkUserPassword(id){
+            let uri = `/api/customer/checkPass/${id}`;
+            const myPromise=new Promise(resolve=>{
+                axios.post(uri, {password: this.userPassword}).then(res => {
+                    resolve(res.data.result)
+                })
             });
-
-
-        },
-        onReset(event) {
-            event.preventDefault()
-            // Reset our form values
-            this.form.email = ''
-            this.form.name = ''
-            this.form.food = null
-            this.form.checked = []
-            // Trick to reset/clear native browser form validation state
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
+            myPromise.then((value)=>{
+                if (value){
+                    this.showCheckPass=false
+                }
+                else{
+                    this.messageError='Please enter new password'
+                    this.showAlertSuccess=false;
+                    this.showAlertError=true;
+                    setTimeout(()=>this.showAlertError=false,1000);
+                }
             })
+        },
+        onSubmit(id) {
+            let result=false;
+            let password= this.form.password
+            let uri = `/api/customer/checkPass/${id}`;
+            const myPromise=new Promise(resolve=>{
+                axios.post(uri, {password: password}).then(res => {
+                resolve(res.data.result)
+                })
+            });
+            myPromise.then((value)=>{
+                result=value;
+                if (!result){
+                    const data = {
+                        email: this.form.email,
+                        first_name: this.form.firstName,
+                        last_name: this.form.lastName,
+                        password: this.form.password,
+                        gender: this.selected
+                    };
+                    let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
+                    axios.post(uri_u, data).then(() => {
+                        this.showAlertSuccess = true;
+                        this.showAlertError=false;
+                        setTimeout(()=>{
+                            this.showAlertSuccess=false
+                            this.$router.push({name:'home'})
+                        },1000);
+                    });
+                    this.messageSuccess='Success';
+                }
+                else{
+                    this.messageError='Please enter new password'
+                    this.showAlertSuccess=false;
+                    this.showAlertError=true;
+                    setTimeout(()=>this.showAlertError=false,1000);
+                }
+            })
+        },
+        onReset() {
+            this.$router.push({name: 'home'});
         }
     }
 
@@ -190,5 +243,8 @@ export default {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
+}
+.alertSubmit{
+    margin-top: 70px;
 }
 </style>
