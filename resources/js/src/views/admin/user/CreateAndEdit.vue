@@ -71,7 +71,7 @@
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.password"
                        type="password" class="form-control" min="6"
-
+                       style="display:none"
                        required>
                 <input name="password"
                        v-else placeholder="Password"
