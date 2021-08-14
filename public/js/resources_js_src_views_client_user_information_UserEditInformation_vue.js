@@ -95,6 +95,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -115,7 +117,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: 'Female'
       }],
       selected: '',
-      show: true
+      userPassword: '',
+      showAlertSuccess: false,
+      showAlertError: false,
+      messageSuccess: "",
+      messageError: "",
+      showCheckPass: true
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
@@ -131,39 +138,84 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this.form.lastName = res.data.customer.last_name;
       _this.selected = res.data.customer.gender.toLowerCase();
       _this.form.password = res.data.customer.password;
+      console.log("pass " + res.data.customer.password);
     });
   },
   methods: {
-    onSubmit: function onSubmit(id) {
+    checkUserPassword: function checkUserPassword(id) {
       var _this2 = this;
 
-      var data = {
-        email: this.form.email,
-        first_name: this.form.firstName,
-        last_name: this.form.lastName,
-        password: this.form.password,
-        gender: this.selected
-      };
-      var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function (response) {
-        _this2.$router.push({
-          name: 'home'
+      var uri = "/api/customer/checkPass/".concat(id);
+      var myPromise = new Promise(function (resolve) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
+          password: _this2.userPassword
+        }).then(function (res) {
+          resolve(res.data.result);
         });
       });
+      myPromise.then(function (value) {
+        if (value) {
+          _this2.showCheckPass = false;
+        } else {
+          _this2.messageError = 'Please enter new password';
+          _this2.showAlertSuccess = false;
+          _this2.showAlertError = true;
+          setTimeout(function () {
+            return _this2.showAlertError = false;
+          }, 1000);
+        }
+      });
     },
-    onReset: function onReset(event) {
+    onSubmit: function onSubmit(id) {
       var _this3 = this;
 
-      event.preventDefault(); // Reset our form values
+      var result = false;
+      var password = this.form.password;
+      var uri = "/api/customer/checkPass/".concat(id);
+      var myPromise = new Promise(function (resolve) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
+          password: password
+        }).then(function (res) {
+          resolve(res.data.result);
+        });
+      });
+      myPromise.then(function (value) {
+        result = value;
 
-      this.form.email = '';
-      this.form.name = '';
-      this.form.food = null;
-      this.form.checked = []; // Trick to reset/clear native browser form validation state
+        if (!result) {
+          var data = {
+            email: _this3.form.email,
+            first_name: _this3.form.firstName,
+            last_name: _this3.form.lastName,
+            password: _this3.form.password,
+            gender: _this3.selected
+          };
+          var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
+            _this3.showAlertSuccess = true;
+            _this3.showAlertError = false;
+            setTimeout(function () {
+              _this3.showAlertSuccess = false;
 
-      this.show = false;
-      this.$nextTick(function () {
-        _this3.show = true;
+              _this3.$router.push({
+                name: 'home'
+              });
+            }, 1000);
+          });
+          _this3.messageSuccess = 'Success';
+        } else {
+          _this3.messageError = 'Please enter new password';
+          _this3.showAlertSuccess = false;
+          _this3.showAlertError = true;
+          setTimeout(function () {
+            return _this3.showAlertError = false;
+          }, 1000);
+        }
+      });
+    },
+    onReset: function onReset() {
+      this.$router.push({
+        name: 'home'
       });
     }
   }
@@ -187,7 +239,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-5c7ee22a] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-5c7ee22a] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}\n.formStyle[data-v-5c7ee22a] {\n  background-color: white;\n  border-radius: 10px;\n  padding: 20px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-5c7ee22a] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-5c7ee22a] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}\n.formStyle[data-v-5c7ee22a] {\n  background-color: white;\n  border-radius: 10px;\n  padding: 20px;\n}\n.alertSubmit[data-v-5c7ee22a] {\n  margin-top: 70px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -335,6 +387,40 @@ var render = function() {
               { staticClass: "h-100" },
               [
                 _c(
+                  "b-alert",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showAlertSuccess,
+                        expression: "showAlertSuccess"
+                      }
+                    ],
+                    staticClass: "w-100 alertSubmit",
+                    attrs: { variant: "success", show: "" }
+                  },
+                  [_vm._v(_vm._s(_vm.messageSuccess))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-alert",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showAlertError,
+                        expression: "showAlertError"
+                      }
+                    ],
+                    staticClass: "w-100 alertSubmit",
+                    attrs: { variant: "danger", show: "" }
+                  },
+                  [_vm._v(_vm._s(_vm.messageError) + " ")]
+                ),
+                _vm._v(" "),
+                _c(
                   "b-col",
                   { staticClass: "d-flex align-items-center h-100 " },
                   [
@@ -342,13 +428,82 @@ var render = function() {
                       "div",
                       { staticClass: "w-100" },
                       [
-                        _vm.show
+                        _vm.showCheckPass
                           ? _c(
                               "b-form",
                               {
                                 staticClass: "formStyle",
                                 on: {
                                   submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.checkUserPassword(
+                                      _vm.userInfo.id
+                                    )
+                                  },
+                                  reset: _vm.onReset
+                                }
+                              },
+                              [
+                                _c(
+                                  "b-form-group",
+                                  {
+                                    attrs: {
+                                      id: "input-group-2",
+                                      label: "Please enter your password:",
+                                      "label-for": "input-2"
+                                    }
+                                  },
+                                  [
+                                    _c("b-form-input", {
+                                      attrs: {
+                                        id: "input-2",
+                                        placeholder: "Enter password",
+                                        required: "",
+                                        type: "password"
+                                      },
+                                      model: {
+                                        value: _vm.userPassword,
+                                        callback: function($$v) {
+                                          _vm.userPassword = $$v
+                                        },
+                                        expression: "userPassword"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    attrs: {
+                                      type: "submit",
+                                      variant: "primary"
+                                    }
+                                  },
+                                  [_vm._v("Submit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    attrs: { type: "reset", variant: "danger" }
+                                  },
+                                  [_vm._v("Cancel")]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !_vm.showCheckPass
+                          ? _c(
+                              "b-form",
+                              {
+                                staticClass: "formStyle",
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
                                     return _vm.onSubmit(_vm.userInfo.id)
                                   },
                                   reset: _vm.onReset
@@ -434,37 +589,6 @@ var render = function() {
                                           _vm.$set(_vm.form, "password", $$v)
                                         },
                                         expression: "form.password"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-form-group",
-                                  {
-                                    attrs: {
-                                      id: "input-group-1",
-                                      label: "Email address:",
-                                      "label-for": "input-1",
-                                      description:
-                                        "We'll never share your email with anyone else."
-                                    }
-                                  },
-                                  [
-                                    _c("b-form-input", {
-                                      attrs: {
-                                        id: "input-1",
-                                        type: "email",
-                                        placeholder: "Enter email",
-                                        required: ""
-                                      },
-                                      model: {
-                                        value: _vm.form.email,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.form, "email", $$v)
-                                        },
-                                        expression: "form.email"
                                       }
                                     })
                                   ],

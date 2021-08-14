@@ -65,12 +65,13 @@
                        type="email" class="form-control"
                        required>
             </div>
-            <div>
-                <label class="form-label">Password</label>
+            <div >
+                <label class="form-label" v-if="Object.keys(dataEdit).length===0">Password</label>
                 <input name="password"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.password"
                        type="password" class="form-control" min="6"
+
                        required>
                 <input name="password"
                        v-else placeholder="Password"
@@ -111,6 +112,7 @@ export default {
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
+                this.$emit("resultCreate");
             });
             this.dataCreate = {}
         },
