@@ -52,7 +52,6 @@ export default {
         },
         resultCreate(){
             this.shownForm();
-
             return this.created=false;
         },
         shownForm(){
