@@ -11,10 +11,9 @@ CREATE TABLE IF NOT EXISTS airports (
   timezone varchar(8) COLLATE utf8_turkish_ci DEFAULT NULL,
   lat varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
   lon varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  numAirports int(11) DEFAULT NULL,
+  numAirports int DEFAULT NULL,
   city enum('true','false') COLLATE utf8_turkish_ci DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
+) 
 
 /*!40000 ALTER TABLE airports DISABLE KEYS */;
 INSERT INTO airports (code, name, cityCode, cityName, countryName, countryCode, timezone, lat, lon, numAirports, city) VALUES
