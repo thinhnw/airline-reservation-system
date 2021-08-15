@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS airports (
   lat varchar(32)  DEFAULT NULL,
   lon varchar(32)  DEFAULT NULL,
   numAirports int DEFAULT NULL,
-  city enum('true','false')  DEFAULT NULL
+  city boolean  DEFAULT NULL
 ) 
 
 /*!40000 ALTER TABLE airports DISABLE KEYS */;
