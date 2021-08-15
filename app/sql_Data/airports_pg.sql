@@ -8819,7 +8819,7 @@ INSERT INTO airports (code, name, cityCode, cityName, countryName, countryCode, 
 	('ZYY', 'Marnardal Rail Station', 'ZYY', 'Marnardal', 'NORWAY', 'NO', '-100', '0', '0', 1, 'true'),
 	('ZZV', 'Zanesville Arpt', 'ZZV', 'Zanesville', 'UNITED STATES', 'US', '-100', '39.9445', '-81.8921', 1, 'true');
 
-ALTER IGNORE TABLE airports ADD UNIQUE INDEX idx_name (code, name, cityCode);
+DELETE FROM airports a USING airports b WHERE a.id < b.id AND a.code = b.code
 
 UPDATE airports SET name = replace(name, 'Intl', 'International');
 UPDATE airports SET name = replace(name, 'Arpt', 'Airport');
