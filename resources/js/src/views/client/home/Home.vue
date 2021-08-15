@@ -32,7 +32,6 @@
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
-			<TripSummary />	
 		</div>
 	</div>
 </template>

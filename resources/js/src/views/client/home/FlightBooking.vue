@@ -12,6 +12,7 @@
 		<TripSummary v-if="bookingStep === 3"
 			:details="tripDetails"
 			@done="continueStep"
+			@back="backStep"
 		/>
 	</div>	
 </template>
@@ -49,6 +50,9 @@ export default {
 			console.log(this.tripDetails)
 			this.bookingStep++
 		},
+		backStep() {
+			this.bookingStep--
+		}
 	},
 	created() {
 		this.tripDetails = JSON.parse(JSON.stringify(this.searchedInfo))
