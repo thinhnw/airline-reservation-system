@@ -36,12 +36,12 @@
 											class="flight-radio-button"
 										>
 											<div class="text-center">
-												<div class="font-large mb-3">
+												<div class="font-size-large mb-3">
 													Business
 												</div>
 												<div class="mb-3">
 													1000
-													<span class="font-larger">USD</span>
+													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
 													<small>
@@ -60,7 +60,7 @@
 												<div>
 													{{ flight.origin.cityName }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
 												</div>
 											</b-col>
@@ -69,7 +69,7 @@
 													<i class="fal fa-clock"></i>
 												</div>
 												<div>
-													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+													{{ getDisplayedDuration(flight.departure_time, flight.arrival_time) }}
 												</div>
 											</b-col>
 											<b-col cols="5" class="text-right">
@@ -79,26 +79,26 @@
 												<div>
 													{{ flight.destination.cityName }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													Operated by: Avia Airways
 												</div>
 											</b-col>
 										</b-row>
 									</b-col>
 									<b-col cols="3">
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
 											40kg checked baggage 
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
 											Pieces 2, Total weight 15kg hand baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-chair-office"></i>
 											Complimentary seat selection
 										</div>
-										<div class="font-small">
+										<div class="font-size-small">
 											<i class="fal fa-key"></i>
 											Lounge access included
 										</div>
@@ -149,12 +149,12 @@
 											class="flight-radio-button"
 										>
 											<div class="text-center">
-												<div class="font-large mb-3">
+												<div class="font-size-large mb-3">
 													Business
 												</div>
 												<div class="mb-3">
 													1000
-													<span class="font-larger">USD</span>
+													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
 													<small>
@@ -173,7 +173,7 @@
 												<div>
 													{{ flight.origin.cityName }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
 												</div>
 											</b-col>
@@ -182,7 +182,7 @@
 													<i class="fal fa-clock"></i>
 												</div>
 												<div>
-													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+													{{ getDisplayedDuration(flight.departure_time, flight.arrival_time) }}
 												</div>
 											</b-col>
 											<b-col cols="5" class="text-right">
@@ -192,26 +192,26 @@
 												<div>
 													{{ flight.destination.cityName }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													Operated by: Avia Airways
 												</div>
 											</b-col>
 										</b-row>
 									</b-col>
 									<b-col cols="3">
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
 											40kg checked baggage 
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
 											Pieces 2, Total weight 15kg hand baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-chair-office"></i>
 											Complimentary seat selection
 										</div>
-										<div class="font-small">
+										<div class="font-size-small">
 											<i class="fal fa-key"></i>
 											Lounge access included
 										</div>
@@ -229,7 +229,7 @@
 			</b-row>
 			<b-row v-if="selectedFlightDeparture > -1 && selectedFlightReturn > -1">
 				<b-col cols="12">
-					<b-button class="w-100 mx-0" variant="warning">
+					<b-button class="w-100 mx-0" variant="primary" @click="handleStepDone">
 						CONTINUE
 					</b-button>
 				</b-col>
@@ -239,6 +239,7 @@
 </template>
 
 <script>
+import { getDisplayedDuration } from '@/helper'
 export default {
 	props: {
 		details: {
@@ -255,13 +256,13 @@ export default {
 		}
 	},
 	methods: {
-		getDifferenceBetweenTwoDates(a, b) {
-			const date1 = new Date(a);
-			const date2 = new Date(b);
-			const diffTime = Math.abs(date2 - date1);
-			const diffHours = Math.ceil(diffTime / (1000 * 60 * 60)); 
-			const diffMinutes = (diffTime % (1000 * 60 * 60)) * 60; 
-			return diffHours + 'h ' + diffMinutes + 'm'
+		getDisplayedDuration,
+		handleStepDone() {
+			let data = JSON.parse(JSON.stringify(this.details))
+			this.$emit('done', {
+				selectedFlightDeparture: data.flightsDeparture.find(flight => flight.id === this.selectedFlightDeparture),
+				selectedFlightReturn: data.flightsReturn.find(flight => flight.id === this.selectedFlightReturn)
+			})
 		}
 	},
 	computed: {

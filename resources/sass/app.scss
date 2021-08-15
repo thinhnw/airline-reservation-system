@@ -37,14 +37,17 @@ html, body {
 	cursor: pointer;
 }
 
-.font-small {
+.font-size-small {
 	font-size: 0.75rem !important;
 }
-.font-large {
+.font-size-large {
 	font-size: 1.25rem !important;
 }
-.font-larger {
+.font-size-larger {
 	font-size: 1.5rem !important;
+}
+.font-size-2rem {
+	font-size: 2rem !important;
 }
 
 // 03. Auth views
@@ -61,7 +64,6 @@ html, body {
 // 04. Forms
 .v-select {
 	.vs__dropdown-toggle {
-		border-radius: 0;
 		padding-top: 4px;
 		background-color: white;
 		.vs__search {
@@ -72,9 +74,6 @@ html, body {
 	}
 }
 
-.form-control {
-	border-radius: 0 !important;
-}
 
 // 05. Buttons
 .btn-icon {
@@ -104,6 +103,21 @@ html, body {
 
 // 07. Cards 
 .card {
-	border: none;
-	border-radius: 10px;
+	border: none !important;
+	border-radius: 10px !important;
+	box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15) !important;
+	.card-header {
+		background: var(--primary);
+		color: white;
+		&:first-child {
+			border-radius: 10px 10px 0 0;
+		}
+	}
+	.card-footer {
+		background: var(--primary);
+		color: white;
+		&:last-child {
+			border-radius: 0 0 10px 10px;
+		}
+	}
 }

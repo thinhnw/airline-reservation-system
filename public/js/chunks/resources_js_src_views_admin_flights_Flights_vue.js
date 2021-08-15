@@ -593,7 +593,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "toTitleCase": () => (/* binding */ toTitleCase)
+/* harmony export */   "toTitleCase": () => (/* binding */ toTitleCase),
+/* harmony export */   "getDisplayedDuration": () => (/* binding */ getDisplayedDuration)
 /* harmony export */ });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
@@ -602,6 +603,14 @@ var toTitleCase = function toTitleCase(sentence) {
   return lodash__WEBPACK_IMPORTED_MODULE_0___default().words(sentence).map(function (word) {
     return lodash__WEBPACK_IMPORTED_MODULE_0___default().capitalize(word);
   }).join(' ');
+};
+var getDisplayedDuration = function getDisplayedDuration(a, b) {
+  var date1 = new Date(a);
+  var date2 = new Date(b);
+  var diffTime = Math.abs(date2 - date1);
+  var diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
+  var diffMinutes = diffTime % (1000 * 60 * 60) * 60;
+  return diffHours + 'h ' + diffMinutes + 'm';
 };
 
 /***/ }),

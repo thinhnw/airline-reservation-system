@@ -1,10 +1,17 @@
 <template>
-	<div class="w-100">
-		<FlightBooking v-if="bookingStep === 0" 
+	<div id="flight-booking">
+		<FlightList v-if="bookingStep === 1" 
 			:airports="airports"
-			:details="flightsDetails"
+			:details="tripDetails"
+			@done="continueStep"
 		/>	
-		<PassengersInfo v-if="bookingStep === 1"
+		<PassengersInfo v-if="bookingStep === 2"
+			:details="tripDetails"
+			@done="continueStep"
+		/>
+		<TripSummary v-if="bookingStep === 3"
+			:details="tripDetails"
+			@done="continueStep"
 		/>
 	</div>	
 </template>
@@ -12,21 +19,45 @@
 <script>
 import FlightList from './FlightList.vue'
 import PassengersInfo from './PassengersInfo.vue'
+import TripSummary from './TripSummary.vue'
+import axios from '@/axios'
 export default {
 	components: {
 		FlightList,
-		PassengersInfo
+		PassengersInfo,
+		TripSummary
 	},
 	props: {
-		details: {
+		searchedInfo: {
 			type: Object,
 			default: () => {}
 		},
 		airports: Array
 	},
+	data() {
+		return {
+			bookingStep: 1, // 1. Searched, 2. Require passengers info
+			tripDetails: {}
+		}
+	},
+	methods: {
+		continueStep(event) {
+			this.tripDetails = {
+				...this.tripDetails,
+				...event
+			}
+			console.log(this.tripDetails)
+			this.bookingStep++
+		},
+	},
+	created() {
+		this.tripDetails = JSON.parse(JSON.stringify(this.searchedInfo))
+	}
 }
 </script>
 
-<style>
-
-</style>
+<style lang="scss" scoped>
+#flight-booking {
+	background: #f2f3fa;
+}
+</style>>

@@ -10027,16 +10027,20 @@ html, body {
   cursor: pointer;
 }
 
-.font-small {
+.font-size-small {
   font-size: 0.75rem !important;
 }
 
-.font-large {
+.font-size-large {
   font-size: 1.25rem !important;
 }
 
-.font-larger {
+.font-size-larger {
   font-size: 1.5rem !important;
+}
+
+.font-size-2rem {
+  font-size: 2rem !important;
 }
 
 .auth-background {
@@ -10045,7 +10049,6 @@ html, body {
 }
 
 .v-select .vs__dropdown-toggle {
-  border-radius: 0;
   padding-top: 4px;
   background-color: white;
 }
@@ -10057,10 +10060,6 @@ html, body {
 }
 .v-select .vs__dropdown-toggle .vs__search::placeholder {
   color: var(--gray);
-}
-
-.form-control {
-  border-radius: 0 !important;
 }
 
 .btn-icon {
@@ -10080,6 +10079,21 @@ html, body {
 }
 
 .card {
-  border: none;
-  border-radius: 10px;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15) !important;
+}
+.card .card-header {
+  background: var(--primary);
+  color: white;
+}
+.card .card-header:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.card .card-footer {
+  background: var(--primary);
+  color: white;
+}
+.card .card-footer:last-child {
+  border-radius: 0 0 10px 10px;
 }
