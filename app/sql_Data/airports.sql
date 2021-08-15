@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `airports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 
+
 /*!40000 ALTER TABLE `airports` DISABLE KEYS */;
 INSERT INTO `airports` (`code`, `name`, `cityCode`, `cityName`, `countryName`, `countryCode`, `timezone`, `lat`, `lon`, `numAirports`, `city`) VALUES
 	('ANW', 'Ainsworth Minicipal Arpt', 'ANW', 'Ainsworth', 'UNITED STATES', 'US', '-100', '42.58', '-99.9933', 1, 'true'),

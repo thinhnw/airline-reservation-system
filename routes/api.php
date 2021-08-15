@@ -29,7 +29,7 @@ Route::group([
     Route::post('refresh-token', [ AuthController::class, 'refresh']);
     Route::post('me', [ AuthController::class, 'me' ] );
     Route::post('register', [ AuthController::class, 'register' ] );
-    
+
 });
 
 Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
@@ -50,4 +50,3 @@ Route::get('/customer/edit/{id}',[CustomerController::class,'edit']);
 Route::post('/customer/update/{id}',[CustomerController::class,'update']);
 Route::delete('/customer/delete/{id}',[CustomerController::class,'delete']);
 Route::post('/customer/save',[CustomerController::class,'save']);
-

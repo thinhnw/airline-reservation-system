@@ -198,7 +198,6 @@ export default {
 /*
  * Utilities
  */
-
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 </style>

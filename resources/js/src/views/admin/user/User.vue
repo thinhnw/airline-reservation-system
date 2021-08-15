@@ -27,6 +27,7 @@
 import ListUser from "./ListUser";
 import CreateAndEdit from "./CreateAndEdit";
 export default {
+
     name: "User",
     components: {CreateAndEdit, ListUser},
     data(){

@@ -53,7 +53,6 @@ const router = new VueRouter({
 				},
 			]
 		},
-
 		{
 			path: '/errors/not-authorized',
 			name: 'errors-not-authorized',

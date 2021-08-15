@@ -138,4 +138,5 @@ export default {
     background-color: #ffffff;
     box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);
 }
+
 </style>

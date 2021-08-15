@@ -46,7 +46,6 @@ class Airport extends Model
     $lonFrom = deg2rad($longitudeFrom);
     $latTo = deg2rad($latitudeTo);
     $lonTo = deg2rad($longitudeTo);
-
     $lonDelta = $lonTo - $lonFrom;
     $a = pow(cos($latTo) * sin($lonDelta), 2) +
         pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);

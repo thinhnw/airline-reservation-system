@@ -80,6 +80,7 @@ export default {
 		...mapActions({
 			logout: 'auth/logout'
 		}),
+
 		editDetail(){
 			this.$router.push({path:`information/edit`})
 		}

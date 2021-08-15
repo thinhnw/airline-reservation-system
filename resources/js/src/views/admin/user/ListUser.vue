@@ -23,6 +23,7 @@
             </tr>
             </tbody>
         </table>
+
         <paginate
             :page-count="rows"
             :page-range="pageRange"

@@ -67,7 +67,6 @@ class AirportController extends Controller
                 'lat' => $request->post('lat'),
                 'lon' => $request->post('lon'),
                 'numAirports' => $request->post('numAirports'),
-
             ]);
         }
         catch (\Exception $e){
