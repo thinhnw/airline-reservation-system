@@ -8,7 +8,7 @@
 							Trip Summary
 						</b-card-header>
 						<b-card-body ref="summary">
-							<TripSummaryPrintable />
+							<TripSummaryPrintable :details="details" />
 						</b-card-body>
 						<div class="w-100 text-center">
 							<b-button class="w-50 py-3 font-size-large" variant="warning" @click="handlePayment">
@@ -25,7 +25,7 @@
 
 <script>
 import moment from 'moment'
-import details from './tripSummaryDetails'
+// import details from './tripSummaryDetails'
 import { getDisplayedDuration } from '@/helper'
 import html2canvas from 'html2canvas'
 import TripSummaryPrintable from './TripSummaryPrintable.vue'
@@ -34,16 +34,16 @@ export default {
 	components: {
 		TripSummaryPrintable
 	},
-	// props: {
-	// 	details: {
-	// 		type: Object,
-	// 		default: () => {}
-	// 	}
-	// },
+	props: {
+		details: {
+			type: Object,
+			default: () => {}
+		}
+	},
 	data() {
 		return {
 			moment,
-			details,
+			// details,
 		}
 	},
 	methods: {

@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_client_home_Home_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_client_home_Home_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/CheckIn.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************!*\
@@ -387,6 +387,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = JSON.parse(JSON.stringify(this.details));
+
+      if (this.details.trip_type === 'One-way') {
+        this.$emit('done', {
+          selectedFlightDeparture: data.flightsDeparture.find(function (flight) {
+            return flight.id === _this.selectedFlightDeparture;
+          })
+        });
+        return;
+      }
+
       this.$emit('done', {
         selectedFlightDeparture: data.flightsDeparture.find(function (flight) {
           return flight.id === _this.selectedFlightDeparture;
@@ -427,6 +437,10 @@ __webpack_require__.r(__webpack_exports__);
         return flight.id == _this5.selectedFlightReturn;
       });
       return this.details.flightsReturn;
+    },
+    isSelected: function isSelected() {
+      if (this.details.trip_type === 'One-way') return this.selectedFlightDeparture > -1;
+      return this.selectedFlightDeparture > -1 && this.selectedFlightReturn > -1;
     }
   },
   mounted: function mounted() {}
@@ -1079,28 +1093,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                // let filter = {
-                // 	from_airport_id: this.form.fromCity.id,
-                // 	to_airport_id: this.form.toCity.id,
-                // 	trip_type: this.form.tripType,
-                // 	departure_date: this.form.departureDate,
-                // 	passenger_count: this.passengerCount,
-                // 	class: this.class
-                // }
                 filter = {
-                  from_airport_id: 1934,
-                  to_airport_id: 2307,
-                  trip_type: 'Return',
-                  departure_date: '2021-08-19',
-                  return_date: '2021-08-21',
-                  passenger_count: 2,
-                  "class": 'Business'
-                }; // if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
+                  from_airport_id: _this.form.fromCity.id,
+                  to_airport_id: _this.form.toCity.id,
+                  trip_type: _this.form.tripType,
+                  departure_date: _this.form.departureDate,
+                  passenger_count: _this.form.passengerCount,
+                  "class": _this.form["class"]
+                }; // let filter = {
+                // 	from_airport_id: 1934,
+                // 	to_airport_id: 2307,
+                // 	trip_type: 'Return',
+                // 	departure_date: '2021-08-19',
+                // 	return_date: '2021-08-21',
+                // 	passenger_count: 2,
+                // 	class: 'Business'
+                // }
 
-                _context.next = 4;
+                if (filter.trip_type === 'Return') filter.return_date = _this.form.returnDate;
+                _context.next = 5;
                 return _axios__WEBPACK_IMPORTED_MODULE_1__.default.get("/api/flights/search?filter=".concat(JSON.stringify(filter)));
 
-              case 4:
+              case 5:
                 res = _context.sent;
                 console.log(res);
                 payload = _objectSpread(_objectSpread({}, filter), {}, {
@@ -1133,20 +1147,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.$emit('list-flights', payload);
 
-                _context.next = 14;
+                _context.next = 15;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 14:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 12]]);
       }))();
     }
   }
@@ -1169,11 +1183,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tripSummaryDetails */ "./resources/js/src/views/client/home/tripSummaryDetails.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1205,29 +1218,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-
+ // import details from './tripSummaryDetails'
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__.default
+    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__.default
   },
-  // props: {
-  // 	details: {
-  // 		type: Object,
-  // 		default: () => {}
-  // 	}
-  // },
+  props: {
+    details: {
+      type: Object,
+      "default": function _default() {}
+    }
+  },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()),
-      details: _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__.default
+      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()) // details,
+
     };
   },
   methods: {
-    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_3__.getDisplayedDuration,
+    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_2__.getDisplayedDuration,
     handlePayment: function handlePayment() {
       var _this = this;
 
@@ -1240,7 +1253,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 el = _this.$refs.summary;
                 _context.next = 4;
-                return html2canvas__WEBPACK_IMPORTED_MODULE_4___default()(el);
+                return html2canvas__WEBPACK_IMPORTED_MODULE_3___default()(el);
 
               case 4:
                 res = _context.sent;
@@ -1299,8 +1312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tripSummaryDetails */ "./resources/js/src/views/client/home/tripSummaryDetails.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
 //
 //
 //
@@ -1566,24 +1578,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+ // import details from './tripSummaryDetails'
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  // props: {
-  // 	details: {
-  // 		type: Object,
-  // 		default: () => {}
-  // 	}
-  // },
+  props: {
+    details: {
+      type: Object,
+      "default": function _default() {}
+    }
+  },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_0___default()),
-      details: _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_1__.default
+      moment: (moment__WEBPACK_IMPORTED_MODULE_0___default()) // details,
+
     };
   },
   methods: {
-    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_2__.getDisplayedDuration
+    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_1__.getDisplayedDuration
   },
   computed: {
     flightDeparture: function flightDeparture() {
@@ -15474,284 +15486,6 @@ var getDisplayedDuration = function getDisplayedDuration(a, b) {
   var diffMinutes = diffTime % (1000 * 60 * 60) * 60;
   return diffHours + 'h ' + diffMinutes + 'm';
 };
-
-/***/ }),
-
-/***/ "./resources/js/src/views/client/home/tripSummaryDetails.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/src/views/client/home/tripSummaryDetails.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "from_airport_id": 1934,
-  "to_airport_id": 2307,
-  "trip_type": "Return",
-  "departure_date": "2021-08-19",
-  "return_date": "2021-08-21",
-  "passenger_count": 2,
-  "class": "Business",
-  "flightsDeparture": [{
-    "id": 4,
-    "flight_number": "RU66",
-    "departure_id": 1934,
-    "destination_id": 2307,
-    "departure_time": "2021-08-19 11:00:00",
-    "arrival_time": "2021-08-19 13:00:00",
-    "created_at": "2021-08-07T07:08:26.000000Z",
-    "updated_at": "2021-08-07T07:08:26.000000Z",
-    "economy_seat_count": 312,
-    "business_seat_count": 42,
-    "origin": {
-      "id": 1934,
-      "code": "LED",
-      "name": "Pulkovo Airport",
-      "citycode": "LED",
-      "cityname": "St Petersburg",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "59.800292",
-      "lon": "30.262503",
-      "numairports": 2,
-      "city": "true",
-      "created_at": null,
-      "updated_at": null,
-      "label": "St Petersburg LED"
-    },
-    "destination": {
-      "id": 2307,
-      "code": "SVO",
-      "name": "Sheremetyevo Airport",
-      "citycode": "MOW",
-      "cityname": "Moscow",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "55.972642",
-      "lon": "37.414589",
-      "numairports": 3,
-      "city": "",
-      "created_at": null,
-      "updated_at": null,
-      "label": "Moscow SVO"
-    }
-  }, {
-    "id": 7,
-    "flight_number": "RU345",
-    "departure_id": 1934,
-    "destination_id": 2307,
-    "departure_time": "2021-08-19 23:00:00",
-    "arrival_time": "2021-08-20 01:00:00",
-    "created_at": "2021-08-08T10:24:51.000000Z",
-    "updated_at": "2021-08-08T10:24:51.000000Z",
-    "economy_seat_count": 312,
-    "business_seat_count": 42,
-    "origin": {
-      "id": 1934,
-      "code": "LED",
-      "name": "Pulkovo Airport",
-      "citycode": "LED",
-      "cityname": "St Petersburg",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "59.800292",
-      "lon": "30.262503",
-      "numairports": 2,
-      "city": "true",
-      "created_at": null,
-      "updated_at": null,
-      "label": "St Petersburg LED"
-    },
-    "destination": {
-      "id": 2307,
-      "code": "SVO",
-      "name": "Sheremetyevo Airport",
-      "citycode": "MOW",
-      "cityname": "Moscow",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "55.972642",
-      "lon": "37.414589",
-      "numairports": 3,
-      "city": "",
-      "created_at": null,
-      "updated_at": null,
-      "label": "Moscow SVO"
-    }
-  }],
-  "flightsReturn": [{
-    "id": 8,
-    "flight_number": "RU 556",
-    "departure_id": 2307,
-    "destination_id": 1934,
-    "departure_time": "2021-08-21 22:00:00",
-    "arrival_time": "2021-08-21 23:00:00",
-    "created_at": "2021-08-09T03:13:31.000000Z",
-    "updated_at": "2021-08-09T03:13:31.000000Z",
-    "economy_seat_count": 312,
-    "business_seat_count": 42,
-    "origin": {
-      "id": 2307,
-      "code": "SVO",
-      "name": "Sheremetyevo Airport",
-      "citycode": "MOW",
-      "cityname": "Moscow",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "55.972642",
-      "lon": "37.414589",
-      "numairports": 3,
-      "city": "",
-      "created_at": null,
-      "updated_at": null,
-      "label": "Moscow SVO"
-    },
-    "destination": {
-      "id": 1934,
-      "code": "LED",
-      "name": "Pulkovo Airport",
-      "citycode": "LED",
-      "cityname": "St Petersburg",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "59.800292",
-      "lon": "30.262503",
-      "numairports": 2,
-      "city": "true",
-      "created_at": null,
-      "updated_at": null,
-      "label": "St Petersburg LED"
-    }
-  }],
-  "selectedFlightDeparture": {
-    "id": 4,
-    "flight_number": "RU66",
-    "departure_id": 1934,
-    "destination_id": 2307,
-    "departure_time": "2021-08-19 11:00:00",
-    "arrival_time": "2021-08-19 13:00:00",
-    "created_at": "2021-08-07T07:08:26.000000Z",
-    "updated_at": "2021-08-07T07:08:26.000000Z",
-    "economy_seat_count": 312,
-    "business_seat_count": 42,
-    "origin": {
-      "id": 1934,
-      "code": "LED",
-      "name": "Pulkovo Airport",
-      "citycode": "LED",
-      "cityname": "St Petersburg",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "59.800292",
-      "lon": "30.262503",
-      "numairports": 2,
-      "city": "true",
-      "created_at": null,
-      "updated_at": null,
-      "label": "St Petersburg LED"
-    },
-    "destination": {
-      "id": 2307,
-      "code": "SVO",
-      "name": "Sheremetyevo Airport",
-      "citycode": "MOW",
-      "cityname": "Moscow",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "55.972642",
-      "lon": "37.414589",
-      "numairports": 3,
-      "city": "",
-      "created_at": null,
-      "updated_at": null,
-      "label": "Moscow SVO"
-    }
-  },
-  "selectedFlightReturn": {
-    "id": 8,
-    "flight_number": "RU 556",
-    "departure_id": 2307,
-    "destination_id": 1934,
-    "departure_time": "2021-08-21 22:00:00",
-    "arrival_time": "2021-08-21 23:00:00",
-    "created_at": "2021-08-09T03:13:31.000000Z",
-    "updated_at": "2021-08-09T03:13:31.000000Z",
-    "economy_seat_count": 312,
-    "business_seat_count": 42,
-    "origin": {
-      "id": 2307,
-      "code": "SVO",
-      "name": "Sheremetyevo Airport",
-      "citycode": "MOW",
-      "cityname": "Moscow",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "55.972642",
-      "lon": "37.414589",
-      "numairports": 3,
-      "city": "",
-      "created_at": null,
-      "updated_at": null,
-      "label": "Moscow SVO"
-    },
-    "destination": {
-      "id": 1934,
-      "code": "LED",
-      "name": "Pulkovo Airport",
-      "citycode": "LED",
-      "cityname": "St Petersburg",
-      "countryname": "RUSSIA",
-      "countrycode": "RU",
-      "timezone": "4",
-      "lat": "59.800292",
-      "lon": "30.262503",
-      "numairports": 2,
-      "city": "true",
-      "created_at": null,
-      "updated_at": null,
-      "label": "St Petersburg LED"
-    }
-  },
-  "passengers": [{
-    "title": "Mr",
-    "firstName": "Thinh",
-    "lastName": "Nguyen",
-    "dateOfBirth": "1999-12-08",
-    "nationality": "VN",
-    "nationalityId": -1,
-    "passportNumber": "C12345678",
-    "passportExpiryDate": "2022-08-20",
-    "travelDocumentType": "Passport",
-    "travelDocumentCountry": "VN"
-  }, {
-    "title": "Mrs",
-    "firstName": "Thi",
-    "lastName": "Nguyen",
-    "dateOfBirth": "1991-08-10",
-    "nationality": "VN",
-    "nationalityId": -1,
-    "passportNumber": "C87654321",
-    "passportExpiryDate": "2023-08-24",
-    "travelDocumentType": "Passport",
-    "travelDocumentCountry": "VN"
-  }],
-  "contact": {
-    "email": "nvt0412@gmail.com"
-  }
-});
 
 /***/ }),
 
@@ -64240,7 +63974,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.selectedFlightDeparture > -1 && _vm.selectedFlightReturn > -1
+          _vm.isSelected
             ? _c(
                 "b-row",
                 [
@@ -65534,7 +65268,11 @@ var render = function() {
                       _c(
                         "b-card-body",
                         { ref: "summary" },
-                        [_c("TripSummaryPrintable")],
+                        [
+                          _c("TripSummaryPrintable", {
+                            attrs: { details: _vm.details }
+                          })
+                        ],
                         1
                       ),
                       _vm._v(" "),
@@ -65832,216 +65570,236 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c(
-      "section",
-      { staticClass: "flight-details mb-5" },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c("span", { staticClass: "font-size-2rem text-primary" }, [
-            _vm._v(
-              "\n\t\t\t\t" +
-                _vm._s(_vm.flightReturn.origin.cityname) +
-                "\n\t\t\t"
-            )
-          ]),
-          _vm._v("\n\t\t\t>\n\t\t\t"),
-          _c("span", { staticClass: "font-size-2rem text-primary" }, [
-            _vm._v(
-              "\n\t\t\t\t" +
-                _vm._s(_vm.flightReturn.destination.cityname) +
-                " \n\t\t\t"
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", [
-            _vm._v(
-              "\n\t\t\t\t" +
-                _vm._s(
-                  _vm.moment
-                    .utc(_vm.flightReturn.arrival_time)
-                    .utcOffset(_vm.flightReturn.destination.timezone)
-                    .format("ddd, DD MMM YYYY")
-                ) +
-                "\n\t\t\t"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "b-table-simple",
+    _vm.flightReturn
+      ? _c(
+          "section",
+          { staticClass: "flight-details mb-5" },
           [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c("span", { staticClass: "font-size-2rem text-primary" }, [
+                _vm._v(
+                  "\n\t\t\t\t" +
+                    _vm._s(_vm.flightReturn.origin.cityname) +
+                    "\n\t\t\t"
+                )
+              ]),
+              _vm._v("\n\t\t\t>\n\t\t\t"),
+              _c("span", { staticClass: "font-size-2rem text-primary" }, [
+                _vm._v(
+                  "\n\t\t\t\t" +
+                    _vm._s(_vm.flightReturn.destination.cityname) +
+                    " \n\t\t\t"
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n\t\t\t\t" +
+                    _vm._s(
+                      _vm.moment
+                        .utc(_vm.flightReturn.arrival_time)
+                        .utcOffset(_vm.flightReturn.destination.timezone)
+                        .format("ddd, DD MMM YYYY")
+                    ) +
+                    "\n\t\t\t"
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c(
-              "b-tbody",
+              "b-table-simple",
               [
                 _c(
-                  "b-tr",
+                  "b-tbody",
                   [
-                    _c("b-td", [_vm._v("\n\t\t\t\t\t\tDeparture\n\t\t\t\t\t")]),
-                    _vm._v(" "),
-                    _c("b-td"),
-                    _vm._v(" "),
-                    _c("b-td", [_vm._v("\n\t\t\t\t\t\tArrival\n\t\t\t\t\t")]),
-                    _vm._v(" "),
-                    _c("b-td", [
-                      _vm._v(
-                        "\n\t\t\t\t\t\tClass / Check baggage allowance:\n\t\t\t\t\t"
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("b-td", [
-                      _vm._v("\n\t\t\t\t\t\tEarn Skymiles\n\t\t\t\t\t")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-tr",
-                  [
-                    _c("b-td", [
-                      _c("div", [
-                        _c(
-                          "span",
-                          { staticClass: "font-size-larger font-weight-bold" },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\t" +
-                                _vm._s(
-                                  _vm.moment
-                                    .utc(_vm.flightReturn.departure_time)
-                                    .utcOffset(_vm.flightReturn.origin.timezone)
-                                    .format("HH:mm")
-                                ) +
-                                "\n\t\t\t\t\t\t\t"
-                            )
-                          ]
-                        ),
+                    _c(
+                      "b-tr",
+                      [
+                        _c("b-td", [
+                          _vm._v("\n\t\t\t\t\t\tDeparture\n\t\t\t\t\t")
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "font-size-larger text-secondary" },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\t" +
-                                _vm._s(
-                                  _vm.flightReturn.origin.code.toUpperCase()
-                                ) +
-                                "\n\t\t\t\t\t\t\t"
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("small", [
+                        _c("b-td"),
+                        _vm._v(" "),
+                        _c("b-td", [
+                          _vm._v("\n\t\t\t\t\t\tArrival\n\t\t\t\t\t")
+                        ]),
+                        _vm._v(" "),
+                        _c("b-td", [
                           _vm._v(
-                            _vm._s(_vm.flightReturn.origin.cityname) +
-                              ", " +
-                              _vm._s(_vm.flightReturn.origin.name)
+                            "\n\t\t\t\t\t\tClass / Check baggage allowance:\n\t\t\t\t\t"
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("b-td", [
+                          _vm._v("\n\t\t\t\t\t\tEarn Skymiles\n\t\t\t\t\t")
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("small", [
-                          _vm._v(_vm._s(_vm.flightReturn.origin.countryname))
-                        ])
-                      ])
-                    ]),
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("b-td", { staticClass: "text-center px-5" }, [
-                      _c("div", [_c("i", { staticClass: "fal fa-clock" })]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(
-                              _vm.getDisplayedDuration(
-                                _vm.flightReturn.departure_time,
-                                _vm.flightReturn.arrival_time
+                    _c(
+                      "b-tr",
+                      [
+                        _c("b-td", [
+                          _c("div", [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "font-size-larger font-weight-bold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(
+                                      _vm.moment
+                                        .utc(_vm.flightReturn.departure_time)
+                                        .utcOffset(
+                                          _vm.flightReturn.origin.timezone
+                                        )
+                                        .format("HH:mm")
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "font-size-larger text-secondary"
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(
+                                      _vm.flightReturn.origin.code.toUpperCase()
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t"
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("small", [
+                              _vm._v(
+                                _vm._s(_vm.flightReturn.origin.cityname) +
+                                  ", " +
+                                  _vm._s(_vm.flightReturn.origin.name)
                               )
-                            ) +
-                            "\n\t\t\t\t\t\t"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("b-td", [
-                      _c("div", [
-                        _c(
-                          "span",
-                          { staticClass: "font-size-larger font-weight-bold" },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\t" +
-                                _vm._s(
-                                  _vm.moment
-                                    .utc(_vm.flightReturn.arrival_time)
-                                    .utcOffset(
-                                      _vm.flightReturn.destination.timezone
-                                    )
-                                    .format("HH:mm")
-                                ) +
-                                "\n\t\t\t\t\t\t\t"
-                            )
-                          ]
-                        ),
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("small", [
+                              _vm._v(
+                                _vm._s(_vm.flightReturn.origin.countryname)
+                              )
+                            ])
+                          ])
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "font-size-larger text-secondary" },
-                          [
+                        _c("b-td", { staticClass: "text-center px-5" }, [
+                          _c("div", [_c("i", { staticClass: "fal fa-clock" })]),
+                          _vm._v(" "),
+                          _c("div", [
                             _vm._v(
-                              "\n\t\t\t\t\t\t\t\t" +
+                              "\n\t\t\t\t\t\t\t" +
                                 _vm._s(
-                                  _vm.flightReturn.destination.code.toUpperCase()
+                                  _vm.getDisplayedDuration(
+                                    _vm.flightReturn.departure_time,
+                                    _vm.flightReturn.arrival_time
+                                  )
                                 ) +
-                                "\n\t\t\t\t\t\t\t"
+                                "\n\t\t\t\t\t\t"
                             )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("small", [
-                          _vm._v(
-                            _vm._s(_vm.flightReturn.destination.cityname) +
-                              ", " +
-                              _vm._s(_vm.flightReturn.destination.name)
-                          )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("b-td", [
+                          _c("div", [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "font-size-larger font-weight-bold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(
+                                      _vm.moment
+                                        .utc(_vm.flightReturn.arrival_time)
+                                        .utcOffset(
+                                          _vm.flightReturn.destination.timezone
+                                        )
+                                        .format("HH:mm")
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "font-size-larger text-secondary"
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(
+                                      _vm.flightReturn.destination.code.toUpperCase()
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t"
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("small", [
+                              _vm._v(
+                                _vm._s(_vm.flightReturn.destination.cityname) +
+                                  ", " +
+                                  _vm._s(_vm.flightReturn.destination.name)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("small", [
+                              _vm._v(
+                                _vm._s(_vm.flightReturn.destination.countryname)
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("b-td", [
+                          _c("div", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.details.class) +
+                                " / 35kg\n\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("b-td", [
+                          _c("small", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\tEarn\n\t\t\t\t\t\t\t" +
+                                _vm._s(2732) +
+                                " Skymiles\n\t\t\t\t\t\t"
+                            )
+                          ])
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("small", [
-                          _vm._v(
-                            _vm._s(_vm.flightReturn.destination.countryname)
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("b-td", [
-                      _c("div", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.details.class) +
-                            " / 35kg\n\t\t\t\t\t\t"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("b-td", [
-                      _c("small", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\tEarn\n\t\t\t\t\t\t\t" +
-                            _vm._s(2732) +
-                            " Skymiles\n\t\t\t\t\t\t"
-                        )
-                      ])
-                    ])
+                      ],
+                      1
+                    )
                   ],
                   1
                 )
@@ -66051,9 +65809,7 @@ var render = function() {
           ],
           1
         )
-      ],
-      1
-    ),
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "section",

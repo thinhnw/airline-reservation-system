@@ -94,7 +94,7 @@
 					</b-tbody>
 				</b-table-simple>
 			</section>
-			<section class="flight-details mb-5">
+			<section class="flight-details mb-5" v-if="flightReturn">
 				<div class="d-flex align-items-center">
 					<div class="icon-wrapper">
 						<i class="font-size-small fas fa-plane text-white" style="transform: translate(-50%, -50%) rotate(180deg)"></i>
@@ -265,20 +265,20 @@
 
 <script>
 import moment from 'moment'
-import details from './tripSummaryDetails'
+// import details from './tripSummaryDetails'
 import { getDisplayedDuration } from '@/helper'
 
 export default {
-	// props: {
-	// 	details: {
-	// 		type: Object,
-	// 		default: () => {}
-	// 	}
-	// },
+	props: {
+		details: {
+			type: Object,
+			default: () => {}
+		}
+	},
 	data() {
 		return {
 			moment,
-			details,
+			// details,
 		}
 	},
 	methods: {

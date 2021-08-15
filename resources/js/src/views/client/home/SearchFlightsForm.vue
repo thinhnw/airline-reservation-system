@@ -149,24 +149,24 @@ export default {
 		},
 		async search() {
 			try {
-				// let filter = {
-				// 	from_airport_id: this.form.fromCity.id,
-				// 	to_airport_id: this.form.toCity.id,
-				// 	trip_type: this.form.tripType,
-				// 	departure_date: this.form.departureDate,
-				// 	passenger_count: this.passengerCount,
-				// 	class: this.class
-				// }
 				let filter = {
-					from_airport_id: 1934,
-					to_airport_id: 2307,
-					trip_type: 'Return',
-					departure_date: '2021-08-19',
-					return_date: '2021-08-21',
-					passenger_count: 2,
-					class: 'Business'
+					from_airport_id: this.form.fromCity.id,
+					to_airport_id: this.form.toCity.id,
+					trip_type: this.form.tripType,
+					departure_date: this.form.departureDate,
+					passenger_count: this.form.passengerCount,
+					class: this.form.class
 				}
-				// if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
+				// let filter = {
+				// 	from_airport_id: 1934,
+				// 	to_airport_id: 2307,
+				// 	trip_type: 'Return',
+				// 	departure_date: '2021-08-19',
+				// 	return_date: '2021-08-21',
+				// 	passenger_count: 2,
+				// 	class: 'Business'
+				// }
+				if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
 				let res = await axios.get(`/api/flights/search?filter=${JSON.stringify(filter)}`)	
 				console.log(res)
 

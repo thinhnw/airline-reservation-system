@@ -227,7 +227,7 @@
 					</b-button>
 				</b-col>
 			</b-row>
-			<b-row v-if="selectedFlightDeparture > -1 && selectedFlightReturn > -1">
+			<b-row v-if="isSelected">
 				<b-col cols="12">
 					<b-button class="w-100 mx-0" variant="primary" @click="handleStepDone">
 						CONTINUE
@@ -259,6 +259,12 @@ export default {
 		getDisplayedDuration,
 		handleStepDone() {
 			let data = JSON.parse(JSON.stringify(this.details))
+			if (this.details.trip_type === 'One-way') {
+				this.$emit('done', {
+					selectedFlightDeparture: data.flightsDeparture.find(flight => flight.id === this.selectedFlightDeparture),
+				})
+				return
+			}
 			this.$emit('done', {
 				selectedFlightDeparture: data.flightsDeparture.find(flight => flight.id === this.selectedFlightDeparture),
 				selectedFlightReturn: data.flightsReturn.find(flight => flight.id === this.selectedFlightReturn)
@@ -282,6 +288,10 @@ export default {
 				return this.details.flightsReturn.filter(flight => flight.id == this.selectedFlightReturn)
 			return this.details.flightsReturn
 		},
+		isSelected() {
+			if (this.details.trip_type === 'One-way') return this.selectedFlightDeparture > -1
+			return this.selectedFlightDeparture > -1 && this.selectedFlightReturn > -1
+		}
 	},
 	mounted() {
 	}
