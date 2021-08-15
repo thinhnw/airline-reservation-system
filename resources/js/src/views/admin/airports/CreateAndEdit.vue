@@ -33,54 +33,54 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon3">City Code</span>
-                <input name="cityCode"
+                <input name="citycode"
                        v-if="Object.keys(dataEdit).length!==0"
-                       v-model="dataEdit.cityCode"
+                       v-model="dataEdit.citycode"
                        type="text" class="form-control"
                        required>
-                <input name="cityCode"
+                <input name="citycode"
                        v-else placeholder="City Code"
-                       v-model="dataCreate.cityCode"
+                       v-model="dataCreate.citycode"
                        type="text" class="form-control"
                        required>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon10">City Name</span>
                 <label class="form-label"></label>
-                <input name="cityName"
+                <input name="cityname"
                        v-if="Object.keys(dataEdit).length!==0"
-                       v-model="dataEdit.cityName"
+                       v-model="dataEdit.cityname"
                        type="text" class="form-control"
                        required>
-                <input name="cityName"
-                       v-else placeholder="cityName"
-                       v-model="dataCreate.cityName"
+                <input name="cityname"
+                       v-else placeholder="cityname"
+                       v-model="dataCreate.cityname"
                        type="text" class="form-control"
                        required>            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon4">Country Code</span>
-                <input name="countryCode"
+                <input name="countrycode"
                        v-if="Object.keys(dataEdit).length!==0"
-                       v-model="dataEdit.countryCode"
+                       v-model="dataEdit.countrycode"
                        type="text"
                        class="form-control"
                        required>
-                <input name="countryCode"
-                       v-else placeholder="countryCode"
-                       v-model="dataCreate.countryCode"
+                <input name="countrycode"
+                       v-else placeholder="countrycode"
+                       v-model="dataCreate.countrycode"
                        type="text" class="form-control"
                        required>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon5">Country Name</span>
-                <input name="countryName"
+                <input name="countryname"
                        v-if="Object.keys(dataEdit).length!==0"
-                       v-model="dataEdit.countryName"
+                       v-model="dataEdit.countryname"
                        type="text" class="form-control"
                        required>
-                <input name="countryName"
-                       v-else placeholder="countryName"
-                       v-model="dataCreate.countryName"
+                <input name="countryname"
+                       v-else placeholder="countryname"
+                       v-model="dataCreate.countryname"
                        type="text"
                        class="form-control"
                        required>
@@ -136,16 +136,16 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon9">Number Airport</span>
-                <input name="numAirports"
+                <input name="numairports"
                        v-if="Object.keys(dataEdit).length!==0"
-                       v-model="dataEdit.numAirports"
+                       v-model="dataEdit.numairports"
                        type="number"
                        min="1"
                        class="form-control"
                        required>
-                <input name="numAirports"
-                       v-else placeholder="numAirports"
-                       v-model="dataCreate.numAirports"
+                <input name="numairports"
+                       v-else placeholder="numairports"
+                       v-model="dataCreate.numairports"
                        type="number"
                        min="1"
                        class="form-control"

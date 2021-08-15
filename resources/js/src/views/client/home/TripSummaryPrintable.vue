@@ -11,11 +11,11 @@
 				</div>
 				<div class="mb-3">
 					<span class="font-size-2rem text-primary">
-						{{ flightDeparture.origin.cityName }}
+						{{ flightDeparture.origin.cityname }}
 					</span>
 					>
 					<span class="font-size-2rem text-primary">
-						{{ flightDeparture.destination.cityName }} 
+						{{ flightDeparture.destination.cityname }} 
 					</span>
 					<span>
 						{{  moment.utc(flightDeparture.arrival_time).utcOffset(flightDeparture.destination.timezone).format('ddd, DD MMM YYYY') }}
@@ -49,10 +49,10 @@
 									</span>
 								</div>
 								<div>
-									<small>{{ flightDeparture.origin.cityName }}, {{ flightDeparture.origin.name }}</small>
+									<small>{{ flightDeparture.origin.cityname }}, {{ flightDeparture.origin.name }}</small>
 								</div>
 								<div>
-									<small>{{ flightDeparture.origin.countryName }}</small>
+									<small>{{ flightDeparture.origin.countryname }}</small>
 								</div>
 							</b-td>
 							<b-td class="text-center px-5">
@@ -73,10 +73,10 @@
 									</span>
 								</div>
 								<div>
-									<small>{{ flightDeparture.destination.cityName }}, {{ flightDeparture.destination.name }}</small>
+									<small>{{ flightDeparture.destination.cityname }}, {{ flightDeparture.destination.name }}</small>
 								</div>
 								<div>
-									<small>{{ flightDeparture.destination.countryName }}</small>
+									<small>{{ flightDeparture.destination.countryname }}</small>
 								</div>
 							</b-td>
 							<b-td>
@@ -105,11 +105,11 @@
 				</div>
 				<div class="mb-3">
 					<span class="font-size-2rem text-primary">
-						{{ flightReturn.origin.cityName }}
+						{{ flightReturn.origin.cityname }}
 					</span>
 					>
 					<span class="font-size-2rem text-primary">
-						{{ flightReturn.destination.cityName }} 
+						{{ flightReturn.destination.cityname }} 
 					</span>
 					<span>
 						{{  moment.utc(flightReturn.arrival_time).utcOffset(flightReturn.destination.timezone).format('ddd, DD MMM YYYY') }}
@@ -143,10 +143,10 @@
 									</span>
 								</div>
 								<div>
-									<small>{{ flightReturn.origin.cityName }}, {{ flightReturn.origin.name }}</small>
+									<small>{{ flightReturn.origin.cityname }}, {{ flightReturn.origin.name }}</small>
 								</div>
 								<div>
-									<small>{{ flightReturn.origin.countryName }}</small>
+									<small>{{ flightReturn.origin.countryname }}</small>
 								</div>
 							</b-td>
 							<b-td class="text-center px-5">
@@ -167,10 +167,10 @@
 									</span>
 								</div>
 								<div>
-									<small>{{ flightReturn.destination.cityName }}, {{ flightReturn.destination.name }}</small>
+									<small>{{ flightReturn.destination.cityname }}, {{ flightReturn.destination.name }}</small>
 								</div>
 								<div>
-									<small>{{ flightReturn.destination.countryName }}</small>
+									<small>{{ flightReturn.destination.countryname }}</small>
 								</div>
 							</b-td>
 							<b-td>

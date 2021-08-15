@@ -5,8 +5,8 @@
             <tr>
                 <th scope="col">code</th>
                 <th scope="col">name</th>
-                <th scope="col">cityName</th>
-                <th scope="col">countryName</th>
+                <th scope="col">cityname</th>
+                <th scope="col">countryname</th>
                 <th></th>
             </tr>
             </thead>
@@ -14,8 +14,8 @@
             <tr>
                 <th scope="row">{{rs.code}}</th>
                 <td>{{rs.name}}</td>
-                <td>{{rs.cityName}}</td>
-                <td>{{rs.countryName}}</td>
+                <td>{{rs.cityname}}</td>
+                <td>{{rs.countryname}}</td>
                 <td>
                     <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
                     <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>

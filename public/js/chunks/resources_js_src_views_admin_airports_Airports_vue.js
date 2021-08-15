@@ -1089,19 +1089,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataEdit.cityCode,
-                      expression: "dataEdit.cityCode"
+                      value: _vm.dataEdit.citycode,
+                      expression: "dataEdit.citycode"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { name: "cityCode", type: "text", required: "" },
-                  domProps: { value: _vm.dataEdit.cityCode },
+                  attrs: { name: "citycode", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.citycode },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataEdit, "cityCode", $event.target.value)
+                      _vm.$set(_vm.dataEdit, "citycode", $event.target.value)
                     }
                   }
                 })
@@ -1110,24 +1110,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataCreate.cityCode,
-                      expression: "dataCreate.cityCode"
+                      value: _vm.dataCreate.citycode,
+                      expression: "dataCreate.citycode"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "cityCode",
+                    name: "citycode",
                     placeholder: "City Code",
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: _vm.dataCreate.cityCode },
+                  domProps: { value: _vm.dataCreate.citycode },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataCreate, "cityCode", $event.target.value)
+                      _vm.$set(_vm.dataCreate, "citycode", $event.target.value)
                     }
                   }
                 })
@@ -1151,19 +1151,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataEdit.cityName,
-                      expression: "dataEdit.cityName"
+                      value: _vm.dataEdit.cityname,
+                      expression: "dataEdit.cityname"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { name: "cityName", type: "text", required: "" },
-                  domProps: { value: _vm.dataEdit.cityName },
+                  attrs: { name: "cityname", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.cityname },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataEdit, "cityName", $event.target.value)
+                      _vm.$set(_vm.dataEdit, "cityname", $event.target.value)
                     }
                   }
                 })
@@ -1172,24 +1172,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataCreate.cityName,
-                      expression: "dataCreate.cityName"
+                      value: _vm.dataCreate.cityname,
+                      expression: "dataCreate.cityname"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "cityName",
-                    placeholder: "cityName",
+                    name: "cityname",
+                    placeholder: "cityname",
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: _vm.dataCreate.cityName },
+                  domProps: { value: _vm.dataCreate.cityname },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataCreate, "cityName", $event.target.value)
+                      _vm.$set(_vm.dataCreate, "cityname", $event.target.value)
                     }
                   }
                 })
@@ -1211,19 +1211,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataEdit.countryCode,
-                      expression: "dataEdit.countryCode"
+                      value: _vm.dataEdit.countrycode,
+                      expression: "dataEdit.countrycode"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { name: "countryCode", type: "text", required: "" },
-                  domProps: { value: _vm.dataEdit.countryCode },
+                  attrs: { name: "countrycode", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.countrycode },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataEdit, "countryCode", $event.target.value)
+                      _vm.$set(_vm.dataEdit, "countrycode", $event.target.value)
                     }
                   }
                 })
@@ -1232,18 +1232,18 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataCreate.countryCode,
-                      expression: "dataCreate.countryCode"
+                      value: _vm.dataCreate.countrycode,
+                      expression: "dataCreate.countrycode"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "countryCode",
-                    placeholder: "countryCode",
+                    name: "countrycode",
+                    placeholder: "countrycode",
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: _vm.dataCreate.countryCode },
+                  domProps: { value: _vm.dataCreate.countrycode },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
@@ -1251,7 +1251,7 @@ var render = function() {
                       }
                       _vm.$set(
                         _vm.dataCreate,
-                        "countryCode",
+                        "countrycode",
                         $event.target.value
                       )
                     }
@@ -1275,19 +1275,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataEdit.countryName,
-                      expression: "dataEdit.countryName"
+                      value: _vm.dataEdit.countryname,
+                      expression: "dataEdit.countryname"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { name: "countryName", type: "text", required: "" },
-                  domProps: { value: _vm.dataEdit.countryName },
+                  attrs: { name: "countryname", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.countryname },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataEdit, "countryName", $event.target.value)
+                      _vm.$set(_vm.dataEdit, "countryname", $event.target.value)
                     }
                   }
                 })
@@ -1296,18 +1296,18 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataCreate.countryName,
-                      expression: "dataCreate.countryName"
+                      value: _vm.dataCreate.countryname,
+                      expression: "dataCreate.countryname"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "countryName",
-                    placeholder: "countryName",
+                    name: "countryname",
+                    placeholder: "countryname",
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: _vm.dataCreate.countryName },
+                  domProps: { value: _vm.dataCreate.countryname },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
@@ -1315,7 +1315,7 @@ var render = function() {
                       }
                       _vm.$set(
                         _vm.dataCreate,
-                        "countryName",
+                        "countryname",
                         $event.target.value
                       )
                     }
@@ -1531,24 +1531,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataEdit.numAirports,
-                      expression: "dataEdit.numAirports"
+                      value: _vm.dataEdit.numairports,
+                      expression: "dataEdit.numairports"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "numAirports",
+                    name: "numairports",
                     type: "number",
                     min: "1",
                     required: ""
                   },
-                  domProps: { value: _vm.dataEdit.numAirports },
+                  domProps: { value: _vm.dataEdit.numairports },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.dataEdit, "numAirports", $event.target.value)
+                      _vm.$set(_vm.dataEdit, "numairports", $event.target.value)
                     }
                   }
                 })
@@ -1557,19 +1557,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dataCreate.numAirports,
-                      expression: "dataCreate.numAirports"
+                      value: _vm.dataCreate.numairports,
+                      expression: "dataCreate.numairports"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    name: "numAirports",
-                    placeholder: "numAirports",
+                    name: "numairports",
+                    placeholder: "numairports",
                     type: "number",
                     min: "1",
                     required: ""
                   },
-                  domProps: { value: _vm.dataCreate.numAirports },
+                  domProps: { value: _vm.dataCreate.numairports },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
@@ -1577,7 +1577,7 @@ var render = function() {
                       }
                       _vm.$set(
                         _vm.dataCreate,
-                        "numAirports",
+                        "numairports",
                         $event.target.value
                       )
                     }
@@ -1645,9 +1645,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(rs.name))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(rs.cityName))]),
+                _c("td", [_vm._v(_vm._s(rs.cityname))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(rs.countryName))]),
+                _c("td", [_vm._v(_vm._s(rs.countryname))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -1717,9 +1717,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("cityName")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("cityname")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("countryName")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("countryname")]),
         _vm._v(" "),
         _c("th")
       ])

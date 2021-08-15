@@ -4,19 +4,19 @@ CREATE TABLE IF NOT EXISTS airports (
   id SERIAL PRIMARY KEY,
   code varchar(50)  DEFAULT NULL,
   name varchar(200)  DEFAULT NULL,
-  cityCode varchar(50)  DEFAULT NULL,
-  cityName varchar(200)  DEFAULT NULL,
-  countryName varchar(200)  DEFAULT NULL,
-  countryCode varchar(200)  DEFAULT NULL,
+  citycode varchar(50)  DEFAULT NULL,
+  cityname varchar(200)  DEFAULT NULL,
+  countryname varchar(200)  DEFAULT NULL,
+  countrycode varchar(200)  DEFAULT NULL,
   timezone varchar(8)  DEFAULT NULL,
   lat varchar(32)  DEFAULT NULL,
   lon varchar(32)  DEFAULT NULL,
-  numAirports int DEFAULT NULL,
+  numairports int DEFAULT NULL,
   city boolean  DEFAULT NULL
 ) 
 
 /*!40000 ALTER TABLE airports DISABLE KEYS */;
-INSERT INTO airports (code, name, cityCode, cityName, countryName, countryCode, timezone, lat, lon, numAirports, city) VALUES
+INSERT INTO airports (code, name, citycode, cityname, countryname, countrycode, timezone, lat, lon, numairports, city) VALUES
 	('ANW', 'Ainsworth Minicipal Airport', 'ANW', 'Ainsworth', 'UNITED STATES', 'US', '-100', '42.58', '-99.9933', 1, 'true'),
 	('ANU', 'V C Bird International Airport', 'ANU', 'Antigua', 'ANTIGUA AND BARBUDA', 'AG', '-4', '17.136749', '-61.792667', 1, 'true'),
 	('ANR', 'Antwerp Brussels North', 'ANR', 'Antwerp', 'BELGIUM', 'BE', '1', '51.189444', '4.460278', 1, 'true'),
@@ -8643,7 +8643,7 @@ INSERT INTO airports (code, name, cityCode, cityName, countryName, countryCode, 
 	('YQR', 'Regina Municipal', 'YQR', 'Regina', 'CANADA', 'CA', '-6', '50.431944', '-104.665833', 2, 'true'),
 	('YMJ', 'Moose Jaw Airport', 'YQR', 'Regina', 'CANADA', 'CA', '-6', '50.330278', '-105.559167', 2, 'false'),
 	('YQS', 'Pembroke Area Municipal Airport', 'YQS', 'St Thomas', 'CANADA', 'CA', '-100', '42.77', '-81.1108', 1, 'true');
-INSERT INTO airports (code, name, cityCode, cityName, countryName, countryCode, timezone, lat, lon, numAirports, city) VALUES
+INSERT INTO airports (code, name, citycode, cityname, countryname, countrycode, timezone, lat, lon, numairports, city) VALUES
 	('YQT', 'Thunder Bay Airport', 'YQT', 'Thunder Bay', 'CANADA', 'CA', '-5', '48.371944', '-89.323889', 1, 'true'),
 	('YQU', 'Grande Prairie Airport', 'YQU', 'Grande Prairie', 'CANADA', 'CA', '-7', '55.179722', '-118.885', 1, 'true'),
 	('YQV', 'Yorkton Airport', 'YQV', 'Yorkton', 'CANADA', 'CA', '-6', '51.264721', '-102.461667', 1, 'true'),

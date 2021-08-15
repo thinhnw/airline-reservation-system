@@ -13,14 +13,14 @@ class Airport extends Model
         'id_airport',
         'code',
         'name',
-        'cityCode',
-        'cityName',
-        'countryName',
-        'countryCode',
+        'citycode',
+        'cityname',
+        'countryname',
+        'countrycode',
         'timezone',
         'lat',
         'lon',
-        'numAirports',
+        'numairports',
         'city'
     ];
 

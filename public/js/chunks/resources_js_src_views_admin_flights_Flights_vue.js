@@ -345,7 +345,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     airports: function airports() {
       return this.allAirports.map(function (airport) {
         return _objectSpread(_objectSpread({}, airport), {}, {
-          label: "".concat(airport.code, " (").concat(airport.cityName, ", ").concat((0,_helper__WEBPACK_IMPORTED_MODULE_5__.toTitleCase)(airport.countryName), ")")
+          label: "".concat(airport.code, " (").concat(airport.cityname, ", ").concat((0,_helper__WEBPACK_IMPORTED_MODULE_5__.toTitleCase)(airport.countryname), ")")
         });
       });
     },

@@ -60,7 +60,7 @@
 									v-model="passenger.nationality"
 									:options="regions"
 									required
-									label="countryName"
+									label="countryname"
 									:reduce="country => country.countryShortCode"
 									placeholder="Nationality"
 									:clearable="false"
@@ -114,7 +114,7 @@
 										v-model="passenger.travelDocumentCountry"
 										:options="regions"
 										required
-										label="countryName"
+										label="countryname"
 										:reduce="country => country.countryShortCode"
 										placeholder="Select Country"
 										:clearable="false"

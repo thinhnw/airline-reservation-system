@@ -6,7 +6,7 @@
 					<div class="w-100 text-center">
 						<h3>Select your departure flight from</h3>
 						<h3>
-							{{ airportFrom.cityName }} to {{ airportTo.cityName }}
+							{{ airportFrom.cityname }} to {{ airportTo.cityname }}
 						</h3>
 					</div>
 					<div class="w-100 text-left">
@@ -15,7 +15,7 @@
 						</div>
 						<div v-else class="text-center">
 							<em>There aren't any flights from
-								{{ airportFrom.cityName }} to {{ airportTo.cityName }}
+								{{ airportFrom.cityname }} to {{ airportTo.cityname }}
 								on your selected date</em>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
 												</div>
 												<div>
-													{{ flight.origin.cityName }}
+													{{ flight.origin.cityname }}
 												</div>
 												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
@@ -77,7 +77,7 @@
 													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
 												</div>
 												<div>
-													{{ flight.destination.cityName }}
+													{{ flight.destination.cityname }}
 												</div>
 												<div class="font-size-small">
 													Operated by: Avia Airways
@@ -119,7 +119,7 @@
 					<div class="w-100 text-center">
 						<h3>Select your return flight from</h3>
 						<h3>
-							{{ airportTo.cityName }} to {{ airportFrom.cityName }}
+							{{ airportTo.cityname }} to {{ airportFrom.cityname }}
 						</h3>
 					</div>
 					<div class="w-100 text-left">
@@ -128,7 +128,7 @@
 						</div>
 						<div v-else class="text-center">
 							<em>There aren't any flights from
-								{{ airportTo.cityName }} to {{ airportFrom.cityName }}
+								{{ airportTo.cityname }} to {{ airportFrom.cityname }}
 								on your selected date</em>
 						</div>
 					</div>
@@ -171,7 +171,7 @@
 													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
 												</div>
 												<div>
-													{{ flight.origin.cityName }}
+													{{ flight.origin.cityname }}
 												</div>
 												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
@@ -190,7 +190,7 @@
 													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
 												</div>
 												<div>
-													{{ flight.destination.cityName }}
+													{{ flight.destination.cityname }}
 												</div>
 												<div class="font-size-small">
 													Operated by: Avia Airways

@@ -4,20 +4,20 @@ CREATE TABLE IF NOT EXISTS `airports` (
   `id` int AUTO_INCREMENT PRIMARY KEY,
   `code` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
   `name` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `cityCode` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `cityName` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `countryName` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `countryCode` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `citycode` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `cityname` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `countryname` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `countrycode` varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
   `timezone` varchar(8) COLLATE utf8_turkish_ci DEFAULT NULL,
   `lat` varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
   `lon` varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  `numAirports` int(11) DEFAULT NULL,
+  `numairports` int(11) DEFAULT NULL,
   `city` enum('true','false') COLLATE utf8_turkish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 
 /*!40000 ALTER TABLE `airports` DISABLE KEYS */;
-INSERT INTO `airports` (`code`, `name`, `cityCode`, `cityName`, `countryName`, `countryCode`, `timezone`, `lat`, `lon`, `numAirports`, `city`) VALUES
+INSERT INTO `airports` (`code`, `name`, `citycode`, `cityname`, `countryname`, `countrycode`, `timezone`, `lat`, `lon`, `numairports`, `city`) VALUES
 	('ANW', 'Ainsworth Minicipal Arpt', 'ANW', 'Ainsworth', 'UNITED STATES', 'US', '-100', '42.58', '-99.9933', 1, 'true'),
 	('ANU', 'V C Bird Intl Arpt', 'ANU', 'Antigua', 'ANTIGUA AND BARBUDA', 'AG', '-4', '17.136749', '-61.792667', 1, 'true'),
 	('ANR', 'Antwerp Brussels North', 'ANR', 'Antwerp', 'BELGIUM', 'BE', '1', '51.189444', '4.460278', 1, 'true'),
@@ -8644,7 +8644,7 @@ INSERT INTO `airports` (`code`, `name`, `cityCode`, `cityName`, `countryName`, `
 	('YQR', 'Regina Municipal', 'YQR', 'Regina', 'CANADA', 'CA', '-6', '50.431944', '-104.665833', 2, 'true'),
 	('YMJ', 'Moose Jaw Arpt', 'YQR', 'Regina', 'CANADA', 'CA', '-6', '50.330278', '-105.559167', 2, ''),
 	('YQS', 'Pembroke Area Municipal Arpt', 'YQS', 'St Thomas', 'CANADA', 'CA', '-100', '42.77', '-81.1108', 1, 'true');
-INSERT INTO `airports` (`code`, `name`, `cityCode`, `cityName`, `countryName`, `countryCode`, `timezone`, `lat`, `lon`, `numAirports`, `city`) VALUES
+INSERT INTO `airports` (`code`, `name`, `citycode`, `cityname`, `countryname`, `countrycode`, `timezone`, `lat`, `lon`, `numairports`, `city`) VALUES
 	('YQT', 'Thunder Bay Arpt', 'YQT', 'Thunder Bay', 'CANADA', 'CA', '-5', '48.371944', '-89.323889', 1, 'true'),
 	('YQU', 'Grande Prairie Arpt', 'YQU', 'Grande Prairie', 'CANADA', 'CA', '-7', '55.179722', '-118.885', 1, 'true'),
 	('YQV', 'Yorkton Airport', 'YQV', 'Yorkton', 'CANADA', 'CA', '-6', '51.264721', '-102.461667', 1, 'true'),
@@ -8820,7 +8820,7 @@ INSERT INTO `airports` (`code`, `name`, `cityCode`, `cityName`, `countryName`, `
 	('ZYY', 'Marnardal Rail Station', 'ZYY', 'Marnardal', 'NORWAY', 'NO', '-100', '0', '0', 1, 'true'),
 	('ZZV', 'Zanesville Arpt', 'ZZV', 'Zanesville', 'UNITED STATES', 'US', '-100', '39.9445', '-81.8921', 1, 'true');
 
-ALTER IGNORE TABLE `airports` ADD UNIQUE INDEX `idx_name` (`code`, `name`, `cityCode`);
+ALTER IGNORE TABLE `airports` ADD UNIQUE INDEX `idx_name` (`code`, `name`, `citycode`);
 
 UPDATE `airports` SET name = replace(name, 'Intl', 'International');
 UPDATE `airports` SET name = replace(name, 'Arpt', 'Airport');

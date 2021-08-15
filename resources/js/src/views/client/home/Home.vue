@@ -81,7 +81,7 @@ export default {
 			return this.fetchedAirports.map(airport => {
 				return {
 					...airport,
-					label: `${airport.cityName} ${airport.code}`
+					label: `${airport.cityname} ${airport.code}`
 				}
 			})
 		},

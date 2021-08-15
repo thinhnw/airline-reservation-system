@@ -604,7 +604,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     airports: function airports() {
       return this.fetchedAirports.map(function (airport) {
         return _objectSpread(_objectSpread({}, airport), {}, {
-          label: "".concat(airport.cityName, " ").concat(airport.code)
+          label: "".concat(airport.cityname, " ").concat(airport.code)
         });
       });
     }
@@ -1609,7 +1609,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
-  "countryName": "Afghanistan",
+  "countryname": "Afghanistan",
   "countryShortCode": "AF",
   "regions": [{
     "name": "Badakhshan",
@@ -1715,7 +1715,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZAB"
   }]
 }, {
-  "countryName": "Åland Islands",
+  "countryname": "Åland Islands",
   "countryShortCode": "AX",
   "regions": [{
     "name": "Brändö",
@@ -1767,7 +1767,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VR"
   }]
 }, {
-  "countryName": "Albania",
+  "countryname": "Albania",
   "countryShortCode": "AL",
   "regions": [{
     "name": "Berat",
@@ -1807,7 +1807,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "12"
   }]
 }, {
-  "countryName": "Algeria",
+  "countryname": "Algeria",
   "countryShortCode": "DZ",
   "regions": [{
     "name": "Adrar",
@@ -1955,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "13"
   }]
 }, {
-  "countryName": "American Samoa",
+  "countryname": "American Samoa",
   "countryShortCode": "AS",
   "regions": [{
     "name": "Tutuila",
@@ -1977,7 +1977,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "22"
   }]
 }, {
-  "countryName": "Andorra",
+  "countryname": "Andorra",
   "countryShortCode": "AD",
   "regions": [{
     "name": "Andorra la Vella",
@@ -2002,7 +2002,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "06"
   }]
 }, {
-  "countryName": "Angola",
+  "countryname": "Angola",
   "countryShortCode": "AO",
   "regions": [{
     "name": "Bengo",
@@ -2060,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZAI"
   }]
 }, {
-  "countryName": "Anguilla",
+  "countryname": "Anguilla",
   "countryShortCode": "AI",
   "regions": [{
     "name": "Anguilla",
@@ -2130,14 +2130,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "22"
   }]
 }, {
-  "countryName": "Antarctica",
+  "countryname": "Antarctica",
   "countryShortCode": "AQ",
   "regions": [{
     "name": "Antarctica",
     "shortCode": "AQ"
   }]
 }, {
-  "countryName": "Antigua and Barbuda",
+  "countryname": "Antigua and Barbuda",
   "countryShortCode": "AG",
   "regions": [{
     "name": "Antigua Island",
@@ -2237,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "37"
   }]
 }, {
-  "countryName": "Argentina",
+  "countryname": "Argentina",
   "countryShortCode": "AR",
   "regions": [{
     "name": "Buenos Aires",
@@ -2313,7 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "T"
   }]
 }, {
-  "countryName": "Armenia",
+  "countryname": "Armenia",
   "countryShortCode": "AM",
   "regions": [{
     "name": "Aragatsotn",
@@ -2350,14 +2350,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ER"
   }]
 }, {
-  "countryName": "Aruba",
+  "countryname": "Aruba",
   "countryShortCode": "AW",
   "regions": [{
     "name": "Aruba",
     "shortCode": "AW"
   }]
 }, {
-  "countryName": "Australia",
+  "countryname": "Australia",
   "countryShortCode": "AU",
   "regions": [{
     "name": "Australian Capital Territory",
@@ -2385,7 +2385,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WA"
   }]
 }, {
-  "countryName": "Austria",
+  "countryname": "Austria",
   "countryShortCode": "AT",
   "regions": [{
     "name": "Burgenland",
@@ -2416,7 +2416,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "9"
   }]
 }, {
-  "countryName": "Azerbaijan",
+  "countryname": "Azerbaijan",
   "countryShortCode": "AZ",
   "regions": [{
     "name": "Abşeron",
@@ -2621,7 +2621,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZAR"
   }]
 }, {
-  "countryName": "Bahamas",
+  "countryname": "Bahamas",
   "countryShortCode": "BS",
   "regions": [{
     "name": "Acklins Island",
@@ -2727,7 +2727,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "39"
   }]
 }, {
-  "countryName": "Bahrain",
+  "countryname": "Bahrain",
   "countryShortCode": "BH",
   "regions": [{
     "name": "Al Janūbīyah",
@@ -2746,7 +2746,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "17"
   }]
 }, {
-  "countryName": "Bangladesh",
+  "countryname": "Bangladesh",
   "countryShortCode": "BD",
   "regions": [{
     "name": "Barisal",
@@ -2774,7 +2774,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "G"
   }]
 }, {
-  "countryName": "Barbados",
+  "countryname": "Barbados",
   "countryShortCode": "BB",
   "regions": [{
     "name": "Christ Church",
@@ -2811,7 +2811,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Belarus",
+  "countryname": "Belarus",
   "countryShortCode": "BY",
   "regions": [{
     "name": "Brest voblast",
@@ -2836,7 +2836,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VI"
   }]
 }, {
-  "countryName": "Belgium",
+  "countryname": "Belgium",
   "countryShortCode": "BE",
   "regions": [{
     "name": "Bruxelles-Capitale",
@@ -2849,7 +2849,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WAL"
   }]
 }, {
-  "countryName": "Belize",
+  "countryname": "Belize",
   "countryShortCode": "BZ",
   "regions": [{
     "name": "Belize District",
@@ -2871,7 +2871,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TOL"
   }]
 }, {
-  "countryName": "Benin",
+  "countryname": "Benin",
   "countryShortCode": "BJ",
   "regions": [{
     "name": "Alibori",
@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZO"
   }]
 }, {
-  "countryName": "Bermuda",
+  "countryname": "Bermuda",
   "countryShortCode": "BM",
   "regions": [{
     "name": "City of Hamilton",
@@ -2948,7 +2948,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Bhutan",
+  "countryname": "Bhutan",
   "countryShortCode": "BT",
   "regions": [{
     "name": "Bumthang",
@@ -3012,7 +3012,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "34"
   }]
 }, {
-  "countryName": "Bolivia",
+  "countryname": "Bolivia",
   "countryShortCode": "BO",
   "regions": [{
     "name": "Beni",
@@ -3043,7 +3043,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "T"
   }]
 }, {
-  "countryName": "Bonaire, Sint Eustatius and Saba",
+  "countryname": "Bonaire, Sint Eustatius and Saba",
   "countryShortCode": "BQ",
   "regions": [{
     "name": "Bonaire",
@@ -3056,7 +3056,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SE"
   }]
 }, {
-  "countryName": "Bosnia and Herzegovina",
+  "countryname": "Bosnia and Herzegovina",
   "countryShortCode": "BA",
   "regions": [{
     "name": "Brčko Distrikt",
@@ -3069,7 +3069,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SRP"
   }]
 }, {
-  "countryName": "Botswana",
+  "countryname": "Botswana",
   "countryShortCode": "BW",
   "regions": [{
     "name": "Central",
@@ -3100,14 +3100,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SO"
   }]
 }, {
-  "countryName": "Bouvet Island",
+  "countryname": "Bouvet Island",
   "countryShortCode": "BV",
   "regions": [{
     "name": "Bouvet Island",
     "shortCode": "BV"
   }]
 }, {
-  "countryName": "Brazil",
+  "countryname": "Brazil",
   "countryShortCode": "BR",
   "regions": [{
     "name": "Acre",
@@ -3192,14 +3192,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TO"
   }]
 }, {
-  "countryName": "British Indian Ocean Territory",
+  "countryname": "British Indian Ocean Territory",
   "countryShortCode": "IO",
   "regions": [{
     "name": "British Indian Ocean Territory",
     "shortCode": "IO"
   }]
 }, {
-  "countryName": "Brunei Darussalam",
+  "countryname": "Brunei Darussalam",
   "countryShortCode": "BN",
   "regions": [{
     "name": "Belait",
@@ -3215,7 +3215,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TU"
   }]
 }, {
-  "countryName": "Bulgaria",
+  "countryname": "Bulgaria",
   "countryShortCode": "BG",
   "regions": [{
     "name": "Blagoevgrad",
@@ -3303,7 +3303,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "06"
   }]
 }, {
-  "countryName": "Burkina Faso",
+  "countryname": "Burkina Faso",
   "countryShortCode": "BF",
   "regions": [{
     "name": "Balé",
@@ -3442,7 +3442,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZOU"
   }]
 }, {
-  "countryName": "Burundi",
+  "countryname": "Burundi",
   "countryShortCode": "BI",
   "regions": [{
     "name": "Bubanza",
@@ -3497,7 +3497,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "RY"
   }]
 }, {
-  "countryName": "Cambodia",
+  "countryname": "Cambodia",
   "countryShortCode": "KH",
   "regions": [{
     "name": "Baat Dambang",
@@ -3576,7 +3576,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "25"
   }]
 }, {
-  "countryName": "Cameroon",
+  "countryname": "Cameroon",
   "countryShortCode": "CM",
   "regions": [{
     "name": "Adamaoua",
@@ -3610,7 +3610,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SW"
   }]
 }, {
-  "countryName": "Canada",
+  "countryname": "Canada",
   "countryShortCode": "CA",
   "regions": [{
     "name": "Alberta",
@@ -3653,7 +3653,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "YT"
   }]
 }, {
-  "countryName": "Cape Verde",
+  "countryname": "Cape Verde",
   "countryShortCode": "CV",
   "regions": [{
     "name": "Boa Vista",
@@ -3714,7 +3714,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TS"
   }]
 }, {
-  "countryName": "Cayman Islands",
+  "countryname": "Cayman Islands",
   "countryShortCode": "KY",
   "regions": [{
     "name": "Creek"
@@ -3734,7 +3734,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Western"
   }]
 }, {
-  "countryName": "Central African Republic",
+  "countryname": "Central African Republic",
   "countryShortCode": "CF",
   "regions": [{
     "name": "Bamingui-Bangoran",
@@ -3789,7 +3789,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VK"
   }]
 }, {
-  "countryName": "Chad",
+  "countryname": "Chad",
   "countryShortCode": "TD",
   "regions": [{
     "name": "Bahr el Ghazal",
@@ -3859,7 +3859,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WF"
   }]
 }, {
-  "countryName": "Chile",
+  "countryname": "Chile",
   "countryShortCode": "CL",
   "regions": [{
     "name": "Aisén del General Carlos Ibáñez del Campo",
@@ -3914,7 +3914,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VS"
   }]
 }, {
-  "countryName": "China",
+  "countryname": "China",
   "countryShortCode": "CN",
   "regions": [{
     "name": "Anhui",
@@ -4017,14 +4017,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "33"
   }]
 }, {
-  "countryName": "Christmas Island",
+  "countryname": "Christmas Island",
   "countryShortCode": "CX",
   "regions": [{
     "name": "Christmas Island",
     "shortCode": "CX"
   }]
 }, {
-  "countryName": "Cocos (Keeling) Islands",
+  "countryname": "Cocos (Keeling) Islands",
   "countryShortCode": "CC",
   "regions": [{
     "name": "Direction Island",
@@ -4046,7 +4046,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WI"
   }]
 }, {
-  "countryName": "Colombia",
+  "countryname": "Colombia",
   "countryShortCode": "CO",
   "regions": [{
     "name": "Amazonas",
@@ -4149,7 +4149,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VID"
   }]
 }, {
-  "countryName": "Comoros",
+  "countryname": "Comoros",
   "countryShortCode": "KM",
   "regions": [{
     "name": "Andjazîdja",
@@ -4162,7 +4162,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "M"
   }]
 }, {
-  "countryName": "Congo, Republic of the (Brazzaville)",
+  "countryname": "Congo, Republic of the (Brazzaville)",
   "countryShortCode": "CG",
   "regions": [{
     "name": "Bouenza",
@@ -4202,7 +4202,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "13"
   }]
 }, {
-  "countryName": "Congo, the Democratic Republic of the (Kinshasa)",
+  "countryname": "Congo, the Democratic Republic of the (Kinshasa)",
   "countryShortCode": "CD",
   "regions": [{
     "name": "Bandundu",
@@ -4239,7 +4239,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SK"
   }]
 }, {
-  "countryName": "Cook Islands",
+  "countryname": "Cook Islands",
   "countryShortCode": "CK",
   "regions": [{
     "name": "Aitutaki"
@@ -4267,7 +4267,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Rakahanga"
   }]
 }, {
-  "countryName": "Costa Rica",
+  "countryname": "Costa Rica",
   "countryShortCode": "CR",
   "regions": [{
     "name": "Alajuela",
@@ -4292,7 +4292,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "1"
   }]
 }, {
-  "countryName": "Côte d'Ivoire, Republic of",
+  "countryname": "Côte d'Ivoire, Republic of",
   "countryShortCode": "CI",
   "regions": [{
     "name": "Agnéby",
@@ -4353,7 +4353,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "08"
   }]
 }, {
-  "countryName": "Croatia",
+  "countryname": "Croatia",
   "countryShortCode": "HR",
   "regions": [{
     "name": "Bjelovarsko-Bilogorska Županija",
@@ -4420,7 +4420,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "01"
   }]
 }, {
-  "countryName": "Cuba",
+  "countryname": "Cuba",
   "countryShortCode": "CU",
   "regions": [{
     "name": "Artemisa",
@@ -4472,14 +4472,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Curaçao",
+  "countryname": "Curaçao",
   "countryShortCode": "CW",
   "regions": [{
     "name": "Curaçao",
     "shortCode": "CW"
   }]
 }, {
-  "countryName": "Cyprus",
+  "countryname": "Cyprus",
   "countryShortCode": "CY",
   "regions": [{
     "name": "Ammochostos",
@@ -4501,7 +4501,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Czech Republic",
+  "countryname": "Czech Republic",
   "countryShortCode": "CZ",
   "regions": [{
     "name": "Hlavní město Praha",
@@ -4547,7 +4547,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZL"
   }]
 }, {
-  "countryName": "Denmark",
+  "countryname": "Denmark",
   "countryShortCode": "DK",
   "regions": [{
     "name": "Hovedstaden",
@@ -4596,7 +4596,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "FO-05"
   }]
 }, {
-  "countryName": "Djibouti",
+  "countryname": "Djibouti",
   "countryShortCode": "DJ",
   "regions": [{
     "name": "Ali Sabieh",
@@ -4615,7 +4615,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TA"
   }]
 }, {
-  "countryName": "Dominica",
+  "countryname": "Dominica",
   "countryShortCode": "DM",
   "regions": [{
     "name": "Saint Andrew Parish",
@@ -4649,7 +4649,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Dominican Republic",
+  "countryname": "Dominican Republic",
   "countryShortCode": "DO",
   "regions": [{
     "name": "Cibao Central",
@@ -4680,7 +4680,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "42"
   }]
 }, {
-  "countryName": "Ecuador",
+  "countryname": "Ecuador",
   "countryShortCode": "EC",
   "regions": [{
     "name": "Azuay",
@@ -4756,7 +4756,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "Z"
   }]
 }, {
-  "countryName": "Egypt",
+  "countryname": "Egypt",
   "countryShortCode": "EG",
   "regions": [{
     "name": "Alexandria",
@@ -4847,7 +4847,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "JS"
   }]
 }, {
-  "countryName": "El Salvador",
+  "countryname": "El Salvador",
   "countryShortCode": "SV",
   "regions": [{
     "name": "Ahuachapán",
@@ -4893,7 +4893,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "US"
   }]
 }, {
-  "countryName": "Equatorial Guinea",
+  "countryname": "Equatorial Guinea",
   "countryShortCode": "GQ",
   "regions": [{
     "name": "Annobón",
@@ -4918,7 +4918,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WN"
   }]
 }, {
-  "countryName": "Eritrea",
+  "countryname": "Eritrea",
   "countryShortCode": "ER",
   "regions": [{
     "name": "Anseba",
@@ -4940,7 +4940,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SK"
   }]
 }, {
-  "countryName": "Estonia",
+  "countryname": "Estonia",
   "countryShortCode": "EE",
   "regions": [{
     "name": "Harjumaa (Tallinn)",
@@ -4989,7 +4989,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "86"
   }]
 }, {
-  "countryName": "Ethiopia",
+  "countryname": "Ethiopia",
   "countryShortCode": "ET",
   "regions": [{
     "name": "Addis Ababa",
@@ -5026,13 +5026,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TI"
   }]
 }, {
-  "countryName": "Falkland Islands (Islas Malvinas)",
+  "countryname": "Falkland Islands (Islas Malvinas)",
   "countryShortCode": "FK",
   "regions": [{
     "name": "Falkland Islands (Islas Malvinas)"
   }]
 }, {
-  "countryName": "Faroe Islands",
+  "countryname": "Faroe Islands",
   "countryShortCode": "FO",
   "regions": [{
     "name": "Bordoy"
@@ -5054,7 +5054,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Vagar"
   }]
 }, {
-  "countryName": "Fiji",
+  "countryname": "Fiji",
   "countryShortCode": "FJ",
   "regions": [{
     "name": "Ba",
@@ -5103,7 +5103,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "14"
   }]
 }, {
-  "countryName": "Finland",
+  "countryname": "Finland",
   "countryShortCode": "FI",
   "regions": [{
     "name": "Ahvenanmaan lääni",
@@ -5125,7 +5125,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "OL"
   }]
 }, {
-  "countryName": "France",
+  "countryname": "France",
   "countryShortCode": "FR",
   "regions": [{
     "name": "Auvergne-Rhône-Alpes",
@@ -5207,13 +5207,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WF"
   }]
 }, {
-  "countryName": "French Guiana",
+  "countryname": "French Guiana",
   "countryShortCode": "GF",
   "regions": [{
     "name": "French Guiana"
   }]
 }, {
-  "countryName": "French Polynesia",
+  "countryname": "French Polynesia",
   "countryShortCode": "PF",
   "regions": [{
     "name": "Archipel des Marquises"
@@ -5227,7 +5227,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Iles Sous-le-Vent"
   }]
 }, {
-  "countryName": "French Southern and Antarctic Lands",
+  "countryname": "French Southern and Antarctic Lands",
   "countryShortCode": "TF",
   "regions": [{
     "name": "Adelie Land"
@@ -5239,7 +5239,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Iles Saint-Paul et Amsterdam"
   }]
 }, {
-  "countryName": "Gabon",
+  "countryname": "Gabon",
   "countryShortCode": "GA",
   "regions": [{
     "name": "Estuaire",
@@ -5270,7 +5270,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "9"
   }]
 }, {
-  "countryName": "Gambia, The",
+  "countryname": "Gambia, The",
   "countryShortCode": "GM",
   "regions": [{
     "name": "Banjul",
@@ -5292,7 +5292,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "W"
   }]
 }, {
-  "countryName": "Georgia",
+  "countryname": "Georgia",
   "countryShortCode": "GE",
   "regions": [{
     "name": "Abkhazia (Sokhumi)",
@@ -5332,7 +5332,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TB"
   }]
 }, {
-  "countryName": "Germany",
+  "countryname": "Germany",
   "countryShortCode": "DE",
   "regions": [{
     "name": "Baden-Württemberg",
@@ -5384,7 +5384,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TH"
   }]
 }, {
-  "countryName": "Ghana",
+  "countryname": "Ghana",
   "countryShortCode": "GH",
   "regions": [{
     "name": "Ahafo"
@@ -5429,13 +5429,13 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Western North"
   }]
 }, {
-  "countryName": "Gibraltar",
+  "countryname": "Gibraltar",
   "countryShortCode": "GI",
   "regions": [{
     "name": "Gibraltar"
   }]
 }, {
-  "countryName": "Greece",
+  "countryname": "Greece",
   "countryShortCode": "GR",
   "regions": [{
     "name": "Anatolikí Makedonía kai Thráki",
@@ -5481,7 +5481,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "69"
   }]
 }, {
-  "countryName": "Greenland",
+  "countryname": "Greenland",
   "countryShortCode": "GL",
   "regions": [{
     "name": "Kommune Kujalleq",
@@ -5497,7 +5497,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "QE"
   }]
 }, {
-  "countryName": "Grenada",
+  "countryname": "Grenada",
   "countryShortCode": "GD",
   "regions": [{
     "name": "Saint Andrew",
@@ -5522,19 +5522,19 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "10"
   }]
 }, {
-  "countryName": "Guadeloupe",
+  "countryname": "Guadeloupe",
   "countryShortCode": "GP",
   "regions": [{
     "name": "Guadeloupe"
   }]
 }, {
-  "countryName": "Guam",
+  "countryname": "Guam",
   "countryShortCode": "GU",
   "regions": [{
     "name": "Guam"
   }]
 }, {
-  "countryName": "Guatemala",
+  "countryname": "Guatemala",
   "countryShortCode": "GT",
   "regions": [{
     "name": "Alta Verapaz",
@@ -5604,7 +5604,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZA"
   }]
 }, {
-  "countryName": "Guernsey",
+  "countryname": "Guernsey",
   "countryShortCode": "GG",
   "regions": [{
     "name": "Castel"
@@ -5628,7 +5628,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Vale"
   }]
 }, {
-  "countryName": "Guinea",
+  "countryname": "Guinea",
   "countryShortCode": "GN",
   "regions": [{
     "name": "Boké",
@@ -5656,7 +5656,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "N"
   }]
 }, {
-  "countryName": "Guinea-Bissau",
+  "countryname": "Guinea-Bissau",
   "countryShortCode": "GW",
   "regions": [{
     "name": "Bafatá",
@@ -5687,7 +5687,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TO"
   }]
 }, {
-  "countryName": "Guyana",
+  "countryname": "Guyana",
   "countryShortCode": "GY",
   "regions": [{
     "name": "Barima-Waini",
@@ -5721,7 +5721,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "UT"
   }]
 }, {
-  "countryName": "Haiti",
+  "countryname": "Haiti",
   "countryShortCode": "HT",
   "regions": [{
     "name": "Artibonite",
@@ -5755,20 +5755,20 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SE"
   }]
 }, {
-  "countryName": "Heard Island and McDonald Islands",
+  "countryname": "Heard Island and McDonald Islands",
   "countryShortCode": "HM",
   "regions": [{
     "name": "Heard Island and McDonald Islands"
   }]
 }, {
-  "countryName": "Holy See (Vatican City)",
+  "countryname": "Holy See (Vatican City)",
   "countryShortCode": "VA",
   "regions": [{
     "name": "Holy See (Vatican City)",
     "shortCode": "01"
   }]
 }, {
-  "countryName": "Honduras",
+  "countryname": "Honduras",
   "countryShortCode": "HN",
   "regions": [{
     "name": "Atlántida",
@@ -5826,14 +5826,14 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "YO"
   }]
 }, {
-  "countryName": "Hong Kong",
+  "countryname": "Hong Kong",
   "countryShortCode": "HK",
   "regions": [{
     "name": "Hong Kong",
     "shortCode": "HK"
   }]
 }, {
-  "countryName": "Hungary",
+  "countryname": "Hungary",
   "countryShortCode": "HU",
   "regions": [{
     "name": "Bács-Kiskun",
@@ -5966,7 +5966,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZE"
   }]
 }, {
-  "countryName": "Iceland",
+  "countryname": "Iceland",
   "countryShortCode": "IS",
   "regions": [{
     "name": "Austurland",
@@ -5994,7 +5994,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "3"
   }]
 }, {
-  "countryName": "India",
+  "countryname": "India",
   "countryShortCode": "IN",
   "regions": [{
     "name": "Andaman and Nicobar Islands",
@@ -6109,7 +6109,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WB"
   }]
 }, {
-  "countryName": "Indonesia",
+  "countryname": "Indonesia",
   "countryShortCode": "ID",
   "regions": [{
     "name": "Aceh",
@@ -6212,7 +6212,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "YO"
   }]
 }, {
-  "countryName": "Iran, Islamic Republic of",
+  "countryname": "Iran, Islamic Republic of",
   "countryShortCode": "IR",
   "regions": [{
     "name": "Alborz",
@@ -6309,7 +6309,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Iraq",
+  "countryname": "Iraq",
   "countryShortCode": "IQ",
   "regions": [{
     "name": "Al Anbār",
@@ -6367,7 +6367,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WA"
   }]
 }, {
-  "countryName": "Ireland",
+  "countryname": "Ireland",
   "countryShortCode": "IE",
   "regions": [{
     "name": "Carlow",
@@ -6449,13 +6449,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WW"
   }]
 }, {
-  "countryName": "Isle of Man",
+  "countryname": "Isle of Man",
   "countryShortCode": "IM",
   "regions": [{
     "name": "Isle of Man"
   }]
 }, {
-  "countryName": "Israel",
+  "countryname": "Israel",
   "countryShortCode": "IL",
   "regions": [{
     "name": "HaDarom",
@@ -6477,7 +6477,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "JM"
   }]
 }, {
-  "countryName": "Italy",
+  "countryname": "Italy",
   "countryShortCode": "IT",
   "regions": [{
     "name": "Abruzzo",
@@ -6541,7 +6541,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "34"
   }]
 }, {
-  "countryName": "Jamaica",
+  "countryname": "Jamaica",
   "countryShortCode": "JM",
   "regions": [{
     "name": "Clarendon",
@@ -6587,7 +6587,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "10"
   }]
 }, {
-  "countryName": "Japan",
+  "countryname": "Japan",
   "countryShortCode": "JP",
   "regions": [{
     "name": "Aichi",
@@ -6732,13 +6732,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "19"
   }]
 }, {
-  "countryName": "Jersey",
+  "countryname": "Jersey",
   "countryShortCode": "JE",
   "regions": [{
     "name": "Jersey"
   }]
 }, {
-  "countryName": "Jordan",
+  "countryname": "Jordan",
   "countryShortCode": "JO",
   "regions": [{
     "name": "‘Ajlūn",
@@ -6778,7 +6778,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "MD"
   }]
 }, {
-  "countryName": "Kazakhstan",
+  "countryname": "Kazakhstan",
   "countryShortCode": "KZ",
   "regions": [{
     "name": "Almaty",
@@ -6829,7 +6829,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZHA"
   }]
 }, {
-  "countryName": "Kenya",
+  "countryname": "Kenya",
   "countryShortCode": "KE",
   "regions": [{
     "name": "Baringo",
@@ -6974,7 +6974,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "47"
   }]
 }, {
-  "countryName": "Kiribati",
+  "countryname": "Kiribati",
   "countryShortCode": "KI",
   "regions": [{
     "name": "Abaiang"
@@ -7035,7 +7035,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Teraina"
   }]
 }, {
-  "countryName": "Korea, Democratic People's Republic of",
+  "countryname": "Korea, Democratic People's Republic of",
   "countryShortCode": "KP",
   "regions": [{
     "name": "Chagang-do (Chagang Province)",
@@ -7072,7 +7072,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "10"
   }]
 }, {
-  "countryName": "Korea, Republic of",
+  "countryname": "Korea, Republic of",
   "countryShortCode": "KR",
   "regions": [{
     "name": "Ch'ungch'ongbuk-do",
@@ -7127,7 +7127,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "31"
   }]
 }, {
-  "countryName": "Kuwait",
+  "countryname": "Kuwait",
   "countryShortCode": "KW",
   "regions": [{
     "name": "Al Aḩmadi",
@@ -7149,7 +7149,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "MU"
   }]
 }, {
-  "countryName": "Kyrgyzstan",
+  "countryname": "Kyrgyzstan",
   "countryShortCode": "KG",
   "regions": [{
     "name": "Batken Oblasty",
@@ -7177,7 +7177,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "Y"
   }]
 }, {
-  "countryName": "Laos",
+  "countryname": "Laos",
   "countryShortCode": "LA",
   "regions": [{
     "name": "Attapu",
@@ -7232,7 +7232,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "XI"
   }]
 }, {
-  "countryName": "Latvia",
+  "countryname": "Latvia",
   "countryShortCode": "LV",
   "regions": [{
     "name": "Aglona",
@@ -7593,7 +7593,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "110"
   }]
 }, {
-  "countryName": "Lebanon",
+  "countryname": "Lebanon",
   "countryShortCode": "LB",
   "regions": [{
     "name": "Aakkâr",
@@ -7621,7 +7621,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "NA"
   }]
 }, {
-  "countryName": "Lesotho",
+  "countryname": "Lesotho",
   "countryShortCode": "LS",
   "regions": [{
     "name": "Berea",
@@ -7655,7 +7655,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "K"
   }]
 }, {
-  "countryName": "Liberia",
+  "countryname": "Liberia",
   "countryShortCode": "LR",
   "regions": [{
     "name": "Bomi",
@@ -7704,7 +7704,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SI"
   }]
 }, {
-  "countryName": "Libya",
+  "countryname": "Libya",
   "countryShortCode": "LY",
   "regions": [{
     "name": "Al Buţnān",
@@ -7774,7 +7774,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WS"
   }]
 }, {
-  "countryName": "Liechtenstein",
+  "countryname": "Liechtenstein",
   "countryShortCode": "LI",
   "regions": [{
     "name": "Balzers",
@@ -7811,7 +7811,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Lithuania",
+  "countryname": "Lithuania",
   "countryShortCode": "LT",
   "regions": [{
     "name": "Alytaus",
@@ -7845,7 +7845,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VL"
   }]
 }, {
-  "countryName": "Luxembourg",
+  "countryname": "Luxembourg",
   "countryShortCode": "LU",
   "regions": [{
     "name": "Capellen",
@@ -7885,13 +7885,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WI"
   }]
 }, {
-  "countryName": "Macao",
+  "countryname": "Macao",
   "countryShortCode": "MO",
   "regions": [{
     "name": "Macao"
   }]
 }, {
-  "countryName": "Macedonia, Republic of",
+  "countryname": "Macedonia, Republic of",
   "countryShortCode": "MK",
   "regions": [{
     "name": "Aračinovo",
@@ -8108,7 +8108,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "30"
   }]
 }, {
-  "countryName": "Madagascar",
+  "countryname": "Madagascar",
   "countryShortCode": "MG",
   "regions": [{
     "name": "Antananarivo",
@@ -8130,7 +8130,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "U"
   }]
 }, {
-  "countryName": "Malawi",
+  "countryname": "Malawi",
   "countryShortCode": "MW",
   "regions": [{
     "name": "Balaka",
@@ -8215,7 +8215,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZO"
   }]
 }, {
-  "countryName": "Malaysia",
+  "countryname": "Malaysia",
   "countryShortCode": "MY",
   "regions": [{
     "name": "Johor",
@@ -8267,7 +8267,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "16"
   }]
 }, {
-  "countryName": "Maldives",
+  "countryname": "Maldives",
   "countryShortCode": "MV",
   "regions": [{
     "name": "Alifu Alifu",
@@ -8334,7 +8334,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "04"
   }]
 }, {
-  "countryName": "Mali",
+  "countryname": "Mali",
   "countryShortCode": "ML",
   "regions": [{
     "name": "Bamako",
@@ -8365,7 +8365,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "6"
   }]
 }, {
-  "countryName": "Malta",
+  "countryname": "Malta",
   "countryShortCode": "MT",
   "regions": [{
     "name": "Attard",
@@ -8573,7 +8573,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "68"
   }]
 }, {
-  "countryName": "Marshall Islands",
+  "countryname": "Marshall Islands",
   "countryShortCode": "MH",
   "regions": [{
     "name": "Ailinglaplap",
@@ -8643,13 +8643,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WTJ"
   }]
 }, {
-  "countryName": "Martinique",
+  "countryname": "Martinique",
   "countryShortCode": "MQ",
   "regions": [{
     "name": "Martinique"
   }]
 }, {
-  "countryName": "Mauritania",
+  "countryname": "Mauritania",
   "countryShortCode": "MR",
   "regions": [{
     "name": "Adrar",
@@ -8698,7 +8698,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "06"
   }]
 }, {
-  "countryName": "Mauritius",
+  "countryname": "Mauritius",
   "countryShortCode": "MU",
   "regions": [{
     "name": "Agalega Islands",
@@ -8750,7 +8750,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "CP"
   }]
 }, {
-  "countryName": "Mayotte",
+  "countryname": "Mayotte",
   "countryShortCode": "YT",
   "regions": [{
     "name": "Dzaoudzi",
@@ -8805,7 +8805,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "17"
   }]
 }, {
-  "countryName": "Mexico",
+  "countryname": "Mexico",
   "countryShortCode": "MX",
   "regions": [{
     "name": "Aguascalientes",
@@ -8905,7 +8905,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZAC"
   }]
 }, {
-  "countryName": "Micronesia, Federated States of",
+  "countryname": "Micronesia, Federated States of",
   "countryShortCode": "FM",
   "regions": [{
     "name": "Chuuk (Truk)",
@@ -8921,7 +8921,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "YAP"
   }]
 }, {
-  "countryName": "Moldova",
+  "countryname": "Moldova",
   "countryShortCode": "MD",
   "regions": [{
     "name": "Aenii Noi",
@@ -9036,7 +9036,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "UN"
   }]
 }, {
-  "countryName": "Monaco",
+  "countryname": "Monaco",
   "countryShortCode": "MC",
   "regions": [{
     "name": "Colle",
@@ -9091,7 +9091,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VR"
   }]
 }, {
-  "countryName": "Mongolia",
+  "countryname": "Mongolia",
   "countryShortCode": "MN",
   "regions": [{
     "name": "Arhangay",
@@ -9155,7 +9155,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "046"
   }]
 }, {
-  "countryName": "Montenegro",
+  "countryname": "Montenegro",
   "countryShortCode": "ME",
   "regions": [{
     "name": "Andrijevica",
@@ -9228,7 +9228,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "21"
   }]
 }, {
-  "countryName": "Montserrat",
+  "countryname": "Montserrat",
   "countryShortCode": "MS",
   "regions": [{
     "name": "Saint Anthony"
@@ -9238,7 +9238,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Saint Peter's"
   }]
 }, {
-  "countryName": "Morocco",
+  "countryname": "Morocco",
   "countryShortCode": "MA",
   "regions": [{
     "name": "Chaouia-Ouardigha",
@@ -9287,7 +9287,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "03"
   }]
 }, {
-  "countryName": "Mozambique",
+  "countryname": "Mozambique",
   "countryShortCode": "MZ",
   "regions": [{
     "name": "Cabo Delgado",
@@ -9324,7 +9324,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "Q"
   }]
 }, {
-  "countryName": "Myanmar",
+  "countryname": "Myanmar",
   "countryShortCode": "MM",
   "regions": [{
     "name": "Ayeyarwady",
@@ -9373,7 +9373,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "06"
   }]
 }, {
-  "countryName": "Namibia",
+  "countryname": "Namibia",
   "countryShortCode": "NA",
   "regions": [{
     "name": "Erongo",
@@ -9419,7 +9419,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "CA"
   }]
 }, {
-  "countryName": "Nauru",
+  "countryname": "Nauru",
   "countryShortCode": "NR",
   "regions": [{
     "name": "Aiwo",
@@ -9465,7 +9465,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "14"
   }]
 }, {
-  "countryName": "Nepal",
+  "countryname": "Nepal",
   "countryShortCode": "NP",
   "regions": [{
     "name": "Bagmati",
@@ -9511,7 +9511,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SE"
   }]
 }, {
-  "countryName": "Netherlands",
+  "countryname": "Netherlands",
   "countryShortCode": "NL",
   "regions": [{
     "name": "Drenthe",
@@ -9551,7 +9551,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZH"
   }]
 }, {
-  "countryName": "New Caledonia",
+  "countryname": "New Caledonia",
   "countryShortCode": "NC",
   "regions": [{
     "name": "Iles Loyaute"
@@ -9561,7 +9561,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Sud"
   }]
 }, {
-  "countryName": "New Zealand",
+  "countryname": "New Zealand",
   "countryShortCode": "NZ",
   "regions": [{
     "name": "Auckland",
@@ -9616,7 +9616,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "CIT"
   }]
 }, {
-  "countryName": "Nicaragua",
+  "countryname": "Nicaragua",
   "countryShortCode": "NI",
   "regions": [{
     "name": "Boaco",
@@ -9671,7 +9671,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "AS"
   }]
 }, {
-  "countryName": "Niger",
+  "countryname": "Niger",
   "countryShortCode": "NE",
   "regions": [{
     "name": "Agadez",
@@ -9699,7 +9699,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "7"
   }]
 }, {
-  "countryName": "Nigeria",
+  "countryname": "Nigeria",
   "countryShortCode": "NG",
   "regions": [{
     "name": "Abia",
@@ -9814,19 +9814,19 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZA"
   }]
 }, {
-  "countryName": "Niue",
+  "countryname": "Niue",
   "countryShortCode": "NU",
   "regions": [{
     "name": "Niue"
   }]
 }, {
-  "countryName": "Norfolk Island",
+  "countryname": "Norfolk Island",
   "countryShortCode": "NF",
   "regions": [{
     "name": "Norfolk Island"
   }]
 }, {
-  "countryName": "Northern Mariana Islands",
+  "countryname": "Northern Mariana Islands",
   "countryShortCode": "MP",
   "regions": [{
     "name": "Northern Islands"
@@ -9838,7 +9838,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Tinian"
   }]
 }, {
-  "countryName": "Norway",
+  "countryname": "Norway",
   "countryShortCode": "NO",
   "regions": [{
     "name": "Akershus",
@@ -9905,7 +9905,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "21"
   }]
 }, {
-  "countryName": "Oman",
+  "countryname": "Oman",
   "countryShortCode": "OM",
   "regions": [{
     "name": "Ad Dakhiliyah",
@@ -9942,7 +9942,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZU"
   }]
 }, {
-  "countryName": "Pakistan",
+  "countryname": "Pakistan",
   "countryShortCode": "PK",
   "regions": [{
     "name": "Āzād Kashmīr",
@@ -9970,7 +9970,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TA"
   }]
 }, {
-  "countryName": "Palau",
+  "countryname": "Palau",
   "countryShortCode": "PW",
   "regions": [{
     "name": "Aimeliik",
@@ -10022,7 +10022,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "350"
   }]
 }, {
-  "countryName": "Palestine, State of",
+  "countryname": "Palestine, State of",
   "countryShortCode": "PS",
   "regions": [{
     "name": "Ak Khalīl",
@@ -10074,7 +10074,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TKM"
   }]
 }, {
-  "countryName": "Panama",
+  "countryname": "Panama",
   "countryShortCode": "PA",
   "regions": [{
     "name": "Bocas del Toro",
@@ -10117,7 +10117,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "9"
   }]
 }, {
-  "countryName": "Papua New Guinea",
+  "countryname": "Papua New Guinea",
   "countryShortCode": "PG",
   "regions": [{
     "name": "Bougainville",
@@ -10187,7 +10187,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WHM"
   }]
 }, {
-  "countryName": "Paraguay",
+  "countryname": "Paraguay",
   "countryShortCode": "PY",
   "regions": [{
     "name": "Alto Paraguay",
@@ -10242,7 +10242,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "2"
   }]
 }, {
-  "countryName": "Peru",
+  "countryname": "Peru",
   "countryShortCode": "PE",
   "regions": [{
     "name": "Amazonas",
@@ -10324,7 +10324,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "UCA"
   }]
 }, {
-  "countryName": "Philippines",
+  "countryname": "Philippines",
   "countryShortCode": "PH",
   "regions": [{
     "name": "Abra",
@@ -10568,13 +10568,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZSI"
   }]
 }, {
-  "countryName": "Pitcairn",
+  "countryname": "Pitcairn",
   "countryShortCode": "PN",
   "regions": [{
     "name": "Pitcairn Islands"
   }]
 }, {
-  "countryName": "Poland",
+  "countryname": "Poland",
   "countryShortCode": "PL",
   "regions": [{
     "name": "Dolnośląskie",
@@ -10626,7 +10626,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZP"
   }]
 }, {
-  "countryName": "Portugal",
+  "countryname": "Portugal",
   "countryShortCode": "PT",
   "regions": [{
     "name": "Açores",
@@ -10690,7 +10690,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "18"
   }]
 }, {
-  "countryName": "Puerto Rico",
+  "countryname": "Puerto Rico",
   "countryShortCode": "PR",
   "regions": [{
     "name": "Adjuntas"
@@ -10840,7 +10840,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Yauco"
   }]
 }, {
-  "countryName": "Qatar",
+  "countryname": "Qatar",
   "countryShortCode": "QA",
   "regions": [{
     "name": "Ad Dawḩah",
@@ -10865,13 +10865,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "US"
   }]
 }, {
-  "countryName": "Réunion",
+  "countryname": "Réunion",
   "countryShortCode": "RE",
   "regions": [{
     "name": "Réunion"
   }]
 }, {
-  "countryName": "Romania",
+  "countryname": "Romania",
   "countryShortCode": "RO",
   "regions": [{
     "name": "Alba",
@@ -10998,7 +10998,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VN"
   }]
 }, {
-  "countryName": "Russian Federation",
+  "countryname": "Russian Federation",
   "countryShortCode": "RU",
   "regions": [{
     "name": "Republic of Adygea",
@@ -11251,7 +11251,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZAB"
   }]
 }, {
-  "countryName": "Rwanda",
+  "countryname": "Rwanda",
   "countryShortCode": "RW",
   "regions": [{
     "name": "Kigali",
@@ -11270,7 +11270,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Saint Barthélemy",
+  "countryname": "Saint Barthélemy",
   "countryShortCode": "BL",
   "regions": [{
     "name": "Au Vent",
@@ -11280,7 +11280,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "01"
   }]
 }, {
-  "countryName": "Saint Helena, Ascension and Tristan da Cunha",
+  "countryname": "Saint Helena, Ascension and Tristan da Cunha",
   "countryShortCode": "SH",
   "regions": [{
     "name": "Ascension",
@@ -11293,7 +11293,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TA"
   }]
 }, {
-  "countryName": "Saint Kitts and Nevis",
+  "countryname": "Saint Kitts and Nevis",
   "countryShortCode": "KN",
   "regions": [{
     "name": "Saint Kitts",
@@ -11303,7 +11303,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "N"
   }]
 }, {
-  "countryName": "Saint Lucia",
+  "countryname": "Saint Lucia",
   "countryShortCode": "LC",
   "regions": [{
     "name": "Anse-la-Raye",
@@ -11337,13 +11337,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "11"
   }]
 }, {
-  "countryName": "Saint Martin",
+  "countryname": "Saint Martin",
   "countryShortCode": "MF",
   "regions": [{
     "name": "Saint Martin"
   }]
 }, {
-  "countryName": "Saint Pierre and Miquelon",
+  "countryname": "Saint Pierre and Miquelon",
   "countryShortCode": "PM",
   "regions": [{
     "name": "Miquelon"
@@ -11351,7 +11351,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Saint Pierre"
   }]
 }, {
-  "countryName": "Saint Vincent and the Grenadines",
+  "countryname": "Saint Vincent and the Grenadines",
   "countryShortCode": "VC",
   "regions": [{
     "name": "Charlotte",
@@ -11373,7 +11373,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Samoa",
+  "countryname": "Samoa",
   "countryShortCode": "WS",
   "regions": [{
     "name": "A'ana",
@@ -11410,7 +11410,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VS"
   }]
 }, {
-  "countryName": "San Marino",
+  "countryname": "San Marino",
   "countryShortCode": "SM",
   "regions": [{
     "name": "Acquaviva",
@@ -11441,7 +11441,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "09"
   }]
 }, {
-  "countryName": "Sao Tome and Principe",
+  "countryname": "Sao Tome and Principe",
   "countryShortCode": "ST",
   "regions": [{
     "name": "Principe",
@@ -11451,7 +11451,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "S"
   }]
 }, {
-  "countryName": "Saudi Arabia",
+  "countryname": "Saudi Arabia",
   "countryShortCode": "SA",
   "regions": [{
     "name": "'Asir",
@@ -11494,7 +11494,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "07"
   }]
 }, {
-  "countryName": "Senegal",
+  "countryname": "Senegal",
   "countryShortCode": "SN",
   "regions": [{
     "name": "Dakar",
@@ -11540,7 +11540,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZG"
   }]
 }, {
-  "countryName": "Serbia",
+  "countryname": "Serbia",
   "countryShortCode": "RS",
   "regions": [{
     "name": "Beograd (Belgrade)",
@@ -11634,7 +11634,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "16"
   }]
 }, {
-  "countryName": "Seychelles",
+  "countryname": "Seychelles",
   "countryShortCode": "SC",
   "regions": [{
     "name": "Anse aux Pins",
@@ -11713,7 +11713,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "23"
   }]
 }, {
-  "countryName": "Sierra Leone",
+  "countryname": "Sierra Leone",
   "countryShortCode": "SL",
   "regions": [{
     "name": "Eastern",
@@ -11729,7 +11729,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "W"
   }]
 }, {
-  "countryName": "Singapore",
+  "countryname": "Singapore",
   "countryShortCode": "SG",
   "regions": [{
     "name": "Central Singapore",
@@ -11748,13 +11748,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Sint Maarten (Dutch part)",
+  "countryname": "Sint Maarten (Dutch part)",
   "countryShortCode": "SX",
   "regions": [{
     "name": "Sint Maarten"
   }]
 }, {
-  "countryName": "Slovakia",
+  "countryname": "Slovakia",
   "countryShortCode": "SK",
   "regions": [{
     "name": "Banskobystricky",
@@ -11782,7 +11782,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZI"
   }]
 }, {
-  "countryName": "Slovenia",
+  "countryname": "Slovenia",
   "countryShortCode": "SI",
   "regions": [{
     "name": "Ajdovscina",
@@ -12404,7 +12404,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "193"
   }]
 }, {
-  "countryName": "Solomon Islands",
+  "countryname": "Solomon Islands",
   "countryShortCode": "SB",
   "regions": [{
     "name": "Central",
@@ -12438,7 +12438,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WE"
   }]
 }, {
-  "countryName": "Somalia",
+  "countryname": "Somalia",
   "countryShortCode": "SO",
   "regions": [{
     "name": "Awdal",
@@ -12496,7 +12496,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WO"
   }]
 }, {
-  "countryName": "South Africa",
+  "countryname": "South Africa",
   "countryShortCode": "ZA",
   "regions": [{
     "name": "Eastern Cape",
@@ -12527,7 +12527,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WC"
   }]
 }, {
-  "countryName": "South Georgia and South Sandwich Islands",
+  "countryname": "South Georgia and South Sandwich Islands",
   "countryShortCode": "GS",
   "regions": [{
     "name": "Bird Island"
@@ -12547,7 +12547,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Traversay Islands"
   }]
 }, {
-  "countryName": "South Sudan",
+  "countryname": "South Sudan",
   "countryShortCode": "SS",
   "regions": [{
     "name": "Central Equatoria",
@@ -12581,7 +12581,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "EW"
   }]
 }, {
-  "countryName": "Spain",
+  "countryname": "Spain",
   "countryShortCode": "ES",
   "regions": [{
     "name": "Albacete",
@@ -12741,7 +12741,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "Z"
   }]
 }, {
-  "countryName": "Sri Lanka",
+  "countryname": "Sri Lanka",
   "countryShortCode": "LK",
   "regions": [{
     "name": "Basnahira",
@@ -12772,7 +12772,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "8"
   }]
 }, {
-  "countryName": "Sudan",
+  "countryname": "Sudan",
   "countryShortCode": "SD",
   "regions": [{
     "name": "Al Bahr al Ahmar",
@@ -12830,7 +12830,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "DC"
   }]
 }, {
-  "countryName": "Suriname",
+  "countryname": "Suriname",
   "countryShortCode": "SR",
   "regions": [{
     "name": "Brokopondo",
@@ -12864,7 +12864,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WA"
   }]
 }, {
-  "countryName": "Swaziland",
+  "countryname": "Swaziland",
   "countryShortCode": "SZ",
   "regions": [{
     "name": "Hhohho",
@@ -12880,7 +12880,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SH"
   }]
 }, {
-  "countryName": "Sweden",
+  "countryname": "Sweden",
   "countryShortCode": "SE",
   "regions": [{
     "name": "Blekinge",
@@ -12947,7 +12947,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "O"
   }]
 }, {
-  "countryName": "Switzerland",
+  "countryname": "Switzerland",
   "countryShortCode": "CH",
   "regions": [{
     "name": "Aargau",
@@ -13029,7 +13029,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "ZH"
   }]
 }, {
-  "countryName": "Syrian Arab Republic",
+  "countryname": "Syrian Arab Republic",
   "countryShortCode": "SY",
   "regions": [{
     "name": "Al Hasakah",
@@ -13075,7 +13075,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TA"
   }]
 }, {
-  "countryName": "Taiwan",
+  "countryname": "Taiwan",
   "countryShortCode": "TW",
   "regions": [{
     "name": "Chang-hua",
@@ -13139,7 +13139,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "YUN"
   }]
 }, {
-  "countryName": "Tajikistan",
+  "countryname": "Tajikistan",
   "countryShortCode": "TJ",
   "regions": [{
     "name": "Dushanbe",
@@ -13155,7 +13155,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SU"
   }]
 }, {
-  "countryName": "Tanzania, United Republic of",
+  "countryname": "Tanzania, United Republic of",
   "countryShortCode": "TZ",
   "regions": [{
     "name": "Arusha",
@@ -13237,7 +13237,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "15"
   }]
 }, {
-  "countryName": "Thailand",
+  "countryname": "Thailand",
   "countryShortCode": "TH",
   "regions": [{
     "name": "Amnat Charoen",
@@ -13472,7 +13472,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "35"
   }]
 }, {
-  "countryName": "Timor-Leste",
+  "countryname": "Timor-Leste",
   "countryShortCode": "TL",
   "regions": [{
     "name": "Aileu",
@@ -13515,7 +13515,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VI"
   }]
 }, {
-  "countryName": "Togo",
+  "countryname": "Togo",
   "countryShortCode": "TG",
   "regions": [{
     "name": "Centre",
@@ -13534,7 +13534,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "S"
   }]
 }, {
-  "countryName": "Tokelau",
+  "countryname": "Tokelau",
   "countryShortCode": "TK",
   "regions": [{
     "name": "Atafu"
@@ -13544,7 +13544,7 @@ __webpack_require__.r(__webpack_exports__);
     "name": "Nukunonu"
   }]
 }, {
-  "countryName": "Tonga",
+  "countryname": "Tonga",
   "countryShortCode": "TO",
   "regions": [{
     "name": "'Eua",
@@ -13563,7 +13563,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "05"
   }]
 }, {
-  "countryName": "Trinidad and Tobago",
+  "countryname": "Trinidad and Tobago",
   "countryShortCode": "TT",
   "regions": [{
     "name": "Arima",
@@ -13612,7 +13612,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TUP"
   }]
 }, {
-  "countryName": "Tunisia",
+  "countryname": "Tunisia",
   "countryShortCode": "TN",
   "regions": [{
     "name": "Ariana",
@@ -13685,7 +13685,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "22"
   }]
 }, {
-  "countryName": "Turkey",
+  "countryname": "Turkey",
   "countryShortCode": "TR",
   "regions": [{
     "name": "Adana",
@@ -13932,7 +13932,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "67"
   }]
 }, {
-  "countryName": "Turkmenistan",
+  "countryname": "Turkmenistan",
   "countryShortCode": "TM",
   "regions": [{
     "name": "Ahal",
@@ -13954,13 +13954,13 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "M"
   }]
 }, {
-  "countryName": "Turks and Caicos Islands",
+  "countryname": "Turks and Caicos Islands",
   "countryShortCode": "TC",
   "regions": [{
     "name": "Turks and Caicos Islands"
   }]
 }, {
-  "countryName": "Tuvalu",
+  "countryname": "Tuvalu",
   "countryShortCode": "TV",
   "regions": [{
     "name": "Funafuti",
@@ -13988,7 +13988,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VAU"
   }]
 }, {
-  "countryName": "Uganda",
+  "countryname": "Uganda",
   "countryShortCode": "UG",
   "regions": [{
     "name": "Abim",
@@ -14232,7 +14232,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "313"
   }]
 }, {
-  "countryName": "Ukraine",
+  "countryname": "Ukraine",
   "countryShortCode": "UA",
   "regions": [{
     "name": "Cherkasy",
@@ -14317,7 +14317,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "40"
   }]
 }, {
-  "countryName": "United Arab Emirates",
+  "countryname": "United Arab Emirates",
   "countryShortCode": "AE",
   "regions": [{
     "name": "Abu Dhabi",
@@ -14342,7 +14342,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "UQ"
   }]
 }, {
-  "countryName": "United Kingdom",
+  "countryname": "United Kingdom",
   "countryShortCode": "GB",
   "regions": [{
     "name": "Avon",
@@ -14670,7 +14670,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WGM"
   }]
 }, {
-  "countryName": "United States",
+  "countryname": "United States",
   "countryShortCode": "US",
   "regions": [{
     "name": "Alabama",
@@ -14860,7 +14860,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "AP"
   }]
 }, {
-  "countryName": "United States Minor Outlying Islands",
+  "countryname": "United States Minor Outlying Islands",
   "countryShortCode": "UM",
   "regions": [{
     "name": "Baker Island",
@@ -14897,7 +14897,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SB"
   }]
 }, {
-  "countryName": "Uruguay",
+  "countryname": "Uruguay",
   "countryShortCode": "UY",
   "regions": [{
     "name": "Artigas",
@@ -14958,7 +14958,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TT"
   }]
 }, {
-  "countryName": "Uzbekistan",
+  "countryname": "Uzbekistan",
   "countryShortCode": "UZ",
   "regions": [{
     "name": "Toshkent shahri",
@@ -15004,7 +15004,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "QR"
   }]
 }, {
-  "countryName": "Vanuatu",
+  "countryname": "Vanuatu",
   "countryShortCode": "VU",
   "regions": [{
     "name": "Malampa",
@@ -15026,7 +15026,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TOB"
   }]
 }, {
-  "countryName": "Venezuela, Bolivarian Republic of",
+  "countryname": "Venezuela, Bolivarian Republic of",
   "countryShortCode": "VE",
   "regions": [{
     "name": "Dependencias Federales",
@@ -15105,7 +15105,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "V"
   }]
 }, {
-  "countryName": "Vietnam",
+  "countryname": "Vietnam",
   "countryShortCode": "VN",
   "regions": [{
     "name": "Đồng Nai",
@@ -15253,7 +15253,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SG"
   }]
 }, {
-  "countryName": "Virgin Islands, British",
+  "countryname": "Virgin Islands, British",
   "countryShortCode": "VG",
   "regions": [{
     "name": "Anegada",
@@ -15269,7 +15269,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "VGD"
   }]
 }, {
-  "countryName": "Virgin Islands, U.S.",
+  "countryname": "Virgin Islands, U.S.",
   "countryShortCode": "VI",
   "regions": [{
     "name": "St. Thomas",
@@ -15282,7 +15282,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "SCR"
   }]
 }, {
-  "countryName": "Wallis and Futuna",
+  "countryname": "Wallis and Futuna",
   "countryShortCode": "WF",
   "regions": [{
     "name": "Alo",
@@ -15295,7 +15295,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "WAL"
   }]
 }, {
-  "countryName": "Western Sahara",
+  "countryname": "Western Sahara",
   "countryShortCode": "EH",
   "regions": [{
     "name": "Es Smara",
@@ -15314,7 +15314,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "OUD"
   }]
 }, {
-  "countryName": "Yemen",
+  "countryname": "Yemen",
   "countryShortCode": "YE",
   "regions": [{
     "name": "Abyān",
@@ -15378,7 +15378,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "TA"
   }]
 }, {
-  "countryName": "Zambia",
+  "countryname": "Zambia",
   "countryShortCode": "ZM",
   "regions": [{
     "name": "Central",
@@ -15409,7 +15409,7 @@ __webpack_require__.r(__webpack_exports__);
     "shortCode": "01"
   }]
 }, {
-  "countryName": "Zimbabwe",
+  "countryname": "Zimbabwe",
   "countryShortCode": "ZW",
   "regions": [{
     "name": "Bulawayo",
@@ -15511,14 +15511,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 1934,
       "code": "LED",
       "name": "Pulkovo Airport",
-      "cityCode": "LED",
-      "cityName": "St Petersburg",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "59.800292",
       "lon": "30.262503",
-      "numAirports": 2,
+      "numairports": 2,
       "city": "true",
       "created_at": null,
       "updated_at": null,
@@ -15528,14 +15528,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 2307,
       "code": "SVO",
       "name": "Sheremetyevo Airport",
-      "cityCode": "MOW",
-      "cityName": "Moscow",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "55.972642",
       "lon": "37.414589",
-      "numAirports": 3,
+      "numairports": 3,
       "city": "",
       "created_at": null,
       "updated_at": null,
@@ -15556,14 +15556,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 1934,
       "code": "LED",
       "name": "Pulkovo Airport",
-      "cityCode": "LED",
-      "cityName": "St Petersburg",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "59.800292",
       "lon": "30.262503",
-      "numAirports": 2,
+      "numairports": 2,
       "city": "true",
       "created_at": null,
       "updated_at": null,
@@ -15573,14 +15573,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 2307,
       "code": "SVO",
       "name": "Sheremetyevo Airport",
-      "cityCode": "MOW",
-      "cityName": "Moscow",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "55.972642",
       "lon": "37.414589",
-      "numAirports": 3,
+      "numairports": 3,
       "city": "",
       "created_at": null,
       "updated_at": null,
@@ -15602,14 +15602,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 2307,
       "code": "SVO",
       "name": "Sheremetyevo Airport",
-      "cityCode": "MOW",
-      "cityName": "Moscow",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "55.972642",
       "lon": "37.414589",
-      "numAirports": 3,
+      "numairports": 3,
       "city": "",
       "created_at": null,
       "updated_at": null,
@@ -15619,14 +15619,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 1934,
       "code": "LED",
       "name": "Pulkovo Airport",
-      "cityCode": "LED",
-      "cityName": "St Petersburg",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "59.800292",
       "lon": "30.262503",
-      "numAirports": 2,
+      "numairports": 2,
       "city": "true",
       "created_at": null,
       "updated_at": null,
@@ -15648,14 +15648,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 1934,
       "code": "LED",
       "name": "Pulkovo Airport",
-      "cityCode": "LED",
-      "cityName": "St Petersburg",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "59.800292",
       "lon": "30.262503",
-      "numAirports": 2,
+      "numairports": 2,
       "city": "true",
       "created_at": null,
       "updated_at": null,
@@ -15665,14 +15665,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 2307,
       "code": "SVO",
       "name": "Sheremetyevo Airport",
-      "cityCode": "MOW",
-      "cityName": "Moscow",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "55.972642",
       "lon": "37.414589",
-      "numAirports": 3,
+      "numairports": 3,
       "city": "",
       "created_at": null,
       "updated_at": null,
@@ -15694,14 +15694,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 2307,
       "code": "SVO",
       "name": "Sheremetyevo Airport",
-      "cityCode": "MOW",
-      "cityName": "Moscow",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "55.972642",
       "lon": "37.414589",
-      "numAirports": 3,
+      "numairports": 3,
       "city": "",
       "created_at": null,
       "updated_at": null,
@@ -15711,14 +15711,14 @@ __webpack_require__.r(__webpack_exports__);
       "id": 1934,
       "code": "LED",
       "name": "Pulkovo Airport",
-      "cityCode": "LED",
-      "cityName": "St Petersburg",
-      "countryName": "RUSSIA",
-      "countryCode": "RU",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
       "timezone": "4",
       "lat": "59.800292",
       "lon": "30.262503",
-      "numAirports": 2,
+      "numairports": 2,
       "city": "true",
       "created_at": null,
       "updated_at": null,
@@ -63511,9 +63511,9 @@ var render = function() {
                   _c("h3", [
                     _vm._v(
                       "\n\t\t\t\t\t\t" +
-                        _vm._s(_vm.airportFrom.cityName) +
+                        _vm._s(_vm.airportFrom.cityname) +
                         " to " +
-                        _vm._s(_vm.airportTo.cityName) +
+                        _vm._s(_vm.airportTo.cityname) +
                         "\n\t\t\t\t\t"
                     )
                   ])
@@ -63533,9 +63533,9 @@ var render = function() {
                         _c("em", [
                           _vm._v(
                             "There aren't any flights from\n\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.airportFrom.cityName) +
+                              _vm._s(_vm.airportFrom.cityname) +
                               " to " +
-                              _vm._s(_vm.airportTo.cityName) +
+                              _vm._s(_vm.airportTo.cityname) +
                               "\n\t\t\t\t\t\t\ton your selected date"
                           )
                         ])
@@ -63658,7 +63658,7 @@ var render = function() {
                                           _c("div", [
                                             _vm._v(
                                               "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(flight.origin.cityName) +
+                                                _vm._s(flight.origin.cityname) +
                                                 "\n\t\t\t\t\t\t\t\t\t\t\t"
                                             )
                                           ]),
@@ -63737,7 +63737,7 @@ var render = function() {
                                               _vm._v(
                                                 "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
                                                   _vm._s(
-                                                    flight.destination.cityName
+                                                    flight.destination.cityname
                                                   ) +
                                                   "\n\t\t\t\t\t\t\t\t\t\t\t"
                                               )
@@ -63865,9 +63865,9 @@ var render = function() {
                       _c("h3", [
                         _vm._v(
                           "\n\t\t\t\t\t\t" +
-                            _vm._s(_vm.airportTo.cityName) +
+                            _vm._s(_vm.airportTo.cityname) +
                             " to " +
-                            _vm._s(_vm.airportFrom.cityName) +
+                            _vm._s(_vm.airportFrom.cityname) +
                             "\n\t\t\t\t\t"
                         )
                       ])
@@ -63887,9 +63887,9 @@ var render = function() {
                             _c("em", [
                               _vm._v(
                                 "There aren't any flights from\n\t\t\t\t\t\t\t" +
-                                  _vm._s(_vm.airportTo.cityName) +
+                                  _vm._s(_vm.airportTo.cityname) +
                                   " to " +
-                                  _vm._s(_vm.airportFrom.cityName) +
+                                  _vm._s(_vm.airportFrom.cityname) +
                                   "\n\t\t\t\t\t\t\ton your selected date"
                               )
                             ])
@@ -64026,7 +64026,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
                                                       _vm._s(
-                                                        flight.origin.cityName
+                                                        flight.origin.cityname
                                                       ) +
                                                       "\n\t\t\t\t\t\t\t\t\t\t\t"
                                                   )
@@ -64115,7 +64115,7 @@ var render = function() {
                                                     "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
                                                       _vm._s(
                                                         flight.destination
-                                                          .cityName
+                                                          .cityname
                                                       ) +
                                                       "\n\t\t\t\t\t\t\t\t\t\t\t"
                                                   )
@@ -64751,7 +64751,7 @@ var render = function() {
                                   attrs: {
                                     options: _vm.regions,
                                     required: "",
-                                    label: "countryName",
+                                    label: "countryname",
                                     reduce: function(country) {
                                       return country.countryShortCode
                                     },
@@ -64918,7 +64918,7 @@ var render = function() {
                                       attrs: {
                                         options: _vm.regions,
                                         required: "",
-                                        label: "countryName",
+                                        label: "countryname",
                                         reduce: function(country) {
                                           return country.countryShortCode
                                         },
@@ -65617,7 +65617,7 @@ var render = function() {
           _c("span", { staticClass: "font-size-2rem text-primary" }, [
             _vm._v(
               "\n\t\t\t\t" +
-                _vm._s(_vm.flightDeparture.origin.cityName) +
+                _vm._s(_vm.flightDeparture.origin.cityname) +
                 "\n\t\t\t"
             )
           ]),
@@ -65625,7 +65625,7 @@ var render = function() {
           _c("span", { staticClass: "font-size-2rem text-primary" }, [
             _vm._v(
               "\n\t\t\t\t" +
-                _vm._s(_vm.flightDeparture.destination.cityName) +
+                _vm._s(_vm.flightDeparture.destination.cityname) +
                 " \n\t\t\t"
             )
           ]),
@@ -65714,7 +65714,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightDeparture.origin.cityName) +
+                            _vm._s(_vm.flightDeparture.origin.cityname) +
                               ", " +
                               _vm._s(_vm.flightDeparture.origin.name)
                           )
@@ -65723,7 +65723,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", [
                         _c("small", [
-                          _vm._v(_vm._s(_vm.flightDeparture.origin.countryName))
+                          _vm._v(_vm._s(_vm.flightDeparture.origin.countryname))
                         ])
                       ])
                     ]),
@@ -65784,7 +65784,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightDeparture.destination.cityName) +
+                            _vm._s(_vm.flightDeparture.destination.cityname) +
                               ", " +
                               _vm._s(_vm.flightDeparture.destination.name)
                           )
@@ -65794,7 +65794,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightDeparture.destination.countryName)
+                            _vm._s(_vm.flightDeparture.destination.countryname)
                           )
                         ])
                       ])
@@ -65842,7 +65842,7 @@ var render = function() {
           _c("span", { staticClass: "font-size-2rem text-primary" }, [
             _vm._v(
               "\n\t\t\t\t" +
-                _vm._s(_vm.flightReturn.origin.cityName) +
+                _vm._s(_vm.flightReturn.origin.cityname) +
                 "\n\t\t\t"
             )
           ]),
@@ -65850,7 +65850,7 @@ var render = function() {
           _c("span", { staticClass: "font-size-2rem text-primary" }, [
             _vm._v(
               "\n\t\t\t\t" +
-                _vm._s(_vm.flightReturn.destination.cityName) +
+                _vm._s(_vm.flightReturn.destination.cityname) +
                 " \n\t\t\t"
             )
           ]),
@@ -65937,7 +65937,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightReturn.origin.cityName) +
+                            _vm._s(_vm.flightReturn.origin.cityname) +
                               ", " +
                               _vm._s(_vm.flightReturn.origin.name)
                           )
@@ -65946,7 +65946,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", [
                         _c("small", [
-                          _vm._v(_vm._s(_vm.flightReturn.origin.countryName))
+                          _vm._v(_vm._s(_vm.flightReturn.origin.countryname))
                         ])
                       ])
                     ]),
@@ -66007,7 +66007,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightReturn.destination.cityName) +
+                            _vm._s(_vm.flightReturn.destination.cityname) +
                               ", " +
                               _vm._s(_vm.flightReturn.destination.name)
                           )
@@ -66017,7 +66017,7 @@ var render = function() {
                       _c("div", [
                         _c("small", [
                           _vm._v(
-                            _vm._s(_vm.flightReturn.destination.countryName)
+                            _vm._s(_vm.flightReturn.destination.countryname)
                           )
                         ])
                       ])
