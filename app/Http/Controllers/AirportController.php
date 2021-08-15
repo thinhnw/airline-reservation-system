@@ -10,9 +10,18 @@ class AirportController extends Controller
 
 //    GET_DATA
     public function index(){
+        $data=Airport::all();
+        return response()->json([
+            'status'=>true,
+            'message'=>'Success',
+            'airports'=>$data
+        ]);
+    }
+    public function airportPaginate(){
         $data=Airport::paginate(10);
         return response()->json([
-
+            'status'=>true,
+            'message'=>'Success',
             'airports'=>$data
         ]);
     }
@@ -28,9 +37,20 @@ class AirportController extends Controller
 
 //    UPDATE
     public function update($id,Request $request){
-        $airport=Airport::find($id);
-        $airport->update($request->all());
-        return response()->json('successfully updated');
+        $airport=Airport::findOrFail($id);
+        $airport->update([
+            'code'=>$request->post('code'),
+            'name'=>$request->post('name'),
+            'cityCode'=>$request->post('cityCode'),
+            'cityName'=>$request->post('cityName'),
+            'countryName'=>$request->post('countryName'),
+            'countryCode'=>$request->post('countryCode'),
+            'timezone'=>$request->post('timezone'),
+            'lat'=>$request->post('lat'),
+            'lon'=>$request->post('lon'),
+            'numAirports'=>$request->post('numAirports'),
+        ]);
+        return redirect()->to('airport');
 
     }
 
@@ -44,13 +64,23 @@ class AirportController extends Controller
 //    SAVE
     public function save(Request $request){
         try {
-            Airport::create(
-                $request->all()
-            );
+            Airport::create([
+                'code' => $request->post('code'),
+                'name' => $request->post('name'),
+                'cityCode' => $request->post('cityCode'),
+                'cityName' => $request->post('cityName'),
+                'countryName' => $request->post('countryName'),
+                'countryCode' => $request->post('countryCode'),
+                'timezone' => $request->post('timezone'),
+                'lat' => $request->post('lat'),
+                'lon' => $request->post('lon'),
+                'numAirports' => $request->post('numAirports'),
+
+            ]);
         }
         catch (\Exception $e){
             abort(404);
         }
-        return response()->json('successfully added');
+        return redirect()->to('airport');
     }
 }

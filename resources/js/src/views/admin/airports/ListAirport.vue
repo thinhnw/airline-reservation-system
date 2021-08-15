@@ -59,7 +59,7 @@ export default {
         }
     },
     created() {
-        let uri = '/api/api-airport';
+        let uri = '/api/api-airport-paginate';
         axios.get(uri).then(res => {
             console.log(res)
             this.rows=res.data.airports.last_page;
