@@ -1,5 +1,6 @@
 {
     "private": true,
+    "name" : "ars",
     "engines": {
         "node": "14.16"
     },
