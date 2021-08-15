@@ -15,7 +15,7 @@ class Airports extends Seeder
     public function run()
     {
         //
-        $path = 'app/sql_Data/airports.sql';
+        $path = 'app/sql_Data/airports_pg.sql';
         DB::unprepared(file_get_contents($path));
     }
 }
