@@ -1,7 +1,7 @@
 
 DROP TABLE IF EXISTS airports;
 CREATE TABLE IF NOT EXISTS airports (
-  id int SERIAL PRIMARY KEY,
+  id BIGINT SERIAL PRIMARY KEY,
   code varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
   name varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
   cityCode varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
