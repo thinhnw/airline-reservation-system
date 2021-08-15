@@ -70,6 +70,7 @@
                 </b-row>
             </b-container>
         </div>
+        <button @click="showAlert">Hello world</button>
     </div>
 </template>
 
@@ -113,7 +114,10 @@ export default {
         });
     },
     methods: {
-
+        showAlert() {
+            // Use sweetalert2
+            this.$swal('Hello Vue world!!!');
+        },
         onSubmit(id) {
             const data={
                 email:this.form.email,
