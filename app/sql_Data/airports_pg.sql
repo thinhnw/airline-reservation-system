@@ -2,17 +2,17 @@
 DROP TABLE IF EXISTS airports;
 CREATE TABLE IF NOT EXISTS airports (
   id SERIAL PRIMARY KEY,
-  code varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
-  name varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  cityCode varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
-  cityName varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  countryName varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  countryCode varchar(200) COLLATE utf8_turkish_ci DEFAULT NULL,
-  timezone varchar(8) COLLATE utf8_turkish_ci DEFAULT NULL,
-  lat varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
-  lon varchar(32) COLLATE utf8_turkish_ci DEFAULT NULL,
+  code varchar(50)  DEFAULT NULL,
+  name varchar(200)  DEFAULT NULL,
+  cityCode varchar(50)  DEFAULT NULL,
+  cityName varchar(200)  DEFAULT NULL,
+  countryName varchar(200)  DEFAULT NULL,
+  countryCode varchar(200)  DEFAULT NULL,
+  timezone varchar(8)  DEFAULT NULL,
+  lat varchar(32)  DEFAULT NULL,
+  lon varchar(32)  DEFAULT NULL,
   numAirports int DEFAULT NULL,
-  city enum('true','false') COLLATE utf8_turkish_ci DEFAULT NULL
+  city enum('true','false')  DEFAULT NULL
 ) 
 
 /*!40000 ALTER TABLE airports DISABLE KEYS */;
