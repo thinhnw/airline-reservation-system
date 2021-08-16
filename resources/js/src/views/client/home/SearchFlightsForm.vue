@@ -113,7 +113,7 @@
 			</div>
 			<b-row no-gutters>
 				<b-col class="text-right">
-					<b-button variant="primary" type="submit">
+					<b-button variant="primary" type="submit" class="px-4">
 						Search
 					</b-button>
 				</b-col>
@@ -186,8 +186,8 @@ export default {
 						flightsReturn: res.data.flightsReturn.map(flight => {
 							return {
 								...flight,
-								origin: this.airports.find(airport => airport.id == flight.departure_id).label,
-								destination: this.airports.find(airport => airport.id == flight.destination_id).label,
+								origin: this.airports.find(airport => airport.id == flight.departure_id),
+								destination: this.airports.find(airport => airport.id == flight.destination_id),
 							}
 						})
 					}
@@ -208,10 +208,12 @@ label {
 .from-city-select, .to-city-select, .trip-select, .passenger-select {
 	&::v-deep .vs__dropdown-toggle {
 		border-right: 0;
+		border-radius: 0;
 	}
 }
 .departure-date-picker, .return-date-picker, .passenger-input {
 	border-right: 0;
+	border-radius: 0 !important;
 }
 .from-city-select {
 	&::v-deep .vs__dropdown-toggle {
@@ -221,8 +223,8 @@ label {
 }
 .class-select {
 	&::v-deep .vs__dropdown-toggle {
-		border-top-right-radius: 5px;
-		border-bottom-right-radius: 5px;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
 	}
 }
 </style>

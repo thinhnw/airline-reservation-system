@@ -64,6 +64,7 @@ export default {
         },
         updateDataEdit(){
             this.shownForm();
+
             return this.dataEdit="";
         }
     }

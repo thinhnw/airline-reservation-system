@@ -6,25 +6,25 @@
 					<div class="w-100 text-center">
 						<h3>Select your departure flight from</h3>
 						<h3>
-							{{ airportFrom.cityName }} to {{ airportTo.cityName }}
+							{{ airportFrom.cityname }} to {{ airportTo.cityname }}
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<div v-if="details.flightsDeparture.length > 0"> 
+						<div v-if="details.flightsDeparture.length > 0">
 							<p>Number of Flights: {{ details.flightsDeparture.length }}</p>
 						</div>
 						<div v-else class="text-center">
 							<em>There aren't any flights from
-								{{ airportFrom.cityName }} to {{ airportTo.cityName }}
+								{{ airportFrom.cityname }} to {{ airportTo.cityname }}
 								on your selected date</em>
 						</div>
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
-							<b-card 
-								v-for="flight, index in computedFlightsDeparture"
+							<b-card
+								v-for="(flight, index) in computedFlightsDeparture"
 								:key="index"
-								class="flight-item" 
+								class="flight-item"
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
@@ -36,12 +36,12 @@
 											class="flight-radio-button"
 										>
 											<div class="text-center">
-												<div class="font-large mb-3">
+												<div class="font-size-large mb-3">
 													Business
 												</div>
 												<div class="mb-3">
 													1000
-													<span class="font-larger">USD</span>
+													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
 													<small>
@@ -58,9 +58,9 @@
 													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
 												</div>
 												<div>
-													{{ flight.origin.cityName }}
+													{{ flight.origin.cityname }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
 												</div>
 											</b-col>
@@ -69,7 +69,7 @@
 													<i class="fal fa-clock"></i>
 												</div>
 												<div>
-													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+													{{ getDisplayedDuration(flight.departure_time, flight.arrival_time) }}
 												</div>
 											</b-col>
 											<b-col cols="5" class="text-right">
@@ -77,28 +77,28 @@
 													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
 												</div>
 												<div>
-													{{ flight.destination.cityName }}
+													{{ flight.destination.cityname }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													Operated by: Avia Airways
 												</div>
 											</b-col>
 										</b-row>
 									</b-col>
 									<b-col cols="3">
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
-											40kg checked baggage 
+											40kg checked baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
 											Pieces 2, Total weight 15kg hand baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-chair-office"></i>
 											Complimentary seat selection
 										</div>
-										<div class="font-small">
+										<div class="font-size-small">
 											<i class="fal fa-key"></i>
 											Lounge access included
 										</div>
@@ -119,25 +119,25 @@
 					<div class="w-100 text-center">
 						<h3>Select your return flight from</h3>
 						<h3>
-							{{ airportTo.cityName }} to {{ airportFrom.cityName }}
+							{{ airportTo.cityname }} to {{ airportFrom.cityname }}
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<div v-if="details.flightsReturn.length > 0"> 
+						<div v-if="details.flightsReturn.length > 0">
 							<p>Number of Flights: {{ details.flightsReturn.length }}</p>
 						</div>
 						<div v-else class="text-center">
 							<em>There aren't any flights from
-								{{ airportTo.cityName }} to {{ airportFrom.cityName }}
+								{{ airportTo.cityname }} to {{ airportFrom.cityname }}
 								on your selected date</em>
 						</div>
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
-							<b-card 
-								v-for="flight, index in computedFlightsReturn"
+							<b-card
+								v-for="(flight, index) in computedFlightsReturn"
 								:key="index"
-								class="flight-item" 
+								class="flight-item"
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
@@ -149,12 +149,12 @@
 											class="flight-radio-button"
 										>
 											<div class="text-center">
-												<div class="font-large mb-3">
+												<div class="font-size-large mb-3">
 													Business
 												</div>
 												<div class="mb-3">
 													1000
-													<span class="font-larger">USD</span>
+													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
 													<small>
@@ -171,9 +171,9 @@
 													{{ flight.departure_time.split(' ')[1] }} {{ flight.origin.code }}
 												</div>
 												<div>
-													{{ flight.origin.cityName }}
+													{{ flight.origin.cityname }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													{{ flight.flight_number }} Airbus A350-900
 												</div>
 											</b-col>
@@ -182,7 +182,7 @@
 													<i class="fal fa-clock"></i>
 												</div>
 												<div>
-													{{ getDifferenceBetweenTwoDates(flight.departure_time, flight.arrival_time) }}
+													{{ getDisplayedDuration(flight.departure_time, flight.arrival_time) }}
 												</div>
 											</b-col>
 											<b-col cols="5" class="text-right">
@@ -190,28 +190,28 @@
 													{{ flight.arrival_time.split(' ')[1] }} {{ flight.destination.code }}
 												</div>
 												<div>
-													{{ flight.destination.cityName }}
+													{{ flight.destination.cityname }}
 												</div>
-												<div class="font-small">
+												<div class="font-size-small">
 													Operated by: Avia Airways
 												</div>
 											</b-col>
 										</b-row>
 									</b-col>
 									<b-col cols="3">
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
-											40kg checked baggage 
+											40kg checked baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
 											Pieces 2, Total weight 15kg hand baggage
 										</div>
-										<div class="font-small mb-2">
+										<div class="font-size-small mb-2">
 											<i class="fal fa-chair-office"></i>
 											Complimentary seat selection
 										</div>
-										<div class="font-small">
+										<div class="font-size-small">
 											<i class="fal fa-key"></i>
 											Lounge access included
 										</div>
@@ -229,7 +229,7 @@
 			</b-row>
 			<b-row v-if="selectedFlightDeparture > -1 && selectedFlightReturn > -1">
 				<b-col cols="12">
-					<b-button class="w-100 mx-0" variant="warning">
+					<b-button class="w-100 mx-0" variant="primary" @click="handleStepDone">
 						CONTINUE
 					</b-button>
 				</b-col>
@@ -239,6 +239,7 @@
 </template>
 
 <script>
+import { getDisplayedDuration } from '@/helper'
 export default {
 	props: {
 		details: {
@@ -255,13 +256,13 @@ export default {
 		}
 	},
 	methods: {
-		getDifferenceBetweenTwoDates(a, b) {
-			const date1 = new Date(a);
-			const date2 = new Date(b);
-			const diffTime = Math.abs(date2 - date1);
-			const diffHours = Math.ceil(diffTime / (1000 * 60 * 60)); 
-			const diffMinutes = (diffTime % (1000 * 60 * 60)) * 60; 
-			return diffHours + 'h ' + diffMinutes + 'm'
+		getDisplayedDuration,
+		handleStepDone() {
+			let data = JSON.parse(JSON.stringify(this.details))
+			this.$emit('done', {
+				selectedFlightDeparture: data.flightsDeparture.find(flight => flight.id === this.selectedFlightDeparture),
+				selectedFlightReturn: data.flightsReturn.find(flight => flight.id === this.selectedFlightReturn)
+			})
 		}
 	},
 	computed: {
@@ -272,12 +273,12 @@ export default {
 			return this.airports.find(airport => airport.id == this.details.to_airport_id) || {}
 		},
 		computedFlightsDeparture() {
-			if (this.selectedFlightDeparture > -1) 
+			if (this.selectedFlightDeparture > -1)
 				return this.details.flightsDeparture.filter(flight => flight.id == this.selectedFlightDeparture)
 			return this.details.flightsDeparture
 		},
 		computedFlightsReturn() {
-			if (this.selectedFlightReturn > -1) 
+			if (this.selectedFlightReturn > -1)
 				return this.details.flightsReturn.filter(flight => flight.id == this.selectedFlightReturn)
 			return this.details.flightsReturn
 		},

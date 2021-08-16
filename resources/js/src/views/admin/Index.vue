@@ -59,14 +59,14 @@
               </li>
               <li class="nav-item">
                 <router-link to="/admin/airports" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-airports' }">
-                    <b-row>
-                        <b-col cols="2" xl="1">
-                            <i class="fas fa-plane-arrival mr-3"></i>
-                        </b-col>
-                        <b-col>
-                            Airports
-                        </b-col>
-                    </b-row>
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fas fa-plane-arrival mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Airports
+                    </b-col>
+                  </b-row>
                 </router-link>
               </li>
                 <li class="nav-item">
@@ -198,6 +198,7 @@ export default {
 /*
  * Utilities
  */
+
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 </style>

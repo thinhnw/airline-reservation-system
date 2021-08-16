@@ -66423,10 +66423,8 @@ var index = {
 /******/ 	(() => {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
-/******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_src_views_client_Index_vue":1,"resources_js_src_views_client_home_Home_vue":1,"resources_js_src_views_client_user_information_UserEditInformation_vue":1,"resources_js_src_views_auth_Login_vue":1,"resources_js_src_views_auth_Register_vue":1,"resources_js_src_views_admin_Index_vue":1,"resources_js_src_views_admin_dashboard_Dashboard_vue":1,"resources_js_src_views_admin_flights_Flights_vue":1,"resources_js_src_views_admin_airports_Airports_vue":1,"resources_js_src_views_admin_user_User_vue":1,"resources_js_src_views_errors_NotAuthorized_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "js/chunks/" + chunkId + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -66459,7 +66457,7 @@ var index = {
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
-/******/ 		// data-webpack is not used as build has no uniqueName
+/******/ 		var dataWebpackPrefix = "ars:";
 /******/ 		// loadScript function to load a script via script tag
 /******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
 /******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -66468,7 +66466,7 @@ var index = {
 /******/ 				var scripts = document.getElementsByTagName("script");
 /******/ 				for(var i = 0; i < scripts.length; i++) {
 /******/ 					var s = scripts[i];
-/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
 /******/ 				}
 /******/ 			}
 /******/ 			if(!script) {
@@ -66480,7 +66478,7 @@ var index = {
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
-/******/ 		
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
 /******/ 				script.src = url;
 /******/ 			}
 /******/ 			inProgress[url] = [done];
@@ -66611,7 +66609,7 @@ var index = {
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkars"] = self["webpackChunkars"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

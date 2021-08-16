@@ -114,12 +114,12 @@ var render = function() {
     "div",
     { staticClass: "text-center" },
     [
-      _c("div", [_vm._v("\n        YOU ARE NOT AUTHORIZED\n    ")]),
+      _c("div", [_vm._v("\n\tYOU ARE NOT AUTHORIZED\n\t")]),
       _vm._v(" "),
       _c(
         "router-link",
         { staticClass: "btn btn-outline-primary", attrs: { to: "/" } },
-        [_vm._v("\n        HOME\n    ")]
+        [_vm._v(" \n\t\tHOME\n\t")]
       )
     ],
     1

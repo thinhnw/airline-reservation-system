@@ -17,6 +17,7 @@ class AirportController extends Controller
             'airports'=>$data
         ]);
     }
+
     public function airportPaginate(){
         $data=Airport::paginate(10);
         return response()->json([
@@ -41,14 +42,14 @@ class AirportController extends Controller
         $airport->update([
             'code'=>$request->post('code'),
             'name'=>$request->post('name'),
-            'cityCode'=>$request->post('cityCode'),
-            'cityName'=>$request->post('cityName'),
-            'countryName'=>$request->post('countryName'),
-            'countryCode'=>$request->post('countryCode'),
+            'citycode'=>$request->post('citycode'),
+            'cityname'=>$request->post('cityname'),
+            'countryname'=>$request->post('countryname'),
+            'countrycode'=>$request->post('countrycode'),
             'timezone'=>$request->post('timezone'),
             'lat'=>$request->post('lat'),
             'lon'=>$request->post('lon'),
-            'numAirports'=>$request->post('numAirports'),
+            'numairports'=>$request->post('numairports'),
         ]);
         return redirect()->to('airport');
 
@@ -67,14 +68,15 @@ class AirportController extends Controller
             Airport::create([
                 'code' => $request->post('code'),
                 'name' => $request->post('name'),
-                'cityCode' => $request->post('cityCode'),
-                'cityName' => $request->post('cityName'),
-                'countryName' => $request->post('countryName'),
-                'countryCode' => $request->post('countryCode'),
+                'citycode' => $request->post('citycode'),
+                'cityname' => $request->post('cityname'),
+                'countryname' => $request->post('countryname'),
+                'countrycode' => $request->post('countrycode'),
                 'timezone' => $request->post('timezone'),
                 'lat' => $request->post('lat'),
                 'lon' => $request->post('lon'),
-                'numAirports' => $request->post('numAirports'),
+                'numairports' => $request->post('numairports'),
+
             ]);
         }
         catch (\Exception $e){

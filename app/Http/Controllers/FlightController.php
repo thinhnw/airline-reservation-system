@@ -19,7 +19,7 @@ class FlightController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index', 'search']]);
+        $this->middleware('JWT', ['except' => ['index', 'show', 'search']]);
     }
     /**
      * Display a listing of the resource.
@@ -89,7 +89,19 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
+        try {
+            //code...
+            $flight = Flight::findOrFail($id);
+            return response()->json([
+                'flight' => $flight
+            ], 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 
     /**
