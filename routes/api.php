@@ -43,6 +43,7 @@ Route::post('/airport/update/{id}',[AirportController::class,'update']);
 Route::delete('/airport/delete/{id}',[AirportController::class,'delete']);
 Route::post('/airport/save',[AirportController::class,'save']);
 //customer
+
 Route::resource('customer', CustomerController::class)->middleware('api');
 Route::get("/api-customer",[CustomerController::class,"index"]);
 Route::get("/customer/findUser/{id}",[CustomerController::class,"findUser"]);
