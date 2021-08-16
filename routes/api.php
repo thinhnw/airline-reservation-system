@@ -37,6 +37,7 @@ Route::resource('flights', FlightController::class)->middleware('api');
 //airport
 Route::resource('airports', AirportController::class)->middleware('api');
 Route::get("/api-airport",[AirportController::class,"index"]);
+Route::get("/api-airport-paginate",[AirportController::class,"airportPaginate"]);
 Route::get('/airport/edit/{id}',[AirportController::class,'edit']);
 Route::post('/airport/update/{id}',[AirportController::class,'update']);
 Route::delete('/airport/delete/{id}',[AirportController::class,'delete']);
@@ -50,3 +51,5 @@ Route::get('/customer/edit/{id}',[CustomerController::class,'edit']);
 Route::post('/customer/update/{id}',[CustomerController::class,'update']);
 Route::delete('/customer/delete/{id}',[CustomerController::class,'delete']);
 Route::post('/customer/save',[CustomerController::class,'save']);
+Route::post("/customer/checkPass/{id}",[CustomerController::class,"checkPass"]);
+

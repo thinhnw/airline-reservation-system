@@ -76,13 +76,34 @@ export default {
             });
         },
         deleteData(id){
-            let uri = `http://127.0.0.1:8000/api/customer/delete/${id}`;
-            axios.delete(uri).then(() => {
-                this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
-                this.dataEdit.splice(this.customers.findIndex(customer => {
-                    customer.id === this.dataEdit.id;
-                }), 1)
-            });
+            this.$swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    //Send Request to server
+                    let uri = `http://127.0.0.1:8000/api/customer/delete/${id}`;
+                    axios.delete(uri).then(() => {
+                    }).then((response)=> {
+                        this.$swal(
+                            'Deleted!',
+                            'User deleted successfully',
+                            'success'
+                        )
+                    })
+                    this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
+                    this.dataEdit.splice(this.customers.findIndex(customer => {
+                        customer.id === this.dataEdit.id;
+                    }), 1)
+                }
+
+            })
+
             this.$emit('setShown',false)
 
         },

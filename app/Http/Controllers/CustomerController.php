@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
 class CustomerController extends Controller
 {
     //GET_DATA
@@ -21,6 +22,14 @@ class CustomerController extends Controller
             'customer'=>$customer
         ]);
     }
+    public function checkPass(Request $request,$id){
+        $customer=Customer::findOrFail($id);
+        $result=Hash::check($request->password,$customer->password);
+        return response()->json([
+            'customer'=>$customer,
+            'result'=>$result
+        ]);
+    }
 //    EDIT
     public function edit($id){
         $customer=Customer::findOrFail($id);
@@ -33,13 +42,18 @@ class CustomerController extends Controller
 //    UPDATE
     public function update($id,Request $request){
         $customer=Customer::find($id);
+        if ($request->password===$customer->password){
+            $password=$customer->password;
+        }else {
+            $password=Hash::make($request->password);
+        }
         $customer->update([
-            'first_name'=> $request->first_name,
-            'last_name'=>$request->last_name,
-            'gender'=>$request->gender,
-            'email'=>$request->email,
-            'user_type'=>'Customer',
-            'password'=>Hash::make($request->password)
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'user_type' => 'Customer',
+            'password' => $password
         ]);
         return response()->json('successfully updated');
     }
@@ -59,7 +73,7 @@ class CustomerController extends Controller
                 'last_name'=>$request->last_name,
                 'gender'=>$request->gender,
                 'email'=>$request->email,
-                'user_type'=>$request->user_type,
+                'user_type'=>"Customer",
                 'password'=>Hash::make($request->password)
                 ]
             );

@@ -60,7 +60,7 @@ export default {
         }
     },
     created() {
-        let uri = '/api/api-airport';
+        let uri = '/api/api-airport-paginate';
         axios.get(uri).then(res => {
             console.log(res)
             this.rows=res.data.airports.last_page;
@@ -76,13 +76,33 @@ export default {
             });
         },
         deleteData(id){
-            let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
-            axios.delete(uri).then(() => {
+            this.$swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                //Send Request to server
+                let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
+                axios.delete(uri).then(() => {
+                }).then((response)=> {
+                        this.$swal(
+                            'Deleted!',
+                            'User deleted successfully',
+                            'success'
+                        )
+                    })
                 this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
                 this.dataEdit.splice(this.airports.findIndex(airport => {
                     airport.id === this.dataEdit.id;
                 }), 1)
-            });
+            }
+
+        })
             this.$emit('setShown',false)
 
         },

@@ -52,15 +52,18 @@ export default {
             return this.updated=false;
         },
         resultCreate(){
+            this.shownForm();
             return this.created=false;
         },
         shownForm(){
+            this.dataEdit="";
             return this.shown=!this.shown;
         },
         setShown(res){
             return this.shown=res
         },
         updateDataEdit(){
+            this.shownForm();
             return this.dataEdit="";
         }
     }

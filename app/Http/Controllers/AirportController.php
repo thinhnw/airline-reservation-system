@@ -17,6 +17,14 @@ class AirportController extends Controller
             'airports'=>$data
         ]);
     }
+    public function airportPaginate(){
+        $data=Airport::paginate(10);
+        return response()->json([
+            'status'=>true,
+            'message'=>'Success',
+            'airports'=>$data
+        ]);
+    }
 
 //    EDIT
     public function edit($id){
