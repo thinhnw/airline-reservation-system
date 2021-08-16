@@ -422,7 +422,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     clickCallback: function clickCallback(pageNum) {
       var _this2 = this;
 
-      var uri = '/api/api-airport?page=' + pageNum;
+      var uri = '/api/api-airport-paginate?page=' + pageNum;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
         var _this2$airports;
 

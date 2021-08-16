@@ -69,7 +69,7 @@ export default {
     },
     methods:{
         clickCallback(pageNum){
-            let uri = '/api/api-airport?page='+(pageNum);
+            let uri = '/api/api-airport-paginate?page='+(pageNum);
             axios.get(uri).then(res => {
                 this.airports=[];
                 this.airports.push(...res.data.airports.data);
