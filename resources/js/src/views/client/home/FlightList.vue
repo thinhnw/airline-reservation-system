@@ -1,8 +1,8 @@
 <template>
 	<div class="flight-list py-5">
-		<b-container>
+		<b-container class="px-0">
 			<b-row>
-				<b-col cols="12">
+				<b-col cols="12" class="px-0">
 					<div class="w-100 text-center">
 						<h3>Select your departure flight from</h3>
 						<h3>

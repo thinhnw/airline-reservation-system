@@ -15,7 +15,7 @@
 							<b-form-input v-model="password" type="password" placeholder="Enter your password"  />
 						</b-form-group>
 						<b-form-group class="mb-3">
-							<b-button type="submit" squared variant="primary" class="w-100">Login</b-button>
+							<b-button type="submit" variant="primary" class="w-100">Login</b-button>
 						</b-form-group>
 					</b-form>
 					<div v-if="$route.name != 'admin-login'">

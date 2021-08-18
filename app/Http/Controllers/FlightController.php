@@ -196,6 +196,9 @@ class FlightController extends Controller
         $from_airport_id = $filter->from_airport_id;
         $to_airport_id = $filter->to_airport_id;
         $departure_date = $filter->departure_date;
+        $passengers = json_decode($filter->passengers);
+        $passengerCount = $passengers['adults'] + $passengers['children'];
+        $class = $filter->class;
         $flights = Flight::where([
             ['departure_id', '=', $from_airport_id],
             ['destination_id', '=', $to_airport_id],

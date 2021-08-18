@@ -1,8 +1,8 @@
 <template>
 	<div id="trip-summary" class="py-5">
-		<b-container>
+		<b-container class="px-0">
 			<b-row>
-				<b-col>
+				<b-col class="px-0">
 					<b-card no-body>
 						<b-card-header>
 							Trip Summary
@@ -11,8 +11,8 @@
 							<TripSummaryPrintable :details="details" />
 						</b-card-body>
 						<div class="w-100 text-center">
-							<b-button class="w-50 py-3 font-size-large" variant="warning" @click="handlePayment">
-								Purchase
+							<b-button class="w-50 py-3 font-size-large" variant="warning" @click="makeReservation">
+								Confirm Booking
 							</b-button>
 							<div class="py-3 pointer" @click="$emit('back')"><< Back</div>
 						</div>
@@ -25,47 +25,55 @@
 
 <script>
 import moment from 'moment'
-// import details from './tripSummaryDetails'
+import details from './tripSummaryDetails'
 import { getDisplayedDuration } from '@/helper'
 import html2canvas from 'html2canvas'
 import TripSummaryPrintable from './TripSummaryPrintable.vue'
-
+import axios from '@/axios'
+import { mapGetters } from 'vuex'
 export default {
 	components: {
 		TripSummaryPrintable
 	},
 	props: {
-		details: {
-			type: Object,
-			default: () => {}
-		}
+		// details: {
+		// 	type: Object,
+		// 	default: () => {}
+		// }
 	},
 	data() {
 		return {
 			moment,
-			// details,
+			details,
 		}
 	},
 	methods: {
 		getDisplayedDuration,
-		async handlePayment() {
+		async makeReservation() {
 			// this.$refs.html2Pdf.generatePdf()
 			try {
         const el = this.$refs.summary
         let res = await html2canvas(el)
-        this.output = res.toDataURL()
-        this.output = this.output.replace("png", "jpeg")
-        let filename = "instruction.jpeg"
-        let element = document.createElement("a")
-        element.setAttribute("href", this.output)
-        element.setAttribute("download", filename)
+        let output = res.toDataURL()
+        // this.output = this.output.replace("png", "jpeg")
+        let filename = "e-ticket.png"
+        // let element = document.createElement("a")
+				// console.log(output)
+        // element.setAttribute("href", output)
+        // element.setAttribute("download", filename)
 
-        element.style.display = "none"
-        document.body.appendChild(element)
+        // element.style.display = "none"
+        // document.body.appendChild(element)
 
-        element.click()
+        // element.click()
 
-        document.body.removeChild(element)
+        // document.body.removeChild(element)
+				res = await axios.post('/api/reservations', {
+					e_ticket: output,
+					details: this.details,
+					price: 500
+				})
+				this.$router.push('profile')
       } catch (err) {
         console.error(err)
       }
@@ -75,6 +83,9 @@ export default {
 		// }
 	},
 	computed: {
+		...mapGetters({
+			userInfo: 'auth/userInfo'
+		}),
 		flightDeparture() {
 			return this.details.selectedFlightDeparture
 		},

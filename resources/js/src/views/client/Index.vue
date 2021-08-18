@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid px-0">
+	<div class="client-portal container-fluid px-0 h-100">
 		<TopNav />
 		<router-view></router-view>
 		<TheFooter />
@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style>
-
+.client-portal {
+	position: relative;
+	padding-bottom: 100px;
+}
 </style>

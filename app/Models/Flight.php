@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 
 class Flight extends Model
 {
@@ -15,4 +16,12 @@ class Flight extends Model
         'departure_time',
         'arrival_time'
     ];
+    
+
+    public function fareEconomy() {
+        return 500;
+    }
+    public function fareBusiness() {
+        return 1000;
+    }
 }

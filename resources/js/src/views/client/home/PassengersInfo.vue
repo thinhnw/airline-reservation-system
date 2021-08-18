@@ -7,7 +7,7 @@
 			</b-col>
 		</b-row>
 		<b-row>
-			<b-col cols="8">
+			<b-col cols="8" class="px-0">
 				<b-card no-body v-for="passenger, index in passengers" :key="index" class="mb-3">
 					<b-card-header>
 						<h5>

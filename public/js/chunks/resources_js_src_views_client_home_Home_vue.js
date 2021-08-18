@@ -1,5 +1,130 @@
 (self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_client_home_Home_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var businessAlphabet = [['A', '', '', '', '', 'E', 'F', '', '', '', '', 'K'], ['', 'B', '', '', 'D', '', '', 'G', '', '', 'J', '']];
+var economyAlphabet = ['A', 'B', 'C', '', 'D', 'E', 'F', 'G', '', 'H', 'J', 'K'];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      businessRows: 11,
+      economyRows: 30,
+      businessAlphabet: businessAlphabet,
+      economyAlphabet: economyAlphabet,
+      selectedSeat: ''
+    };
+  },
+  methods: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/CheckIn.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/CheckIn.vue?vue&type=script&lang=js& ***!
@@ -501,6 +626,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FlightBooking_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FlightBooking.vue */ "./resources/js/src/views/client/home/FlightBooking.vue");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
 /* harmony import */ var _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TripSummary.vue */ "./resources/js/src/views/client/home/TripSummary.vue");
+/* harmony import */ var _SeatSelection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SeatSelection */ "./resources/js/src/views/client/home/SeatSelection.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -551,6 +677,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
 
 
 
@@ -565,7 +694,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     MyTrip: _MyTrip_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     CheckIn: _CheckIn_vue__WEBPACK_IMPORTED_MODULE_3__.default,
     FlightStatus: _FlightStatus_vue__WEBPACK_IMPORTED_MODULE_4__.default,
-    TripSummary: _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__.default
+    TripSummary: _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__.default,
+    SeatSelection: _SeatSelection__WEBPACK_IMPORTED_MODULE_8__.default
   },
   data: function data() {
     return {
@@ -1060,6 +1190,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -1073,7 +1238,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         tripType: 'One-way',
         departureDate: new Date().toISOString().split('T')[0],
         returnDate: new Date().toISOString().split('T')[0],
-        passengerCount: 1,
+        passengers: {
+          adults: 1,
+          children: 0,
+          babies: 0
+        },
         "class": 'Business'
       }
     };
@@ -1163,6 +1332,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 12]]);
       }))();
     }
+  },
+  computed: {
+    passengerCount: function passengerCount() {
+      return parseInt(this.form.passengers.adults) + parseInt(this.form.passengers.children) + parseInt(this.form.passengers.babies);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_SeatMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/SeatMap */ "./resources/js/src/components/SeatMap.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    SeatMap: _components_SeatMap__WEBPACK_IMPORTED_MODULE_0__.default
   }
 });
 
@@ -1183,10 +1395,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
+/* harmony import */ var _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tripSummaryDetails */ "./resources/js/src/views/client/home/tripSummaryDetails.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1218,34 +1439,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
- // import details from './tripSummaryDetails'
+
+
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__.default
+    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__.default
   },
-  props: {
-    details: {
-      type: Object,
-      "default": function _default() {}
-    }
+  props: {// details: {
+    // 	type: Object,
+    // 	default: () => {}
+    // }
   },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()) // details,
-
+      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()),
+      details: _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__.default
     };
   },
   methods: {
-    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_2__.getDisplayedDuration,
-    handlePayment: function handlePayment() {
+    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_3__.getDisplayedDuration,
+    makeReservation: function makeReservation() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var el, res, filename, element;
+        var el, res, output, filename;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1253,48 +1475,63 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 el = _this.$refs.summary;
                 _context.next = 4;
-                return html2canvas__WEBPACK_IMPORTED_MODULE_3___default()(el);
+                return html2canvas__WEBPACK_IMPORTED_MODULE_4___default()(el);
 
               case 4:
                 res = _context.sent;
-                _this.output = res.toDataURL();
-                _this.output = _this.output.replace("png", "jpeg");
-                filename = "instruction.jpeg";
-                element = document.createElement("a");
-                element.setAttribute("href", _this.output);
-                element.setAttribute("download", filename);
-                element.style.display = "none";
-                document.body.appendChild(element);
-                element.click();
-                document.body.removeChild(element);
-                _context.next = 20;
+                output = res.toDataURL(); // this.output = this.output.replace("png", "jpeg")
+
+                filename = "e-ticket.png"; // let element = document.createElement("a")
+                // console.log(output)
+                // element.setAttribute("href", output)
+                // element.setAttribute("download", filename)
+                // element.style.display = "none"
+                // document.body.appendChild(element)
+                // element.click()
+                // document.body.removeChild(element)
+
+                _context.next = 9;
+                return _axios__WEBPACK_IMPORTED_MODULE_6__.default.post('/api/reservations', {
+                  e_ticket: output,
+                  details: _this.details,
+                  price: 500
+                });
+
+              case 9:
+                res = _context.sent;
+
+                _this.$router.push('profile');
+
+                _context.next = 16;
                 break;
 
-              case 17:
-                _context.prev = 17;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 20:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 17]]);
+        }, _callee, null, [[0, 13]]);
       }))();
     } // hasGenerated(e) {
     // 	console.log(e)
     // }
 
   },
-  computed: {
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
+    userInfo: 'auth/userInfo'
+  })), {}, {
     flightDeparture: function flightDeparture() {
       return this.details.selectedFlightDeparture;
     },
     flightReturn: function flightReturn() {
       return this.details.selectedFlightReturn;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -15489,6 +15726,308 @@ var getDisplayedDuration = function getDisplayedDuration(a, b) {
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/tripSummaryDetails.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/src/views/client/home/tripSummaryDetails.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  "from_airport_id": 1934,
+  "to_airport_id": 2307,
+  "trip_type": "Return",
+  "departure_date": "2021-08-19",
+  "return_date": "2021-08-21",
+  "passenger_count": 2,
+  "class": "Business",
+  "flightsDeparture": [{
+    "id": 4,
+    "flight_number": "RU66",
+    "departure_id": 1934,
+    "destination_id": 2307,
+    "departure_time": "2021-08-19 11:00:00",
+    "arrival_time": "2021-08-19 13:00:00",
+    "created_at": "2021-08-07T07:08:26.000000Z",
+    "updated_at": "2021-08-07T07:08:26.000000Z",
+    "economy_seat_count": 312,
+    "business_seat_count": 42,
+    "origin": {
+      "id": 1934,
+      "code": "LED",
+      "name": "Pulkovo Airport",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "59.800292",
+      "lon": "30.262503",
+      "numairports": 2,
+      "city": "true",
+      "created_at": null,
+      "updated_at": null,
+      "label": "St Petersburg LED"
+    },
+    "destination": {
+      "id": 2307,
+      "code": "SVO",
+      "name": "Sheremetyevo Airport",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "55.972642",
+      "lon": "37.414589",
+      "numairports": 3,
+      "city": "",
+      "created_at": null,
+      "updated_at": null,
+      "label": "Moscow SVO"
+    }
+  }, {
+    "id": 7,
+    "flight_number": "RU345",
+    "departure_id": 1934,
+    "destination_id": 2307,
+    "departure_time": "2021-08-19 23:00:00",
+    "arrival_time": "2021-08-20 01:00:00",
+    "created_at": "2021-08-08T10:24:51.000000Z",
+    "updated_at": "2021-08-08T10:24:51.000000Z",
+    "economy_seat_count": 312,
+    "business_seat_count": 42,
+    "origin": {
+      "id": 1934,
+      "code": "LED",
+      "name": "Pulkovo Airport",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "59.800292",
+      "lon": "30.262503",
+      "numairports": 2,
+      "city": "true",
+      "created_at": null,
+      "updated_at": null,
+      "label": "St Petersburg LED"
+    },
+    "destination": {
+      "id": 2307,
+      "code": "SVO",
+      "name": "Sheremetyevo Airport",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "55.972642",
+      "lon": "37.414589",
+      "numairports": 3,
+      "city": "",
+      "created_at": null,
+      "updated_at": null,
+      "label": "Moscow SVO"
+    }
+  }],
+  "flightsReturn": [{
+    "id": 8,
+    "flight_number": "RU 556",
+    "departure_id": 2307,
+    "destination_id": 1934,
+    "departure_time": "2021-08-21 22:00:00",
+    "arrival_time": "2021-08-21 23:00:00",
+    "created_at": "2021-08-09T03:13:31.000000Z",
+    "updated_at": "2021-08-09T03:13:31.000000Z",
+    "economy_seat_count": 312,
+    "business_seat_count": 42,
+    "origin": {
+      "id": 2307,
+      "code": "SVO",
+      "name": "Sheremetyevo Airport",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "55.972642",
+      "lon": "37.414589",
+      "numairports": 3,
+      "city": "",
+      "created_at": null,
+      "updated_at": null,
+      "label": "Moscow SVO"
+    },
+    "destination": {
+      "id": 1934,
+      "code": "LED",
+      "name": "Pulkovo Airport",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "59.800292",
+      "lon": "30.262503",
+      "numairports": 2,
+      "city": "true",
+      "created_at": null,
+      "updated_at": null,
+      "label": "St Petersburg LED"
+    }
+  }],
+  "selectedFlightDeparture": {
+    "id": 4,
+    "flight_number": "RU66",
+    "departure_id": 1934,
+    "destination_id": 2307,
+    "departure_time": "2021-08-19 11:00:00",
+    "arrival_time": "2021-08-19 13:00:00",
+    "created_at": "2021-08-07T07:08:26.000000Z",
+    "updated_at": "2021-08-07T07:08:26.000000Z",
+    "economy_seat_count": 312,
+    "business_seat_count": 42,
+    "origin": {
+      "id": 1934,
+      "code": "LED",
+      "name": "Pulkovo Airport",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "59.800292",
+      "lon": "30.262503",
+      "numairports": 2,
+      "city": "true",
+      "created_at": null,
+      "updated_at": null,
+      "label": "St Petersburg LED"
+    },
+    "destination": {
+      "id": 2307,
+      "code": "SVO",
+      "name": "Sheremetyevo Airport",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "55.972642",
+      "lon": "37.414589",
+      "numairports": 3,
+      "city": "",
+      "created_at": null,
+      "updated_at": null,
+      "label": "Moscow SVO"
+    }
+  },
+  "selectedFlightReturn": {
+    "id": 8,
+    "flight_number": "RU 556",
+    "departure_id": 2307,
+    "destination_id": 1934,
+    "departure_time": "2021-08-21 22:00:00",
+    "arrival_time": "2021-08-21 23:00:00",
+    "created_at": "2021-08-09T03:13:31.000000Z",
+    "updated_at": "2021-08-09T03:13:31.000000Z",
+    "economy_seat_count": 312,
+    "business_seat_count": 42,
+    "origin": {
+      "id": 2307,
+      "code": "SVO",
+      "name": "Sheremetyevo Airport",
+      "citycode": "MOW",
+      "cityname": "Moscow",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "55.972642",
+      "lon": "37.414589",
+      "numairports": 3,
+      "city": "",
+      "created_at": null,
+      "updated_at": null,
+      "label": "Moscow SVO"
+    },
+    "destination": {
+      "id": 1934,
+      "code": "LED",
+      "name": "Pulkovo Airport",
+      "citycode": "LED",
+      "cityname": "St Petersburg",
+      "countryname": "RUSSIA",
+      "countrycode": "RU",
+      "timezone": "4",
+      "lat": "59.800292",
+      "lon": "30.262503",
+      "numairports": 2,
+      "city": "true",
+      "created_at": null,
+      "updated_at": null,
+      "label": "St Petersburg LED"
+    }
+  },
+  "passengers": [{
+    "title": "Mr",
+    "firstName": "Thinh",
+    "lastName": "Nguyen",
+    "dateOfBirth": "1999-12-08",
+    "nationality": "VN",
+    "nationalityId": -1,
+    "passportNumber": "C12345678",
+    "passportExpiryDate": "2022-08-20",
+    "travelDocumentType": "Passport",
+    "travelDocumentCountry": "VN"
+  }, {
+    "title": "Mrs",
+    "firstName": "Thi",
+    "lastName": "Nguyen",
+    "dateOfBirth": "1991-08-10",
+    "nationality": "VN",
+    "nationalityId": -1,
+    "passportNumber": "C87654321",
+    "passportExpiryDate": "2023-08-24",
+    "travelDocumentType": "Passport",
+    "travelDocumentCountry": "VN"
+  }],
+  "contact": {
+    "email": "nvt0412@gmail.com"
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".seat[data-v-3b71e6f2] {\n  width: 100% !important;\n}\n.seat[data-v-3b71e6f2] .btn {\n  width: 25px !important;\n  height: 25px !important;\n  font-size: 0.8rem;\n}\n.seat-row[data-v-3b71e6f2] {\n  position: relative;\n}\n.seat-row .seat-row--number[data-v-3b71e6f2] {\n  position: absolute;\n  display: block;\n  width: 30px;\n  text-align: center;\n  left: -30px;\n  top: 6px;\n  font-size: 12px;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightBooking.vue?vue&type=style&index=0&id=61fb3323&lang=scss&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightBooking.vue?vue&type=style&index=0&id=61fb3323&lang=scss&scoped=true& ***!
@@ -15578,7 +16117,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "label[data-v-5476a3f9] {\n  font-size: 0.8rem;\n}\n.from-city-select[data-v-5476a3f9] .vs__dropdown-toggle, .to-city-select[data-v-5476a3f9] .vs__dropdown-toggle, .trip-select[data-v-5476a3f9] .vs__dropdown-toggle, .passenger-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-right: 0;\n  border-radius: 0;\n}\n.departure-date-picker[data-v-5476a3f9], .return-date-picker[data-v-5476a3f9], .passenger-input[data-v-5476a3f9] {\n  border-right: 0;\n  border-radius: 0 !important;\n}\n.from-city-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.class-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "label[data-v-5476a3f9] {\n  font-size: 0.8rem;\n}\n.from-city-select[data-v-5476a3f9] .vs__dropdown-toggle, .to-city-select[data-v-5476a3f9] .vs__dropdown-toggle, .trip-select[data-v-5476a3f9] .vs__dropdown-toggle, .passenger-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-right: 0;\n  border-radius: 0;\n}\n.departure-date-picker[data-v-5476a3f9], .return-date-picker[data-v-5476a3f9], .passenger-input[data-v-5476a3f9] {\n  border-right: 0;\n  border-radius: 0 !important;\n}\n.from-city-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.class-select[data-v-5476a3f9] .vs__dropdown-toggle {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n}\n.passenger-input[data-v-5476a3f9] .passenger-input-btn {\n  border: 1px solid rgba(60, 60, 60, 0.26) !important;\n  border-radius: 0 !important;\n  border-right: none !important;\n}\n.passenger-input[data-v-5476a3f9] .dropdown-menu {\n  width: 275px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62104,6 +62643,36 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_style_index_0_id_3b71e6f2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_style_index_0_id_3b71e6f2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_style_index_0_id_3b71e6f2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightBooking.vue?vue&type=style&index=0&id=61fb3323&lang=scss&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightBooking.vue?vue&type=style&index=0&id=61fb3323&lang=scss&scoped=true& ***!
@@ -62281,6 +62850,47 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_style_index_0_id_69242648_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/src/components/SeatMap.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/src/components/SeatMap.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true& */ "./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true&");
+/* harmony import */ var _SeatMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SeatMap.vue?vue&type=script&lang=js& */ "./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js&");
+/* harmony import */ var _SeatMap_vue_vue_type_style_index_0_id_3b71e6f2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& */ "./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _SeatMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "3b71e6f2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/src/components/SeatMap.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
@@ -62604,6 +63214,45 @@ component.options.__file = "resources/js/src/views/client/home/SearchFlightsForm
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/SeatSelection.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/src/views/client/home/SeatSelection.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SeatSelection.vue?vue&type=template&id=e55c413e& */ "./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e&");
+/* harmony import */ var _SeatSelection_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SeatSelection.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _SeatSelection_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/src/views/client/home/SeatSelection.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/TripSummary.vue":
 /*!************************************************************!*\
   !*** ./resources/js/src/views/client/home/TripSummary.vue ***!
@@ -62683,6 +63332,22 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 if (false) { var api; }
 component.options.__file = "resources/js/src/views/client/home/TripSummaryPrintable.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatMap.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -62814,6 +63479,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatSelection_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatSelection.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatSelection_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/TripSummary.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/TripSummary.vue?vue&type=script&lang=js& ***!
@@ -62843,6 +63524,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TripSummaryPrintable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummaryPrintable.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_style_index_0_id_3b71e6f2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=style&index=0&id=3b71e6f2&lang=scss&scoped=true&");
+
 
 /***/ }),
 
@@ -62920,6 +63614,23 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_style_index_0_id_69242648_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TripSummaryPrintable.vue?vue&type=style&index=0&id=69242648&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummaryPrintable.vue?vue&type=style&index=0&id=69242648&scoped=true&lang=scss&");
+
+
+/***/ }),
+
+/***/ "./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatMap_vue_vue_type_template_id_3b71e6f2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true&");
 
 
 /***/ }),
@@ -63060,6 +63771,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SeatSelection_vue_vue_type_template_id_e55c413e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SeatSelection.vue?vue&type=template&id=e55c413e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e&");
+
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/TripSummary.vue?vue&type=template&id=0d362cca&scoped=true&":
 /*!*******************************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/TripSummary.vue?vue&type=template&id=0d362cca&scoped=true& ***!
@@ -63090,6 +63818,295 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_template_id_69242648_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_template_id_69242648_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TripSummaryPrintable.vue?vue&type=template&id=69242648&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummaryPrintable.vue?vue&type=template&id=69242648&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/components/SeatMap.vue?vue&type=template&id=3b71e6f2&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "px-0 border pl-1",
+      staticStyle: { "max-width": "360px", "min-width": "360px" }
+    },
+    [
+      _c(
+        "b-row",
+        { staticClass: "w-100 mx-0" },
+        [
+          _c("b-col", { staticClass: "text-center py-2" }, [
+            _c("div", { staticClass: "border" }, [
+              _vm._v("\n\t\t\t\tBUSINESS\n\t\t\t")
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.businessRows, function(row) {
+        return _c(
+          "div",
+          { key: row },
+          [
+            [1, 7].includes(row)
+              ? _c(
+                  "b-row",
+                  { attrs: { "no-gutters": "" } },
+                  [
+                    _c(
+                      "b-col",
+                      { staticClass: "py-2 pr-1", attrs: { cols: "3" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "bg-secondary text-white rounded" },
+                          [_vm._v("\n\t\t\t\t\t<<EXIT\n\t\t\t\t")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-col"),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      {
+                        staticClass: "text-center py-2 pr-1",
+                        attrs: { cols: "4" }
+                      },
+                      [
+                        _c("div", { staticClass: "border rounded" }, [
+                          _vm._v("\n\t\t\t\t\tRestroom\n\t\t\t\t\t"),
+                          _c("i", { staticClass: "fas fa-restroom" })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-col"),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { staticClass: " py-2 pr-1", attrs: { cols: "3" } },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-secondary text-right text-white rounded"
+                          },
+                          [_vm._v("\n\t\t\t\t\tEXIT>>\n\t\t\t\t")]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "b-row",
+              { staticClass: "seat-row", attrs: { "no-gutters": "" } },
+              [
+                _c("span", { staticClass: "seat-row--number" }, [
+                  _vm._v(_vm._s(row))
+                ]),
+                _vm._v(" "),
+                _vm._l(12, function(col) {
+                  return _c("b-col", { key: col, attrs: { cols: "1" } }, [
+                    _vm.businessAlphabet[(row - 1) % 2][col - 1] != ""
+                      ? _c(
+                          "div",
+                          [
+                            _c(
+                              "b-form-radio",
+                              {
+                                staticClass: "seat",
+                                attrs: {
+                                  size: "sm",
+                                  "button-variant": "outline-primary",
+                                  button: "",
+                                  value: "business-" + row + "-" + col
+                                },
+                                model: {
+                                  value: _vm.selectedSeat,
+                                  callback: function($$v) {
+                                    _vm.selectedSeat = $$v
+                                  },
+                                  expression: "selectedSeat"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t" +
+                                    _vm._s(
+                                      _vm.businessAlphabet[(row - 1) % 2][
+                                        col - 1
+                                      ]
+                                    ) +
+                                    "\n\t\t\t\t\t"
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                })
+              ],
+              2
+            )
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        { staticClass: "w-100 mx-0" },
+        [
+          _c("b-col", { staticClass: "text-center py-2" }, [
+            _c("div", { staticClass: "border" }, [
+              _vm._v("\n\t\t\tECONOMY\n\t\t\t")
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.economyRows, function(row) {
+        return _c(
+          "div",
+          { key: row },
+          [
+            _c(
+              "b-row",
+              { staticClass: "seat-row", attrs: { "no-gutters": "" } },
+              [
+                _c("span", { staticClass: "seat-row--number" }, [
+                  _vm._v(_vm._s(row))
+                ]),
+                _vm._v(" "),
+                _vm._l(12, function(col) {
+                  return _c("b-col", { key: col, attrs: { cols: "1" } }, [
+                    _vm.economyAlphabet[col - 1] != ""
+                      ? _c(
+                          "div",
+                          [
+                            _c(
+                              "b-form-radio",
+                              {
+                                staticClass: "seat",
+                                attrs: {
+                                  size: "sm",
+                                  "button-variant": "outline-primary",
+                                  button: "",
+                                  value: "economy-" + row + "-" + col
+                                },
+                                model: {
+                                  value: _vm.selectedSeat,
+                                  callback: function($$v) {
+                                    _vm.selectedSeat = $$v
+                                  },
+                                  expression: "selectedSeat"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t" +
+                                    _vm._s(_vm.economyAlphabet[col - 1]) +
+                                    "\n\t\t\t\t\t"
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            [10, 20, 30].includes(row)
+              ? _c(
+                  "b-row",
+                  { attrs: { "no-gutters": "" } },
+                  [
+                    _c(
+                      "b-col",
+                      { staticClass: "py-2 pr-1", attrs: { cols: "3" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "bg-secondary text-white rounded" },
+                          [_vm._v("\n\t\t\t\t\t<<EXIT\n\t\t\t\t")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-col"),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      {
+                        staticClass: "text-center py-2 pr-1",
+                        attrs: { cols: "4" }
+                      },
+                      [
+                        _c("div", { staticClass: "border rounded" }, [
+                          _vm._v("\n\t\t\t\t\tRestroom\n\t\t\t\t\t"),
+                          _c("i", { staticClass: "fas fa-restroom" })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("b-col"),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { staticClass: " py-2 pr-1", attrs: { cols: "3" } },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-secondary text-right text-white rounded"
+                          },
+                          [_vm._v("\n\t\t\t\t\tEXIT>>\n\t\t\t\t")]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -63234,11 +64251,12 @@ var render = function() {
     [
       _c(
         "b-container",
+        { staticClass: "px-0" },
         [
           _c(
             "b-row",
             [
-              _c("b-col", { attrs: { cols: "12" } }, [
+              _c("b-col", { staticClass: "px-0", attrs: { cols: "12" } }, [
                 _c("div", { staticClass: "w-100 text-center" }, [
                   _c("h3", [_vm._v("Select your departure flight from")]),
                   _vm._v(" "),
@@ -64196,7 +65214,11 @@ var render = function() {
           ? _c("FlightBooking", {
               attrs: { airports: _vm.airports, searchedInfo: _vm.searchedInfo }
             })
-          : _vm._e()
+          : _vm._e(),
+        _vm._v(" "),
+        _c("SeatSelection"),
+        _vm._v(" "),
+        _c("TripSummary")
       ],
       1
     )
@@ -64322,7 +65344,7 @@ var render = function() {
         [
           _c(
             "b-col",
-            { attrs: { cols: "8" } },
+            { staticClass: "px-0", attrs: { cols: "8" } },
             [
               _vm._l(_vm.passengers, function(passenger, index) {
                 return _c(
@@ -65141,17 +66163,186 @@ var render = function() {
                     [
                       _c("label", [_vm._v("Passengers")]),
                       _vm._v(" "),
-                      _c("b-form-input", {
-                        staticClass: "passenger-input",
-                        attrs: { type: "number", required: "" },
-                        model: {
-                          value: _vm.form.passengerCount,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "passengerCount", $$v)
+                      _c(
+                        "b-dropdown",
+                        {
+                          staticClass: "passenger-input w-100 text-left",
+                          attrs: {
+                            variant: "none",
+                            "no-caret": "",
+                            "toggle-class": "passenger-input-btn",
+                            right: ""
                           },
-                          expression: "form.passengerCount"
-                        }
-                      })
+                          scopedSlots: _vm._u([
+                            {
+                              key: "button-content",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "div",
+                                    { staticClass: "w-100 text-left" },
+                                    [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t" +
+                                          _vm._s(_vm.passengerCount) +
+                                          "\n\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ])
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "b-dropdown-form",
+                            [
+                              _c(
+                                "b-row",
+                                { attrs: { "align-v": "center" } },
+                                [
+                                  _c(
+                                    "b-col",
+                                    {
+                                      staticClass: "font-size-small",
+                                      attrs: { cols: "8" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\tAdult (11+ years old)\n\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-col",
+                                    [
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          type: "number",
+                                          min: "1",
+                                          required: "",
+                                          size: "sm"
+                                        },
+                                        model: {
+                                          value: _vm.form.passengers.adults,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form.passengers,
+                                              "adults",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.passengers.adults"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-row",
+                                { attrs: { "align-v": "center" } },
+                                [
+                                  _c(
+                                    "b-col",
+                                    {
+                                      staticClass: "font-size-small",
+                                      attrs: { cols: "8" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\tChildren (2-11 years old)\n\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-col",
+                                    [
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          type: "number",
+                                          min: "0",
+                                          required: "",
+                                          size: "sm"
+                                        },
+                                        model: {
+                                          value: _vm.form.passengers.children,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form.passengers,
+                                              "children",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.passengers.children"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-row",
+                                { attrs: { "align-v": "center" } },
+                                [
+                                  _c(
+                                    "b-col",
+                                    {
+                                      staticClass: "font-size-small",
+                                      attrs: { cols: "8" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\tBabies (<2 years old)\n\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-col",
+                                    [
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          type: "number",
+                                          min: "0",
+                                          required: "",
+                                          size: "sm"
+                                        },
+                                        model: {
+                                          value: _vm.form.passengers.babies,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form.passengers,
+                                              "babies",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.passengers.babies"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -65228,6 +66419,63 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/SeatSelection.vue?vue&type=template&id=e55c413e& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "b-container",
+        { staticClass: "px-5" },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", { attrs: { cols: "5" } }, [_c("SeatMap")], 1),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "7" } },
+                [
+                  _c("b-card", [
+                    _vm._v(
+                      "\n\t\t\t\t\tLorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, accusantium doloribus. Illo eaque iure accusamus ipsa odio neque quae voluptate sit ipsum provident consequuntur, iste commodi quo vero saepe aut?\n\t\t\t\t"
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummary.vue?vue&type=template&id=0d362cca&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummary.vue?vue&type=template&id=0d362cca&scoped=true& ***!
@@ -65250,12 +66498,14 @@ var render = function() {
     [
       _c(
         "b-container",
+        { staticClass: "px-0" },
         [
           _c(
             "b-row",
             [
               _c(
                 "b-col",
+                { staticClass: "px-0" },
                 [
                   _c(
                     "b-card",
@@ -65285,9 +66535,13 @@ var render = function() {
                             {
                               staticClass: "w-50 py-3 font-size-large",
                               attrs: { variant: "warning" },
-                              on: { click: _vm.handlePayment }
+                              on: { click: _vm.makeReservation }
                             },
-                            [_vm._v("\n\t\t\t\t\t\t\tPurchase\n\t\t\t\t\t\t")]
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\tConfirm Booking\n\t\t\t\t\t\t"
+                              )
+                            ]
                           ),
                           _vm._v(" "),
                           _c(

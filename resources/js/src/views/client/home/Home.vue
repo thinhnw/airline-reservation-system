@@ -32,6 +32,8 @@
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
+			<SeatSelection />
+			<TripSummary />
 		</div>
 	</div>
 </template>
@@ -44,6 +46,7 @@ import FlightStatus from './FlightStatus.vue'
 import FlightBooking from './FlightBooking.vue'
 import axios from '@/axios'
 import TripSummary from './TripSummary.vue'
+import SeatSelection from './SeatSelection'
 export default {
 	components: {
 		SearchFlightsForm,
@@ -52,6 +55,7 @@ export default {
 		CheckIn,
 		FlightStatus,
 		TripSummary,
+		SeatSelection
 	},
 	data() {
 		return {

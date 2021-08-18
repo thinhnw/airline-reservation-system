@@ -2177,6 +2177,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_home_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/home/Home.vue */ "./resources/js/src/views/client/home/Home.vue"));
       }
+    }, {
+      path: 'profile',
+      name: 'profile',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_profile_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/profile/Profile.vue */ "./resources/js/src/views/client/profile/Profile.vue"));
+      }
     }]
   }, {
     path: '/login',
