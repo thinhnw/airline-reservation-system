@@ -158,12 +158,9 @@ class ReservationController extends Controller
     public function checkout(Request $request) {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "https:///aviaairways.herokuapp.com/api/vnpay_return";
-        /*
+
         $vnp_TmnCode = "UM76NZPS";//Mã website tại VNPAY 
         $vnp_HashSecret = "CBFPDDJREFLDRYAICERWBXULLODPARXD"; //Chuỗi bí mật
-        */
-        $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY 
-        $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
         
         $vnp_TxnRef = $request->reservation_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $reservation = Reservation::find($request->reservation_id);
