@@ -22,6 +22,11 @@ const router = new VueRouter({
 					path: 'profile',
 					name: 'profile',
 					component: () => import('./views/client/profile/Profile.vue')
+				},
+				{
+					path: 'checkout',
+					name: 'checkout',
+					component: () => import('./views/client/checkout/Checkout.vue')
 				}
 			]
 		},

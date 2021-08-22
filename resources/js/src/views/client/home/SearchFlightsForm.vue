@@ -193,7 +193,7 @@ export default {
 					to_airport_id: this.form.toCity.id,
 					trip_type: this.form.tripType,
 					departure_date: this.form.departureDate,
-					passenger_count: this.form.passengerCount,
+					passengers: this.form.passengers,
 					class: this.form.class
 				}
 				// let filter = {
@@ -206,6 +206,7 @@ export default {
 				// 	class: 'Business'
 				// }
 				if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
+				this.$emit('searching')
 				let res = await axios.get(`/api/flights/search?filter=${JSON.stringify(filter)}`)	
 				console.log(res)
 

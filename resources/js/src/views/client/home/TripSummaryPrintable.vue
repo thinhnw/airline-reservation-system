@@ -81,7 +81,7 @@
 							</b-td>
 							<b-td>
 								<div>
-									{{ details.class }} / 35kg
+									{{ details.class }} / 40kg
 								</div>
 							</b-td>
 							<b-td>
@@ -175,7 +175,7 @@
 							</b-td>
 							<b-td>
 								<div>
-									{{ details.class }} / 35kg
+									{{ details.class }} / 40kg
 								</div>
 							</b-td>
 							<b-td>
@@ -195,12 +195,13 @@
 				<b-table-simple>
 					<b-tbody>
 						<b-tr>
-							<b-td>Passenger name</b-td>
-							<b-td>Passport</b-td>
-							<b-td>Date of birth</b-td>
-							<b-td>Frequent flyer number</b-td>
+							<b-td class="font-weight-bold" >Passenger name</b-td>
+							<b-td class="font-weight-bold" >Passport</b-td>
+							<b-td class="font-weight-bold" >Date of birth</b-td>
+							<b-td class="font-weight-bold" >Inbound flight seat</b-td>
+							<b-td  class="font-weight-bold" v-if="flightReturn">Outbound flight seat</b-td>
 						</b-tr>
-						<b-tr v-for="passenger in details.passengers" :key="passenger.name">
+						<b-tr v-for="passenger in details.passengerDetails" :key="passenger.name">
 							<b-td>
 								{{ passenger.title }} {{ passenger.firstName }} {{ passenger.lastName }}
 							</b-td>
@@ -210,7 +211,12 @@
 							<b-td>
 								{{ moment(passenger.dateOfBirth).format('DD MMM YYYY') }}
 							</b-td>
-							<b-td>-</b-td>
+							<b-td>
+								{{ passenger.seatDeparture || '-' }}
+							</b-td>
+							<b-td v-if="flightReturn">
+								{{ passenger.seatReturn || '-' }}
+							</b-td>
 						</b-tr>
 					</b-tbody>
 				</b-table-simple>
@@ -222,12 +228,12 @@
 				<b-table-simple>
 					<b-tbody>
 						<b-tr>
-							<b-td>Passenger name</b-td>
-							<b-td>Email</b-td>
+							<b-td class="font-weight-bold">Passenger name</b-td>
+							<b-td class="font-weight-bold">Email</b-td>
 						</b-tr>
 						<b-tr>
 							<b-td>
-								{{ details.passengers[0].title }} {{ details.passengers[0].firstName }} {{ details.passengers[0].lastName }}
+								{{ details.passengerDetails[0].title }} {{ details.passengerDetails[0].firstName }} {{ details.passengerDetails[0].lastName }}
 							</b-td>
 							<b-td>
 								{{ details.contact.email }}
@@ -242,19 +248,37 @@
 				</div>
 				<b-table-simple>
 					<b-tr>
-						<b-td>Total Price per passenger</b-td>
-						<b-td class="text-right">500.00 USD</b-td>
+						<b-td>Fare price per adult</b-td>
+						<b-td class="text-right">
+							{{ formatMoney(pricePerAdult) }} USD
+							x {{ details.passengers.adults }}
+						</b-td>
+					</b-tr>
+					<b-tr v-if="details.passengers.children > 0">
+						<b-td>Fare price per chilren (2-12 years old)</b-td>
+						<b-td class="text-right">
+							{{ formatMoney(pricePerAdult * 2/3) }} USD
+							x {{ details.passengers.children }}
+						</b-td>
 					</b-tr>
 					<b-tr>
-						<b-td>Number of passengers</b-td>
-						<b-td class="text-right">{{ details.passengers.length }}</b-td>
+						<b-td>Seat Selection for inbound flight</b-td>
+						<b-td class="text-right">
+							{{ formatMoney(priceForSeats) }} USD
+						</b-td>
+					</b-tr>
+					<b-tr>
+						<b-td>Seat Selection for outbound flight</b-td>
+						<b-td class="text-right">
+							{{ formatMoney(priceForSeats) }} USD
+						</b-td>
 					</b-tr>
 					<b-tr>
 						<b-td class="font-size-larger">
 							Grand Total
 						</b-td>
 						<b-td class="text-right font-size-larger">
-							1000.00 USD
+							{{ formatMoney(grandTotal) }} USD
 						</b-td>
 					</b-tr>
 				</b-table-simple>
@@ -265,31 +289,49 @@
 
 <script>
 import moment from 'moment'
-// import details from './tripSummaryDetails'
-import { getDisplayedDuration } from '@/helper'
+import details from './tripSummaryDetails'
+import { getDisplayedDuration, formatMoney } from '@/helper'
+import { mapGetters } from 'vuex'
 
 export default {
 	props: {
-		details: {
-			type: Object,
-			default: () => {}
-		}
+		// details: {
+		// 	type: Object,
+		// 	default: () => {}
+		// }
 	},
 	data() {
 		return {
 			moment,
-			// details,
+			details,
 		}
 	},
 	methods: {
 		getDisplayedDuration,
+		formatMoney
 	},
 	computed: {
+		...mapGetters({
+			isLogged: 'auth/isLogged'
+		}),
 		flightDeparture() {
 			return this.details.selectedFlightDeparture
 		},
 		flightReturn() {
 			return this.details.selectedFlightReturn
+		},
+		
+		pricePerAdult() {
+			console.log('details', this.details)
+			return this.details.class === 'Business' ? 
+				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
+		},
+		priceForSeats() {
+			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
+			return passengerCount * 15
+		},
+		grandTotal() {
+			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats)
 		}
 	}
 }

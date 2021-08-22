@@ -11,7 +11,6 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class FlightController extends Controller
 {
-
     /**
      * Create a new AuthController instance.
      *
@@ -196,16 +195,18 @@ class FlightController extends Controller
         $from_airport_id = $filter->from_airport_id;
         $to_airport_id = $filter->to_airport_id;
         $departure_date = $filter->departure_date;
-        $passengers = json_decode($filter->passengers);
-        $passengerCount = $passengers['adults'] + $passengers['children'];
-        $class = $filter->class;
         $flights = Flight::where([
             ['departure_id', '=', $from_airport_id],
             ['destination_id', '=', $to_airport_id],
             ['departure_time', '>=', $departure_date . ' 00:00:00'],
             ['departure_time', '<=', $departure_date . ' 23:59:59'],
-        ])->get();
-        return $flights;
+        ]);
+
+        $passengers = $filter->passengers;
+        $passengerCount = $passengers->adults + $passengers->children;
+        $class = $filter->class;
+        if ($class == 'Business') return $flights->where([['business_seat_count', '>=', $passengerCount]])->get();
+        return $flights->where([['economy_seat_count', '>=', $passengerCount]])->get();
     }
 
     private function searchForFlightsReturn($filter) {
@@ -218,7 +219,14 @@ class FlightController extends Controller
             ['destination_id', '=', $to_airport_id],
             ['departure_time', '>=', $departure_date . ' 00:00:00'],
             ['departure_time', '<=', $departure_date . ' 23:59:59'],
-        ])->get();
-        return $flights;
+        ]);
+
+        $passengers = $filter->passengers;
+        $passengerCount = $passengers->adults + $passengers->children;
+        $class = $filter->class;
+
+        if ($class == 'Business') return $flights->where([['business_seat_count', '>=', $passengerCount]])->get();
+        return $flights->where([['economy_seat_count', '>=', $passengerCount]])->get();
     }
+
 }

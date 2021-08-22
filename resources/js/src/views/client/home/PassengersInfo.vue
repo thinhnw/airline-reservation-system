@@ -8,7 +8,7 @@
 		</b-row>
 		<b-row>
 			<b-col cols="8" class="px-0">
-				<b-card no-body v-for="passenger, index in passengers" :key="index" class="mb-3">
+				<b-card no-body v-for="passenger, index in passengerDetails" :key="index" class="mb-3">
 					<b-card-header>
 						<h5>
 							Passenger {{ index + 1 }}
@@ -153,7 +153,7 @@
 					</b-form-checkbox>
 				</b-card>
 			</b-col>
-			<b-col cols="4">
+			<b-col cols="4" class="pr-0">
 				<b-card no-body>
 					<b-card-header class="text-center">
 						Your trip review
@@ -169,17 +169,17 @@
 					<b-card-footer class="d-flex justify-content-between">
 						<div>
 							<small class="d-block">Total trip price</small>
-							<small class="d-block">({{ passengers.length }} passengers)</small>	
+							<small class="d-block">({{ passengerDetails.length }} passengers)</small>	
 						</div>
 						<div>
-							2000 USD
+							{{ formatMoney(grandTotal)}} USD
 						</div>
 					</b-card-footer>
 				</b-card>
 			</b-col>
 		</b-row>
 		<b-row align-h="center" class="mt-3">
-			<b-col cols="4">
+			<b-col cols="4" class="px-0">
 				<b-button class="w-100 py-2" @click="handleStepDone" variant="primary">
 					Continue
 				</b-button>
@@ -190,6 +190,7 @@
 
 <script>
 import regions from '@/data/regions'
+import { formatMoney } from '@/helper'
 export default {
 	props: {
 		details: {
@@ -200,15 +201,16 @@ export default {
 	data() {
 		return {
 			regions,
-			passengers: [],
+			passengerDetails: [],
 			contact: {
 				email: ''
 			}
 		}
 	},
 	mounted() {
-		for (let i = 0; i < this.details.passenger_count; ++i) {
-			this.passengers.push({
+		let totalPassengers = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children) + parseInt(this.details.passengers.babies)
+		for (let i = 0; i < totalPassengers; ++i) {
+			this.passengerDetails.push({
 				title: '',
 				firstName: '',
 				lastName: '',
@@ -223,12 +225,29 @@ export default {
 		}
 	},
 	methods: {
+		formatMoney,
 		handleStepDone() {
-			let passengers = JSON.parse(JSON.stringify(this.passengers))
+			let passengerDetails = JSON.parse(JSON.stringify(this.passengerDetails))
 			let contact = JSON.parse(JSON.stringify(this.contact))
 			this.$emit('done', {
-				passengers, contact
+				passengerDetails, contact
 			})
+		}
+	},
+	computed: {
+		flightDeparture() {
+			return this.details.selectedFlightDeparture
+		},
+		flightReturn() {
+			return this.details.selectedFlightReturn
+		},
+		pricePerAdult() {
+			console.log('details', this.details)
+			return this.details.class === 'Business' ? 
+				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
+		},
+		grandTotal() {
+			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3
 		}
 	}
 }

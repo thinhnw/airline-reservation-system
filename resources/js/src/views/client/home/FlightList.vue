@@ -37,10 +37,10 @@
 										>
 											<div class="text-center">
 												<div class="font-size-large mb-3">
-													Business
+													{{ details.class }}
 												</div>
 												<div class="mb-3">
-													1000
+													{{ priceFor(flight) }}
 													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
@@ -150,10 +150,10 @@
 										>
 											<div class="text-center">
 												<div class="font-size-large mb-3">
-													Business
+													{{ details.class }}
 												</div>
-												<div class="mb-3">
-													1000
+												<div class="mb-3"> 
+													{{ priceFor(flight) }}
 													<span class="font-size-larger">USD</span>
 												</div>
 												<div>
@@ -228,18 +228,30 @@
 				</b-col>
 			</b-row>
 			<b-row v-if="isSelected">
-				<b-col cols="12">
+				<b-col cols="12" class="px-0">
 					<b-button class="w-100 mx-0" variant="primary" @click="handleStepDone">
 						CONTINUE
 					</b-button>
 				</b-col>
 			</b-row>
 		</b-container>
+		<b-modal
+			title="Authentication required"	
+			ok-title="Sign in"
+			cancel-title="Register"
+			@ok="$router.push('login')"
+			@cancel="$router.push('register')"
+			centered
+			id="register-modal"
+		>
+			You have to sign in first to start booking flights
+		</b-modal>
 	</div>
 </template>
 
 <script>
-import { getDisplayedDuration } from '@/helper'
+import { getDisplayedDuration, formatMoney } from '@/helper'
+import { mapGetters } from 'vuex'
 export default {
 	props: {
 		details: {
@@ -257,7 +269,17 @@ export default {
 	},
 	methods: {
 		getDisplayedDuration,
+		priceFor(flight) {
+			let adults = parseInt(this.details.passengers.adults)
+			let children = parseInt(this.details.passengers.children)
+			let fare = this.details.class === 'Business' ? flight.fare_business : flight.fare_economy
+			return formatMoney(fare * adults + fare * children * 2 / 3)
+		},
 		handleStepDone() {
+			if (!this.isLogged) {
+				this.$bvModal.show('register-modal')
+				return
+			}
 			let data = JSON.parse(JSON.stringify(this.details))
 			if (this.details.trip_type === 'One-way') {
 				this.$emit('done', {
@@ -272,6 +294,9 @@ export default {
 		}
 	},
 	computed: {
+		...mapGetters({
+			isLogged: 'auth/isLogged'
+		}),
 		airportFrom() {
 			return this.airports.find(airport => airport.id == this.details.from_airport_id) || {}
 		},

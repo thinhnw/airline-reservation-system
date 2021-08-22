@@ -11,15 +11,25 @@
 							<TripSummaryPrintable :details="details" />
 						</b-card-body>
 						<div class="w-100 text-center">
-							<b-button class="w-50 py-3 font-size-large" variant="warning" @click="makeReservation">
-								Confirm Booking
-							</b-button>
-							<div class="py-3 pointer" @click="$emit('back')"><< Back</div>
+							<div>
+								<b-button class="py-2 px-5 font-size-large" variant="warning" @click="makeReservation">
+									Purchase 
+								</b-button>
+							</div>
+							<div class="py-3 pointer" @click="$emit('back')">&lt;Back</div>
 						</div>
 					</b-card>
 				</b-col>
 			</b-row>
 		</b-container>
+		<b-modal
+			title="Authentication required"	
+			@ok="$router.push('login')"
+			centered
+			id="register-modal"
+		>
+			Your session has expired
+		</b-modal>
 	</div>
 </template>
 
@@ -44,53 +54,57 @@ export default {
 	data() {
 		return {
 			moment,
-			details,
+			details
 		}
 	},
 	methods: {
 		getDisplayedDuration,
 		async makeReservation() {
-			// this.$refs.html2Pdf.generatePdf()
+			if (!this.isLogged) {
+				this.$bvModal.show('register-modal')
+				return
+			}
 			try {
         const el = this.$refs.summary
         let res = await html2canvas(el)
         let output = res.toDataURL()
-        // this.output = this.output.replace("png", "jpeg")
         let filename = "e-ticket.png"
-        // let element = document.createElement("a")
-				// console.log(output)
-        // element.setAttribute("href", output)
-        // element.setAttribute("download", filename)
-
-        // element.style.display = "none"
-        // document.body.appendChild(element)
-
-        // element.click()
-
-        // document.body.removeChild(element)
-				res = await axios.post('/api/reservations', {
+				let postData = {
 					e_ticket: output,
-					details: this.details,
-					price: 500
-				})
-				this.$router.push('profile')
+					price: this.grandTotal,
+					passenger_details: this.details.passengerDetails,
+					contact_details: this.details.contact
+				}
+				postData.flight_departure_id = this.details.selectedFlightDeparture.id
+				if (this.details.selectedFlightReturn) postData.flight_return_id = this.details.selectedFlightReturn.id
+				res = await axios.post('/api/reservations', postData)
+				// this.$router.push('profile')
       } catch (err) {
         console.error(err)
       }
     },
-		// hasGenerated(e) {
-		// 	console.log(e)
-		// }
 	},
 	computed: {
 		...mapGetters({
-			userInfo: 'auth/userInfo'
+			userInfo: 'auth/userInfo',
+			isLogged: 'auth/isLogged'
 		}),
 		flightDeparture() {
 			return this.details.selectedFlightDeparture
 		},
 		flightReturn() {
 			return this.details.selectedFlightReturn
+		},
+		pricePerAdult() {
+			return this.details.class === 'Business' ? 
+				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
+		},
+		priceForSeats() {
+			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
+			return passengerCount * 15
+		},
+		grandTotal() {
+			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats)
 		}
 	}
 }

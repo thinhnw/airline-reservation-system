@@ -1961,7 +1961,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/src/router.js");
 // axios
+
 
 var headers = {
   'cache-control': 'no-cache'
@@ -1981,6 +1983,10 @@ instance.interceptors.response.use(function (response) {
   if (response.status === 401) {
     //add your code
     alert("You are not authorized");
+  }
+
+  if (response.status === 500 && response.message === 'Token has expired') {
+    _router_js__WEBPACK_IMPORTED_MODULE_1__.default.push('/login');
   }
 
   return response;
@@ -2182,6 +2188,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       name: 'profile',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_profile_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/profile/Profile.vue */ "./resources/js/src/views/client/profile/Profile.vue"));
+      }
+    }, {
+      path: 'checkout',
+      name: 'checkout',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_checkout_Checkout_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/checkout/Checkout.vue */ "./resources/js/src/views/client/checkout/Checkout.vue"));
       }
     }]
   }, {

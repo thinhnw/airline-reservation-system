@@ -8,10 +8,15 @@
 		<PassengersInfo v-if="bookingStep === 2"
 			:details="tripDetails"
 			@done="continueStep"
+			@back="backStep"
 		/>
-		<TripSummary v-if="bookingStep === 3"
+		<SeatSelection v-if="bookingStep === 3"
 			:details="tripDetails"
 			@done="continueStep"
+			@back="backStep"
+		/>
+		<TripSummary v-if="bookingStep === 4"
+			:details="tripDetails"
 			@back="backStep"
 		/>
 	</div>	
@@ -21,12 +26,14 @@
 import FlightList from './FlightList.vue'
 import PassengersInfo from './PassengersInfo.vue'
 import TripSummary from './TripSummary.vue'
+import SeatSelection from './SeatSelection.vue'
 import axios from '@/axios'
 export default {
 	components: {
 		FlightList,
 		PassengersInfo,
-		TripSummary
+		TripSummary,
+		SeatSelection
 	},
 	props: {
 		searchedInfo: {

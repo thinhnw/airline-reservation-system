@@ -9,6 +9,7 @@
 								<b-tab title="Book">
 									<SearchFlightsForm 
 										:airports="airports"
+										@searching="isBookingFlight = false"
 										@list-flights="handleListingFlights"
 									/>	
 								</b-tab>
@@ -28,11 +29,11 @@
 			</b-container>
 		</div>
 		<div>
+			<!-- <img :src="abc" alt=""> -->
 			<FlightBooking v-if="isBookingFlight" 
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
-			<SeatSelection />
 			<TripSummary />
 		</div>
 	</div>
@@ -47,6 +48,7 @@ import FlightBooking from './FlightBooking.vue'
 import axios from '@/axios'
 import TripSummary from './TripSummary.vue'
 import SeatSelection from './SeatSelection'
+import abc from './abc'
 export default {
 	components: {
 		SearchFlightsForm,
@@ -62,7 +64,8 @@ export default {
 			fetchedAirports: [],
 			// flightsDetails: null,
 			searchedInfo: null,
-      isBookingFlight: false
+      isBookingFlight: false,
+			abc
 		}
 	},
 	methods: {
@@ -76,7 +79,7 @@ export default {
 		},
 		handleListingFlights(event) {
 			console.log('event', event)
-			this.searchedInfo = event
+			this.searchedInfo = JSON.parse(JSON.stringify(event))
       this.isBookingFlight = true
 		}
 	},
