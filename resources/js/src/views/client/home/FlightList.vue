@@ -41,7 +41,7 @@
 												</div>
 												<div class="mb-3">
 													{{ priceFor(flight) }}
-													<span class="font-size-larger">USD</span>
+													<span class="font-size-larger">VND</span>
 												</div>
 												<div>
 													<small>
@@ -154,7 +154,7 @@
 												</div>
 												<div class="mb-3"> 
 													{{ priceFor(flight) }}
-													<span class="font-size-larger">USD</span>
+													<span class="font-size-larger">VND</span>
 												</div>
 												<div>
 													<small>
@@ -273,7 +273,7 @@ export default {
 			let adults = parseInt(this.details.passengers.adults)
 			let children = parseInt(this.details.passengers.children)
 			let fare = this.details.class === 'Business' ? flight.fare_business : flight.fare_economy
-			return formatMoney(fare * adults + fare * children * 2 / 3)
+			return formatMoney(fare * adults + fare * children * 2 / 3, 0)
 		},
 		handleStepDone() {
 			if (!this.isLogged) {

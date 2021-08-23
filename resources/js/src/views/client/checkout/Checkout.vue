@@ -70,26 +70,12 @@
                 <b-form-input placeholder="Eg: NGUYEN VAN A"></b-form-input>
               </b-form-group>
               <b-form-group>
-                <label for="">Credit card number</label>
-                <b-form-input placeholder="Eg: 9704198526191432198"></b-form-input>
+                <label for="">Credit Informations</label>
+                <div id="card-element"></div>
               </b-form-group>
-              <b-form-row>
-                <b-col cols="6">
-                  <b-form-group>
-                    <label for="">Exp. Date</label>
-                    <b-form-input placeholder="MM/YY"></b-form-input>
-                  </b-form-group> 
-                </b-col>
-                <b-col cols="6">
-                  <b-form-group>
-                    <label for="">CVC</label>
-                    <b-form-input placeholder="Eg: 352"></b-form-input>
-                  </b-form-group>
-                </b-col>
-              </b-form-row>
             </section>
             <section class="py-3">
-              <b-button type="submit" variant="primary" class="w-100">Checkout</b-button>
+              <b-button type="submit" variant="primary" class="w-100" :disabled="payamentProcessing">Checkout</b-button>
             </section>
           </b-form>
           
@@ -116,32 +102,98 @@
 </template>
 
 <script>
+import { loadStripe } from '@stripe/stripe-js'
 import axios from '@/axios'
 export default {
   data() {
     return {
+      stripe: {},
+      cardElement: {},
+      payamentProcessing: false,
       form: {
+        reservation_id: '',
         txt_billing_fullname: '',
         txt_billing_email: '',
         txt_inv_addr1: '',
         txt_bill_city: '',
         txt_bill_country: '',
         txt_expire: ''
-      }
+      },
+      reservation: null
     }
   },
   methods: {
+    async fetchProduct() {
+      let id = this.$route.query.reservation_id
+      if (!id) this.$router.push('home')
+      const { data, error } = await axios.get('/api/reservations/' + id)
+      if (error) {
+        console.error(error)
+        return
+      }
+      this.reservation = data.reservation
+      this.form.reservation_id = id
+    },
+    async processPayment() {
+      this.paymentProcessing = true
+
+      const { paymentMethod, error } = await this.stripe.createPaymentMethod(
+        'card', this.cardElement, {
+            billing_details: {
+              name: this.form.txt_billing_fullname || 'NGUYEN VAN A',
+              email: this.form.txt_billing_email || 'nvt0412@gmail.com',
+              address: {
+                line1: this.form.txt_inv_addr1 || 'Street 1',
+                city: this.form.txt_bill_city || 'Hanoi',
+                state: this.form.txt_bill_state || 'Hoang Mai',
+                postal_code: this.form.zip_code,
+              }
+            }
+        }
+      )
+      if (error) {
+        this.payamentProcessing = false
+        alert(error)
+        return
+      }
+
+      this.form.payment_method_id = paymentMethod.id
+      this.form.amount = this.reservation.price
+      try {
+        let res = await axios.post('/api/reservations/checkout', this.form)
+      } catch (error) {
+        console.error(error) 
+      } finally {
+        this.payamentProcessing = false
+      }
+
+    },
     async submit() {
+      this.processPayment()
+      return
       try {
         let data = {
-          reservation_id: 44,
+          reservation_id: 25,
           txt_billing_fullname: 'THINH NGUYEN'
         }
         let res = await axios.post('/api/reservations/checkout', data) 
+        window.location.href = res.data.url
       } catch (error) {
         console.error(error) 
       }
     }
+  },
+  async mounted() {
+    await this.fetchProduct()
+    console.log(process.env.MIX_STRIPE_KEY)
+    this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY)
+    const elements = this.stripe.elements()
+    this.cardElement = elements.create('card', {
+      classes: {
+        base: 'form-control py-2'
+      }
+    })
+    this.cardElement.mount('#card-element')
   }
 }
 </script>

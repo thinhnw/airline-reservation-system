@@ -6,6 +6,7 @@ use App\Exceptions\SeatUnavailableException;
 use App\Mail\FlightReservation;
 use App\Models\Flight;
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -113,6 +114,9 @@ class ReservationController extends Controller
     public function show($id)
     {
         //
+        return response()->json([
+            'reservation' => Reservation::find($id)
+        ], 200);
     }
 
     /**
@@ -155,21 +159,48 @@ class ReservationController extends Controller
         ], 200); 
     }
 
+    public function checkoutWithStripe(Request $request) {
+        $user = User::find(Auth::user()->id);
+        try {
+            $user->createOrGetStripeCustomer();
+            $payment = $user->charge(
+                $request->amount * 100,
+                $request->payment_method_id
+            );
+            $payment = $payment->asStripePaymentIntent();
+            $reservation = Reservation::find($request->reservation_id);
+            return $payment;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function checkout(Request $request) {
+        try {
+            //code...
+            $payment = $this->checkoutWithStripe($request);
+            return response()->json([
+                'payment' => $payment
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "localhost:8000/api/vnpay_return";
+        $vnp_Returnurl = env("APP_URL") . "/vnpay_return";
 
         $vnp_TmnCode = "UM76NZPS";//Mã website tại VNPAY 
         $vnp_HashSecret = "CBFPDDJREFLDRYAICERWBXULLODPARXD"; //Chuỗi bí mật
         
-        // $vnp_TxnRef = $request->reservation_id; 
-        $vnp_TxnRef = 1;
+        $vnp_TxnRef = $request->reservation_id; 
+        // $vnp_TxnRef = 2;
         //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $reservation = Reservation::find($request->reservation_id);
         $vnp_OrderInfo = "Flight Booking";
         $vnp_OrderType = 'billpayment';
-        // $vnp_Amount = $reservation->price * 100;
-        $vnp_Amount = 100000 * 100;
+        $vnp_Amount = $reservation->price * 100;
+        // $vnp_Amount = 100000 * 100;
         $vnp_Locale = "en";
         $vnp_IpAddr = $request->ip();
         //Add Params of 2.0.1 Version
@@ -209,21 +240,21 @@ class ReservationController extends Controller
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
 
-            "vnp_ExpireDate"=>$vnp_ExpireDate,
-            "vnp_Bill_Mobile"=>$vnp_Bill_Mobile,
-            "vnp_Bill_Email"=>$vnp_Bill_Email,
-            "vnp_Bill_FirstName"=>$vnp_Bill_FirstName,
-            "vnp_Bill_LastName"=>$vnp_Bill_LastName,
-            "vnp_Bill_Address"=>$vnp_Bill_Address,
-            "vnp_Bill_City"=>$vnp_Bill_City,
-            "vnp_Bill_Country"=>$vnp_Bill_Country,
-            "vnp_Inv_Phone"=>$vnp_Inv_Phone,
-            "vnp_Inv_Email"=>$vnp_Inv_Email,
-            "vnp_Inv_Customer"=>$vnp_Inv_Customer,
-            "vnp_Inv_Address"=>$vnp_Inv_Address,
-            "vnp_Inv_Company"=>$vnp_Inv_Company,
-            "vnp_Inv_Taxcode"=>$vnp_Inv_Taxcode,
-            "vnp_Inv_Type"=>$vnp_Inv_Type
+            // "vnp_ExpireDate"=>$vnp_ExpireDate,
+            // "vnp_Bill_Mobile"=>$vnp_Bill_Mobile,
+            // "vnp_Bill_Email"=>$vnp_Bill_Email,
+            // "vnp_Bill_FirstName"=>$vnp_Bill_FirstName,
+            // "vnp_Bill_LastName"=>$vnp_Bill_LastName,
+            // "vnp_Bill_Address"=>$vnp_Bill_Address,
+            // "vnp_Bill_City"=>$vnp_Bill_City,
+            // "vnp_Bill_Country"=>$vnp_Bill_Country,
+            // "vnp_Inv_Phone"=>$vnp_Inv_Phone,
+            // "vnp_Inv_Email"=>$vnp_Inv_Email,
+            // "vnp_Inv_Customer"=>$vnp_Inv_Customer,
+            // "vnp_Inv_Address"=>$vnp_Inv_Address,
+            // "vnp_Inv_Company"=>$vnp_Inv_Company,
+            // "vnp_Inv_Taxcode"=>$vnp_Inv_Taxcode,
+            // "vnp_Inv_Type"=>$vnp_Inv_Type
         );
         
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
@@ -253,7 +284,9 @@ class ReservationController extends Controller
             $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-        return redirect($vnp_Url);
+        return response()->json([
+            'url' => $vnp_Url
+        ], 200);
     }
     public function vnpayReturn(Request $request) {
         if ($request->get("vnp_ResponseCode") == "00") {

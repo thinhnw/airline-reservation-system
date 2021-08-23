@@ -250,27 +250,27 @@
 					<b-tr>
 						<b-td>Fare price per adult</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(pricePerAdult) }} USD
+							{{ formatMoney(pricePerAdult) }} VND
 							x {{ details.passengers.adults }}
 						</b-td>
 					</b-tr>
 					<b-tr v-if="details.passengers.children > 0">
 						<b-td>Fare price per chilren (2-12 years old)</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(pricePerAdult * 2/3) }} USD
+							{{ formatMoney(pricePerAdult * 2/3) }} VND
 							x {{ details.passengers.children }}
 						</b-td>
 					</b-tr>
 					<b-tr>
 						<b-td>Seat Selection for inbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats) }} USD
+							{{ formatMoney(priceForSeats) }} VND
 						</b-td>
 					</b-tr>
 					<b-tr>
 						<b-td>Seat Selection for outbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats) }} USD
+							{{ formatMoney(priceForSeats) }} VND
 						</b-td>
 					</b-tr>
 					<b-tr>
@@ -278,7 +278,7 @@
 							Grand Total
 						</b-td>
 						<b-td class="text-right font-size-larger">
-							{{ formatMoney(grandTotal) }} USD
+							{{ formatMoney(grandTotal) }} VND
 						</b-td>
 					</b-tr>
 				</b-table-simple>
@@ -295,15 +295,15 @@ import { mapGetters } from 'vuex'
 
 export default {
 	props: {
-		// details: {
-		// 	type: Object,
-		// 	default: () => {}
-		// }
+		details: {
+			type: Object,
+			default: () => {}
+		}
 	},
 	data() {
 		return {
 			moment,
-			details,
+			// details,
 		}
 	},
 	methods: {
@@ -328,10 +328,10 @@ export default {
 		},
 		priceForSeats() {
 			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
-			return passengerCount * 15
+			return passengerCount * 150000
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats)
+			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0)
 		}
 	}
 }

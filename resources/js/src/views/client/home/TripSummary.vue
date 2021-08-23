@@ -35,7 +35,7 @@
 
 <script>
 import moment from 'moment'
-import details from './tripSummaryDetails'
+// import details from './tripSummaryDetails'
 import { getDisplayedDuration } from '@/helper'
 import html2canvas from 'html2canvas'
 import TripSummaryPrintable from './TripSummaryPrintable.vue'
@@ -46,15 +46,15 @@ export default {
 		TripSummaryPrintable
 	},
 	props: {
-		// details: {
-		// 	type: Object,
-		// 	default: () => {}
-		// }
+		details: {
+			type: Object,
+			default: () => {}
+		}
 	},
 	data() {
 		return {
 			moment,
-			details
+			// details
 		}
 	},
 	methods: {
@@ -78,7 +78,8 @@ export default {
 				postData.flight_departure_id = this.details.selectedFlightDeparture.id
 				if (this.details.selectedFlightReturn) postData.flight_return_id = this.details.selectedFlightReturn.id
 				res = await axios.post('/api/reservations', postData)
-				// this.$router.push('profile')
+				console.log(res.data)
+				this.$router.push(`/checkout?reservation_id=i${res.data.reservation.id}`)
       } catch (err) {
         console.error(err)
       }
@@ -101,10 +102,10 @@ export default {
 		},
 		priceForSeats() {
 			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
-			return passengerCount * 15
+			return passengerCount * 150000
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats)
+			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
 		}
 	}
 }

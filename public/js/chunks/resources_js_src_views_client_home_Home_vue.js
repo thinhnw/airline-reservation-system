@@ -625,7 +625,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var adults = parseInt(this.details.passengers.adults);
       var children = parseInt(this.details.passengers.children);
       var fare = this.details["class"] === 'Business' ? flight.fare_business : flight.fare_economy;
-      return (0,_helper__WEBPACK_IMPORTED_MODULE_0__.formatMoney)(fare * adults + fare * children * 2 / 3);
+      return (0,_helper__WEBPACK_IMPORTED_MODULE_0__.formatMoney)(fare * adults + fare * children * 2 / 3, 0);
     },
     handleStepDone: function handleStepDone() {
       var _this = this;
@@ -1798,13 +1798,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tripSummaryDetails */ "./resources/js/src/views/client/home/tripSummaryDetails.js");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
-/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1852,7 +1851,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-
+ // import details from './tripSummaryDetails'
 
 
 
@@ -1861,21 +1860,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_5__.default
+    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_4__.default
   },
-  props: {// details: {
-    // 	type: Object,
-    // 	default: () => {}
-    // }
+  props: {
+    details: {
+      type: Object,
+      "default": function _default() {}
+    }
   },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()),
-      details: _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_2__.default
+      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()) // details
+
     };
   },
   methods: {
-    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_3__.getDisplayedDuration,
+    getDisplayedDuration: _helper__WEBPACK_IMPORTED_MODULE_2__.getDisplayedDuration,
     makeReservation: function makeReservation() {
       var _this = this;
 
@@ -1898,7 +1898,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 3;
                 el = _this.$refs.summary;
                 _context.next = 7;
-                return html2canvas__WEBPACK_IMPORTED_MODULE_4___default()(el);
+                return html2canvas__WEBPACK_IMPORTED_MODULE_3___default()(el);
 
               case 7:
                 res = _context.sent;
@@ -1913,28 +1913,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 postData.flight_departure_id = _this.details.selectedFlightDeparture.id;
                 if (_this.details.selectedFlightReturn) postData.flight_return_id = _this.details.selectedFlightReturn.id;
                 _context.next = 15;
-                return _axios__WEBPACK_IMPORTED_MODULE_6__.default.post('/api/reservations', postData);
+                return _axios__WEBPACK_IMPORTED_MODULE_5__.default.post('/api/reservations', postData);
 
               case 15:
                 res = _context.sent;
-                _context.next = 21;
+                console.log(res.data);
+
+                _this.$router.push("/checkout?reservation_id=i".concat(res.data.reservation.id));
+
+                _context.next = 23;
                 break;
 
-              case 18:
-                _context.prev = 18;
+              case 20:
+                _context.prev = 20;
                 _context.t0 = _context["catch"](3);
                 console.error(_context.t0);
 
-              case 21:
+              case 23:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 18]]);
+        }, _callee, null, [[3, 20]]);
       }))();
     }
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
     userInfo: 'auth/userInfo',
     isLogged: 'auth/isLogged'
   })), {}, {
@@ -1951,10 +1955,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     priceForSeats: function priceForSeats() {
       var passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children);
-      return passengerCount * 15;
+      return passengerCount * 150000;
     },
     grandTotal: function grandTotal() {
-      return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats);
+      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0));
     }
   })
 });
@@ -2277,15 +2281,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {// details: {
-    // 	type: Object,
-    // 	default: () => {}
-    // }
+  props: {
+    details: {
+      type: Object,
+      "default": function _default() {}
+    }
   },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_0___default()),
-      details: _tripSummaryDetails__WEBPACK_IMPORTED_MODULE_1__.default
+      moment: (moment__WEBPACK_IMPORTED_MODULE_0___default()) // details,
+
     };
   },
   methods: {
@@ -2309,10 +2314,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     priceForSeats: function priceForSeats() {
       var passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children);
-      return passengerCount * 15;
+      return passengerCount * 150000;
     },
     grandTotal: function grandTotal() {
-      return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn && this.priceForSeats);
+      return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0);
     }
   })
 });
@@ -16587,7 +16592,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   "passengerDetails": [{
     "title": "Mr",
-    "firstName": "Thinh",
+    "firstName": "A",
     "lastName": "Nguyen",
     "dateOfBirth": "1999-12-04",
     "nationality": "VN",
@@ -16596,11 +16601,11 @@ __webpack_require__.r(__webpack_exports__);
     "passportExpiryDate": "2022-08-26",
     "travelDocumentType": "Passport",
     "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 17 D",
-    "seatReturn": "Economy 17 H"
+    "seatDeparture": "Economy 21 D",
+    "seatReturn": "Economy 21 H"
   }, {
     "title": "Mrs",
-    "firstName": "Huong",
+    "firstName": "E",
     "lastName": "Nguyen",
     "dateOfBirth": "1999-01-03",
     "nationality": "VN",
@@ -16609,11 +16614,11 @@ __webpack_require__.r(__webpack_exports__);
     "passportExpiryDate": "2022-08-31",
     "travelDocumentType": "Passport",
     "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 17 E",
-    "seatReturn": "Economy 17 J"
+    "seatDeparture": "Economy 21 E",
+    "seatReturn": "Economy 21 J"
   }, {
     "title": "Ms",
-    "firstName": "Ly",
+    "firstName": "I",
     "lastName": "Nguyen",
     "dateOfBirth": "2018-08-08",
     "nationality": "VN",
@@ -16622,8 +16627,8 @@ __webpack_require__.r(__webpack_exports__);
     "passportExpiryDate": "2022-08-31",
     "travelDocumentType": "Passport",
     "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 17 F",
-    "seatReturn": "Economy 17 K"
+    "seatDeparture": "Economy 21 F",
+    "seatReturn": "Economy 21 K"
   }],
   "contact": {
     "email": "nvt0412@gmail.com"
@@ -65120,7 +65125,7 @@ var render = function() {
                                                   staticClass:
                                                     "font-size-larger"
                                                 },
-                                                [_vm._v("USD")]
+                                                [_vm._v("VND")]
                                               )
                                             ]),
                                             _vm._v(" "),
@@ -65486,7 +65491,7 @@ var render = function() {
                                                         staticClass:
                                                           "font-size-larger"
                                                       },
-                                                      [_vm._v("USD")]
+                                                      [_vm._v("VND")]
                                                     )
                                                   ]
                                                 ),
@@ -66005,9 +66010,7 @@ var render = function() {
           ? _c("FlightBooking", {
               attrs: { airports: _vm.airports, searchedInfo: _vm.searchedInfo }
             })
-          : _vm._e(),
-        _vm._v(" "),
-        _c("TripSummary")
+          : _vm._e()
       ],
       1
     )
@@ -66641,8 +66644,8 @@ var render = function() {
                       _c("div", [
                         _vm._v(
                           "\n\t\t\t\t\t\t" +
-                            _vm._s(_vm.formatMoney(_vm.grandTotal)) +
-                            " USD\n\t\t\t\t\t"
+                            _vm._s(_vm.formatMoney(_vm.grandTotal, 0)) +
+                            " VND\n\t\t\t\t\t"
                         )
                       ])
                     ]
@@ -68409,7 +68412,7 @@ var render = function() {
                   _vm._v(
                     "\n\t\t\t\t\t" +
                       _vm._s(_vm.formatMoney(_vm.pricePerAdult)) +
-                      " USD\n\t\t\t\t\tx " +
+                      " VND\n\t\t\t\t\tx " +
                       _vm._s(_vm.details.passengers.adults) +
                       "\n\t\t\t\t"
                   )
@@ -68430,7 +68433,7 @@ var render = function() {
                       _vm._v(
                         "\n\t\t\t\t\t" +
                           _vm._s(_vm.formatMoney((_vm.pricePerAdult * 2) / 3)) +
-                          " USD\n\t\t\t\t\tx " +
+                          " VND\n\t\t\t\t\tx " +
                           _vm._s(_vm.details.passengers.children) +
                           "\n\t\t\t\t"
                       )
@@ -68449,7 +68452,7 @@ var render = function() {
                   _vm._v(
                     "\n\t\t\t\t\t" +
                       _vm._s(_vm.formatMoney(_vm.priceForSeats)) +
-                      " USD\n\t\t\t\t"
+                      " VND\n\t\t\t\t"
                   )
                 ])
               ],
@@ -68465,7 +68468,7 @@ var render = function() {
                   _vm._v(
                     "\n\t\t\t\t\t" +
                       _vm._s(_vm.formatMoney(_vm.priceForSeats)) +
-                      " USD\n\t\t\t\t"
+                      " VND\n\t\t\t\t"
                   )
                 ])
               ],
@@ -68483,7 +68486,7 @@ var render = function() {
                   _vm._v(
                     "\n\t\t\t\t\t" +
                       _vm._s(_vm.formatMoney(_vm.grandTotal)) +
-                      " USD\n\t\t\t\t"
+                      " VND\n\t\t\t\t"
                   )
                 ])
               ],

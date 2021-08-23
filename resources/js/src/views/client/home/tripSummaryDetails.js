@@ -345,7 +345,7 @@ export default {
     "passengerDetails": [
         {
             "title": "Mr",
-            "firstName": "Thinh",
+            "firstName": "A",
             "lastName": "Nguyen",
             "dateOfBirth": "1999-12-04",
             "nationality": "VN",
@@ -354,12 +354,12 @@ export default {
             "passportExpiryDate": "2022-08-26",
             "travelDocumentType": "Passport",
             "travelDocumentCountry": "VN",
-            "seatDeparture": "Economy 17 D",
-            "seatReturn": "Economy 17 H"
+            "seatDeparture": "Economy 21 D",
+            "seatReturn": "Economy 21 H"
         },
         {
             "title": "Mrs",
-            "firstName": "Huong",
+            "firstName": "E",
             "lastName": "Nguyen",
             "dateOfBirth": "1999-01-03",
             "nationality": "VN",
@@ -368,12 +368,12 @@ export default {
             "passportExpiryDate": "2022-08-31",
             "travelDocumentType": "Passport",
             "travelDocumentCountry": "VN",
-            "seatDeparture": "Economy 17 E",
-            "seatReturn": "Economy 17 J"
+            "seatDeparture": "Economy 21 E",
+            "seatReturn": "Economy 21 J"
         },
         {
             "title": "Ms",
-            "firstName": "Ly",
+            "firstName": "I",
             "lastName": "Nguyen",
             "dateOfBirth": "2018-08-08",
             "nationality": "VN",
@@ -382,8 +382,8 @@ export default {
             "passportExpiryDate": "2022-08-31",
             "travelDocumentType": "Passport",
             "travelDocumentCountry": "VN",
-            "seatDeparture": "Economy 17 F",
-            "seatReturn": "Economy 17 K"
+            "seatDeparture": "Economy 21 F",
+            "seatReturn": "Economy 21 K"
         }
     ],
     "contact": {

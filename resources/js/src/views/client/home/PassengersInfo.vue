@@ -172,7 +172,7 @@
 							<small class="d-block">({{ passengerDetails.length }} passengers)</small>	
 						</div>
 						<div>
-							{{ formatMoney(grandTotal)}} USD
+							{{ formatMoney(grandTotal, 0)}} VND
 						</div>
 					</b-card-footer>
 				</b-card>
