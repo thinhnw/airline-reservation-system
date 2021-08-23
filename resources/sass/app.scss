@@ -7,6 +7,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//SweetAlert2
+@import '~sweetalert2/dist/sweetalert2.min.css';
 
 /*
 01. Base, variables
@@ -104,7 +106,7 @@ html, body {
 }
 
 
-// 07. Cards 
+// 07. Cards
 .card {
 	border: none !important;
 	border-radius: 10px !important;

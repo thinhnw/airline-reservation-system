@@ -14,6 +14,7 @@ class Airports extends Seeder
      */
     public function run()
     {
+
         //
         $path = 'app/sql_Data/airports.sql';
         DB::unprepared(file_get_contents($path));

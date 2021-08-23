@@ -33,8 +33,8 @@
 								></b-form-input>
 							</b-col>
 							<b-col cols="5">
-								<b-form-input 
-									required 
+								<b-form-input
+									required
 									v-model="passenger.lastName"
 									placeholder="Last Name"
 								></b-form-input>
@@ -42,8 +42,8 @@
 						</b-form-row>
 						<b-form-row class="mb-3">
 							<b-col cols="5">
-								<b-form-datepicker 
-									v-model="passenger.dateOfBirth" 
+								<b-form-datepicker
+									v-model="passenger.dateOfBirth"
 									required
 									:max="new Date()"
 									placeholder="Date of Birth"
@@ -80,14 +80,14 @@
 							<label>Passport details</label>
 							<b-form-row>
 								<b-col cols="5">
-									<b-form-input required 
+									<b-form-input required
 										v-model="passenger.passportNumber"
 										placeholder="Passport number"
 									></b-form-input>
 								</b-col>
 								<b-col cols="5">
-									<b-form-datepicker 
-										v-model="passenger.passportExpiryDate" 
+									<b-form-datepicker
+										v-model="passenger.passportExpiryDate"
 										required
 										:min="new Date()"
 										placeholder="Passport expiry date"

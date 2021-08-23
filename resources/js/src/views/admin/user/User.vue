@@ -27,6 +27,7 @@
 import ListUser from "./ListUser";
 import CreateAndEdit from "./CreateAndEdit";
 export default {
+
     name: "User",
     components: {CreateAndEdit, ListUser},
     data(){
@@ -51,15 +52,19 @@ export default {
             return this.updated=false;
         },
         resultCreate(){
+            this.shownForm();
             return this.created=false;
         },
         shownForm(){
+            this.dataEdit="";
             return this.shown=!this.shown;
         },
         setShown(res){
             return this.shown=res
         },
         updateDataEdit(){
+            this.shownForm();
+
             return this.dataEdit="";
         }
     }

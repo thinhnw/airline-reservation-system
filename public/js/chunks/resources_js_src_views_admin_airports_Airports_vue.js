@@ -258,6 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create_and_Edit",
@@ -282,7 +283,16 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$emit("created", JSON.parse(response.config.data));
       });
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Created'
+      });
       this.dataCreate = {};
+      this.$emit('setShown', false);
     },
     updateData: function updateData(id) {
       var _this2 = this;
@@ -293,7 +303,16 @@ __webpack_require__.r(__webpack_exports__);
 
         _this2.$emit("updated", JSON.parse(response.config.data));
       });
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Updated'
+      });
       this.$emit('updateDataEdit');
+      this.$emit('setShown', false);
     }
   }
 });
@@ -370,6 +389,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -388,7 +408,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   created: function created() {
     var _this = this;
 
-    var uri = '/api/api-airport';
+    var uri = '/api/api-airport-paginate';
     axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
       var _this$airports;
 
@@ -402,7 +422,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     clickCallback: function clickCallback(pageNum) {
       var _this2 = this;
 
-      var uri = '/api/api-airport?page=' + pageNum;
+      var uri = '/api/api-airport-paginate?page=' + pageNum;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
         var _this2$airports;
 
@@ -414,15 +434,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     deleteData: function deleteData(id) {
       var _this3 = this;
 
-      var uri = "http://127.0.0.1:8000/api/airport/delete/".concat(id);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().delete(uri).then(function () {
-        _this3.airports.splice(_this3.airports.findIndex(function (airport) {
-          return airport.id === id;
-        }), 1);
+      this.$swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          //Send Request to server
+          var uri = "http://127.0.0.1:8000/api/airport/delete/".concat(id);
+          axios__WEBPACK_IMPORTED_MODULE_0___default().delete(uri).then(function () {}).then(function (response) {
+            _this3.$swal('Deleted!', 'User deleted successfully', 'success');
+          });
 
-        _this3.dataEdit.splice(_this3.airports.findIndex(function (airport) {
-          airport.id === _this3.dataEdit.id;
-        }), 1);
+          _this3.airports.splice(_this3.airports.findIndex(function (airport) {
+            return airport.id === id;
+          }), 1);
+
+          _this3.dataEdit.splice(_this3.airports.findIndex(function (airport) {
+            airport.id === _this3.dataEdit.id;
+          }), 1);
+        }
       });
       this.$emit('setShown', false);
     },
@@ -515,7 +550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

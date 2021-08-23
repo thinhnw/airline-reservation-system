@@ -10,7 +10,7 @@
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<div v-if="details.flightsDeparture.length > 0"> 
+						<div v-if="details.flightsDeparture.length > 0">
 							<p>Number of Flights: {{ details.flightsDeparture.length }}</p>
 						</div>
 						<div v-else class="text-center">
@@ -21,10 +21,10 @@
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
-							<b-card 
-								v-for="flight, index in computedFlightsDeparture"
+							<b-card
+								v-for="(flight, index) in computedFlightsDeparture"
 								:key="index"
-								class="flight-item" 
+								class="flight-item"
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
@@ -88,7 +88,7 @@
 									<b-col cols="3">
 										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
-											40kg checked baggage 
+											40kg checked baggage
 										</div>
 										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
@@ -123,7 +123,7 @@
 						</h3>
 					</div>
 					<div class="w-100 text-left">
-						<div v-if="details.flightsReturn.length > 0"> 
+						<div v-if="details.flightsReturn.length > 0">
 							<p>Number of Flights: {{ details.flightsReturn.length }}</p>
 						</div>
 						<div v-else class="text-center">
@@ -134,10 +134,10 @@
 					</div>
 					<div class="w-100">
 						<b-form-group class="w-100">
-							<b-card 
-								v-for="flight, index in computedFlightsReturn"
+							<b-card
+								v-for="(flight, index) in computedFlightsReturn"
 								:key="index"
-								class="flight-item" 
+								class="flight-item"
 							>
 								<b-row class="w-100 mx-0 text-left">
 									<b-col cols="3">
@@ -201,7 +201,7 @@
 									<b-col cols="3">
 										<div class="font-size-small mb-2">
 											<i class="fal fa-suitcase-rolling"></i>
-											40kg checked baggage 
+											40kg checked baggage
 										</div>
 										<div class="font-size-small mb-2">
 											<i class="fal fa-briefcase"></i>
@@ -304,12 +304,12 @@ export default {
 			return this.airports.find(airport => airport.id == this.details.to_airport_id) || {}
 		},
 		computedFlightsDeparture() {
-			if (this.selectedFlightDeparture > -1) 
+			if (this.selectedFlightDeparture > -1)
 				return this.details.flightsDeparture.filter(flight => flight.id == this.selectedFlightDeparture)
 			return this.details.flightsDeparture
 		},
 		computedFlightsReturn() {
-			if (this.selectedFlightReturn > -1) 
+			if (this.selectedFlightReturn > -1)
 				return this.details.flightsReturn.filter(flight => flight.id == this.selectedFlightReturn)
 			return this.details.flightsReturn
 		},

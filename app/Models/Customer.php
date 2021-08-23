@@ -18,4 +18,5 @@ class Customer extends Model
         'user_type',
         'password'
     ];
+
 }

@@ -11,6 +11,7 @@ class AddTimestampsAirports extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::table('airports', function (Blueprint $table) {

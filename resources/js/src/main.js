@@ -35,6 +35,11 @@ import '../../sass/app.scss'
 
 Vue.config.productionTip = false
 
+//SweetAlert2
+
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
+
 new Vue({
   router,
   store,

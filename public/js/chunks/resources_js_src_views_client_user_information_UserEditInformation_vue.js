@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_client_user_information_UserEditInformation_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_client_user_information_UserEditInformation_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/user_information/UserEditInformation.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
@@ -115,7 +115,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: 'Female'
       }],
       selected: '',
-      show: true
+      userPassword: '',
+      showCheckPass: true
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
@@ -131,39 +132,103 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this.form.lastName = res.data.customer.last_name;
       _this.selected = res.data.customer.gender.toLowerCase();
       _this.form.password = res.data.customer.password;
+      console.log("pass " + res.data.customer.password);
     });
   },
   methods: {
-    onSubmit: function onSubmit(id) {
+    checkUserPassword: function checkUserPassword(id) {
       var _this2 = this;
 
-      var data = {
-        email: this.form.email,
-        first_name: this.form.firstName,
-        last_name: this.form.lastName,
-        password: this.form.password,
-        gender: this.selected
-      };
-      var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function (response) {
-        _this2.$router.push({
-          name: 'home'
+      var uri = "/api/customer/checkPass/".concat(id);
+      var myPromise = new Promise(function (resolve) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
+          password: _this2.userPassword
+        }).then(function (res) {
+          resolve(res.data.result);
         });
       });
+      myPromise.then(function (value) {
+        if (value) {
+          _this2.showCheckPass = false;
+        } else {
+          _this2.$swal({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            icon: 'error',
+            title: 'Error',
+            text: 'Please check your password!'
+          });
+        }
+      });
     },
-    onReset: function onReset(event) {
+    onSubmit: function onSubmit(id) {
       var _this3 = this;
 
-      event.preventDefault(); // Reset our form values
+      var result = false;
+      var password = this.form.password;
+      var uri = "/api/customer/checkPass/".concat(id);
 
-      this.form.email = '';
-      this.form.name = '';
-      this.form.food = null;
-      this.form.checked = []; // Trick to reset/clear native browser form validation state
+      if (password.length < 6) {
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          icon: 'error',
+          title: 'Password must be 6 digits'
+        });
+      } else {
+        var myPromise = new Promise(function (resolve) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
+            password: password
+          }).then(function (res) {
+            resolve(res.data.result);
+          });
+        });
+        myPromise.then(function (value) {
+          result = value;
 
-      this.show = false;
-      this.$nextTick(function () {
-        _this3.show = true;
+          if (!result) {
+            var data = {
+              email: _this3.form.email,
+              first_name: _this3.form.firstName,
+              last_name: _this3.form.lastName,
+              password: _this3.form.password,
+              gender: _this3.selected
+            };
+            var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+            axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
+              _this3.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Success'
+              });
+
+              _this3.$router.push({
+                name: 'home'
+              });
+            });
+          } else {
+            _this3.$swal({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              icon: 'error',
+              title: 'The password must be different from the old password'
+            });
+          }
+        });
+      }
+    },
+    onReset: function onReset() {
+      this.$router.push({
+        name: 'home'
       });
     }
   }
@@ -187,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-5c7ee22a] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-5c7ee22a] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}\n.formStyle[data-v-5c7ee22a] {\n  background-color: white;\n  border-radius: 10px;\n  padding: 20px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-5c7ee22a] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-5c7ee22a] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-5c7ee22a] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}\n.formStyle[data-v-5c7ee22a] {\n  background-color: white;\n  border-radius: 10px;\n  padding: 20px;\n}\n.alertSubmit[data-v-5c7ee22a] {\n  margin-top: 70px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -342,13 +407,82 @@ var render = function() {
                       "div",
                       { staticClass: "w-100" },
                       [
-                        _vm.show
+                        _vm.showCheckPass
                           ? _c(
                               "b-form",
                               {
                                 staticClass: "formStyle",
                                 on: {
                                   submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.checkUserPassword(
+                                      _vm.userInfo.id
+                                    )
+                                  },
+                                  reset: _vm.onReset
+                                }
+                              },
+                              [
+                                _c(
+                                  "b-form-group",
+                                  {
+                                    attrs: {
+                                      id: "input-group-2",
+                                      label: "Please enter your password:",
+                                      "label-for": "input-2"
+                                    }
+                                  },
+                                  [
+                                    _c("b-form-input", {
+                                      attrs: {
+                                        id: "input-2",
+                                        placeholder: "Enter password",
+                                        required: "",
+                                        type: "password"
+                                      },
+                                      model: {
+                                        value: _vm.userPassword,
+                                        callback: function($$v) {
+                                          _vm.userPassword = $$v
+                                        },
+                                        expression: "userPassword"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    attrs: {
+                                      type: "submit",
+                                      variant: "primary"
+                                    }
+                                  },
+                                  [_vm._v("Submit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    attrs: { type: "reset", variant: "danger" }
+                                  },
+                                  [_vm._v("Cancel")]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !_vm.showCheckPass
+                          ? _c(
+                              "b-form",
+                              {
+                                staticClass: "formStyle",
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
                                     return _vm.onSubmit(_vm.userInfo.id)
                                   },
                                   reset: _vm.onReset
@@ -434,37 +568,6 @@ var render = function() {
                                           _vm.$set(_vm.form, "password", $$v)
                                         },
                                         expression: "form.password"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "b-form-group",
-                                  {
-                                    attrs: {
-                                      id: "input-group-1",
-                                      label: "Email address:",
-                                      "label-for": "input-1",
-                                      description:
-                                        "We'll never share your email with anyone else."
-                                    }
-                                  },
-                                  [
-                                    _c("b-form-input", {
-                                      attrs: {
-                                        id: "input-1",
-                                        type: "email",
-                                        placeholder: "Enter email",
-                                        required: ""
-                                      },
-                                      model: {
-                                        value: _vm.form.email,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.form, "email", $$v)
-                                        },
-                                        expression: "form.email"
                                       }
                                     })
                                   ],

@@ -27,7 +27,12 @@ const router = new VueRouter({
 					path: 'checkout',
 					name: 'checkout',
 					component: () => import('./views/client/checkout/Checkout.vue')
-				}
+				},
+				{
+						path: 'information/edit',
+						name: 'user-edit',
+						component: () => import('./views/client/user_information/UserEditInformation.vue')
+				},
 			]
 		},
 
@@ -61,9 +66,13 @@ const router = new VueRouter({
 						name: 'admin-airports',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
+                {
+                    path: 'user',
+                    name: 'admin-user',
+                    component: () => import('./views/admin/user/User.vue')
+                },
 			]
 		},
-
 		{
 			path: '/errors/not-authorized',
 			name: 'errors-not-authorized',

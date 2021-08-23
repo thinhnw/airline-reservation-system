@@ -65287,7 +65287,7 @@ var render = function() {
                                         staticClass: "fal fa-suitcase-rolling"
                                       }),
                                       _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t40kg checked baggage \n\t\t\t\t\t\t\t\t\t"
+                                        "\n\t\t\t\t\t\t\t\t\t\t40kg checked baggage\n\t\t\t\t\t\t\t\t\t"
                                       )
                                     ]
                                   ),
@@ -65675,7 +65675,7 @@ var render = function() {
                                               "fal fa-suitcase-rolling"
                                           }),
                                           _vm._v(
-                                            "\n\t\t\t\t\t\t\t\t\t\t40kg checked baggage \n\t\t\t\t\t\t\t\t\t"
+                                            "\n\t\t\t\t\t\t\t\t\t\t40kg checked baggage\n\t\t\t\t\t\t\t\t\t"
                                           )
                                         ]
                                       ),

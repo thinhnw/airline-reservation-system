@@ -3,7 +3,7 @@
 		<div>
 		YOU ARE NOT AUTHORIZED
 		</div>
-		<router-link to="/" class="btn btn-outline-primary"> 
+		<router-link to="/" class="btn btn-outline-primary">
 			HOME
 		</router-link>
 	</div>

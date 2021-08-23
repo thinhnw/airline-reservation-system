@@ -119,7 +119,7 @@ var render = function() {
       _c(
         "router-link",
         { staticClass: "btn btn-outline-primary", attrs: { to: "/" } },
-        [_vm._v(" \n\t\tHOME\n\t")]
+        [_vm._v("\n\t\tHOME\n\t")]
       )
     ],
     1

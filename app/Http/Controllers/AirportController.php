@@ -18,6 +18,15 @@ class AirportController extends Controller
         ]);
     }
 
+    public function airportPaginate(){
+        $data=Airport::paginate(10);
+        return response()->json([
+            'status'=>true,
+            'message'=>'Success',
+            'airports'=>$data
+        ]);
+    }
+
 //    EDIT
     public function edit($id){
         $airport=Airport::findOrFail($id);

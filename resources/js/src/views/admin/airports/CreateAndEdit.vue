@@ -1,4 +1,5 @@
 <template>
+
     <div class="col-md-4 box-CUD py-3" v-show="shownForm">
         <form @submit.prevent="Object.keys(dataEdit).length!==0?updateData(dataEdit.id):createData()">
             <button class="btn btn-danger mb-3 float-right" type="button" @click="cancel()">X</button>
@@ -182,7 +183,17 @@ export default {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
             });
+            this.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Created',
+            });
             this.dataCreate = {}
+            this.$emit('setShown', false)
+
         },
         updateData(id) {
             let uri_u = `http://127.0.0.1:8000/api/airport/update/${id}`;
@@ -190,7 +201,17 @@ export default {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));
             });
+            this.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Updated',
+            });
             this.$emit('updateDataEdit')
+            this.$emit('setShown', false)
+
         },
     },
 
