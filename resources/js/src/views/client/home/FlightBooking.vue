@@ -69,6 +69,5 @@ export default {
 
 <style lang="scss" scoped>
 #flight-booking {
-	background: #f2f3fa;
 }
 </style>>

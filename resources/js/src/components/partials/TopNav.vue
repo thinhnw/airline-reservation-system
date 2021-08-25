@@ -4,7 +4,7 @@
 			<b-row>
 				<b-col class="d-flex justify-content-end px-0">
 					<b-navbar toggleable="lg" type="dark" variant="transparent" class="w-100">
-						<b-navbar-brand href="#" class="d-flex align-items-center mr-5" @click="$router.push('home')">
+						<b-navbar-brand href="#" class="d-flex align-items-center mr-5" @click="goHome">
 							<img src="/favicon.ico" alt="" width="20px">
 							<div class="ml-2">
 								<em style="font-size: 30px" class="font-weight-bold text-white">
@@ -18,7 +18,7 @@
 						<b-collapse id="nav-collapse" is-nav class="pl-5">
 							<b-navbar-nav>
 								<b-nav-item>
-									<router-link class="text-light" to="/">Home</router-link>
+									<router-link class="text-light" to="/" @click="goHome">Home</router-link>
 								</b-nav-item>
 								<b-nav-item>
 									<router-link class="text-light px-3" to="/">About Us</router-link>
@@ -86,6 +86,11 @@ export default {
 
 		editDetail(){
 			this.$router.push('profile')
+		},
+
+		goHome() {
+			if (this.$route.name.includes('home')) this.$router.go(0)
+			else this.$router.push('home')
 		}
 	},
 	mounted() {

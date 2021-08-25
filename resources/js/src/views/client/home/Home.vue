@@ -28,9 +28,12 @@
 				</b-row>
 			</b-container>
 		</div>
-		<div>
+		<div v-if="!isBookingFlight">
+			<HomeDefault />
+		</div>
+		<div v-if="isBookingFlight">
 			<!-- <img :src="abc" alt=""> -->
-			<FlightBooking v-if="isBookingFlight" 
+			<FlightBooking 
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
@@ -47,8 +50,9 @@ import FlightStatus from './FlightStatus.vue'
 import FlightBooking from './FlightBooking.vue'
 import axios from '@/axios'
 import TripSummary from './TripSummary.vue'
-import SeatSelection from './SeatSelection'
+import SeatSelection from './SeatSelection.vue'
 import abc from './abc'
+import HomeDefault from './HomeDefault.vue'
 export default {
 	components: {
 		SearchFlightsForm,
@@ -57,7 +61,8 @@ export default {
 		CheckIn,
 		FlightStatus,
 		TripSummary,
-		SeatSelection
+		SeatSelection,
+		HomeDefault
 	},
 	data() {
 		return {
@@ -138,5 +143,9 @@ export default {
 	border: initial;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+#home-component {
+	padding-bottom: 626px;
 }
 </style>

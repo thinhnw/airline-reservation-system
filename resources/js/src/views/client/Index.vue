@@ -1,5 +1,5 @@
 <template>
-	<div class="client-portal container-fluid px-0 h-100">
+	<div class="client-portal container-fluid px-0">
 		<TopNav />
 		<router-view></router-view>
 		<TheFooter />
@@ -21,5 +21,7 @@ export default {
 .client-portal {
 	position: relative;
 	padding-bottom: 100px;
+	height: fit-content;
+	min-height: 100%;
 }
 </style>

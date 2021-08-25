@@ -277,6 +277,7 @@ label {
 		border: 1px solid rgba(60, 60, 60, .26) !important;
 		border-radius: 0 !important;
 		border-right: none !important;
+		font-size: 14px !important;
 	}
 	&::v-deep .dropdown-menu {
 		width: 275px;

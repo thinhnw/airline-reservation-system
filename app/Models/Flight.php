@@ -31,10 +31,10 @@ class Flight extends Model
     }
 
     public function getFareEconomyAttribute() {
-        return ($this->airportFrom->getDistanceTo($this->airportTo) / 20) * 2300;
+        return ($this->airportFrom->getDistanceTo($this->airportTo) / 20) * 23000;
     }
     public function getFareBusinessAttribute() {
-        return ($this->airportFrom->getDistanceTo($this->airportTo) / 10) * 2300;
+        return ($this->airportFrom->getDistanceTo($this->airportTo) / 10) * 23000;
     }
 
     public function checkAvailableSeat($seat) {

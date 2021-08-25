@@ -325,7 +325,6 @@ export default {
 
 <style scoped lang="scss">
 .flight-list {
-	background: #F2F3FA;
 }
 .flight-item {
 	width: 100%;

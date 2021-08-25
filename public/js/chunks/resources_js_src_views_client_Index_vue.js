@@ -23,6 +23,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -128,6 +200,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })), {}, {
     editDetail: function editDetail() {
       this.$router.push('profile');
+    },
+    goHome: function goHome() {
+      if (this.$route.name.includes('home')) this.$router.go(0);else this.$router.push('home');
     }
   }),
   mounted: function mounted() {
@@ -190,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#footer[data-v-0d2063a2] {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  padding: 30px 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#footer[data-v-0d2063a2] {\n  height: 626px;\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  padding: 0;\n}\n#footer .subscription[data-v-0d2063a2] {\n  background: #F5F5F5;\n}\n#footer ul[data-v-0d2063a2] {\n  list-style: none;\n}\n#footer ul li[data-v-0d2063a2] {\n  margin-top: 20px;\n  cursor: pointer;\n}\n#footer ul li[data-v-0d2063a2]:hover {\n  color: var(--secondary);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -236,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.client-portal {\r\n\tposition: relative;\r\n\tpadding-bottom: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.client-portal {\r\n\tposition: relative;\r\n\tpadding-bottom: 100px;\r\n\theight: -webkit-fit-content;\r\n\theight: -moz-fit-content;\r\n\theight: fit-content;\r\n\tmin-height: 100%;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -594,9 +669,204 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return  false
-    ? 0
-    : _vm._e()
+  return _c(
+    "footer",
+    { attrs: { id: "footer" } },
+    [
+      _c(
+        "section",
+        { staticClass: "subscription" },
+        [
+          _c(
+            "b-container",
+            [
+              _c(
+                "b-row",
+                { attrs: { "align-h": "center" } },
+                [
+                  _c(
+                    "b-col",
+                    {
+                      staticClass:
+                        "d-flex p-5 align-items-center justify-content-between",
+                      attrs: { cols: "10" }
+                    },
+                    [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/images/ico_email_subscribe.svg",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "ml-4" }, [
+                          _c("h4", [_vm._v("Get Updates & More")]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-secondary" }, [
+                            _vm._v("Thoughtful thoughts to your inbox")
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c(
+                            "b-input-group",
+                            {
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "append",
+                                  fn: function() {
+                                    return [
+                                      _c(
+                                        "b-button",
+                                        {
+                                          staticClass: "px-3",
+                                          attrs: { variant: "primary" }
+                                        },
+                                        [_vm._v("SUBSCRIBE")]
+                                      )
+                                    ]
+                                  },
+                                  proxy: true
+                                }
+                              ])
+                            },
+                            [
+                              _c("b-form-input", {
+                                staticClass: "p-4",
+                                attrs: { placeholder: "Your email" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-container",
+        [
+          _c(
+            "b-row",
+            { staticClass: "py-5" },
+            [
+              _c("b-col", { staticClass: "pr-5" }, [
+                _vm._v("\n\t\t\t\tCONTACT US\n\t\t\t\t"),
+                _c("hr"),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Call Us")]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v("+ 00 222 44 5678")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Our Email")]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v("support@aviaairaways.com")])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Follow Us")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("i", {
+                        staticClass:
+                          "fab fa-facebook-square mr-3 font-size-large"
+                      })
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("b-col", { staticClass: "pr-5" }, [
+                _vm._v("\n\t\t\t\tCOMPANY\n\t\t\t\t"),
+                _c("hr"),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [_vm._v("About Us")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Community Blog")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Rewards")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Work with Us")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Meet the Team")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("b-col", { staticClass: "pr-5" }, [
+                _vm._v("\n\t\t\t\tSupport\n\t\t\t\t"),
+                _c("hr"),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [_vm._v("Account")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Legal")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Contact")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Affiliate Program")]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Privacy Policy")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { staticClass: "pr-5" },
+                [
+                  _vm._v("\n\t\t\t\tSETTINGS\n\t\t\t\t"),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-group",
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "d-block", attrs: { for: "" } },
+                        [_vm._v("Currencies")]
+                      ),
+                      _vm._v(" "),
+                      _c("b-form-select", {
+                        staticClass: "w-50",
+                        attrs: { options: ["VND"], value: "VND" }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("section", { staticClass: "py-4 border-top text-center" }, [
+        _vm._v("Copyright © 2021 by Avia Airways")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -654,11 +924,7 @@ var render = function() {
                         {
                           staticClass: "d-flex align-items-center mr-5",
                           attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              return _vm.$router.push("home")
-                            }
-                          }
+                          on: { click: _vm.goHome }
                         },
                         [
                           _c("img", {
@@ -707,7 +973,8 @@ var render = function() {
                                     "router-link",
                                     {
                                       staticClass: "text-light",
-                                      attrs: { to: "/" }
+                                      attrs: { to: "/" },
+                                      on: { click: _vm.goHome }
                                     },
                                     [_vm._v("Home")]
                                   )
@@ -886,7 +1153,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "client-portal container-fluid px-0 h-100" },
+    { staticClass: "client-portal container-fluid px-0" },
     [
       _c("TopNav"),
       _vm._v(" "),

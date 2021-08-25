@@ -38,6 +38,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -881,16 +887,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c(
-      "button",
-      {
-        staticClass: "btn btn-outline-warning",
-        on: {
-          click: function($event) {
-            return _vm.shownForm()
-          }
-        }
-      },
-      [_vm._v(_vm._s(_vm.shown ? "Close" : "Add Airport +"))]
+      "div",
+      { staticClass: "d-flex justify-content-between" },
+      [
+        _c("h2", [_vm._v("AIRPORTS")]),
+        _vm._v(" "),
+        _c(
+          "b-button",
+          {
+            staticClass: "py-1",
+            attrs: { variant: "outline-warning", squared: "" },
+            on: { click: _vm.shownForm }
+          },
+          [
+            _vm._v("\n\t\t\t\tAdd airport\n\t\t\t\t"),
+            _c("i", { staticClass: "ml-1 fal fa-plus" })
+          ]
+        )
+      ],
+      1
     ),
     _vm._v(" "),
     _c(

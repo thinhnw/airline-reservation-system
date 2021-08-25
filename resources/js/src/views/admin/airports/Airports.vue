@@ -1,7 +1,13 @@
 <template>
     <div>
-
-        <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button>
+        <div class="d-flex justify-content-between">
+            <h2>AIRPORTS</h2>
+            <!-- <button class="btn btn-outline-warning" @click="shownForm()">{{shown?'Close':'Add Airport +'}}</button> -->
+			<b-button variant="outline-warning" squared class="py-1" @click="shownForm">
+				Add airport
+				<i class="ml-1 fal fa-plus"></i>
+			</b-button>
+        </div>
         <div>
         <ListAirport
             @setDataEdit="setDataEdit"
