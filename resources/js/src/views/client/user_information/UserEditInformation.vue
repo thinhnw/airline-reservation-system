@@ -168,7 +168,7 @@ export default {
                             password: this.form.password,
                             gender: this.selected
                         };
-                        let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
+                        let uri_u = `/api/customer/update/${id}`;
                         axios.post(uri_u, data).then(() => {
                             this.$swal({
                                 toast: true,

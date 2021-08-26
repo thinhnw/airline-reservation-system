@@ -87,7 +87,7 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     //Send Request to server
-                    let uri = `http://127.0.0.1:8000/api/customer/delete/${id}`;
+                    let uri = `/api/customer/delete/${id}`;
                     axios.delete(uri).then(() => {
                     }).then((response)=> {
                         this.$swal(
@@ -108,7 +108,7 @@ export default {
 
         },
         editData(id){
-            let uri = `http://127.0.0.1:8000/api/customer/edit/${id}`;
+            let uri = `/api/customer/edit/${id}`;
             axios.get(uri).then(res=>{
                 this.dataEdit={};
                 this.dataEdit=res.data.customer;
