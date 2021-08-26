@@ -7,11 +7,13 @@ use App\Mail\FlightReservation;
 use App\Models\Flight;
 use App\Models\Reservation;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Str;
 
 class ReservationController extends Controller
 {
@@ -114,9 +116,22 @@ class ReservationController extends Controller
     public function show($id)
     {
         //
-        return response()->json([
-            'reservation' => Reservation::find($id)
-        ], 200);
+        try {
+            //code...
+            $reservation = Reservation::findOrFail($id);
+            if ($reservation->user->id == Auth::user()->id) {
+                return response()->json([
+                    'reservation' => $reservation
+                ], 200);
+            } else {
+                throw new Exception('No permission');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 
     /**
@@ -160,7 +175,19 @@ class ReservationController extends Controller
     }
 
     public function checkoutWithStripe(Request $request) {
-        $user = User::find(Auth::user()->id);
+        $user = User::firstOrCreate(
+            [
+                'email' => $request->input('email')
+            ],
+            [
+                'password' => Hash::make(Str::random(12)),
+                'name' => $request->input('first_name') . ' ' .$request->input('last_name'),
+                'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'zip_code' => $request->input('zip_code')
+            ]
+        );
         try {
             $user->createOrGetStripeCustomer();
             $payment = $user->charge(
@@ -169,6 +196,13 @@ class ReservationController extends Controller
             );
             $payment = $payment->asStripePaymentIntent();
             $reservation = Reservation::find($request->reservation_id);
+
+            $user = $reservation->user;
+            $skymiles = $user->skymiles;
+            $user->update([
+                'skymiles' => $skymiles + $request->skymiles
+            ]);
+
             return $payment;
         } catch (\Throwable $th) {
             throw $th;

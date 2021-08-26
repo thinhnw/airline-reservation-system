@@ -1985,14 +1985,18 @@ instance.interceptors.response.use(function (response) {
     alert("You are not authorized");
   }
 
-  if (response.status === 500 && response.message === 'Token has expired') {
-    _router_js__WEBPACK_IMPORTED_MODULE_1__.default.push('/login');
-  }
-
   return response;
 }, function (error) {
   if (error.response && error.response.data) {
+    var _error$response$data$;
+
     //add your code
+    if ((_error$response$data$ = error.response.data.message) !== null && _error$response$data$ !== void 0 && _error$response$data$.toLowerCase().includes('token')) {
+      _router_js__WEBPACK_IMPORTED_MODULE_1__.default.go({
+        name: 'login'
+      });
+    }
+
     return Promise.reject(error.response.data);
   }
 

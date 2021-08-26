@@ -66,11 +66,11 @@
             <section>
               <h4 class="mb-4">Payment</h4>
               <b-form-group>
-                <label for="">Name on card</label>
+                <label for="">Card holder (name on card)</label>
                 <b-form-input placeholder="Eg: NGUYEN VAN A"></b-form-input>
               </b-form-group>
               <b-form-group>
-                <label for="">Credit Informations</label>
+                <label for="">Credit informations</label>
                 <div id="card-element"></div>
               </b-form-group>
             </section>
@@ -84,14 +84,14 @@
 
       <b-col cols="3">
         <b-card no-body class="p-4">
-          <h4>Booking Summary</h4>
+          <h4>Summary</h4>
           <hr>
-          <div class="d-flex justity-content-between">
+          <div class="d-flex justify-content-between">
             <div>
               <p>Total</p>
             </div>
             <div>
-              <p>{{ 100000 }} VND</p>
+              <p>{{ formatMoney(reservation.price, 0) }} VND</p>
             </div>
           </div>
         </b-card>
@@ -104,6 +104,7 @@
 <script>
 import { loadStripe } from '@stripe/stripe-js'
 import axios from '@/axios'
+import { formatMoney } from '@/helper'
 export default {
   data() {
     return {
@@ -123,16 +124,18 @@ export default {
     }
   },
   methods: {
+    formatMoney,
     async fetchProduct() {
       let id = this.$route.query.reservation_id
       if (!id) this.$router.push('home')
-      const { data, error } = await axios.get('/api/reservations/' + id)
-      if (error) {
-        console.error(error)
-        return
+      try {
+        const { data } = await axios.get('/api/reservations/' + id)
+        this.reservation = data.reservation
+        this.form.reservation_id = id
+      } catch (error) {
+        console.log(error)
+        if (error.message === 'No permission') this.$router.push({ name: 'profile' })
       }
-      this.reservation = data.reservation
-      this.form.reservation_id = id
     },
     async processPayment() {
       this.paymentProcessing = true
@@ -200,7 +203,7 @@ export default {
 
 <style lang="scss" scoped>
 .checkout {
-  padding-top: 100px;
+  padding-top: 120px;
   &::v-deep .form-control {
     margin-bottom: 0 !important;
   }
