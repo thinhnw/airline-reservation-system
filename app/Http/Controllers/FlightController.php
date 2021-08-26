@@ -11,7 +11,6 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class FlightController extends Controller
 {
-
     /**
      * Create a new AuthController instance.
      *
@@ -19,7 +18,7 @@ class FlightController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index', 'search']]);
+        $this->middleware('JWT', ['except' => ['index', 'show', 'search']]);
     }
     /**
      * Display a listing of the resource.
@@ -89,7 +88,19 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
+        try {
+            //code...
+            $flight = Flight::findOrFail($id);
+            return response()->json([
+                'flight' => $flight
+            ], 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 
     /**
@@ -189,62 +200,13 @@ class FlightController extends Controller
             ['destination_id', '=', $to_airport_id],
             ['departure_time', '>=', $departure_date . ' 00:00:00'],
             ['departure_time', '<=', $departure_date . ' 23:59:59'],
-        ])->get();
-        return $flights;
+        ]);
 
-            $from_airport_id = $filter->from_airport_id;
-            $to_airport_id = $filter->to_airport_id;
-            $trip_type = $filter->trip_type;
-            $departure_date = $filter->departure_date;
-            $return_date = $filter->return_date;
-
-            $nodeStart = (object) [
-                'airport_id' => $from_airport_id,
-                'departure_time' => Carbon::parse($departure_date . ' 00:00:00'),
-                'arrival_time' => Carbon::parse($departure_date . ' 00:00:00'),
-                'shortest_distance' => 0
-            ];
-            $nodeEnd = (object) [
-                'airport_id' => $to_airport_id,
-                'arrival_time' => Carbon::parse($return_date . ' 23:59:59')
-            ];
-
-            $pq = new AirportPriorityQueue;
-            $shortestDistance = [];
-            $flights = Flight::all();
-            $airports = Airport::all();
-            foreach ($airports as $airport) {
-                $shortestDistance[$airport->id] = 1e9;
-            }
-
-            $shortestDistance[$nodeStart->airport_id] = 0;
-            $pq->insert($nodeStart, 0);
-
-            while ($pq->count()) {
-                $nodeU = $pq->top();
-                $airportU = Airport::find($nodeU->airport_id);
-                $pq->extract();
-                if ($shortestDistance[$nodeU->airport_id] != $nodeU->shortest_distance) continue;
-                foreach ($flights as $flight) {
-                    if ($flight->departure_id != $nodeU->airport_id) continue;
-                    if ($nodeU->airport_id == $nodeStart->airport_id && $nodeU->arrival_time->gt($flight->departure_time)) continue;
-                    if ($nodeU->airport_id != $nodeStart->airport_id && $nodeU->arrival_time->addHour()->gt($flight->departure_time)) continue;
-                    if (Carbon::parse($flight->arrival_time)->gt($nodeEnd->arrival_time)) continue;
-
-                    // airportU.arrival_time (+1 hour if airport is not nodeStart) <= flight.departure_time < flight.arrival_time <= nodeEnd.arrival_time
-                    $airportV = Airport::find($flight->destination_id);
-                    $uvDistance = $airportU->getDistanceTo($airportV);
-                    if ($shortestDistance[$airportV->id] > $nodeU->shortest_distance + $uvDistance) {
-                        $shortestDistance[$airportV->id] = $nodeU->shortest_distance + $uvDistance;
-                        $nodeV = (object) [
-                            'airport_id' => $airportV->id,
-                            'arrival_time' => Carbon::parse($flight->arrival_time),
-                            'shortest_distance' => $shortestDistance[$airportV->id]
-                        ];
-                        $pq->insert($nodeV, $shortestDistance[$airportV->id]);
-                    }
-                }
-            }
+        $passengers = $filter->passengers;
+        $passengerCount = $passengers->adults + $passengers->children;
+        $class = $filter->class;
+        if ($class == 'Business') return $flights->where([['business_seat_count', '>=', $passengerCount]])->get();
+        return $flights->where([['economy_seat_count', '>=', $passengerCount]])->get();
     }
 
     private function searchForFlightsReturn($filter) {
@@ -257,7 +219,14 @@ class FlightController extends Controller
             ['destination_id', '=', $to_airport_id],
             ['departure_time', '>=', $departure_date . ' 00:00:00'],
             ['departure_time', '<=', $departure_date . ' 23:59:59'],
-        ])->get();
-        return $flights;
+        ]);
+
+        $passengers = $filter->passengers;
+        $passengerCount = $passengers->adults + $passengers->children;
+        $class = $filter->class;
+
+        if ($class == 'Business') return $flights->where([['business_seat_count', '>=', $passengerCount]])->get();
+        return $flights->where([['economy_seat_count', '>=', $passengerCount]])->get();
     }
+
 }

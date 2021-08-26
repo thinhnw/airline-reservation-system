@@ -96,7 +96,42 @@
 				<div style="width: 100px">
 					<b-form-group>
 						<label>Passengers</label>
-						<b-form-input type="number" v-model="form.passengerCount" required class="passenger-input"></b-form-input>
+						<b-dropdown class="passenger-input w-100 text-left" variant="none" no-caret
+							toggle-class="passenger-input-btn"
+							right
+						>
+							<template #button-content>
+								<div class="w-100 text-left">
+									{{ passengerCount }}
+								</div>
+							</template>
+							<b-dropdown-form>
+								<b-row align-v="center">
+									<b-col class="font-size-small" cols="8">
+										Adult (11+ years old)
+									</b-col>
+									<b-col>
+										<b-form-input type="number" min="1" v-model="form.passengers.adults" required size="sm"></b-form-input>
+									</b-col>
+								</b-row>
+								<b-row align-v="center">
+									<b-col class="font-size-small" cols="8">
+										Children (2-11 years old)
+									</b-col>
+									<b-col>
+										<b-form-input type="number" min="0" v-model="form.passengers.children" required size="sm"></b-form-input>
+									</b-col>
+								</b-row>
+								<b-row align-v="center">
+									<b-col class="font-size-small" cols="8">
+										Babies (&lt;2 years old)
+									</b-col>
+									<b-col>
+										<b-form-input type="number" min="0" v-model="form.passengers.babies" required size="sm"></b-form-input>
+									</b-col>
+								</b-row>
+							</b-dropdown-form>
+						</b-dropdown>
 					</b-form-group>
 				</div>
 				<div style="width: 130px">
@@ -113,7 +148,7 @@
 			</div>
 			<b-row no-gutters>
 				<b-col class="text-right">
-					<b-button variant="primary" type="submit">
+					<b-button variant="primary" type="submit" class="px-4">
 						Search
 					</b-button>
 				</b-col>
@@ -136,7 +171,11 @@ export default {
 				tripType: 'One-way',
 				departureDate: (new Date()).toISOString().split('T')[0],
 				returnDate: (new Date()).toISOString().split('T')[0],
-				passengerCount: 1,
+				passengers: {
+					adults: 1,
+					children: 0,
+					babies: 0
+				},
 				class: 'Business'
 			}
 		}
@@ -149,24 +188,25 @@ export default {
 		},
 		async search() {
 			try {
-				// let filter = {
-				// 	from_airport_id: this.form.fromCity.id,
-				// 	to_airport_id: this.form.toCity.id,
-				// 	trip_type: this.form.tripType,
-				// 	departure_date: this.form.departureDate,
-				// 	passenger_count: this.passengerCount,
-				// 	class: this.class
-				// }
 				let filter = {
-					from_airport_id: 1934,
-					to_airport_id: 2307,
-					trip_type: 'Return',
-					departure_date: '2021-08-19',
-					return_date: '2021-08-21',
-					passenger_count: 2,
-					class: 'Business'
+					from_airport_id: this.form.fromCity.id,
+					to_airport_id: this.form.toCity.id,
+					trip_type: this.form.tripType,
+					departure_date: this.form.departureDate,
+					passengers: this.form.passengers,
+					class: this.form.class
 				}
-				// if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
+				// let filter = {
+				// 	from_airport_id: 1934,
+				// 	to_airport_id: 2307,
+				// 	trip_type: 'Return',
+				// 	departure_date: '2021-08-19',
+				// 	return_date: '2021-08-21',
+				// 	passenger_count: 2,
+				// 	class: 'Business'
+				// }
+				if (filter.trip_type === 'Return') filter.return_date = this.form.returnDate
+				this.$emit('searching')
 				let res = await axios.get(`/api/flights/search?filter=${JSON.stringify(filter)}`)	
 				console.log(res)
 
@@ -186,8 +226,8 @@ export default {
 						flightsReturn: res.data.flightsReturn.map(flight => {
 							return {
 								...flight,
-								origin: this.airports.find(airport => airport.id == flight.departure_id).label,
-								destination: this.airports.find(airport => airport.id == flight.destination_id).label,
+								origin: this.airports.find(airport => airport.id == flight.departure_id),
+								destination: this.airports.find(airport => airport.id == flight.destination_id),
 							}
 						})
 					}
@@ -198,6 +238,11 @@ export default {
 			}
 		}
 	},
+	computed: {
+		passengerCount() {
+			return parseInt(this.form.passengers.adults) + parseInt(this.form.passengers.children) + parseInt(this.form.passengers.babies)
+		}
+	}
 };
 </script>
 
@@ -208,10 +253,12 @@ label {
 .from-city-select, .to-city-select, .trip-select, .passenger-select {
 	&::v-deep .vs__dropdown-toggle {
 		border-right: 0;
+		border-radius: 0;
 	}
 }
 .departure-date-picker, .return-date-picker, .passenger-input {
 	border-right: 0;
+	border-radius: 0 !important;
 }
 .from-city-select {
 	&::v-deep .vs__dropdown-toggle {
@@ -221,8 +268,19 @@ label {
 }
 .class-select {
 	&::v-deep .vs__dropdown-toggle {
-		border-top-right-radius: 5px;
-		border-bottom-right-radius: 5px;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+}
+.passenger-input {
+	&::v-deep .passenger-input-btn {
+		border: 1px solid rgba(60, 60, 60, .26) !important;
+		border-radius: 0 !important;
+		border-right: none !important;
+		font-size: 14px !important;
+	}
+	&::v-deep .dropdown-menu {
+		width: 275px;
 	}
 }
 </style>

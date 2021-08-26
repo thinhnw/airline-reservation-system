@@ -55,6 +55,13 @@ return [
 
         'postmark' => [
             'transport' => 'postmark',
+            'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            'secret' => env('POSTMARK_SECRET'),
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
         ],
 
         'sendmail' => [

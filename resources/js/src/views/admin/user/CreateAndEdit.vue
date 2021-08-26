@@ -114,6 +114,14 @@ export default {
                 this.$emit("created", JSON.parse(response.config.data));
                 this.$emit("resultCreate");
             });
+            this.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Created',
+            });
             this.dataCreate = {}
         },
         updateData(id) {
@@ -121,6 +129,14 @@ export default {
             axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));
+            });
+            this.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Updated',
             });
             this.$emit('updateDataEdit')
         },
@@ -140,4 +156,5 @@ export default {
     background-color: #ffffff;
     box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);
 }
+
 </style>

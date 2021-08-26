@@ -3,8 +3,6 @@
         <div class="banner">
             <b-container class="h-100 px-0">
                 <b-row class="h-100">
-                    <b-alert class="w-100 alertSubmit" variant="success" v-show="showAlertSuccess" show="">{{messageSuccess}}</b-alert>
-                    <b-alert class="w-100 alertSubmit" variant="danger" v-show="showAlertError" show="">{{messageError}} </b-alert>
                     <b-col class="d-flex align-items-center h-100 ">
                         <div class="w-100">
                             <b-form @submit.prevent="checkUserPassword(userInfo.id)" @reset="onReset" v-if="showCheckPass"  class="formStyle">
@@ -95,10 +93,6 @@ export default {
             ],
             selected:'',
             userPassword:'',
-            showAlertSuccess:false,
-            showAlertError:false,
-            messageSuccess:"",
-            messageError:"",
             showCheckPass:true,
 
         }
@@ -133,10 +127,15 @@ export default {
                     this.showCheckPass=false
                 }
                 else{
-                    this.messageError='Please enter new password'
-                    this.showAlertSuccess=false;
-                    this.showAlertError=true;
-                    setTimeout(()=>this.showAlertError=false,1000);
+                    this.$swal({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Please check your password!',
+                    });
                 }
             })
         },
@@ -144,39 +143,59 @@ export default {
             let result=false;
             let password= this.form.password
             let uri = `/api/customer/checkPass/${id}`;
-            const myPromise=new Promise(resolve=>{
-                axios.post(uri, {password: password}).then(res => {
-                resolve(res.data.result)
-                })
-            });
-            myPromise.then((value)=>{
-                result=value;
-                if (!result){
-                    const data = {
-                        email: this.form.email,
-                        first_name: this.form.firstName,
-                        last_name: this.form.lastName,
-                        password: this.form.password,
-                        gender: this.selected
-                    };
-                    let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
-                    axios.post(uri_u, data).then(() => {
-                        this.showAlertSuccess = true;
-                        this.showAlertError=false;
-                        setTimeout(()=>{
-                            this.showAlertSuccess=false
+            if (password.length<6) {
+                this.$swal({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    icon: 'error',
+                    title: 'Password must be 6 digits',
+                });
+            }else{
+                const myPromise=new Promise(resolve=>{
+                    axios.post(uri, {password: password}).then(res => {
+                        resolve(res.data.result)
+                    })
+                });
+                myPromise.then((value)=>{
+                    result=value;
+                    if (!result){
+                        const data = {
+                            email: this.form.email,
+                            first_name: this.form.firstName,
+                            last_name: this.form.lastName,
+                            password: this.form.password,
+                            gender: this.selected
+                        };
+                        let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
+                        axios.post(uri_u, data).then(() => {
+                            this.$swal({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                icon: 'success',
+                                title: 'Success',
+                            });
                             this.$router.push({name:'home'})
-                        },1000);
-                    });
-                    this.messageSuccess='Success';
-                }
-                else{
-                    this.messageError='Please enter new password'
-                    this.showAlertSuccess=false;
-                    this.showAlertError=true;
-                    setTimeout(()=>this.showAlertError=false,1000);
-                }
-            })
+                        });
+                    }else {
+
+                        this.$swal({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            icon: 'error',
+                            title: 'The password must be different from the old password',
+                        });
+                    }
+
+                })
+
+            }
+
         },
         onReset() {
             this.$router.push({name: 'home'});

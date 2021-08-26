@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkars=self.webpackChunkars||[]).push([[915],{3915:(e,n,s)=>{s.r(n),s.d(n,{default:()=>l});const t={};const l=(0,s(1900).Z)(t,(function(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n\tDashboard\n")])}),[],!1,null,null,null).exports}}]);

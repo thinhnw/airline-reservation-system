@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_admin_flights_Flights_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_admin_flights_Flights_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/flights/FlightEditSidebar.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************************!*\
@@ -345,7 +345,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     airports: function airports() {
       return this.allAirports.map(function (airport) {
         return _objectSpread(_objectSpread({}, airport), {}, {
-          label: "".concat(airport.code, " (").concat(airport.cityName, ", ").concat((0,_helper__WEBPACK_IMPORTED_MODULE_5__.toTitleCase)(airport.countryName), ")")
+          label: "".concat(airport.code, " (").concat(airport.cityname, ", ").concat((0,_helper__WEBPACK_IMPORTED_MODULE_5__.toTitleCase)(airport.countryname), ")")
         });
       });
     },
@@ -593,7 +593,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "toTitleCase": () => (/* binding */ toTitleCase)
+/* harmony export */   "toTitleCase": () => (/* binding */ toTitleCase),
+/* harmony export */   "getDisplayedDuration": () => (/* binding */ getDisplayedDuration),
+/* harmony export */   "formatMoney": () => (/* binding */ formatMoney)
 /* harmony export */ });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
@@ -602,6 +604,33 @@ var toTitleCase = function toTitleCase(sentence) {
   return lodash__WEBPACK_IMPORTED_MODULE_0___default().words(sentence).map(function (word) {
     return lodash__WEBPACK_IMPORTED_MODULE_0___default().capitalize(word);
   }).join(' ');
+};
+var getDisplayedDuration = function getDisplayedDuration(a, b) {
+  var date1 = new Date(a);
+  var date2 = new Date(b);
+  var diffTime = Math.abs(date2 - date1);
+  var diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
+  var diffMinutes = diffTime % (1000 * 60 * 60) * 60;
+  return diffHours + 'h ' + diffMinutes + 'm';
+};
+var formatMoney = function formatMoney(amount) {
+  var decimalCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  var decimal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ".";
+  var thousands = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ",";
+
+  try {
+    if (typeof amount === 'string') amount = parseFloat(amount);
+    if (amount == null || isNaN(amount)) return "N/A";
+    decimalCount = Math.abs(decimalCount);
+    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+    var negativeSign = amount < 0 ? "-" : "";
+    var i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+    var j = i.length > 3 ? i.length % 3 : 0;
+    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+  } catch (e) {
+    console.log(e);
+    return "N/A";
+  }
 };
 
 /***/ }),

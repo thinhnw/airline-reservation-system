@@ -9,10 +9,10 @@
 					<p>Please login to your account.</p>
 					<b-form class="mt-5" @submit.prevent="login">
 						<b-form-group class="mb-3">
-							<b-form-input v-model="email" type="email" placeholder="Enter your email" />
+							<b-form-input v-model="email" type="email" placeholder="Enter your email"  />
 						</b-form-group>
 						<b-form-group class="mb-3">
-							<b-form-input v-model="password" type="password" placeholder="Enter your password" />
+							<b-form-input v-model="password" type="password" placeholder="Enter your password"  />
 						</b-form-group>
 						<b-form-group class="mb-3">
 							<b-button type="submit" variant="primary" class="w-100">Login</b-button>

@@ -1,5 +1,6 @@
 // axios
 import axios from 'axios'
+import router from './router.js'
 
 let headers = {
     'cache-control': 'no-cache'
@@ -23,6 +24,9 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
     if (error.response && error.response.data) {
           //add your code
+          if (error.response.data.message?.toLowerCase().includes('token')) {
+              router.go({ name: 'login' })
+          }
           return Promise.reject(error.response.data);
     }
     return Promise.reject(error.message)

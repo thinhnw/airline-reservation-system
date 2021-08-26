@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_client_user_information_UserEditInformation_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_client_user_information_UserEditInformation_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/user_information/UserEditInformation.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
@@ -20,8 +20,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -118,10 +116,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       selected: '',
       userPassword: '',
-      showAlertSuccess: false,
-      showAlertError: false,
-      messageSuccess: "",
-      messageError: "",
       showCheckPass: true
     };
   },
@@ -157,12 +151,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (value) {
           _this2.showCheckPass = false;
         } else {
-          _this2.messageError = 'Please enter new password';
-          _this2.showAlertSuccess = false;
-          _this2.showAlertError = true;
-          setTimeout(function () {
-            return _this2.showAlertError = false;
-          }, 1000);
+          _this2.$swal({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            icon: 'error',
+            title: 'Error',
+            text: 'Please check your password!'
+          });
         }
       });
     },
@@ -172,46 +169,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var result = false;
       var password = this.form.password;
       var uri = "/api/customer/checkPass/".concat(id);
-      var myPromise = new Promise(function (resolve) {
-        axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
-          password: password
-        }).then(function (res) {
-          resolve(res.data.result);
-        });
-      });
-      myPromise.then(function (value) {
-        result = value;
 
-        if (!result) {
-          var data = {
-            email: _this3.form.email,
-            first_name: _this3.form.firstName,
-            last_name: _this3.form.lastName,
-            password: _this3.form.password,
-            gender: _this3.selected
-          };
-          var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
-          axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
-            _this3.showAlertSuccess = true;
-            _this3.showAlertError = false;
-            setTimeout(function () {
-              _this3.showAlertSuccess = false;
+      if (password.length < 6) {
+        this.$swal({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          icon: 'error',
+          title: 'Password must be 6 digits'
+        });
+      } else {
+        var myPromise = new Promise(function (resolve) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri, {
+            password: password
+          }).then(function (res) {
+            resolve(res.data.result);
+          });
+        });
+        myPromise.then(function (value) {
+          result = value;
+
+          if (!result) {
+            var data = {
+              email: _this3.form.email,
+              first_name: _this3.form.firstName,
+              last_name: _this3.form.lastName,
+              password: _this3.form.password,
+              gender: _this3.selected
+            };
+            var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+            axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
+              _this3.$swal({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'success',
+                title: 'Success'
+              });
 
               _this3.$router.push({
                 name: 'home'
               });
-            }, 1000);
-          });
-          _this3.messageSuccess = 'Success';
-        } else {
-          _this3.messageError = 'Please enter new password';
-          _this3.showAlertSuccess = false;
-          _this3.showAlertError = true;
-          setTimeout(function () {
-            return _this3.showAlertError = false;
-          }, 1000);
-        }
-      });
+            });
+          } else {
+            _this3.$swal({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              icon: 'error',
+              title: 'The password must be different from the old password'
+            });
+          }
+        });
+      }
     },
     onReset: function onReset() {
       this.$router.push({
@@ -386,40 +399,6 @@ var render = function() {
               "b-row",
               { staticClass: "h-100" },
               [
-                _c(
-                  "b-alert",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.showAlertSuccess,
-                        expression: "showAlertSuccess"
-                      }
-                    ],
-                    staticClass: "w-100 alertSubmit",
-                    attrs: { variant: "success", show: "" }
-                  },
-                  [_vm._v(_vm._s(_vm.messageSuccess))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-alert",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.showAlertError,
-                        expression: "showAlertError"
-                      }
-                    ],
-                    staticClass: "w-100 alertSubmit",
-                    attrs: { variant: "danger", show: "" }
-                  },
-                  [_vm._v(_vm._s(_vm.messageError) + " ")]
-                ),
-                _vm._v(" "),
                 _c(
                   "b-col",
                   { staticClass: "d-flex align-items-center h-100 " },

@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ReservationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,7 +33,10 @@ Route::group([
     Route::post('register', [ AuthController::class, 'register' ] );
 
 });
-
+Route::get('reservations/get_by_user_id', [ ReservationController::class, 'getByUserId' ])->middleware('api');
+Route::post('reservations/checkout', [ ReservationController::class, 'checkout' ])->middleware('api');
+Route::get('reservations/vnpay_return', [ ReservationController::class, 'vnpayReturn' ])->middleware('api');
+Route::resource('reservations', ReservationController::class)->middleware('api');
 Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
 Route::resource('flights', FlightController::class)->middleware('api');
 //airport
@@ -43,6 +48,7 @@ Route::post('/airport/update/{id}',[AirportController::class,'update']);
 Route::delete('/airport/delete/{id}',[AirportController::class,'delete']);
 Route::post('/airport/save',[AirportController::class,'save']);
 //customer
+
 Route::resource('customer', CustomerController::class)->middleware('api');
 Route::get("/api-customer",[CustomerController::class,"index"]);
 Route::get("/customer/findUser/{id}",[CustomerController::class,"findUser"]);

@@ -58,15 +58,15 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/admin/airport" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-airport' }">
-                    <b-row>
-                        <b-col cols="2" xl="1">
-                            <i class="fal fa-building"></i>
-                        </b-col>
-                        <b-col>
-                            Airport
-                        </b-col>
-                    </b-row>
+                <router-link to="/admin/airports" class="nav-link"  :class="{ 'text-warning': $route.name === 'admin-airports' }">
+                  <b-row>
+                    <b-col cols="2" xl="1">
+                      <i class="fas fa-plane-arrival mr-3"></i>
+                    </b-col>
+                    <b-col>
+                      Airports
+                    </b-col>
+                  </b-row>
                 </router-link>
               </li>
                 <li class="nav-item">

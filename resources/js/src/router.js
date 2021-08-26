@@ -18,14 +18,23 @@ const router = new VueRouter({
 					name: 'home',
 					component: () => import('./views/client/home/Home.vue')
 				},
-                {
-                    path: 'information/edit',
-                    name: 'user-edit',
-                    component: () => import('./views/client/user_information/UserEditInformation.vue')
-                },
+				{
+					path: 'profile',
+					name: 'profile',
+					component: () => import('./views/client/profile/Profile.vue')
+				},
+				{
+					path: 'checkout',
+					name: 'checkout',
+					component: () => import('./views/client/checkout/Checkout.vue')
+				},
+				{
+						path: 'information/edit',
+						name: 'user-edit',
+						component: () => import('./views/client/user_information/UserEditInformation.vue')
+				},
 			]
 		},
-
 
 		{
 			path: '/login',
@@ -37,11 +46,9 @@ const router = new VueRouter({
 			name: 'register',
 			component: () => import('./views/auth/Register.vue')
 		},
-
 		{
 			path: '/admin',
 			name: 'admin',
-
 			component: () => import('./views/admin/Index.vue'),
 			children: [
 				{
@@ -55,21 +62,17 @@ const router = new VueRouter({
 					component: () => import('./views/admin/flights/Flights.vue')
 				},
 				{
-						path: 'airport',
-						name: 'admin-airport',
+						path: 'airports',
+						name: 'admin-airports',
 						component: () => import('./views/admin/airports/Airports.vue')
 				},
-
                 {
                     path: 'user',
                     name: 'admin-user',
                     component: () => import('./views/admin/user/User.vue')
                 },
-
-
 			]
 		},
-
 		{
 			path: '/errors/not-authorized',
 			name: 'errors-not-authorized',

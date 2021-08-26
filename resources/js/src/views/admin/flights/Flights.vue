@@ -71,7 +71,7 @@ export default {
 			return this.allAirports.map(airport => {
 				return {
 					...airport,
-					label: `${airport.code} (${airport.cityName}, ${toTitleCase(airport.countryName)})`
+					label: `${airport.code} (${airport.cityname}, ${toTitleCase(airport.countryname)})`
 				}
 			})
 		},

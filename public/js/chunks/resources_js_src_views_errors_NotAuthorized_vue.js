@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_errors_NotAuthorized_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_errors_NotAuthorized_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/errors/NotAuthorized.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
@@ -11,6 +11,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -105,9 +110,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-center" }, [
-    _vm._v("\n\tYOU ARE NOT AUTHORIZED\n")
-  ])
+  return _c(
+    "div",
+    { staticClass: "text-center" },
+    [
+      _c("div", [_vm._v("\n\tYOU ARE NOT AUTHORIZED\n\t")]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { staticClass: "btn btn-outline-primary", attrs: { to: "/" } },
+        [_vm._v("\n\t\tHOME\n\t")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

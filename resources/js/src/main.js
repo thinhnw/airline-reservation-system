@@ -21,6 +21,10 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+import 'vue-select/dist/vue-select.css';
+
 
 // Vue Router
 import router from './router'
@@ -30,6 +34,11 @@ import store from './store'
 import '../../sass/app.scss'
 
 Vue.config.productionTip = false
+
+//SweetAlert2
+
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
 
 new Vue({
   router,

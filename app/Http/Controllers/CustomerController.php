@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
+
 
 class CustomerController extends Controller
 {
@@ -42,16 +42,20 @@ class CustomerController extends Controller
 //    UPDATE
     public function update($id,Request $request){
         $customer=Customer::find($id);
+        if ($request->password===$customer->password){
+            $password=$customer->password;
+        }else {
+            $password=Hash::make($request->password);
+        }
         $customer->update([
-            'first_name'=> $request->first_name,
-            'last_name'=>$request->last_name,
-            'gender'=>$request->gender,
-            'email'=>$request->email,
-            'user_type'=>'Customer',
-            'password'=>Hash::make($request->password)
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'user_type' => 'Customer',
+            'password' => $password
         ]);
         return response()->json('successfully updated');
-
     }
 
 //    DELETE

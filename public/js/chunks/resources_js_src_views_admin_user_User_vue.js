@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_src_views_admin_user_User_vue"],{
+(self["webpackChunkars"] = self["webpackChunkars"] || []).push([["resources_js_src_views_admin_user_User_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/user/CreateAndEdit.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
@@ -131,6 +131,14 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$emit("resultCreate");
       });
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Created'
+      });
       this.dataCreate = {};
     },
     updateData: function updateData(id) {
@@ -141,6 +149,14 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this2.$emit("updated", JSON.parse(response.config.data));
+      });
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Updated'
       });
       this.$emit('updateDataEdit');
     }
@@ -176,6 +192,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
 //
 //
 //
@@ -263,15 +280,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     deleteData: function deleteData(id) {
       var _this3 = this;
 
-      var uri = "http://127.0.0.1:8000/api/customer/delete/".concat(id);
-      axios__WEBPACK_IMPORTED_MODULE_1___default().delete(uri).then(function () {
-        _this3.customers.splice(_this3.customers.findIndex(function (customer) {
-          return customer.id === id;
-        }), 1);
+      this.$swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          //Send Request to server
+          var uri = "http://127.0.0.1:8000/api/customer/delete/".concat(id);
+          axios__WEBPACK_IMPORTED_MODULE_1___default().delete(uri).then(function () {}).then(function (response) {
+            _this3.$swal('Deleted!', 'User deleted successfully', 'success');
+          });
 
-        _this3.dataEdit.splice(_this3.customers.findIndex(function (customer) {
-          customer.id === _this3.dataEdit.id;
-        }), 1);
+          _this3.customers.splice(_this3.customers.findIndex(function (customer) {
+            return customer.id === id;
+          }), 1);
+
+          _this3.dataEdit.splice(_this3.customers.findIndex(function (customer) {
+            customer.id === _this3.dataEdit.id;
+          }), 1);
+        }
       });
       this.$emit('setShown', false);
     },
@@ -426,7 +458,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\n    position: fixed;\n    width: 500px;\n    padding: 20px;\n    margin-top: 38px;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background-color: #ffffff;\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\r\n    position: fixed;\r\n    width: 500px;\r\n    padding: 20px;\r\n    margin-top: 38px;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ffffff;\r\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1060,6 +1092,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  staticStyle: { display: "none" },
                   attrs: {
                     name: "password",
                     type: "password",
