@@ -5,8 +5,8 @@
             <tr>
                 <th scope="col">code</th>
                 <th scope="col">name</th>
-                <th scope="col">cityName</th>
-                <th scope="col">countryName</th>
+                <th scope="col">cityname</th>
+                <th scope="col">countryname</th>
                 <th></th>
             </tr>
             </thead>
@@ -14,8 +14,8 @@
             <tr>
                 <th scope="row">{{rs.code}}</th>
                 <td>{{rs.name}}</td>
-                <td>{{rs.cityName}}</td>
-                <td>{{rs.countryName}}</td>
+                <td>{{rs.cityname}}</td>
+                <td>{{rs.countryname}}</td>
                 <td>
                     <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
                     <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>
@@ -50,7 +50,7 @@ export default {
         Paginate
     },
     name: "ListAirport",
-    props:['created','updated','shownForm'],
+    props:['created','updated','showNav'],
     data(){
         return{
             pageRange: 5,
@@ -68,21 +68,41 @@ export default {
     },
     methods:{
         clickCallback(pageNum){
-            let uri = '/api/api-airport?page='+(pageNum);
+            let uri = '/api/api-airport-paginate?page='+(pageNum);
             axios.get(uri).then(res => {
                 this.airports=[];
                 this.airports.push(...res.data.airports.data);
             });
         },
         deleteData(id){
-            let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
-            axios.delete(uri).then(() => {
+            this.$swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                //Send Request to server
+                let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
+                axios.delete(uri).then(() => {
+                }).then((response)=> {
+                        this.$swal(
+                            'Deleted!',
+                            'User deleted successfully',
+                            'success'
+                        )
+                    })
                 this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
                 this.dataEdit.splice(this.airports.findIndex(airport => {
                     airport.id === this.dataEdit.id;
                 }), 1)
-            });
-            this.$emit('setShown',false)
+            }
+
+        })
+            this.$emit('setShowNav',false)
 
         },
         editData(id){
@@ -93,7 +113,7 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShown',true)
+            this.$emit('setShowNav',true)
         },
         listCreated(){
             if (this.created){
