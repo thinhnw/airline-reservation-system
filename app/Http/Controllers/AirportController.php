@@ -51,7 +51,7 @@ class AirportController extends Controller
             'lon'=>$request->post('lon'),
             'numairports'=>$request->post('numairports'),
         ]);
-        return redirect()->to('airport');
+        return response()->json('successfully updated');
 
     }
 
@@ -66,22 +66,21 @@ class AirportController extends Controller
     public function save(Request $request){
         try {
             Airport::create([
-                'code' => $request->post('code'),
-                'name' => $request->post('name'),
-                'citycode' => $request->post('citycode'),
-                'cityname' => $request->post('cityname'),
-                'countryname' => $request->post('countryname'),
-                'countrycode' => $request->post('countrycode'),
-                'timezone' => $request->post('timezone'),
-                'lat' => $request->post('lat'),
-                'lon' => $request->post('lon'),
-                'numairports' => $request->post('numairports'),
-
+                'code' => $request->code,
+                'name' => $request->name,
+                'citycode' => $request->citycode,
+                'cityname' => $request->cityname,
+                'countryname' => $request->countryname,
+                'countrycode' => $request->countrycode,
+                'timezone' => $request->timezone,
+                'lat' => $request->lat,
+                'lon' => $request->lon,
+                'numairports' => (int)$request->numairports
             ]);
         }
         catch (\Exception $e){
             abort(404);
         }
-        return redirect()->to('airport');
+        return response()->json('successfully added');
     }
 }
