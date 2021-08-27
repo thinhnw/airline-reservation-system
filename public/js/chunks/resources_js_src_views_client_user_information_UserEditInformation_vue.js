@@ -198,7 +198,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               password: _this3.form.password,
               gender: _this3.selected
             };
-            var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+            var uri_u = "/api/customer/update/".concat(id);
             axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
               _this3.$swal({
                 toast: true,

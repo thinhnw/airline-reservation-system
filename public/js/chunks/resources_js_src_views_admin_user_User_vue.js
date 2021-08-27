@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log(this.dataCreate);
-      var uri_cr = "http://127.0.0.1:8000/api/customer/save";
+      var uri_cr = "/api/customer/save";
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_cr, this.dataCreate).then(function (response) {
         console.log(response);
 
@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
     updateData: function updateData(id) {
       var _this2 = this;
 
-      var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+      var uri_u = "/api/customer/update/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, this.dataEdit).then(function (response) {
         console.log(response);
 
@@ -291,7 +291,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          var uri = "http://127.0.0.1:8000/api/customer/delete/".concat(id);
+          var uri = "/api/customer/delete/".concat(id);
           axios__WEBPACK_IMPORTED_MODULE_1___default().delete(uri).then(function () {}).then(function (response) {
             _this3.$swal('Deleted!', 'User deleted successfully', 'success');
           });
@@ -310,7 +310,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     editData: function editData(id) {
       var _this4 = this;
 
-      var uri = "http://127.0.0.1:8000/api/customer/edit/".concat(id);
+      var uri = "/api/customer/edit/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_1___default().get(uri).then(function (res) {
         _this4.dataEdit = {};
         _this4.dataEdit = res.data.customer;

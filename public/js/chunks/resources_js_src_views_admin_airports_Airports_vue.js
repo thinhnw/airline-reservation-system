@@ -311,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
     createData: function createData() {
       var _this = this;
 
-      var uri_cr = "http://127.0.0.1:8000/api/airport/save";
+      var uri_cr = "/api/airport/save";
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_cr, this.dataCreate).then(function (response) {
         console.log(response);
 
@@ -331,7 +331,7 @@ __webpack_require__.r(__webpack_exports__);
     updateData: function updateData(id) {
       var _this2 = this;
 
-      var uri_u = "http://127.0.0.1:8000/api/airport/update/".concat(id);
+      var uri_u = "/api/airport/update/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, this.dataEdit).then(function (response) {
         console.log(response);
 
@@ -478,10 +478,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          var uri = "http://127.0.0.1:8000/api/airport/delete/".concat(id);
-          axios__WEBPACK_IMPORTED_MODULE_0___default().delete(uri).then(function () {}).then(function (response) {
+          var uri = "/api/airport/delete/".concat(id);
+          var uri_data = '/api/api-airport-paginate';
+          Promise.all([axios__WEBPACK_IMPORTED_MODULE_0___default().delete(uri).then(function () {
             _this3.$swal('Deleted!', 'User deleted successfully', 'success');
-          });
+          }), axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri_data).then(function (res) {
+            _this3.rows = res.data.airports.last_page;
+          })]);
 
           _this3.airports.splice(_this3.airports.findIndex(function (airport) {
             return airport.id === id;
@@ -497,7 +500,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     editData: function editData(id) {
       var _this4 = this;
 
-      var uri = "http://127.0.0.1:8000/api/airport/edit/".concat(id);
+      var uri = "/api/airport/edit/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
         _this4.dataEdit = {};
         _this4.dataEdit = res.data.airport;
@@ -512,7 +515,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this5 = this;
 
       if (this.created) {
-        var uri = '/api/api-airport';
+        var uri = '/api/api-airport-paginate';
         axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
           var _this5$airports;
 

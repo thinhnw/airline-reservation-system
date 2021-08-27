@@ -6,6 +6,7 @@ use App\Exceptions\SeatUnavailableException;
 use App\Mail\FlightReservation;
 use App\Models\Flight;
 use App\Models\Reservation;
+use App\Models\StripeCustomer;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -175,23 +176,24 @@ class ReservationController extends Controller
     }
 
     public function checkoutWithStripe(Request $request) {
-        $user = User::firstOrCreate(
+        $customer = StripeCustomer::firstOrCreate(
             [
-                'email' => $request->input('email')
+                'email' => $request->txt_billing_email
             ],
             [
-                'password' => Hash::make(Str::random(12)),
-                'name' => $request->input('first_name') . ' ' .$request->input('last_name'),
-                'address' => $request->input('address'),
-                'city' => $request->input('city'),
-                'state' => $request->input('state'),
-                'zip_code' => $request->input('zip_code')
+                // 'password' => Hash::make(Str::random(12)),
+                'name' => $request->txt_billing_fullname,
+                'street_address' => $request->txt_inv_addr1,
+                'city' => $request->txt_bill_city,
+                'country' => $request->txt_bill_country,
+                'state' => $request->txt_bill_state,
+                'zip_code' => $request->zip_code,
             ]
         );
         try {
-            $user->createOrGetStripeCustomer();
-            $payment = $user->charge(
-                $request->amount * 100,
+            $customer->createOrGetStripeCustomer();
+            $payment = $customer->charge(
+                intval($request->amount),
                 $request->payment_method_id
             );
             $payment = $payment->asStripePaymentIntent();
@@ -221,6 +223,7 @@ class ReservationController extends Controller
                 'message' => $th->getMessage()
             ], 404);
         }
+
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = env("APP_URL") . "/vnpay_return";
 

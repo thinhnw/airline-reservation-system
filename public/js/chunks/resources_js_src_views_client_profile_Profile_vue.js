@@ -17854,7 +17854,7 @@ var render = function() {
                   key: index,
                   on: {
                     click: function($event) {
-                      return _vm.goToPayment(reservation.id)
+                      return _vm.goToPayment(reservation)
                     }
                   }
                 },

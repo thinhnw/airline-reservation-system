@@ -11,7 +11,7 @@
 				</b-tr>
 			</b-thead>
 			<b-tbody>
-				<b-tr v-for="(reservation, index) in reservations" :key="index" @click="goToPayment(reservation.id)">
+				<b-tr v-for="(reservation, index) in reservations" :key="index" @click="goToPayment(reservation)">
 					<b-td>{{ reservation.pnr }}</b-td>
 					<b-td :class="{ 'text-warning': reservation.status === 'PENDING', 'text-success': reservation.status === 'PAID'}">{{ reservation.status }}</b-td>
 					<b-td>{{ formatMoney(reservation.price, 0) }} VND</b-td>
