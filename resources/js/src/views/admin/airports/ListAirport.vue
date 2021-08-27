@@ -1,5 +1,4 @@
 <template>
-
     <div class="col-md-12 p-0" >
         <table class="table table-bordered">
             <thead>
@@ -51,7 +50,7 @@ export default {
         Paginate
     },
     name: "ListAirport",
-    props:['created','updated','shownForm'],
+    props:['created','updated','showNav'],
     data(){
         return{
             pageRange: 5,
@@ -101,16 +100,18 @@ export default {
                         this.rows=res.data.airports.last_page;
                     })
                 ]
-                )
+                ).then(()=>{
+                    this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
+                    this.dataEdit.splice(this.airports.findIndex(airport => {
+                        airport.id === this.dataEdit.id;
+                    }), 1)
+                })
 
-                this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
-                this.dataEdit.splice(this.airports.findIndex(airport => {
-                    airport.id === this.dataEdit.id;
-                }), 1)
+
             }
 
         })
-            this.$emit('setShown',false)
+            this.$emit('setShowNav',false)
 
         },
         editData(id){
@@ -121,17 +122,16 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShown',true)
+            this.$emit('setShowNav',true)
         },
         listCreated(){
+            console.log(this.created)
             if (this.created){
                 let uri = '/api/api-airport-paginate';
                 axios.get(uri).then(res => {
                     console.log(res)
-                    this.rows=0;
-                    this.airports=[];
                     this.rows=res.data.airports.last_page;
-                    this.airports.push(...res.data.airports.data)
+                    this.airports.push(this.created)
                     return this.$emit("resultCreate");
 
                 });
