@@ -1,12 +1,19 @@
 <template>
-    <div class="box-createAndEdit py-3" v-show="shownForm">
+    <div class="box-createAndEdit p-3">
         <form
             @submit.prevent="
             Object.keys(dataEdit).length!==0 ?
             updateData(dataEdit.id) :
             createData()">
             <div>
-                <button class="btn btn-danger mb-3 float-right" type="button" @click="cancel()">X</button>
+                <div class="d-flex justify-content-between mb-3">
+                    <div style="cursor: pointer" class="mb-2 btn-close" @click="cancel">
+                        <i class="far fa-times"></i>
+                    </div>
+                    <div>
+                        <h3>Add Users</h3>
+                    </div>
+                </div>
                 <div>
                     <label class="form-label">First Name</label>
                     <input name="first_name"
@@ -81,8 +88,8 @@
             </div>
 
             <div class="mt-3">
-                <button class="btn btn-primary" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update</button>
-                <button class="btn btn-primary" type="submit" v-else> Add</button>
+                <button class="btn w-100 btn-warning rounded-0" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update</button>
+                <button class="btn w-100 btn-warning rounded-0" type="submit" v-else> Add</button>
             </div>
         </form>
     </div>
@@ -94,7 +101,7 @@ import axios from "axios";
 
 export default {
     name: "CreateAndEdit",
-    props: ['dataEdit', 'shownForm'],
+    props: ['dataEdit', 'shownForm', 'showNavUser'],
     data() {
         return {
             dataCreate: {},
@@ -104,7 +111,7 @@ export default {
         cancel() {
             this.$emit('updateDataEdit')
             this.dataCreate = {}
-            this.$emit('setShown', false)
+            this.$emit('setShowNavUser', false)
         },
         createData() {
             console.log(this.dataCreate);
@@ -146,15 +153,13 @@ export default {
 
 <style scoped>
 .box-createAndEdit {
+    z-index: 9999;
     position: fixed;
-    width: 500px;
-    padding: 20px;
-    margin-top: 38px;
+    width: 600px;
     top: 0;
     right: 0;
     bottom: 0;
     background-color: #ffffff;
-    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);
 }
 
 </style>

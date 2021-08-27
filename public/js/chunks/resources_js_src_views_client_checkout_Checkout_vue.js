@@ -160,6 +160,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/helper */ "./resources/js/src/helper/index.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -447,9 +448,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this4.fetchProduct();
 
             case 2:
-              console.log("pk_test_iExRVVvOL1PdZ2e1CsWHStLD00Htd3STIL");
+              console.log(process.env.MIX_STRIPE_KEY);
               _context4.next = 5;
-              return (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)("pk_test_iExRVVvOL1PdZ2e1CsWHStLD00Htd3STIL");
+              return (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)(process.env.MIX_STRIPE_KEY);
 
             case 5:
               _this4.stripe = _context4.sent;
