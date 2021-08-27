@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log(this.dataCreate);
-      var uri_cr = "http://127.0.0.1:8000/api/customer/save";
+      var uri_cr = "/api/customer/save";
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_cr, this.dataCreate).then(function (response) {
         console.log(response);
 
@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
     updateData: function updateData(id) {
       var _this2 = this;
 
-      var uri_u = "http://127.0.0.1:8000/api/customer/update/".concat(id);
+      var uri_u = "/api/customer/update/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, this.dataEdit).then(function (response) {
         console.log(response);
 
@@ -291,7 +291,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          var uri = "http://127.0.0.1:8000/api/customer/delete/".concat(id);
+          var uri = "/api/customer/delete/".concat(id);
           axios__WEBPACK_IMPORTED_MODULE_1___default().delete(uri).then(function () {}).then(function (response) {
             _this3.$swal('Deleted!', 'User deleted successfully', 'success');
           });
@@ -310,7 +310,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     editData: function editData(id) {
       var _this4 = this;
 
-      var uri = "http://127.0.0.1:8000/api/customer/edit/".concat(id);
+      var uri = "/api/customer/edit/".concat(id);
       axios__WEBPACK_IMPORTED_MODULE_1___default().get(uri).then(function (res) {
         _this4.dataEdit = {};
         _this4.dataEdit = res.data.customer;
@@ -458,7 +458,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\r\n    position: fixed;\r\n    width: 500px;\r\n    padding: 20px;\r\n    margin-top: 38px;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ffffff;\r\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\n    position: fixed;\n    width: 500px;\n    padding: 20px;\n    margin-top: 38px;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background-color: #ffffff;\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -482,7 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
