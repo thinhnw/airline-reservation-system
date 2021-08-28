@@ -24,6 +24,21 @@
                         <b-col  v-if="row.item.tel!=null">{{ row.item.tel }}</b-col>
                         <b-col v-else>Undefined</b-col>
                     </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>City:</b></b-col>
+                        <b-col v-if="row.item.city!=null">{{ row.item.city }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>State:</b></b-col>
+                        <b-col v-if="row.item.state!=null">{{ row.item.state }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>Country:</b></b-col>
+                        <b-col v-if="row.item.country!=null">{{ row.item.country }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
                 </b-card>
             </template>
         </b-table>
@@ -69,6 +84,7 @@ export default {
             console.log(res)
             this.rows=res.data.customers.last_page;
             this.customers.push(...res.data.customers.data)
+            this.customers.shift();
         });
     },
     methods:{

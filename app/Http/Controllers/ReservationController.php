@@ -6,12 +6,15 @@ use App\Exceptions\SeatUnavailableException;
 use App\Mail\FlightReservation;
 use App\Models\Flight;
 use App\Models\Reservation;
+use App\Models\StripeCustomer;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Str;
 
 class ReservationController extends Controller
 {
@@ -114,9 +117,22 @@ class ReservationController extends Controller
     public function show($id)
     {
         //
-        return response()->json([
-            'reservation' => Reservation::find($id)
-        ], 200);
+        try {
+            //code...
+            $reservation = Reservation::findOrFail($id);
+            if ($reservation->user->id == Auth::user()->id) {
+                return response()->json([
+                    'reservation' => $reservation
+                ], 200);
+            } else {
+                throw new Exception('No permission');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
     }
 
     /**
@@ -160,15 +176,35 @@ class ReservationController extends Controller
     }
 
     public function checkoutWithStripe(Request $request) {
-        $user = User::find(Auth::user()->id);
+        $customer = StripeCustomer::firstOrCreate(
+            [
+                'email' => $request->txt_billing_email
+            ],
+            [
+                // 'password' => Hash::make(Str::random(12)),
+                'name' => $request->txt_billing_fullname,
+                'street_address' => $request->txt_inv_addr1,
+                'city' => $request->txt_bill_city,
+                'country' => $request->txt_bill_country,
+                'state' => $request->txt_bill_state,
+                'zip_code' => $request->zip_code,
+            ]
+        );
         try {
-            $user->createOrGetStripeCustomer();
-            $payment = $user->charge(
-                $request->amount * 100,
+            $customer->createOrGetStripeCustomer();
+            $payment = $customer->charge(
+                intval($request->amount),
                 $request->payment_method_id
             );
             $payment = $payment->asStripePaymentIntent();
             $reservation = Reservation::find($request->reservation_id);
+
+            $user = $reservation->user;
+            $skymiles = $user->skymiles;
+            $user->update([
+                'skymiles' => $skymiles + $request->skymiles
+            ]);
+
             return $payment;
         } catch (\Throwable $th) {
             throw $th;
@@ -187,6 +223,7 @@ class ReservationController extends Controller
                 'message' => $th->getMessage()
             ], 404);
         }
+
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = env("APP_URL") . "/vnpay_return";
 

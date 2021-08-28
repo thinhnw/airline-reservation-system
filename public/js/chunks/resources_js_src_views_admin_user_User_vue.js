@@ -128,8 +128,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this.$emit("created", JSON.parse(response.config.data));
-
-        _this.$emit("resultCreate");
       });
       this.$swal({
         toast: true,
@@ -238,6 +236,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -265,6 +278,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _this.rows = res.data.customers.last_page;
 
       (_this$customers = _this.customers).push.apply(_this$customers, _toConsumableArray(res.data.customers.data));
+
+      _this.customers.shift();
     });
   },
   methods: {
@@ -1272,6 +1287,57 @@ var render = function() {
                         _vm._v(" "),
                         row.item.tel != null
                           ? _c("b-col", [_vm._v(_vm._s(row.item.tel))])
+                          : _c("b-col", [_vm._v("Undefined")])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-row",
+                      { staticClass: "mb-2" },
+                      [
+                        _c(
+                          "b-col",
+                          { staticClass: "text-sm-right", attrs: { sm: "3" } },
+                          [_c("b", [_vm._v("City:")])]
+                        ),
+                        _vm._v(" "),
+                        row.item.city != null
+                          ? _c("b-col", [_vm._v(_vm._s(row.item.city))])
+                          : _c("b-col", [_vm._v("Undefined")])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-row",
+                      { staticClass: "mb-2" },
+                      [
+                        _c(
+                          "b-col",
+                          { staticClass: "text-sm-right", attrs: { sm: "3" } },
+                          [_c("b", [_vm._v("State:")])]
+                        ),
+                        _vm._v(" "),
+                        row.item.state != null
+                          ? _c("b-col", [_vm._v(_vm._s(row.item.state))])
+                          : _c("b-col", [_vm._v("Undefined")])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-row",
+                      { staticClass: "mb-2" },
+                      [
+                        _c(
+                          "b-col",
+                          { staticClass: "text-sm-right", attrs: { sm: "3" } },
+                          [_c("b", [_vm._v("Country:")])]
+                        ),
+                        _vm._v(" "),
+                        row.item.country != null
+                          ? _c("b-col", [_vm._v(_vm._s(row.item.country))])
                           : _c("b-col", [_vm._v("Undefined")])
                       ],
                       1

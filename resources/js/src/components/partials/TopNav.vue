@@ -90,7 +90,7 @@ export default {
 
 		goHome() {
 			if (this.$route.name.includes('home')) this.$router.go(0)
-			else this.$router.push('home')
+			else this.$router.push({name: 'home'})
 		}
 	},
 	mounted() {

@@ -112,7 +112,6 @@ export default {
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
-                this.$emit("resultCreate");
             });
             this.$swal({
                 toast: true,

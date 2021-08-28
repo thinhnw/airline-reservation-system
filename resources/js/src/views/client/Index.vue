@@ -1,8 +1,8 @@
 <template>
-	<div class="client-portal container-fluid px-0">
+	<div class="client-portal container-fluid px-0" :style="{ paddingBottom: isFooterMinimal ? '73px' : '626px'}">
 		<TopNav />
 		<router-view></router-view>
-		<TheFooter />
+		<TheFooter :isMinimal="isFooterMinimal" />
 	</div>
 </template>
 
@@ -13,14 +13,17 @@ export default {
 	components: {
 		TopNav, TheFooter
 	},
-
+	computed: {
+		isFooterMinimal() {
+			return !this.$route.name.includes('home')
+		}
+	}
 }
 </script>
 
 <style>
 .client-portal {
 	position: relative;
-	padding-bottom: 100px;
 	height: fit-content;
 	min-height: 100%;
 }

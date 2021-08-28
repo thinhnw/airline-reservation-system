@@ -1195,6 +1195,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1682,6 +1697,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
  // import details from './tripSummaryDetails'
 
 var numericBiz = {
@@ -1922,6 +1942,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import details from './tripSummaryDetails'
 
 
@@ -1941,8 +1967,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()) // details
-
+      moment: (moment__WEBPACK_IMPORTED_MODULE_1___default()),
+      // details
+      isMakingReservation: false
     };
   },
   methods: {
@@ -1979,33 +2006,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   e_ticket: output,
                   price: _this.grandTotal,
                   passenger_details: _this.details.passengerDetails,
-                  contact_details: _this.details.contact
+                  contact_details: _this.details.contact,
+                  skymiles: _this.skymiles
                 };
                 postData.flight_departure_id = _this.details.selectedFlightDeparture.id;
                 if (_this.details.selectedFlightReturn) postData.flight_return_id = _this.details.selectedFlightReturn.id;
-                _context.next = 15;
+                _this.isMakingReservation = true;
+                _context.next = 16;
                 return _axios__WEBPACK_IMPORTED_MODULE_5__.default.post('/api/reservations', postData);
 
-              case 15:
+              case 16:
                 res = _context.sent;
                 console.log(res.data);
 
-                _this.$router.push("/checkout?reservation_id=i".concat(res.data.reservation.id));
+                _this.$router.push("/checkout?reservation_id=".concat(res.data.reservation.id));
 
-                _context.next = 23;
+                _context.next = 25;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 21:
+                _context.prev = 21;
                 _context.t0 = _context["catch"](3);
                 console.error(_context.t0);
 
-              case 23:
+                _this.$bvToast.toast(_context.t0.message, {
+                  title: '',
+                  autoHideDelay: 1000,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'danger'
+                });
+
+              case 25:
+                _context.prev = 25;
+                _this.isMakingReservation = false;
+                return _context.finish(25);
+
+              case 28:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 20]]);
+        }, _callee, null, [[3, 21, 25, 28]]);
       }))();
     }
   },
@@ -2018,6 +2061,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     flightReturn: function flightReturn() {
       return this.details.selectedFlightReturn;
+    },
+    skymiles: function skymiles() {
+      return this.flightDeparture.skymiles * (parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)) * (this.flightReturn ? 2 : 1);
     },
     pricePerAdult: function pricePerAdult() {
       var _this$flightReturn$fa, _this$flightReturn, _this$flightReturn$fa2, _this$flightReturn2;
@@ -2377,11 +2423,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     flightReturn: function flightReturn() {
       return this.details.selectedFlightReturn;
     },
+    skymiles: function skymiles() {
+      return this.flightDeparture.skymiles * (parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children));
+    },
     pricePerAdult: function pricePerAdult() {
       var _this$flightReturn$fa, _this$flightReturn, _this$flightReturn$fa2, _this$flightReturn2;
 
       console.log('details', this.details);
-      return this.details["class"] === 'Business' ? this.flightDeparture.fare_business + ((_this$flightReturn$fa = (_this$flightReturn = this.flightReturn) === null || _this$flightReturn === void 0 ? void 0 : _this$flightReturn.fare_business) !== null && _this$flightReturn$fa !== void 0 ? _this$flightReturn$fa : 0) : this.flightDeparture.fare_economy + ((_this$flightReturn$fa2 = (_this$flightReturn2 = this.flightReturn) === null || _this$flightReturn2 === void 0 ? void 0 : _this$flightReturn2.fare_economy) !== null && _this$flightReturn$fa2 !== void 0 ? _this$flightReturn$fa2 : 0);
+      return Math.ceil(this.details["class"] === 'Business' ? this.flightDeparture.fare_business + ((_this$flightReturn$fa = (_this$flightReturn = this.flightReturn) === null || _this$flightReturn === void 0 ? void 0 : _this$flightReturn.fare_business) !== null && _this$flightReturn$fa !== void 0 ? _this$flightReturn$fa : 0) : this.flightDeparture.fare_economy + ((_this$flightReturn$fa2 = (_this$flightReturn2 = this.flightReturn) === null || _this$flightReturn2 === void 0 ? void 0 : _this$flightReturn2.fare_economy) !== null && _this$flightReturn$fa2 !== void 0 ? _this$flightReturn$fa2 : 0));
+    },
+    priceForChild: function priceForChild() {
+      return Math.ceil(this.pricePerAdult * 2 / 3);
     },
     priceForSeats: function priceForSeats() {
       var passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children);
@@ -16797,7 +16849,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-aa6b8316] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-aa6b8316] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}\n#home-component[data-v-aa6b8316] {\n  padding-bottom: 626px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".banner[data-v-aa6b8316] {\n  background: url(/images/bgbigben.jpg) rgba(0, 0, 0, 0.3);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-blend-mode: darken;\n  width: 100%;\n  height: 800px;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link {\n  border: initial;\n  border-radius: initial;\n  color: white;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link.active {\n  color: black;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-link:not(.active) {\n  background: var(--blue);\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-item:first-child .nav-link {\n  border-top-left-radius: 10px;\n}\n.main-tabs[data-v-aa6b8316] .nav-tabs .nav-item:last-child .nav-link {\n  border-top-right-radius: 10px;\n}\n.form-card[data-v-aa6b8316] {\n  border: initial;\n  border-radius: 10px;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -16918,6 +16970,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".icon-wrapper[data-v-69242648] {\n  position: relative;\n  width: 22px;\n  height: 22px;\n  background: var(--secondary);\n  border-radius: 50%;\n}\n.icon-wrapper .fa-plane[data-v-69242648] {\n  position: absolute;\n  z-index: 5;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dot[data-v-a50fb906] {\r\n\tdisplay: inline-block;\r\n\twidth: 15px;\r\n\theight: 15px;\r\n\tborder-radius: 50%;\r\n\tborder: 3px solid var(--primary);\r\n\tbackground-color: rgba(var(--primary), 0.5);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -63665,6 +63741,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PassengersInfo_vue_vue_type_style_index_0_id_a50fb906_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PassengersInfo_vue_vue_type_style_index_0_id_a50fb906_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PassengersInfo_vue_vue_type_style_index_0_id_a50fb906_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./resources/js/src/components/SeatMap.vue":
 /*!*************************************************!*\
   !*** ./resources/js/src/components/SeatMap.vue ***!
@@ -64000,15 +64106,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _PassengersInfo_vue_vue_type_template_id_a50fb906_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PassengersInfo.vue?vue&type=template&id=a50fb906&scoped=true& */ "./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=template&id=a50fb906&scoped=true&");
 /* harmony import */ var _PassengersInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PassengersInfo.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _PassengersInfo_vue_vue_type_style_index_0_id_a50fb906_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& */ "./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _PassengersInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _PassengersInfo_vue_vue_type_template_id_a50fb906_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _PassengersInfo_vue_vue_type_template_id_a50fb906_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -64511,6 +64619,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TripSummaryPrintable_vue_vue_type_style_index_0_id_69242648_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TripSummaryPrintable.vue?vue&type=style&index=0&id=69242648&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/TripSummaryPrintable.vue?vue&type=style&index=0&id=69242648&scoped=true&lang=scss&");
+
+
+/***/ }),
+
+/***/ "./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&":
+/*!************************************************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& ***!
+  \************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PassengersInfo_vue_vue_type_style_index_0_id_a50fb906_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/PassengersInfo.vue?vue&type=style&index=0&id=a50fb906&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -66486,259 +66607,132 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-container",
-    { staticClass: "py-5", attrs: { id: "passenger-info" } },
+    "b-form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.handleStepDone.apply(null, arguments)
+        }
+      }
+    },
     [
       _c(
-        "b-row",
-        { staticClass: "mb-3" },
+        "b-container",
+        { staticClass: "py-5", attrs: { id: "passenger-info" } },
         [
           _c(
-            "b-col",
-            { staticClass: "px-0 text-center", attrs: { cols: "12" } },
+            "b-row",
+            { staticClass: "mb-3" },
             [
-              _c("h2", [_vm._v("Passenger Details")]),
-              _vm._v(" "),
-              _c("small", { staticClass: "text-gray" }, [
-                _vm._v(
-                  "Please enter  names as they appear on passport or travel documents"
-                )
-              ])
-            ]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-row",
-        [
+              _c(
+                "b-col",
+                { staticClass: "px-0 text-center", attrs: { cols: "12" } },
+                [
+                  _c("h2", [_vm._v("Passenger Details")]),
+                  _vm._v(" "),
+                  _c("small", { staticClass: "text-gray" }, [
+                    _vm._v(
+                      "Please enter  names as they appear on passport or travel documents"
+                    )
+                  ])
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c(
-            "b-col",
-            { staticClass: "px-0", attrs: { cols: "8" } },
+            "b-row",
             [
-              _vm._l(_vm.passengerDetails, function(passenger, index) {
-                return _c(
-                  "b-card",
-                  { key: index, staticClass: "mb-3", attrs: { "no-body": "" } },
-                  [
-                    _c("b-card-header", [
-                      _c("h5", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tPassenger " +
-                            _vm._s(index + 1) +
-                            "\n\t\t\t\t\t"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "b-card-body",
+              _c(
+                "b-col",
+                { staticClass: "px-0", attrs: { cols: "8" } },
+                [
+                  _vm._l(_vm.passengerDetails, function(passenger, index) {
+                    return _c(
+                      "b-card",
+                      {
+                        key: index,
+                        staticClass: "mb-3",
+                        attrs: { "no-body": "" }
+                      },
                       [
-                        _c("b-form-group", {
-                          staticClass: "mb-3",
-                          attrs: { label: "Title" },
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "default",
-                                fn: function(ref) {
-                                  var ariaDescribedby = ref.ariaDescribedby
-                                  return [
-                                    _c(
-                                      "b-form-radio-group",
-                                      {
-                                        attrs: {
-                                          "aria-describedby": ariaDescribedby,
-                                          required: ""
-                                        },
-                                        model: {
-                                          value: passenger.title,
-                                          callback: function($$v) {
-                                            _vm.$set(passenger, "title", $$v)
+                        _c("b-card-header", [
+                          _c("h5", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\tPassenger " +
+                                _vm._s(index + 1) +
+                                "\n\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "b-card-body",
+                          [
+                            _c("b-form-group", {
+                              staticClass: "mb-3",
+                              attrs: { label: "Title" },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "default",
+                                    fn: function(ref) {
+                                      var ariaDescribedby = ref.ariaDescribedby
+                                      return [
+                                        _c(
+                                          "b-form-radio-group",
+                                          {
+                                            attrs: {
+                                              "aria-describedby": ariaDescribedby,
+                                              required: ""
+                                            },
+                                            model: {
+                                              value: passenger.title,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  passenger,
+                                                  "title",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "passenger.title"
+                                            }
                                           },
-                                          expression: "passenger.title"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "b-form-radio",
-                                          { attrs: { value: "Mr" } },
-                                          [_vm._v("Mr")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "b-form-radio",
-                                          { attrs: { value: "Mrs" } },
-                                          [_vm._v("Mrs")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "b-form-radio",
-                                          { attrs: { value: "Ms" } },
-                                          [_vm._v("Ms")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                }
-                              }
-                            ],
-                            null,
-                            true
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "b-form-row",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "b-col",
-                              { attrs: { cols: "5" } },
-                              [
-                                _c("b-form-input", {
-                                  attrs: {
-                                    required: "",
-                                    placeholder: "First Name"
-                                  },
-                                  model: {
-                                    value: passenger.firstName,
-                                    callback: function($$v) {
-                                      _vm.$set(passenger, "firstName", $$v)
-                                    },
-                                    expression: "passenger.firstName"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "b-col",
-                              { attrs: { cols: "5" } },
-                              [
-                                _c("b-form-input", {
-                                  attrs: {
-                                    required: "",
-                                    placeholder: "Last Name"
-                                  },
-                                  model: {
-                                    value: passenger.lastName,
-                                    callback: function($$v) {
-                                      _vm.$set(passenger, "lastName", $$v)
-                                    },
-                                    expression: "passenger.lastName"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-form-row",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "b-col",
-                              { attrs: { cols: "5" } },
-                              [
-                                _c("b-form-datepicker", {
-                                  attrs: {
-                                    required: "",
-                                    max: new Date(),
-                                    placeholder: "Date of Birth",
-                                    "date-format-options": {
-                                      year: "numeric",
-                                      month: "short",
-                                      day: "numeric"
-                                    }
-                                  },
-                                  model: {
-                                    value: passenger.dateOfBirth,
-                                    callback: function($$v) {
-                                      _vm.$set(passenger, "dateOfBirth", $$v)
-                                    },
-                                    expression: "passenger.dateOfBirth"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "b-col",
-                              { attrs: { cols: "5" } },
-                              [
-                                _c("v-select", {
-                                  attrs: {
-                                    options: _vm.regions,
-                                    required: "",
-                                    label: "countryname",
-                                    reduce: function(country) {
-                                      return country.countryShortCode
-                                    },
-                                    placeholder: "Nationality",
-                                    clearable: false
-                                  },
-                                  scopedSlots: _vm._u(
-                                    [
-                                      {
-                                        key: "search",
-                                        fn: function(ref) {
-                                          var attributes = ref.attributes
-                                          var events = ref.events
-                                          return [
+                                          [
                                             _c(
-                                              "input",
-                                              _vm._g(
-                                                _vm._b(
-                                                  {
-                                                    staticClass: "vs__search",
-                                                    attrs: {
-                                                      required: !passenger.nationality
-                                                    }
-                                                  },
-                                                  "input",
-                                                  attributes,
-                                                  false
-                                                ),
-                                                events
-                                              )
+                                              "b-form-radio",
+                                              { attrs: { value: "Mr" } },
+                                              [_vm._v("Mr")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-form-radio",
+                                              { attrs: { value: "Mrs" } },
+                                              [_vm._v("Mrs")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-form-radio",
+                                              { attrs: { value: "Ms" } },
+                                              [_vm._v("Ms")]
                                             )
-                                          ]
-                                        }
-                                      }
-                                    ],
-                                    null,
-                                    true
-                                  ),
-                                  model: {
-                                    value: passenger.nationality,
-                                    callback: function($$v) {
-                                      _vm.$set(passenger, "nationality", $$v)
-                                    },
-                                    expression: "passenger.nationality"
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
                                   }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-form-group",
-                          [
-                            _c("label", [_vm._v("Passport details")]),
+                                ],
+                                null,
+                                true
+                              )
+                            }),
                             _vm._v(" "),
                             _c(
                               "b-form-row",
+                              { staticClass: "mb-3" },
                               [
                                 _c(
                                   "b-col",
@@ -66747,18 +66741,14 @@ var render = function() {
                                     _c("b-form-input", {
                                       attrs: {
                                         required: "",
-                                        placeholder: "Passport number"
+                                        placeholder: "First Name"
                                       },
                                       model: {
-                                        value: passenger.passportNumber,
+                                        value: passenger.firstName,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            passenger,
-                                            "passportNumber",
-                                            $$v
-                                          )
+                                          _vm.$set(passenger, "firstName", $$v)
                                         },
-                                        expression: "passenger.passportNumber"
+                                        expression: "passenger.firstName"
                                       }
                                     })
                                   ],
@@ -66769,28 +66759,17 @@ var render = function() {
                                   "b-col",
                                   { attrs: { cols: "5" } },
                                   [
-                                    _c("b-form-datepicker", {
+                                    _c("b-form-input", {
                                       attrs: {
                                         required: "",
-                                        min: new Date(),
-                                        placeholder: "Passport expiry date",
-                                        "date-format-options": {
-                                          year: "numeric",
-                                          month: "short",
-                                          day: "numeric"
-                                        }
+                                        placeholder: "Last Name"
                                       },
                                       model: {
-                                        value: passenger.passportExpiryDate,
+                                        value: passenger.lastName,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            passenger,
-                                            "passportExpiryDate",
-                                            $$v
-                                          )
+                                          _vm.$set(passenger, "lastName", $$v)
                                         },
-                                        expression:
-                                          "passenger.passportExpiryDate"
+                                        expression: "passenger.lastName"
                                       }
                                     })
                                   ],
@@ -66798,39 +66777,37 @@ var render = function() {
                                 )
                               ],
                               1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-form-group",
-                          [
-                            _c("label", [_vm._v("Travel document")]),
+                            ),
                             _vm._v(" "),
                             _c(
                               "b-form-row",
+                              { staticClass: "mb-3" },
                               [
                                 _c(
                                   "b-col",
                                   { attrs: { cols: "5" } },
                                   [
-                                    _c("v-select", {
+                                    _c("b-form-datepicker", {
                                       attrs: {
-                                        options: ["Passport"],
-                                        clearable: false
+                                        required: "",
+                                        max: new Date(),
+                                        placeholder: "Date of Birth",
+                                        "date-format-options": {
+                                          year: "numeric",
+                                          month: "short",
+                                          day: "numeric"
+                                        }
                                       },
                                       model: {
-                                        value: passenger.travelDocumentType,
+                                        value: passenger.dateOfBirth,
                                         callback: function($$v) {
                                           _vm.$set(
                                             passenger,
-                                            "travelDocumentType",
+                                            "dateOfBirth",
                                             $$v
                                           )
                                         },
-                                        expression:
-                                          "passenger.travelDocumentType"
+                                        expression: "passenger.dateOfBirth"
                                       }
                                     })
                                   ],
@@ -66849,7 +66826,7 @@ var render = function() {
                                         reduce: function(country) {
                                           return country.countryShortCode
                                         },
-                                        placeholder: "Select Country",
+                                        placeholder: "Nationality",
                                         clearable: false
                                       },
                                       scopedSlots: _vm._u(
@@ -66886,18 +66863,196 @@ var render = function() {
                                         true
                                       ),
                                       model: {
-                                        value: passenger.travelDocumentCountry,
+                                        value: passenger.nationality,
                                         callback: function($$v) {
                                           _vm.$set(
                                             passenger,
-                                            "travelDocumentCountry",
+                                            "nationality",
                                             $$v
                                           )
                                         },
-                                        expression:
-                                          "passenger.travelDocumentCountry"
+                                        expression: "passenger.nationality"
                                       }
                                     })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-form-group",
+                              [
+                                _c("label", [_vm._v("Passport details")]),
+                                _vm._v(" "),
+                                _c(
+                                  "b-form-row",
+                                  [
+                                    _c(
+                                      "b-col",
+                                      { attrs: { cols: "5" } },
+                                      [
+                                        _c("b-form-input", {
+                                          attrs: {
+                                            required: "",
+                                            placeholder: "Passport number"
+                                          },
+                                          model: {
+                                            value: passenger.passportNumber,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                passenger,
+                                                "passportNumber",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "passenger.passportNumber"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "b-col",
+                                      { attrs: { cols: "5" } },
+                                      [
+                                        _c("b-form-datepicker", {
+                                          attrs: {
+                                            required: "",
+                                            min: new Date(),
+                                            placeholder: "Passport expiry date",
+                                            "date-format-options": {
+                                              year: "numeric",
+                                              month: "short",
+                                              day: "numeric"
+                                            }
+                                          },
+                                          model: {
+                                            value: passenger.passportExpiryDate,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                passenger,
+                                                "passportExpiryDate",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "passenger.passportExpiryDate"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-form-group",
+                              [
+                                _c("label", [_vm._v("Travel document")]),
+                                _vm._v(" "),
+                                _c(
+                                  "b-form-row",
+                                  [
+                                    _c(
+                                      "b-col",
+                                      { attrs: { cols: "5" } },
+                                      [
+                                        _c("v-select", {
+                                          attrs: {
+                                            options: ["Passport"],
+                                            clearable: false
+                                          },
+                                          model: {
+                                            value: passenger.travelDocumentType,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                passenger,
+                                                "travelDocumentType",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "passenger.travelDocumentType"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "b-col",
+                                      { attrs: { cols: "5" } },
+                                      [
+                                        _c("v-select", {
+                                          attrs: {
+                                            options: _vm.regions,
+                                            required: "",
+                                            label: "countryname",
+                                            reduce: function(country) {
+                                              return country.countryShortCode
+                                            },
+                                            placeholder: "Select Country",
+                                            clearable: false
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "search",
+                                                fn: function(ref) {
+                                                  var attributes =
+                                                    ref.attributes
+                                                  var events = ref.events
+                                                  return [
+                                                    _c(
+                                                      "input",
+                                                      _vm._g(
+                                                        _vm._b(
+                                                          {
+                                                            staticClass:
+                                                              "vs__search",
+                                                            attrs: {
+                                                              required: !passenger.travelDocumentCountry
+                                                            }
+                                                          },
+                                                          "input",
+                                                          attributes,
+                                                          false
+                                                        ),
+                                                        events
+                                                      )
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          ),
+                                          model: {
+                                            value:
+                                              passenger.travelDocumentCountry,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                passenger,
+                                                "travelDocumentCountry",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "passenger.travelDocumentCountry"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
@@ -66910,151 +67065,184 @@ var render = function() {
                       ],
                       1
                     )
-                  ],
-                  1
-                )
-              }),
-              _vm._v(" "),
-              _c(
-                "b-card",
-                { staticClass: "mb-3", attrs: { "no-body": "" } },
-                [
-                  _c("b-card-header", [
-                    _c("h5", [
-                      _vm._v("\n\t\t\t\t\t\tContact details\n\t\t\t\t\t")
-                    ]),
-                    _vm._v(" "),
-                    _c("small", [
-                      _vm._v(
-                        "Please provide your contact details so that we can notify you the updates on your flight"
-                      )
-                    ])
-                  ]),
+                  }),
                   _vm._v(" "),
                   _c(
-                    "b-card-body",
+                    "b-card",
+                    { staticClass: "mb-3", attrs: { "no-body": "" } },
                     [
+                      _c("b-card-header", [
+                        _c("h5", [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\tContact details\n\t\t\t\t\t\t"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v(
+                            "Please provide your contact details so that we can notify you the updates on your flight"
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "b-form-group",
+                        "b-card-body",
                         [
-                          _c("label", { attrs: { for: "" } }, [
-                            _vm._v("E-mail")
-                          ]),
-                          _vm._v(" "),
-                          _c("b-form-input", {
-                            attrs: {
-                              placeholder: "Enter your email",
-                              type: "email",
-                              required: ""
-                            },
-                            model: {
-                              value: _vm.contact.email,
-                              callback: function($$v) {
-                                _vm.$set(_vm.contact, "email", $$v)
-                              },
-                              expression: "contact.email"
-                            }
-                          })
+                          _c(
+                            "b-form-group",
+                            [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("E-mail")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-form-input", {
+                                attrs: {
+                                  placeholder: "Enter your email",
+                                  type: "email",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.contact.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.contact, "email", $$v)
+                                  },
+                                  expression: "contact.email"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-card",
+                    [
+                      _c("b-form-checkbox", { attrs: { required: "" } }, [
+                        _vm._v(
+                          "\n\t\t\t\t\t\tI have verified that the information provided matches the passport information\n\t\t\t\t\t"
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { staticClass: "pr-0", attrs: { cols: "4" } },
+                [
+                  _c(
+                    "b-card",
+                    { attrs: { "no-body": "" } },
+                    [
+                      _c("b-card-header", { staticClass: "text-center" }, [
+                        _vm._v("\n\t\t\t\t\t\tYour trip review\n\t\t\t\t\t")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-card-body", [
+                        _c("section", { staticClass: "outbound-flight mb-3" }, [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\tOutbound flight\n\t\t\t\t\t\t\t"
+                          ),
+                          _c("div", { staticClass: "text-center mt-3" }, [
+                            _c("span", { staticClass: "dot" }),
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.flightDeparture.origin.cityname) +
+                                " -> " +
+                                _vm._s(
+                                  _vm.flightDeparture.destination.cityname
+                                ) +
+                                "\n\t\t\t\t\t\t\t\t"
+                            ),
+                            _c("span", { staticClass: "dot" })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm.flightReturn
+                          ? _c("section", { staticClass: "inbound-flight" }, [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\tInbound flight\n\t\t\t\t\t\t\t"
+                              ),
+                              _c("div", { staticClass: "text-center mt-3" }, [
+                                _c("span", { staticClass: "dot" }),
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(_vm.flightReturn.origin.cityname) +
+                                    " -> " +
+                                    _vm._s(
+                                      _vm.flightReturn.destination.cityname
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t\t"
+                                ),
+                                _c("span", { staticClass: "dot" })
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-card-footer",
+                        { staticClass: "d-flex justify-content-between" },
+                        [
+                          _c("div", [
+                            _c("small", { staticClass: "d-block" }, [
+                              _vm._v("Total trip price")
+                            ]),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "d-block" }, [
+                              _vm._v(
+                                "(" +
+                                  _vm._s(_vm.passengerDetails.length) +
+                                  " passengers)"
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.formatMoney(_vm.grandTotal, 0)) +
+                                " VND\n\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
                       )
                     ],
                     1
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-card",
-                [
-                  _c("b-form-checkbox", { attrs: { required: "" } }, [
-                    _vm._v(
-                      "\n\t\t\t\t\tI have verified that the information provided matches the passport information\n\t\t\t\t"
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "b-col",
-            { staticClass: "pr-0", attrs: { cols: "4" } },
-            [
-              _c(
-                "b-card",
-                { attrs: { "no-body": "" } },
-                [
-                  _c("b-card-header", { staticClass: "text-center" }, [
-                    _vm._v("\n\t\t\t\t\tYour trip review\n\t\t\t\t")
-                  ]),
-                  _vm._v(" "),
-                  _c("b-card-body", [
-                    _c("section", { staticClass: "outbound-flight" }, [
-                      _vm._v("\n\t\t\t\t\t\tOutbound flight\n\t\t\t\t\t")
-                    ]),
-                    _vm._v(" "),
-                    _c("section", { staticClass: "inbound-flight" }, [
-                      _vm._v("\n\t\t\t\t\t\tInbound flight\n\t\t\t\t\t")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-card-footer",
-                    { staticClass: "d-flex justify-content-between" },
-                    [
-                      _c("div", [
-                        _c("small", { staticClass: "d-block" }, [
-                          _vm._v("Total trip price")
-                        ]),
-                        _vm._v(" "),
-                        _c("small", { staticClass: "d-block" }, [
-                          _vm._v(
-                            "(" +
-                              _vm._s(_vm.passengerDetails.length) +
-                              " passengers)"
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t" +
-                            _vm._s(_vm.formatMoney(_vm.grandTotal, 0)) +
-                            " VND\n\t\t\t\t\t"
-                        )
-                      ])
-                    ]
-                  )
-                ],
-                1
               )
             ],
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-row",
-        { staticClass: "mt-3", attrs: { "align-h": "center" } },
-        [
+          ),
+          _vm._v(" "),
           _c(
-            "b-col",
-            { staticClass: "px-0", attrs: { cols: "4" } },
+            "b-row",
+            { staticClass: "mt-3", attrs: { "align-h": "center" } },
             [
               _c(
-                "b-button",
-                {
-                  staticClass: "w-100 py-2",
-                  attrs: { variant: "primary" },
-                  on: { click: _vm.handleStepDone }
-                },
-                [_vm._v("\n\t\t\t\tContinue\n\t\t\t")]
+                "b-col",
+                { staticClass: "px-0", attrs: { cols: "4" } },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      staticClass: "w-100 py-2",
+                      attrs: { type: "submit", variant: "primary" }
+                    },
+                    [_vm._v("\n\t\t\t\t\tContinue\n\t\t\t\t")]
+                  )
+                ],
+                1
               )
             ],
             1
@@ -67625,6 +67813,16 @@ var render = function() {
           _c(
             "b-row",
             [
+              _c("b-col", { staticClass: "text-center" }, [
+                _c("h2", { staticClass: "mb-4" }, [_vm._v("Seat Selection")])
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-row",
+            [
               _c(
                 "b-col",
                 [
@@ -68051,13 +68249,35 @@ var render = function() {
                               "b-button",
                               {
                                 staticClass: "py-2 px-5 font-size-large",
-                                attrs: { variant: "warning" },
+                                attrs: {
+                                  variant: "warning",
+                                  disabled: _vm.isMakingReservation
+                                },
                                 on: { click: _vm.makeReservation }
                               },
                               [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\tPurchase \n\t\t\t\t\t\t\t"
-                                )
+                                !_vm.isMakingReservation
+                                  ? _c("span", [_vm._v("Purchase")])
+                                  : _c(
+                                      "span",
+                                      [
+                                        _c("b-spinner", {
+                                          staticClass: "mr-2",
+                                          attrs: { small: "", variant: "light" }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          { staticClass: "text-light" },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t\t\tMaking your reservation\n\t\t\t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
                               ]
                             )
                           ],
@@ -68341,7 +68561,7 @@ var render = function() {
                       _c("small", [
                         _vm._v(
                           "\n\t\t\t\t\t\t\tEarn\n\t\t\t\t\t\t\t" +
-                            _vm._s(2732) +
+                            _vm._s(_vm.skymiles) +
                             " Skymiles\n\t\t\t\t\t\t"
                         )
                       ])
@@ -68581,7 +68801,7 @@ var render = function() {
                           _c("small", [
                             _vm._v(
                               "\n\t\t\t\t\t\t\tEarn\n\t\t\t\t\t\t\t" +
-                                _vm._s(2732) +
+                                _vm._s(_vm.skymiles) +
                                 " Skymiles\n\t\t\t\t\t\t"
                             )
                           ])
@@ -68790,7 +69010,7 @@ var render = function() {
                 _c("b-td", { staticClass: "text-right" }, [
                   _vm._v(
                     "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.pricePerAdult)) +
+                      _vm._s(_vm.formatMoney(_vm.pricePerAdult, 0)) +
                       " VND\n\t\t\t\t\tx " +
                       _vm._s(_vm.details.passengers.adults) +
                       "\n\t\t\t\t"
@@ -68811,7 +69031,7 @@ var render = function() {
                     _c("b-td", { staticClass: "text-right" }, [
                       _vm._v(
                         "\n\t\t\t\t\t" +
-                          _vm._s(_vm.formatMoney((_vm.pricePerAdult * 2) / 3)) +
+                          _vm._s(_vm.formatMoney(_vm.pricePerChild, 0)) +
                           " VND\n\t\t\t\t\tx " +
                           _vm._s(_vm.details.passengers.children) +
                           "\n\t\t\t\t"
@@ -68830,7 +69050,7 @@ var render = function() {
                 _c("b-td", { staticClass: "text-right" }, [
                   _vm._v(
                     "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.priceForSeats)) +
+                      _vm._s(_vm.formatMoney(_vm.priceForSeats, 0)) +
                       " VND\n\t\t\t\t"
                   )
                 ])
@@ -68846,7 +69066,7 @@ var render = function() {
                 _c("b-td", { staticClass: "text-right" }, [
                   _vm._v(
                     "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.priceForSeats)) +
+                      _vm._s(_vm.formatMoney(_vm.priceForSeats, 0)) +
                       " VND\n\t\t\t\t"
                   )
                 ])
@@ -68864,7 +69084,7 @@ var render = function() {
                 _c("b-td", { staticClass: "text-right font-size-larger" }, [
                   _vm._v(
                     "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.grandTotal)) +
+                      _vm._s(_vm.formatMoney(_vm.grandTotal, 0)) +
                       " VND\n\t\t\t\t"
                   )
                 ])
