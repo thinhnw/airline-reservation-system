@@ -86,15 +86,22 @@ export default {
         }).then((result) => {
             if (result.value) {
                 //Send Request to server
-                let uri = `http://127.0.0.1:8000/api/airport/delete/${id}`;
-                axios.delete(uri).then(() => {
-                }).then((response)=> {
+                let uri = `/api/airport/delete/${id}`;
+                let uri_data = '/api/api-airport-paginate';
+                Promise.all([
+                    axios.delete(uri).then(()=> {
                         this.$swal(
-                            'Deleted!',
-                            'User deleted successfully',
-                            'success'
+                        'Deleted!',
+                        'User deleted successfully',
+                        'success'
                         )
+                    }),
+                    axios.get(uri_data).then(res => {
+                        this.rows=res.data.airports.last_page;
                     })
+                ]
+                )
+
                 this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
                 this.dataEdit.splice(this.airports.findIndex(airport => {
                     airport.id === this.dataEdit.id;
@@ -106,7 +113,7 @@ export default {
 
         },
         editData(id){
-            let uri = `http://127.0.0.1:8000/api/airport/edit/${id}`;
+            let uri = `/api/airport/edit/${id}`;
             axios.get(uri).then(res=>{
                 this.dataEdit={};
                 this.dataEdit=res.data.airport;
@@ -117,7 +124,7 @@ export default {
         },
         listCreated(){
             if (this.created){
-                let uri = '/api/api-airport';
+                let uri = '/api/api-airport-paginate';
                 axios.get(uri).then(res => {
                     console.log(res)
                     this.rows=0;

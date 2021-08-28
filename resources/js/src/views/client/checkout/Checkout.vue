@@ -1,5 +1,5 @@
 <template>
-  <b-container class="checkout">
+  <b-container class="checkout" v-if="reservation">
     <b-row>
       <b-col cols="9">
         <b-card no-body class="p-4">
@@ -13,7 +13,10 @@
                       <i class="fas fa-user"></i>
                       Full name
                     </label>
-                    <b-form-input placeholder="Enter your full name"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_billing_fullname"
+                      placeholder="Enter your full name"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -22,7 +25,10 @@
                       <i class="fas fa-envelope mr-3"></i>
                       Email
                     </label>
-                    <b-form-input placeholder="Enter your email"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_billing_email"
+                      placeholder="Enter your email"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -32,7 +38,10 @@
                     <label for="">
                       Address
                     </label>
-                    <b-form-input placeholder="Enter your address"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_inv_addr1"
+                      placeholder="Enter your address"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -40,7 +49,10 @@
                     <label for="">
                       City
                     </label>
-                    <b-form-input placeholder="Enter your city"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_bill_city"
+                      placeholder="Enter your city"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -50,7 +62,10 @@
                     <label for="">
                       Country
                     </label>
-                    <b-form-input placeholder="Enter your country"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_bill_country"
+                      placeholder="Enter your country"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -58,7 +73,10 @@
                     <label for="">
                       Postal code
                     </label>
-                    <b-form-input placeholder="Enter your postal code"></b-form-input>
+                    <b-form-input 
+                      v-model="form.zip_code"
+                      placeholder="Enter your postal code"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -118,7 +136,8 @@ export default {
         txt_inv_addr1: '',
         txt_bill_city: '',
         txt_bill_country: '',
-        txt_expire: ''
+        txt_expire: '',
+        zip_code: ''
       },
       reservation: null
     }
@@ -167,7 +186,7 @@ export default {
       } catch (error) {
         console.error(error) 
       } finally {
-        this.payamentProcessing = false
+        this.paymentProcessing = false
       }
 
     },

@@ -204,7 +204,7 @@ export default {
             this.$emit('setShowNav', false)
         },
         createData() {
-            let uri_cr = `http://127.0.0.1:8000/api/airport/save`;
+            let uri_cr = `/api/airport/save`;
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
@@ -221,7 +221,7 @@ export default {
             this.$emit('setShown', false)
         },
         updateData(id) {
-            let uri_u = `http://127.0.0.1:8000/api/airport/update/${id}`;
+            let uri_u = `/api/airport/update/${id}`;
             axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));

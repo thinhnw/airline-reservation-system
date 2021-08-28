@@ -115,7 +115,7 @@ export default {
         },
         createData() {
             console.log(this.dataCreate);
-            let uri_cr = `http://127.0.0.1:8000/api/customer/save`;
+            let uri_cr = `/api/customer/save`;
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
@@ -132,7 +132,7 @@ export default {
             this.dataCreate = {}
         },
         updateData(id) {
-            let uri_u = `http://127.0.0.1:8000/api/customer/update/${id}`;
+            let uri_u = `/api/customer/update/${id}`;
             axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));
