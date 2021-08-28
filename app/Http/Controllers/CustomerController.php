@@ -53,7 +53,10 @@ class CustomerController extends Controller
             'gender' => $request->gender,
             'email' => $request->email,
             'user_type' => 'Customer',
-            'password' => $password
+            'password' => $password,
+            'country'=>$request->country,
+            'city'=>$request->city,
+            'address'=>$request->address
         ]);
         return response()->json('successfully updated');
     }
