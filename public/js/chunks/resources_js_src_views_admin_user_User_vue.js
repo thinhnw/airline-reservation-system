@@ -504,7 +504,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1284,32 +1284,24 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(rs.email))]),
                 _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.editData(rs.id)
-                        }
+                _c("td", { staticClass: "text-center" }, [
+                  _c("i", {
+                    staticClass: "far fa-edit btn-icon text-dark mr-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.editData(rs.id)
                       }
-                    },
-                    [_vm._v("Sửa")]
-                  ),
+                    }
+                  }),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteData(rs.id)
-                        }
+                  _c("i", {
+                    staticClass: "far fa-times-octagon btn-icon text-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteData(rs.id)
                       }
-                    },
-                    [_vm._v("Xóa")]
-                  )
+                    }
+                  })
                 ])
               ])
             ])
