@@ -107,7 +107,7 @@ class AuthController extends Controller
         } catch (Throwable $e) {
             return response()->json([
                 'message' => $e->getMessage()
-            ], 200);
+            ], 404);
         }
     }
 }

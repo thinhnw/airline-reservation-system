@@ -1992,7 +1992,7 @@ instance.interceptors.response.use(function (response) {
 
     //add your code
     if ((_error$response$data$ = error.response.data.message) !== null && _error$response$data$ !== void 0 && _error$response$data$.toLowerCase().includes('token')) {
-      _router_js__WEBPACK_IMPORTED_MODULE_1__.default.go({
+      _router_js__WEBPACK_IMPORTED_MODULE_1__.default.push({
         name: 'login'
       });
     }
@@ -2197,6 +2197,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       name: 'profile',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_profile_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/profile/Profile.vue */ "./resources/js/src/views/client/profile/Profile.vue"));
+      },
+      beforeEnter: function beforeEnter(to, from, next) {
+        console.log(_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]);
+        if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+          name: 'login'
+        });
       }
     }, {
       path: 'checkout',
@@ -2216,12 +2222,22 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
     name: 'login',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Login.vue */ "./resources/js/src/views/auth/Login.vue"));
+    },
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (!_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+        name: 'home'
+      });
     }
   }, {
     path: '/register',
     name: 'register',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Register_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Register.vue */ "./resources/js/src/views/auth/Register.vue"));
+    },
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (!_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+        name: 'home'
+      });
     }
   }, {
     path: '/admin',

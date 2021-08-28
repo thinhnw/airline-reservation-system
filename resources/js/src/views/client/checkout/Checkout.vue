@@ -1,5 +1,5 @@
 <template>
-  <b-container class="checkout" v-if="reservation">
+  <b-container class="checkout">
     <b-row>
       <b-col cols="9">
         <b-card no-body class="p-4">
@@ -90,10 +90,14 @@
               <b-form-group>
                 <label for="">Credit informations</label>
                 <div id="card-element"></div>
+                <small class="text-danger" v-if="cardError">{{ cardError }}</small>
               </b-form-group>
             </section>
             <section class="py-3">
-              <b-button type="submit" variant="primary" class="w-100" :disabled="payamentProcessing">Checkout</b-button>
+              <b-button type="submit" variant="primary" class="w-100" :disabled="paymentProcessing">
+                Checkout
+                <b-spinner variant="light" small v-if="paymentProcessing"></b-spinner>
+              </b-button>
             </section>
           </b-form>
           
@@ -108,7 +112,7 @@
             <div>
               <p>Total</p>
             </div>
-            <div>
+            <div v-if="reservation">
               <p>{{ formatMoney(reservation.price, 0) }} VND</p>
             </div>
           </div>
@@ -128,18 +132,29 @@ export default {
     return {
       stripe: {},
       cardElement: {},
-      payamentProcessing: false,
+      paymentProcessing: false,
+      // form: {
+      //   reservation_id: '',
+      //   txt_billing_fullname: '',
+      //   txt_billing_email: '',
+      //   txt_inv_addr1: '',
+      //   txt_bill_city: '',
+      //   txt_bill_country: '',
+      //   txt_expire: '',
+      //   zip_code: ''
+      // },
       form: {
-        reservation_id: '',
-        txt_billing_fullname: '',
-        txt_billing_email: '',
-        txt_inv_addr1: '',
-        txt_bill_city: '',
-        txt_bill_country: '',
+        reservation_id: '53',
+        txt_billing_fullname: 'NGUYEN VINH THINH',
+        txt_billing_email: 'nvt0412@gmail.com',
+        txt_inv_addr1: '502 LD',
+        txt_bill_city: 'Hanoi',
+        txt_bill_country: 'VN',
         txt_expire: '',
         zip_code: ''
       },
-      reservation: null
+      reservation: null,
+      cardError: '',
     }
   },
   methods: {
@@ -153,29 +168,30 @@ export default {
         this.form.reservation_id = id
       } catch (error) {
         console.log(error)
-        if (error.message === 'No permission') this.$router.push({ name: 'profile' })
+        this.$router.push({ name: 'home' })
+        return
       }
     },
     async processPayment() {
       this.paymentProcessing = true
-
       const { paymentMethod, error } = await this.stripe.createPaymentMethod(
         'card', this.cardElement, {
             billing_details: {
-              name: this.form.txt_billing_fullname || 'NGUYEN VAN A',
-              email: this.form.txt_billing_email || 'nvt0412@gmail.com',
+              name: this.form.txt_billing_fullname ,
+              email: this.form.txt_billing_email,
               address: {
-                line1: this.form.txt_inv_addr1 || 'Street 1',
-                city: this.form.txt_bill_city || 'Hanoi',
-                state: this.form.txt_bill_state || 'Hoang Mai',
+                line1: this.form.txt_inv_addr1,
+                city: this.form.txt_bill_city,
+                country: this.form.txt_bill_country,
                 postal_code: this.form.zip_code,
               }
             }
         }
       )
       if (error) {
-        this.payamentProcessing = false
-        alert(error)
+        this.paymentProcessing = false
+        // alert(error.message)
+        this.cardError = error.message
         return
       }
 
@@ -185,6 +201,7 @@ export default {
         let res = await axios.post('/api/reservations/checkout', this.form)
       } catch (error) {
         console.error(error) 
+        this.cardError = error.message
       } finally {
         this.paymentProcessing = false
       }
@@ -203,10 +220,10 @@ export default {
       } catch (error) {
         console.error(error) 
       }
-    }
+    },
   },
   async mounted() {
-    await this.fetchProduct()
+    this.fetchProduct()
     console.log(process.env.MIX_STRIPE_KEY)
     this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY)
     const elements = this.stripe.elements()
@@ -216,6 +233,9 @@ export default {
       }
     })
     this.cardElement.mount('#card-element')
+    this.cardElement.on('change', () => {
+      this.cardError = ''
+    })
   }
 }
 </script>

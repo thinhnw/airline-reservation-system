@@ -184,7 +184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _store__WEBPACK_IMPORTED_MODULE_1__.default.dispatch('auth/registerUserJWT', payload);
 
               case 6:
-                _context.next = 11;
+                _context.next = 12;
                 break;
 
               case 8:
@@ -192,7 +192,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.t0 = _context["catch"](2);
                 console.error(_context.t0);
 
-              case 11:
+                _this.$bvToast.toast('The email has already been taken', {
+                  autoHideDelay: 2000,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'danger'
+                });
+
+              case 12:
               case "end":
                 return _context.stop();
             }

@@ -287,6 +287,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -295,18 +299,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       stripe: {},
       cardElement: {},
-      payamentProcessing: false,
+      paymentProcessing: false,
+      // form: {
+      //   reservation_id: '',
+      //   txt_billing_fullname: '',
+      //   txt_billing_email: '',
+      //   txt_inv_addr1: '',
+      //   txt_bill_city: '',
+      //   txt_bill_country: '',
+      //   txt_expire: '',
+      //   zip_code: ''
+      // },
       form: {
-        reservation_id: '',
-        txt_billing_fullname: '',
-        txt_billing_email: '',
-        txt_inv_addr1: '',
-        txt_bill_city: '',
-        txt_bill_country: '',
+        reservation_id: '53',
+        txt_billing_fullname: 'NGUYEN VINH THINH',
+        txt_billing_email: 'nvt0412@gmail.com',
+        txt_inv_addr1: '502 LD',
+        txt_bill_city: 'Hanoi',
+        txt_bill_country: 'VN',
         txt_expire: '',
         zip_code: ''
       },
-      reservation: null
+      reservation: null,
+      cardError: ''
     };
   },
   methods: {
@@ -332,18 +347,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 data = _yield$axios$get.data;
                 _this.reservation = data.reservation;
                 _this.form.reservation_id = id;
-                _context.next = 15;
+                _context.next = 16;
                 break;
 
               case 11:
                 _context.prev = 11;
                 _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
-                if (_context.t0.message === 'No permission') _this.$router.push({
-                  name: 'profile'
+
+                _this.$router.push({
+                  name: 'home'
                 });
 
-              case 15:
+                return _context.abrupt("return");
+
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -365,12 +383,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 3;
                 return _this2.stripe.createPaymentMethod('card', _this2.cardElement, {
                   billing_details: {
-                    name: _this2.form.txt_billing_fullname || 'NGUYEN VAN A',
-                    email: _this2.form.txt_billing_email || 'nvt0412@gmail.com',
+                    name: _this2.form.txt_billing_fullname,
+                    email: _this2.form.txt_billing_email,
                     address: {
-                      line1: _this2.form.txt_inv_addr1 || 'Street 1',
-                      city: _this2.form.txt_bill_city || 'Hanoi',
-                      state: _this2.form.txt_bill_state || 'Hoang Mai',
+                      line1: _this2.form.txt_inv_addr1,
+                      city: _this2.form.txt_bill_city,
+                      country: _this2.form.txt_bill_country,
                       postal_code: _this2.form.zip_code
                     }
                   }
@@ -386,8 +404,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                _this2.payamentProcessing = false;
-                alert(error);
+                _this2.paymentProcessing = false; // alert(error.message)
+
+                _this2.cardError = error.message;
                 return _context2.abrupt("return");
 
               case 10:
@@ -399,25 +418,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 15:
                 res = _context2.sent;
-                _context2.next = 21;
+                _context2.next = 22;
                 break;
 
               case 18:
                 _context2.prev = 18;
                 _context2.t0 = _context2["catch"](12);
                 console.error(_context2.t0);
+                _this2.cardError = _context2.t0.message;
 
-              case 21:
-                _context2.prev = 21;
+              case 22:
+                _context2.prev = 22;
                 _this2.paymentProcessing = false;
-                return _context2.finish(21);
+                return _context2.finish(22);
 
-              case 24:
+              case 25:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[12, 18, 21, 24]]);
+        }, _callee2, null, [[12, 18, 22, 25]]);
       }))();
     },
     submit: function submit() {
@@ -462,15 +482,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
-              return _this4.fetchProduct();
+              _this4.fetchProduct();
 
-            case 2:
               console.log("pk_test_iExRVVvOL1PdZ2e1CsWHStLD00Htd3STIL");
-              _context4.next = 5;
+              _context4.next = 4;
               return (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)("pk_test_iExRVVvOL1PdZ2e1CsWHStLD00Htd3STIL");
 
-            case 5:
+            case 4:
               _this4.stripe = _context4.sent;
               elements = _this4.stripe.elements();
               _this4.cardElement = elements.create('card', {
@@ -480,6 +498,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
 
               _this4.cardElement.mount('#card-element');
+
+              _this4.cardElement.on('change', function () {
+                _this4.cardError = '';
+              });
 
             case 9:
             case "end":
@@ -17913,121 +17935,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.reservation
-    ? _c(
-        "b-container",
-        { staticClass: "checkout" },
+  return _c(
+    "b-container",
+    { staticClass: "checkout" },
+    [
+      _c(
+        "b-row",
         [
           _c(
-            "b-row",
+            "b-col",
+            { attrs: { cols: "9" } },
             [
               _c(
-                "b-col",
-                { attrs: { cols: "9" } },
+                "b-card",
+                { staticClass: "p-4", attrs: { "no-body": "" } },
                 [
                   _c(
-                    "b-card",
-                    { staticClass: "p-4", attrs: { "no-body": "" } },
+                    "b-form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.submit.apply(null, arguments)
+                        }
+                      }
+                    },
                     [
                       _c(
-                        "b-form",
-                        {
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.submit.apply(null, arguments)
-                            }
-                          }
-                        },
+                        "section",
                         [
+                          _c("h4", { staticClass: "mb-4" }, [
+                            _vm._v("Billing Address")
+                          ]),
+                          _vm._v(" "),
                           _c(
-                            "section",
+                            "b-form-row",
+                            { staticClass: "mb-0" },
                             [
-                              _c("h4", { staticClass: "mb-4" }, [
-                                _vm._v("Billing Address")
-                              ]),
-                              _vm._v(" "),
                               _c(
-                                "b-form-row",
-                                { staticClass: "mb-0" },
+                                "b-col",
                                 [
                                   _c(
-                                    "b-col",
+                                    "b-form-group",
                                     [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _c("i", {
-                                              staticClass: "fas fa-user"
-                                            }),
-                                            _vm._v(
-                                              "\n                    Full name\n                  "
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _c("i", { staticClass: "fas fa-user" }),
+                                        _vm._v(
+                                          "\n                    Full name\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your full name"
+                                        },
+                                        model: {
+                                          value: _vm.form.txt_billing_fullname,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "txt_billing_fullname",
+                                              $$v
                                             )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder:
-                                                "Enter your full name"
-                                            },
-                                            model: {
-                                              value:
-                                                _vm.form.txt_billing_fullname,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "txt_billing_fullname",
-                                                  $$v
-                                                )
-                                              },
-                                              expression:
-                                                "form.txt_billing_fullname"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-col",
-                                    [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-envelope mr-3"
-                                            }),
-                                            _vm._v(
-                                              "\n                    Email\n                  "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder: "Enter your email"
-                                            },
-                                            model: {
-                                              value: _vm.form.txt_billing_email,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "txt_billing_email",
-                                                  $$v
-                                                )
-                                              },
-                                              expression:
-                                                "form.txt_billing_email"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
+                                          },
+                                          expression:
+                                            "form.txt_billing_fullname"
+                                        }
+                                      })
                                     ],
                                     1
                                   )
@@ -18036,153 +18010,36 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "b-form-row",
-                                { staticClass: "mb-0" },
+                                "b-col",
                                 [
                                   _c(
-                                    "b-col",
+                                    "b-form-group",
                                     [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _vm._v(
-                                              "\n                    Address\n                  "
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _c("i", {
+                                          staticClass: "fas fa-envelope mr-3"
+                                        }),
+                                        _vm._v(
+                                          "\n                    Email\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your email"
+                                        },
+                                        model: {
+                                          value: _vm.form.txt_billing_email,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "txt_billing_email",
+                                              $$v
                                             )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder: "Enter your address"
-                                            },
-                                            model: {
-                                              value: _vm.form.txt_inv_addr1,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "txt_inv_addr1",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.txt_inv_addr1"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-col",
-                                    [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _vm._v(
-                                              "\n                    City\n                  "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder: "Enter your city"
-                                            },
-                                            model: {
-                                              value: _vm.form.txt_bill_city,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "txt_bill_city",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.txt_bill_city"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-form-row",
-                                [
-                                  _c(
-                                    "b-col",
-                                    [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _vm._v(
-                                              "\n                    Country\n                  "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder: "Enter your country"
-                                            },
-                                            model: {
-                                              value: _vm.form.txt_bill_country,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "txt_bill_country",
-                                                  $$v
-                                                )
-                                              },
-                                              expression:
-                                                "form.txt_bill_country"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-col",
-                                    [
-                                      _c(
-                                        "b-form-group",
-                                        [
-                                          _c("label", { attrs: { for: "" } }, [
-                                            _vm._v(
-                                              "\n                    Postal code\n                  "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("b-form-input", {
-                                            attrs: {
-                                              placeholder:
-                                                "Enter your postal code"
-                                            },
-                                            model: {
-                                              value: _vm.form.zip_code,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.form,
-                                                  "zip_code",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "form.zip_code"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
+                                          },
+                                          expression: "form.txt_billing_email"
+                                        }
+                                      })
                                     ],
                                     1
                                   )
@@ -18194,93 +18051,223 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c(
-                            "section",
+                            "b-form-row",
+                            { staticClass: "mb-0" },
                             [
-                              _c("h4", { staticClass: "mb-4" }, [
-                                _vm._v("Payment")
-                              ]),
-                              _vm._v(" "),
                               _c(
-                                "b-form-group",
+                                "b-col",
                                 [
-                                  _c("label", { attrs: { for: "" } }, [
-                                    _vm._v("Card holder (name on card)")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("b-form-input", {
-                                    attrs: { placeholder: "Eg: NGUYEN VAN A" }
-                                  })
+                                  _c(
+                                    "b-form-group",
+                                    [
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _vm._v(
+                                          "\n                    Address\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your address"
+                                        },
+                                        model: {
+                                          value: _vm.form.txt_inv_addr1,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "txt_inv_addr1",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.txt_inv_addr1"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
                               _vm._v(" "),
-                              _c("b-form-group", [
-                                _c("label", { attrs: { for: "" } }, [
-                                  _vm._v("Credit informations")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { attrs: { id: "card-element" } })
-                              ])
+                              _c(
+                                "b-col",
+                                [
+                                  _c(
+                                    "b-form-group",
+                                    [
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _vm._v(
+                                          "\n                    City\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your city"
+                                        },
+                                        model: {
+                                          value: _vm.form.txt_bill_city,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "txt_bill_city",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.txt_bill_city"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
                             ],
                             1
                           ),
                           _vm._v(" "),
                           _c(
-                            "section",
-                            { staticClass: "py-3" },
+                            "b-form-row",
                             [
                               _c(
-                                "b-button",
-                                {
-                                  staticClass: "w-100",
-                                  attrs: {
-                                    type: "submit",
-                                    variant: "primary",
-                                    disabled: _vm.payamentProcessing
-                                  }
-                                },
-                                [_vm._v("Checkout")]
+                                "b-col",
+                                [
+                                  _c(
+                                    "b-form-group",
+                                    [
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _vm._v(
+                                          "\n                    Country\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your country"
+                                        },
+                                        model: {
+                                          value: _vm.form.txt_bill_country,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.form,
+                                              "txt_bill_country",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "form.txt_bill_country"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-col",
+                                [
+                                  _c(
+                                    "b-form-group",
+                                    [
+                                      _c("label", { attrs: { for: "" } }, [
+                                        _vm._v(
+                                          "\n                    Postal code\n                  "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("b-form-input", {
+                                        attrs: {
+                                          placeholder: "Enter your postal code"
+                                        },
+                                        model: {
+                                          value: _vm.form.zip_code,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.form, "zip_code", $$v)
+                                          },
+                                          expression: "form.zip_code"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
                               )
                             ],
                             1
                           )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                { attrs: { cols: "3" } },
-                [
-                  _c(
-                    "b-card",
-                    { staticClass: "p-4", attrs: { "no-body": "" } },
-                    [
-                      _c("h4", [_vm._v("Summary")]),
-                      _vm._v(" "),
-                      _c("hr"),
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "d-flex justify-content-between" },
+                        "section",
                         [
-                          _c("div", [_c("p", [_vm._v("Total")])]),
+                          _c("h4", { staticClass: "mb-4" }, [
+                            _vm._v("Payment")
+                          ]),
                           _vm._v(" "),
-                          _c("div", [
-                            _c("p", [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.formatMoney(_vm.reservation.price, 0)
-                                ) + " VND"
-                              )
-                            ])
+                          _c(
+                            "b-form-group",
+                            [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Card holder (name on card)")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-form-input", {
+                                attrs: { placeholder: "Eg: NGUYEN VAN A" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("b-form-group", [
+                            _c("label", { attrs: { for: "" } }, [
+                              _vm._v("Credit informations")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { attrs: { id: "card-element" } }),
+                            _vm._v(" "),
+                            _vm.cardError
+                              ? _c("small", { staticClass: "text-danger" }, [
+                                  _vm._v(_vm._s(_vm.cardError))
+                                ])
+                              : _vm._e()
                           ])
-                        ]
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "section",
+                        { staticClass: "py-3" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "w-100",
+                              attrs: {
+                                type: "submit",
+                                variant: "primary",
+                                disabled: _vm.paymentProcessing
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n              Checkout\n              "
+                              ),
+                              _vm.paymentProcessing
+                                ? _c("b-spinner", {
+                                    attrs: { variant: "light", small: "" }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       )
                     ]
                   )
@@ -18289,11 +18276,41 @@ var render = function() {
               )
             ],
             1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-col",
+            { attrs: { cols: "3" } },
+            [
+              _c("b-card", { staticClass: "p-4", attrs: { "no-body": "" } }, [
+                _c("h4", [_vm._v("Summary")]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex justify-content-between" }, [
+                  _c("div", [_c("p", [_vm._v("Total")])]),
+                  _vm._v(" "),
+                  _vm.reservation
+                    ? _c("div", [
+                        _c("p", [
+                          _vm._v(
+                            _vm._s(_vm.formatMoney(_vm.reservation.price, 0)) +
+                              " VND"
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ],
+            1
           )
         ],
         1
       )
-    : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -25,7 +25,7 @@ instance.interceptors.response.use((response) => {
     if (error.response && error.response.data) {
           //add your code
           if (error.response.data.message?.toLowerCase().includes('token')) {
-              router.go({ name: 'login' })
+              router.push({ name: 'login' })
           }
           return Promise.reject(error.response.data);
     }
