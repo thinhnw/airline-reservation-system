@@ -44,11 +44,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -62,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
       dataEdit: "",
       updated: "",
       created: "",
-      showNav: false
+      shown: false
     };
   },
   methods: {
@@ -81,8 +76,11 @@ __webpack_require__.r(__webpack_exports__);
     resultCreate: function resultCreate() {
       return this.created = false;
     },
-    setShowNav: function setShowNav(res) {
-      return this.showNav = res;
+    shownForm: function shownForm() {
+      return this.shown = !this.shown;
+    },
+    setShown: function setShown(res) {
+      return this.shown = res;
     },
     updateDataEdit: function updateDataEdit() {
       return this.dataEdit = "";
@@ -267,36 +265,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create_and_Edit",
-  props: ['dataEdit', 'showNav'],
+  props: ['dataEdit', 'shownForm'],
   data: function data() {
     return {
       dataCreate: {}
@@ -306,7 +278,7 @@ __webpack_require__.r(__webpack_exports__);
     cancel: function cancel() {
       this.$emit('updateDataEdit');
       this.dataCreate = {};
-      this.$emit('setShowNav', false);
+      this.$emit('setShown', false);
     },
     createData: function createData() {
       var _this = this;
@@ -423,6 +395,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -430,7 +403,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     Paginate: (vuejs_paginate__WEBPACK_IMPORTED_MODULE_1___default())
   },
   name: "ListAirport",
-  props: ['created', 'updated', 'showNav'],
+  props: ['created', 'updated', 'shownForm'],
   data: function data() {
     return {
       pageRange: 5,
@@ -495,7 +468,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }), 1);
         }
       });
-      this.$emit('setShowNav', false);
+      this.$emit('setShown', false);
     },
     editData: function editData(id) {
       var _this4 = this;
@@ -509,7 +482,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         console.log(res);
       });
-      this.$emit('setShowNav', true);
+      this.$emit('setShown', true);
     },
     listCreated: function listCreated() {
       var _this5 = this;
@@ -545,10 +518,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -562,31 +535,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-2672a3f5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.appear-enter-active[data-v-2672a3f5] {\n  -webkit-animation: appear-in-data-v-2672a3f5 0.5s linear;\n          animation: appear-in-data-v-2672a3f5 0.5s linear;\n}\n.appear-leave-active[data-v-2672a3f5] {\n  -webkit-animation: appear-out-data-v-2672a3f5 0.5s linear;\n          animation: appear-out-data-v-2672a3f5 0.5s linear;\n}\n@-webkit-keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@-webkit-keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}\n@keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-600368c8] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.box-CUD[data-v-600368c8] {\n  z-index: 9999;\n  position: fixed;\n  width: 600px;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ffffff;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.box-CUD[data-v-600368c8] {\n    position: absolute;\n    width: 500px;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background-color: #ffffff;\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -610,17 +559,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -630,7 +579,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&");
 
             
 
@@ -639,41 +588,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -720,17 +639,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Airports.vue?vue&type=template&id=2672a3f5&scoped=true& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=template&id=2672a3f5&scoped=true&");
 /* harmony import */ var _Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Airports.vue?vue&type=script&lang=js& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=script&lang=js&");
-/* harmony import */ var _Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _Airports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Airports_vue_vue_type_template_id_2672a3f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -761,7 +678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CreateAndEdit_vue_vue_type_template_id_600368c8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateAndEdit.vue?vue&type=template&id=600368c8&scoped=true& */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=template&id=600368c8&scoped=true&");
 /* harmony import */ var _CreateAndEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAndEdit.vue?vue&type=script&lang=js& */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=script&lang=js&");
-/* harmony import */ var _CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&");
+/* harmony import */ var _CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& */ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -878,28 +795,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&":
-/*!**********************************************************************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& ***!
-  \**********************************************************************************************************************/
+/***/ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Airports_vue_vue_type_style_index_0_id_2672a3f5_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/Airports.vue?vue&type=style&index=0&id=2672a3f5&lang=scss&scoped=true&");
-
-
-/***/ }),
-
-/***/ "./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&":
-/*!***************************************************************************************************************************!*\
-  !*** ./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& ***!
-  \***************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAndEdit_vue_vue_type_style_index_0_id_600368c8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/admin/airports/CreateAndEdit.vue?vue&type=style&index=0&id=600368c8&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -987,7 +891,7 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "d-flex justify-content-between mb-3" },
+      { staticClass: "d-flex justify-content-between" },
       [
         _c("h2", [_vm._v("AIRPORTS")]),
         _vm._v(" "),
@@ -996,14 +900,10 @@ var render = function() {
           {
             staticClass: "py-1",
             attrs: { variant: "outline-warning", squared: "" },
-            on: {
-              click: function($event) {
-                _vm.showNav = !_vm.showNav
-              }
-            }
+            on: { click: _vm.shownForm }
           },
           [
-            _vm._v("\n            Add airport\n            "),
+            _vm._v("\n\t\t\t\tAdd airport\n\t\t\t\t"),
             _c("i", { staticClass: "ml-1 fal fa-plus" })
           ]
         )
@@ -1018,45 +918,25 @@ var render = function() {
           attrs: {
             created: _vm.created,
             updated: _vm.updated,
-            showNav: _vm.showNav
+            shownForm: _vm.shown
           },
           on: {
             setDataEdit: _vm.setDataEdit,
             resultUpdate: _vm.resultUpdate,
             resultCreate: _vm.resultCreate,
-            setShowNav: _vm.setShowNav
+            setShown: _vm.setShown
           }
         }),
         _vm._v(" "),
-        _vm.showNav
-          ? _c("div", {
-              staticClass: "layoutForm",
-              on: {
-                click: function($event) {
-                  _vm.showNav = !_vm.showNav
-                }
-              }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "transition",
-          { attrs: { name: "appear" } },
-          [
-            _vm.showNav
-              ? _c("CreateAndEdit", {
-                  attrs: { showNav: _vm.showNav, dataEdit: _vm.dataEdit },
-                  on: {
-                    updated: _vm.listUpdated,
-                    setShowNav: _vm.setShowNav,
-                    updateDataEdit: _vm.updateDataEdit,
-                    created: _vm.listCreated
-                  }
-                })
-              : _vm._e()
-          ],
-          1
-        )
+        _c("CreateAndEdit", {
+          attrs: { dataEdit: _vm.dataEdit, shownForm: _vm.shown },
+          on: {
+            updated: _vm.listUpdated,
+            setShown: _vm.setShown,
+            updateDataEdit: _vm.updateDataEdit,
+            created: _vm.listCreated
+          }
+        })
       ],
       1
     )
@@ -1085,153 +965,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "box-CUD p-3" }, [
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            Object.keys(_vm.dataEdit).length !== 0
-              ? _vm.updateData(_vm.dataEdit.id)
-              : _vm.createData()
-          }
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.shownForm,
+          expression: "shownForm"
         }
-      },
-      [
-        _c("div", { staticClass: "d-flex justify-content-between mb-3" }, [
+      ],
+      staticClass: "col-md-4 box-CUD py-3"
+    },
+    [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              Object.keys(_vm.dataEdit).length !== 0
+                ? _vm.updateData(_vm.dataEdit.id)
+                : _vm.createData()
+            }
+          }
+        },
+        [
           _c(
-            "div",
+            "button",
             {
-              staticClass: "mb-2 btn-close",
-              staticStyle: { cursor: "pointer" },
-              on: { click: _vm.cancel }
+              staticClass: "btn btn-danger mb-3 float-right",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.cancel()
+                }
+              }
             },
-            [_c("i", { staticClass: "far fa-times" })]
+            [_vm._v("X")]
           ),
           _vm._v(" "),
-          _vm._m(0)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: " mb-3" }, [
-          _c("span", [_vm._v("Name")]),
-          _vm._v(" "),
-          Object.keys(_vm.dataEdit).length !== 0
-            ? _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataEdit.name,
-                    expression: "dataEdit.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "name",
-                  placeholder: "Enter name airport",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataEdit.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataEdit, "name", $event.target.value)
-                  }
-                }
-              })
-            : _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataCreate.name,
-                    expression: "dataCreate.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "name",
-                  placeholder: "Enter name airport",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataCreate.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataCreate, "name", $event.target.value)
-                  }
-                }
-              })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: " mb-3" }, [
-          _c("label", [_vm._v("City Name")]),
-          _vm._v(" "),
-          Object.keys(_vm.dataEdit).length !== 0
-            ? _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataEdit.cityname,
-                    expression: "dataEdit.cityname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "cityname",
-                  placeholder: "Enter cityname",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataEdit.cityname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataEdit, "cityname", $event.target.value)
-                  }
-                }
-              })
-            : _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataCreate.cityname,
-                    expression: "dataCreate.cityname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "cityname",
-                  placeholder: "Enter cityname",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataCreate.cityname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataCreate, "cityname", $event.target.value)
-                  }
-                }
-              })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex justify-content-between" }, [
-          _c("div", { staticClass: "mb-3 w-50 mr-1" }, [
-            _c("label", [_vm._v("Code")]),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon1" }
+              },
+              [_vm._v("Code")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1244,13 +1027,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    id: "code",
-                    placeholder: "Enter code airport",
-                    name: "code",
-                    type: "text",
-                    required: ""
-                  },
+                  attrs: { name: "code", type: "text", required: "" },
                   domProps: { value: _vm.dataEdit.code },
                   on: {
                     input: function($event) {
@@ -1273,7 +1050,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "code",
-                    placeholder: "Enter code airport",
+                    placeholder: "Code",
                     type: "text",
                     required: ""
                   },
@@ -1289,8 +1066,75 @@ var render = function() {
                 })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: " mb-3 w-50 ml-1" }, [
-            _c("label", [_vm._v("City Code")]),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon2" }
+              },
+              [_vm._v("name")]
+            ),
+            _vm._v(" "),
+            Object.keys(_vm.dataEdit).length !== 0
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataEdit.name,
+                      expression: "dataEdit.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "name", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataEdit, "name", $event.target.value)
+                    }
+                  }
+                })
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataCreate.name,
+                      expression: "dataCreate.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "name",
+                    placeholder: "Name",
+                    type: "text",
+                    required: ""
+                  },
+                  domProps: { value: _vm.dataCreate.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataCreate, "name", $event.target.value)
+                    }
+                  }
+                })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon3" }
+              },
+              [_vm._v("City Code")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1303,12 +1147,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    name: "citycode",
-                    placeholder: "Enter city Code",
-                    type: "text",
-                    required: ""
-                  },
+                  attrs: { name: "citycode", type: "text", required: "" },
                   domProps: { value: _vm.dataEdit.citycode },
                   on: {
                     input: function($event) {
@@ -1331,7 +1170,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "citycode",
-                    placeholder: "Enter city Code",
+                    placeholder: "City Code",
                     type: "text",
                     required: ""
                   },
@@ -1345,12 +1184,79 @@ var render = function() {
                     }
                   }
                 })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex justify-content-between" }, [
-          _c("div", { staticClass: "mb-3 w-50 mr-1" }, [
-            _c("label", [_vm._v("Country Code")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon10" }
+              },
+              [_vm._v("City Name")]
+            ),
+            _vm._v(" "),
+            _c("label", { staticClass: "form-label" }),
+            _vm._v(" "),
+            Object.keys(_vm.dataEdit).length !== 0
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataEdit.cityname,
+                      expression: "dataEdit.cityname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "cityname", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.cityname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataEdit, "cityname", $event.target.value)
+                    }
+                  }
+                })
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataCreate.cityname,
+                      expression: "dataCreate.cityname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "cityname",
+                    placeholder: "cityname",
+                    type: "text",
+                    required: ""
+                  },
+                  domProps: { value: _vm.dataCreate.cityname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataCreate, "cityname", $event.target.value)
+                    }
+                  }
+                })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon4" }
+              },
+              [_vm._v("Country Code")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1363,12 +1269,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    name: "countrycode",
-                    placeholder: "Enter country code",
-                    type: "text",
-                    required: ""
-                  },
+                  attrs: { name: "countrycode", type: "text", required: "" },
                   domProps: { value: _vm.dataEdit.countrycode },
                   on: {
                     input: function($event) {
@@ -1391,7 +1292,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "countrycode",
-                    placeholder: "Enter country code",
+                    placeholder: "countrycode",
                     type: "text",
                     required: ""
                   },
@@ -1411,8 +1312,79 @@ var render = function() {
                 })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "mb-3 w-50 ml-1" }, [
-            _c("label", [_vm._v("Time Zone")]),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon5" }
+              },
+              [_vm._v("Country Name")]
+            ),
+            _vm._v(" "),
+            Object.keys(_vm.dataEdit).length !== 0
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataEdit.countryname,
+                      expression: "dataEdit.countryname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "countryname", type: "text", required: "" },
+                  domProps: { value: _vm.dataEdit.countryname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataEdit, "countryname", $event.target.value)
+                    }
+                  }
+                })
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataCreate.countryname,
+                      expression: "dataCreate.countryname"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "countryname",
+                    placeholder: "countryname",
+                    type: "text",
+                    required: ""
+                  },
+                  domProps: { value: _vm.dataCreate.countryname },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.dataCreate,
+                        "countryname",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon6" }
+              },
+              [_vm._v("Time Zone")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1425,12 +1397,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: {
-                    name: "timezone",
-                    placeholder: "Enter timezone",
-                    type: "number",
-                    required: ""
-                  },
+                  attrs: { name: "timezone", type: "number", required: "" },
                   domProps: { value: _vm.dataEdit.timezone },
                   on: {
                     input: function($event) {
@@ -1453,7 +1420,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "timezone",
-                    placeholder: "Enter timezone",
+                    placeholder: "timezone",
                     type: "number",
                     required: ""
                   },
@@ -1467,70 +1434,17 @@ var render = function() {
                     }
                   }
                 })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: " mb-3" }, [
-          _c("label", [_vm._v("Country Name")]),
+          ]),
           _vm._v(" "),
-          Object.keys(_vm.dataEdit).length !== 0
-            ? _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataEdit.countryname,
-                    expression: "dataEdit.countryname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "countryname",
-                  placeholder: "Enter countryname",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataEdit.countryname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataEdit, "countryname", $event.target.value)
-                  }
-                }
-              })
-            : _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataCreate.countryname,
-                    expression: "dataCreate.countryname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "countryname",
-                  placeholder: "Enter countryname",
-                  type: "text",
-                  required: ""
-                },
-                domProps: { value: _vm.dataCreate.countryname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.dataCreate, "countryname", $event.target.value)
-                  }
-                }
-              })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex justify-content-between" }, [
-          _c("div", { staticClass: " mb-3 w-50 mr-1" }, [
-            _c("label", [_vm._v("Latitude")]),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon7" }
+              },
+              [_vm._v("Latitude")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1545,7 +1459,6 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "lat",
-                    placeholder: "Enter latitude",
                     type: "number",
                     step: "any",
                     required: ""
@@ -1572,7 +1485,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "lat",
-                    placeholder: "Enter latitude",
+                    placeholder: "lat",
                     type: "number",
                     step: "any",
                     required: ""
@@ -1589,8 +1502,15 @@ var render = function() {
                 })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: " mb-3 w-50 ml-1" }, [
-            _c("label", [_vm._v("Longitude")]),
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon8" }
+              },
+              [_vm._v("Longitude")]
+            ),
             _vm._v(" "),
             Object.keys(_vm.dataEdit).length !== 0
               ? _c("input", {
@@ -1605,7 +1525,6 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "lon",
-                    placeholder: "Enter longitude",
                     type: "number",
                     step: "any",
                     required: ""
@@ -1632,7 +1551,7 @@ var render = function() {
                   staticClass: "form-control",
                   attrs: {
                     name: "lon",
-                    placeholder: "Enter longitude",
+                    placeholder: "lon",
                     type: "number",
                     step: "any",
                     required: ""
@@ -1647,100 +1566,97 @@ var render = function() {
                     }
                   }
                 })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: " mb-3" }, [
-          _c("label", [_vm._v("Number Airport")]),
+          ]),
           _vm._v(" "),
-          Object.keys(_vm.dataEdit).length !== 0
-            ? _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataEdit.numairports,
-                    expression: "dataEdit.numairports"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "numairports",
-                  placeholder: "Enter number airport",
-                  type: "number",
-                  min: "1",
-                  required: ""
-                },
-                domProps: { value: _vm.dataEdit.numairports },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "span",
+              {
+                staticClass: "input-group-text",
+                attrs: { id: "basic-addon9" }
+              },
+              [_vm._v("Number Airport")]
+            ),
+            _vm._v(" "),
+            Object.keys(_vm.dataEdit).length !== 0
+              ? _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataEdit.numairports,
+                      expression: "dataEdit.numairports"
                     }
-                    _vm.$set(_vm.dataEdit, "numairports", $event.target.value)
-                  }
-                }
-              })
-            : _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.dataCreate.numairports,
-                    expression: "dataCreate.numairports"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "numairports",
-                  placeholder: "Enter number airport",
-                  type: "number",
-                  min: "1",
-                  required: ""
-                },
-                domProps: { value: _vm.dataCreate.numairports },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "numairports",
+                    type: "number",
+                    min: "1",
+                    required: ""
+                  },
+                  domProps: { value: _vm.dataEdit.numairports },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.dataEdit, "numairports", $event.target.value)
                     }
-                    _vm.$set(_vm.dataCreate, "numairports", $event.target.value)
                   }
-                }
-              })
-        ]),
-        _vm._v(" "),
-        _c("div", {}, [
-          Object.keys(_vm.dataEdit).length !== 0
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn w-100 btn-warning rounded-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("\n                Update\n            ")]
-              )
-            : _c(
-                "button",
-                {
-                  staticClass: "btn w-100 btn-warning rounded-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v(" Add")]
-              )
-        ])
-      ]
-    )
-  ])
+                })
+              : _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dataCreate.numairports,
+                      expression: "dataCreate.numairports"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "numairports",
+                    placeholder: "numairports",
+                    type: "number",
+                    min: "1",
+                    required: ""
+                  },
+                  domProps: { value: _vm.dataCreate.numairports },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.dataCreate,
+                        "numairports",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            Object.keys(_vm.dataEdit).length !== 0
+              ? _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v(" Update")]
+                )
+              : _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v(" Add")]
+                )
+          ])
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h3", [_vm._v("Add Airport")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -1,6 +1,6 @@
 <template>
-	<footer id="footer" :style="{ height: isMinimal ? '73px' : '626px' }">
-		<section class="subscription" v-if="!isMinimal" >
+	<footer id="footer">
+		<section class="subscription">
 			<b-container>
 				<b-row align-h="center">
 					<b-col cols="10" class="d-flex p-5 align-items-center justify-content-between">
@@ -23,7 +23,7 @@
 				</b-row>
 			</b-container>
 		</section>
-		<b-container v-if="!isMinimal">
+		<b-container>
 			<b-row class="py-5">
 				<b-col class="pr-5">
 					CONTACT US
@@ -84,17 +84,13 @@
 
 <script>
 export default {
-	props: {
-		isMinimal: {
-			type: Boolean,
-			default: false
-		}
-	},
+
 }
 </script>
 
 <style lang="scss" scoped>
 #footer {
+	height: 626px;
 	position: absolute;
 	bottom: 0;
 	width: 100%;

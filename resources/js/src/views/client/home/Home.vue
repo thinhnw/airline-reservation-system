@@ -144,4 +144,8 @@ export default {
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
+
+#home-component {
+	padding-bottom: 626px;
+}
 </style>

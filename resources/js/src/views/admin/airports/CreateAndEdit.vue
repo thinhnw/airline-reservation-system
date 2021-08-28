@@ -208,7 +208,9 @@ export default {
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
-            });
+            }).then(()=>{
+                this.cancel();
+            })
             this.$swal({
                 toast: true,
                 position: 'top-end',
@@ -217,15 +219,15 @@ export default {
                 icon: 'success',
                 title: 'Created',
             });
-            this.dataCreate = {}
-            this.$emit('setShown', false)
         },
         updateData(id) {
             let uri_u = `/api/airport/update/${id}`;
             axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));
-            });
+            }).then(()=>{
+                this.cancel();
+            })
             this.$swal({
                 toast: true,
                 position: 'top-end',
@@ -234,8 +236,7 @@ export default {
                 icon: 'success',
                 title: 'Updated',
             });
-            this.$emit('updateDataEdit')
-            this.$emit('setShown', false)
+
         },
     },
 }

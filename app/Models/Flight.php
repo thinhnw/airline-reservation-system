@@ -20,7 +20,7 @@ class Flight extends Model
         'arrival_time'
     ];
 
-    protected $appends = [ 'fare_economy', 'fare_business', 'skymiles' ];
+    protected $appends = [ 'fare_economy', 'fare_business' ];
     
     public function airportFrom() {
         return $this->hasOne(Airport::class, 'id', 'departure_id');
@@ -31,14 +31,10 @@ class Flight extends Model
     }
 
     public function getFareEconomyAttribute() {
-        return ceil($this->airportFrom->getDistanceTo($this->airportTo) / 20) * 23000;
+        return ($this->airportFrom->getDistanceTo($this->airportTo) / 20) * 23000;
     }
     public function getFareBusinessAttribute() {
-        return ceil($this->airportFrom->getDistanceTo($this->airportTo) / 10) * 23000;
-    }
-
-    public function getSkymilesAttribute() {
-        return ceil($this->airportFrom->getDistanceTo($this->airportTo));
+        return ($this->airportFrom->getDistanceTo($this->airportTo) / 10) * 23000;
     }
 
     public function checkAvailableSeat($seat) {

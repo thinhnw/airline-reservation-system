@@ -100,12 +100,14 @@ export default {
                         this.rows=res.data.airports.last_page;
                     })
                 ]
-                )
+                ).then(()=>{
+                    this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
+                    this.dataEdit.splice(this.airports.findIndex(airport => {
+                        airport.id === this.dataEdit.id;
+                    }), 1)
+                })
 
-                this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
-                this.dataEdit.splice(this.airports.findIndex(airport => {
-                    airport.id === this.dataEdit.id;
-                }), 1)
+
             }
 
         })
@@ -123,14 +125,13 @@ export default {
             this.$emit('setShowNav',true)
         },
         listCreated(){
+            console.log(this.created)
             if (this.created){
                 let uri = '/api/api-airport-paginate';
                 axios.get(uri).then(res => {
                     console.log(res)
-                    this.rows=0;
-                    this.airports=[];
                     this.rows=res.data.airports.last_page;
-                    this.airports.push(...res.data.airports.data)
+                    this.airports.push(this.created)
                     return this.$emit("resultCreate");
 
                 });

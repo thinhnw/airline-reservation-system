@@ -20,6 +20,9 @@ instance.interceptors.response.use((response) => {
           //add your code
           alert("You are not authorized")
     }
+    if (response.status === 500 && response.message === 'Token has expired') {
+        router.push('/login')
+    }
     return response;
 }, (error) => {
     if (error.response && error.response.data) {

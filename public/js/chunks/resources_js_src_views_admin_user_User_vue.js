@@ -236,6 +236,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -248,7 +250,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       customers: [],
       pageRange: 5,
-      rows: 0
+      rows: 0,
+      fields: ['first_name', 'last_name', 'gender', 'email', 'show_details']
     };
   },
   created: function created() {
@@ -458,7 +461,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\r\n    position: fixed;\r\n    width: 500px;\r\n    padding: 20px;\r\n    margin-top: 38px;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ffffff;\r\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.box-createAndEdit[data-v-06aa146a] {\n    position: fixed;\n    width: 500px;\n    padding: 20px;\n    margin-top: 38px;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background-color: #ffffff;\n    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -482,7 +485,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1183,56 +1186,104 @@ var render = function() {
     "div",
     { staticClass: "col-md-12 p-0" },
     [
-      _c(
-        "table",
-        { staticClass: "table table-bordered" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(this.customers, function(rs, index) {
-            return _c("tbody", { key: index }, [
-              _c("tr", [
-                _c("td", [_vm._v(_vm._s(rs.first_name))]),
+      _c("b-table", {
+        attrs: { items: _vm.customers, fields: _vm.fields, responsive: "sm" },
+        scopedSlots: _vm._u([
+          {
+            key: "cell(show_details)",
+            fn: function(row) {
+              return [
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn btn-outline-warning",
+                    on: { click: row.toggleDetails }
+                  },
+                  [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(row.detailsShowing ? "Hide" : "Show") +
+                        " Details\n            "
+                    )
+                  ]
+                ),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(rs.last_name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(rs.gender))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(rs.email))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.editData(rs.id)
-                        }
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn btn-outline-warning",
+                    on: {
+                      click: function($event) {
+                        return _vm.editData(row.item.id)
                       }
-                    },
-                    [_vm._v("Sửa")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteData(rs.id)
-                        }
+                    }
+                  },
+                  [_vm._v("Sửa")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn btn-outline-warning",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteData(row.item.id)
                       }
-                    },
-                    [_vm._v("Xóa")]
-                  )
-                ])
-              ])
-            ])
-          })
-        ],
-        2
-      ),
+                    }
+                  },
+                  [_vm._v("Xóa")]
+                )
+              ]
+            }
+          },
+          {
+            key: "row-details",
+            fn: function(row) {
+              return [
+                _c(
+                  "b-card",
+                  [
+                    _c(
+                      "b-row",
+                      { staticClass: "mb-2" },
+                      [
+                        _c(
+                          "b-col",
+                          { staticClass: "text-sm-right", attrs: { sm: "3" } },
+                          [_c("b", [_vm._v("Address:")])]
+                        ),
+                        _vm._v(" "),
+                        row.item.address != null
+                          ? _c("b-col", [_vm._v(_vm._s(row.item.address))])
+                          : _c("b-col", [_vm._v("Undefined")])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-row",
+                      { staticClass: "mb-2" },
+                      [
+                        _c(
+                          "b-col",
+                          { staticClass: "text-sm-right", attrs: { sm: "3" } },
+                          [_c("b", [_vm._v("Tel:")])]
+                        ),
+                        _vm._v(" "),
+                        row.item.tel != null
+                          ? _c("b-col", [_vm._v(_vm._s(row.item.tel))])
+                          : _c("b-col", [_vm._v("Undefined")])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]
+            }
+          }
+        ])
+      }),
       _vm._v(" "),
       _c("paginate", {
         attrs: {
@@ -1251,32 +1302,13 @@ var render = function() {
           _vm._s(_vm.created ? _vm.listCreated() : null) +
           "\n    " +
           _vm._s(_vm.updated ? _vm.listUpdated() : null) +
-          "\n\n"
+          "\n"
       )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("First Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Last Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gender")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

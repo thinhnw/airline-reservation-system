@@ -87,7 +87,7 @@
 							<b-td>
 								<small>
 									Earn
-									{{ skymiles }} Skymiles
+									{{ 2732 }} Skymiles
 								</small>
 							</b-td>
 						</b-tr>
@@ -181,7 +181,7 @@
 							<b-td>
 								<small>
 									Earn
-									{{ skymiles }} Skymiles
+									{{ 2732 }} Skymiles
 								</small>
 							</b-td>
 						</b-tr>
@@ -250,27 +250,27 @@
 					<b-tr>
 						<b-td>Fare price per adult</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(pricePerAdult, 0) }} VND
+							{{ formatMoney(pricePerAdult) }} VND
 							x {{ details.passengers.adults }}
 						</b-td>
 					</b-tr>
 					<b-tr v-if="details.passengers.children > 0">
 						<b-td>Fare price per chilren (2-12 years old)</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(pricePerChild, 0) }} VND
+							{{ formatMoney(pricePerAdult * 2/3) }} VND
 							x {{ details.passengers.children }}
 						</b-td>
 					</b-tr>
 					<b-tr>
 						<b-td>Seat Selection for inbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats, 0) }} VND
+							{{ formatMoney(priceForSeats) }} VND
 						</b-td>
 					</b-tr>
 					<b-tr>
 						<b-td>Seat Selection for outbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats, 0) }} VND
+							{{ formatMoney(priceForSeats) }} VND
 						</b-td>
 					</b-tr>
 					<b-tr>
@@ -278,7 +278,7 @@
 							Grand Total
 						</b-td>
 						<b-td class="text-right font-size-larger">
-							{{ formatMoney(grandTotal, 0) }} VND
+							{{ formatMoney(grandTotal) }} VND
 						</b-td>
 					</b-tr>
 				</b-table-simple>
@@ -320,18 +320,11 @@ export default {
 		flightReturn() {
 			return this.details.selectedFlightReturn
 		},
-
-		skymiles() {
-			return this.flightDeparture.skymiles * (parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children))
-		},
 		
 		pricePerAdult() {
 			console.log('details', this.details)
-			return Math.ceil(this.details.class === 'Business' ? 
-				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0)))
-		},
-		priceForChild() {
-			return Math.ceil(this.pricePerAdult * 2 / 3)
+			return this.details.class === 'Business' ? 
+				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
 		},
 		priceForSeats() {
 			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)

@@ -12,14 +12,8 @@
 						</b-card-body>
 						<div class="w-100 text-center">
 							<div>
-								<b-button class="py-2 px-5 font-size-large" variant="warning" @click="makeReservation" :disabled="isMakingReservation">
-									<span v-if="!isMakingReservation">Purchase</span>
-									<span v-else>
-										<b-spinner small variant="light" class="mr-2"></b-spinner>
-										<span class="text-light">
-											Making your reservation
-										</span>
-									</span>
+								<b-button class="py-2 px-5 font-size-large" variant="warning" @click="makeReservation">
+									Purchase 
 								</b-button>
 							</div>
 							<div class="py-3 pointer" @click="$emit('back')">&lt;Back</div>
@@ -61,7 +55,6 @@ export default {
 		return {
 			moment,
 			// details
-			isMakingReservation: false
 		}
 	},
 	methods: {
@@ -80,29 +73,16 @@ export default {
 					e_ticket: output,
 					price: this.grandTotal,
 					passenger_details: this.details.passengerDetails,
-					contact_details: this.details.contact,
-					skymiles: this.skymiles
+					contact_details: this.details.contact
 				}
 				postData.flight_departure_id = this.details.selectedFlightDeparture.id
 				if (this.details.selectedFlightReturn) postData.flight_return_id = this.details.selectedFlightReturn.id
-
-				this.isMakingReservation = true
 				res = await axios.post('/api/reservations', postData)
 				console.log(res.data)
-				this.$router.push(`/checkout?reservation_id=${res.data.reservation.id}`)
+				this.$router.push(`/checkout?reservation_id=i${res.data.reservation.id}`)
       } catch (err) {
         console.error(err)
-				this.$bvToast.toast(err.message, {
-					title: '',
-					autoHideDelay: 1000,
-					appendToast: false,
-					solid: true,
-					toaster: 'b-toaster-top-right',
-					variant: 'danger'
-				})
-      } finally {
-				this.isMakingReservation = false
-			}
+      }
     },
 	},
 	computed: {
@@ -115,9 +95,6 @@ export default {
 		},
 		flightReturn() {
 			return this.details.selectedFlightReturn
-		},
-		skymiles() {
-			return this.flightDeparture.skymiles * (parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)) * (this.flightReturn ? 2 : 1)
 		},
 		pricePerAdult() {
 			return this.details.class === 'Business' ? 

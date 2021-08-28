@@ -10071,10 +10071,6 @@ html, body {
   font-size: 14px !important;
 }
 
-.toast {
-  z-index: 9999;
-}
-
 .btn-icon {
   transition: 0.1s ease-in;
 }
