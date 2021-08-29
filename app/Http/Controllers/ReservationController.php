@@ -76,7 +76,7 @@ class ReservationController extends Controller
             $reservation->seat_class = $request->seat_class;
             $reservation->skymiles = $request->skymiles;
             $reservation->save();
-
+            $reservation->createTickets();
             // Mail::to($request->contact_details["email"])->send(new FlightReservation($reservation));
             return response()->json([
                 'reservation' => $reservation
@@ -211,7 +211,6 @@ class ReservationController extends Controller
                 'payment' => json_encode($payment),
                 'status' => 'CONFIRMED'
             ]);
-            $reservation->createTickets();
             $reservation->exportReceipt();
 
             return $payment;
