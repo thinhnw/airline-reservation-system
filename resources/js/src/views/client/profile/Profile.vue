@@ -8,7 +8,7 @@
 							<b-tab title="My Profile" title-link-class="">
 								<MyProfile />
 							</b-tab>
-							<b-tab title="My Flights" title-link-class="">
+							<b-tab title="My Reservations" title-link-class="">
 								<MyFlights />
 							</b-tab>
 						</b-tabs>

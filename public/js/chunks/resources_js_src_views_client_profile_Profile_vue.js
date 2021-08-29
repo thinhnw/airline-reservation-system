@@ -18100,7 +18100,7 @@ var render = function() {
                             "b-tab",
                             {
                               attrs: {
-                                title: "My Flights",
+                                title: "My Reservations",
                                 "title-link-class": ""
                               }
                             },
