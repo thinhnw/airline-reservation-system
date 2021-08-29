@@ -16,9 +16,9 @@
                 <td>{{rs.last_name}}</td>
                 <td>{{rs.gender}}</td>
                 <td>{{rs.email}}</td>
-                <td>
-                    <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
-                    <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>
+                <td class="text-center">
+                    <i class="far fa-edit btn-icon text-dark mr-3" @click="editData(rs.id)"></i>
+                    <i class="far fa-times-octagon btn-icon text-danger" @click="deleteData(rs.id)"></i>
                 </td>
             </tr>
             </tbody>
