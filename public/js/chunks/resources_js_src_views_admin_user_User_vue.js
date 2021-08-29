@@ -250,7 +250,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1203,26 +1202,16 @@ var render = function() {
     [
       _c("b-table", {
         attrs: { items: _vm.customers, fields: _vm.fields, responsive: "sm" },
+        on: {
+          "row-clicked": function(item) {
+            return _vm.$set(item, "_showDetails", !item._showDetails)
+          }
+        },
         scopedSlots: _vm._u([
           {
             key: "cell(show_details)",
             fn: function(row) {
               return [
-                _c(
-                  "b-button",
-                  {
-                    staticClass: "btn btn-outline-warning",
-                    on: { click: row.toggleDetails }
-                  },
-                  [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(row.detailsShowing ? "Hide" : "Show") +
-                        " Details\n            "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
                 _c(
                   "b-button",
                   {
