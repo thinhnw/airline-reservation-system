@@ -147,15 +147,8 @@ export default {
 					},
 				}
 				await store.dispatch('auth/registerUserJWT', payload)
-			} catch (err) {
-				console.error(err)	
-				this.$bvToast.toast('The email has already been taken', {
-					autoHideDelay: 2000,
-					appendToast: false,
-					solid: true,
-					toaster: 'b-toaster-top-right',
-					variant: 'danger'
-				})
+			} catch (error) {
+				console.error(error)	
 			}
     }
 	},

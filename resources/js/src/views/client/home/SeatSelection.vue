@@ -2,6 +2,11 @@
 	<div class="py-5">
 		<b-container class="px-5">
 			<b-row>
+				<b-col class="text-center">
+					<h2 class="mb-4">Seat Selection</h2>
+				</b-col>
+			</b-row>
+			<b-row>
 				<b-col>
 					<b-tabs content-class="mt-3" v-model="tabIndex">
 						<b-tab :title="flightDeparture.origin.cityname + ' -> ' + flightDeparture.destination.cityname">

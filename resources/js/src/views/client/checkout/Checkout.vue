@@ -1,5 +1,5 @@
 <template>
-  <b-container class="checkout">
+  <b-container class="checkout" v-if="reservation">
     <b-row>
       <b-col cols="9">
         <b-card no-body class="p-4">
@@ -13,7 +13,10 @@
                       <i class="fas fa-user"></i>
                       Full name
                     </label>
-                    <b-form-input placeholder="Enter your full name"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_billing_fullname"
+                      placeholder="Enter your full name"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -22,7 +25,10 @@
                       <i class="fas fa-envelope mr-3"></i>
                       Email
                     </label>
-                    <b-form-input placeholder="Enter your email"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_billing_email"
+                      placeholder="Enter your email"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -32,7 +38,10 @@
                     <label for="">
                       Address
                     </label>
-                    <b-form-input placeholder="Enter your address"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_inv_addr1"
+                      placeholder="Enter your address"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -40,7 +49,10 @@
                     <label for="">
                       City
                     </label>
-                    <b-form-input placeholder="Enter your city"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_bill_city"
+                      placeholder="Enter your city"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -50,7 +62,10 @@
                     <label for="">
                       Country
                     </label>
-                    <b-form-input placeholder="Enter your country"></b-form-input>
+                    <b-form-input 
+                      v-model="form.txt_bill_country"
+                      placeholder="Enter your country"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col>
@@ -58,7 +73,10 @@
                     <label for="">
                       Postal code
                     </label>
-                    <b-form-input placeholder="Enter your postal code"></b-form-input>
+                    <b-form-input 
+                      v-model="form.zip_code"
+                      placeholder="Enter your postal code"
+                    ></b-form-input>
                   </b-form-group>
                 </b-col>
               </b-form-row>
@@ -66,20 +84,16 @@
             <section>
               <h4 class="mb-4">Payment</h4>
               <b-form-group>
-                <label for="">Name on card</label>
+                <label for="">Card holder (name on card)</label>
                 <b-form-input placeholder="Eg: NGUYEN VAN A"></b-form-input>
               </b-form-group>
               <b-form-group>
-                <label for="">Credit Informations</label>
+                <label for="">Credit informations</label>
                 <div id="card-element"></div>
-                <small class="text-danger" v-if="cardError">{{ cardError }}</small>
               </b-form-group>
             </section>
             <section class="py-3">
-              <b-button type="submit" variant="primary" class="w-100" :disabled="paymentProcessing">
-                Checkout
-                <b-spinner variant="light" small v-if="paymentProcessing"></b-spinner>
-              </b-button>
+              <b-button type="submit" variant="primary" class="w-100" :disabled="payamentProcessing">Checkout</b-button>
             </section>
           </b-form>
           
@@ -88,13 +102,13 @@
 
       <b-col cols="3">
         <b-card no-body class="p-4">
-          <h4>Booking Summary</h4>
+          <h4>Summary</h4>
           <hr>
-          <div class="d-flex justity-content-between">
+          <div class="d-flex justify-content-between">
             <div>
               <p>Total</p>
             </div>
-            <div v-if="reservation">
+            <div>
               <p>{{ formatMoney(reservation.price, 0) }} VND</p>
             </div>
           </div>
@@ -108,37 +122,28 @@
 <script>
 import { loadStripe } from '@stripe/stripe-js'
 import axios from '@/axios'
+import { formatMoney } from '@/helper'
 export default {
   data() {
     return {
       stripe: {},
       cardElement: {},
-      paymentProcessing: false,
-      // form: {
-      //   reservation_id: '',
-      //   txt_billing_fullname: '',
-      //   txt_billing_email: '',
-      //   txt_inv_addr1: '',
-      //   txt_bill_city: '',
-      //   txt_bill_country: '',
-      //   txt_expire: '',
-      //   zip_code: ''
-      // },
+      payamentProcessing: false,
       form: {
-        reservation_id: '53',
-        txt_billing_fullname: 'NGUYEN VINH THINH',
-        txt_billing_email: 'nvt0412@gmail.com',
-        txt_inv_addr1: '502 LD',
-        txt_bill_city: 'Hanoi',
-        txt_bill_country: 'VN',
+        reservation_id: '',
+        txt_billing_fullname: '',
+        txt_billing_email: '',
+        txt_inv_addr1: '',
+        txt_bill_city: '',
+        txt_bill_country: '',
         txt_expire: '',
         zip_code: ''
       },
-      reservation: null,
-      cardError: '',
+      reservation: null
     }
   },
   methods: {
+    formatMoney,
     async fetchProduct() {
       let id = this.$route.query.reservation_id
       if (!id) this.$router.push('home')
@@ -148,32 +153,29 @@ export default {
         this.form.reservation_id = id
       } catch (error) {
         console.log(error)
-        this.$router.push({ name: 'home' })
-        return
+        if (error.message === 'No permission') this.$router.push({ name: 'profile' })
       }
-      this.reservation = data.reservation
-      this.form.reservation_id = id
     },
     async processPayment() {
       this.paymentProcessing = true
+
       const { paymentMethod, error } = await this.stripe.createPaymentMethod(
         'card', this.cardElement, {
             billing_details: {
-              name: this.form.txt_billing_fullname ,
-              email: this.form.txt_billing_email,
+              name: this.form.txt_billing_fullname || 'NGUYEN VAN A',
+              email: this.form.txt_billing_email || 'nvt0412@gmail.com',
               address: {
-                line1: this.form.txt_inv_addr1,
-                city: this.form.txt_bill_city,
-                country: this.form.txt_bill_country,
+                line1: this.form.txt_inv_addr1 || 'Street 1',
+                city: this.form.txt_bill_city || 'Hanoi',
+                state: this.form.txt_bill_state || 'Hoang Mai',
                 postal_code: this.form.zip_code,
               }
             }
         }
       )
       if (error) {
-        this.paymentProcessing = false
-        // alert(error.message)
-        this.cardError = error.message
+        this.payamentProcessing = false
+        alert(error)
         return
       }
 
@@ -183,9 +185,8 @@ export default {
         let res = await axios.post('/api/reservations/checkout', this.form)
       } catch (error) {
         console.error(error) 
-        this.cardError = error.message
       } finally {
-        this.payamentProcessing = false
+        this.paymentProcessing = false
       }
 
     },
@@ -202,10 +203,10 @@ export default {
       } catch (error) {
         console.error(error) 
       }
-    },
+    }
   },
   async mounted() {
-    this.fetchProduct()
+    await this.fetchProduct()
     console.log(process.env.MIX_STRIPE_KEY)
     this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY)
     const elements = this.stripe.elements()
@@ -215,16 +216,13 @@ export default {
       }
     })
     this.cardElement.mount('#card-element')
-    this.cardElement.on('change', () => {
-      this.cardError = ''
-    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .checkout {
-  padding-top: 100px;
+  padding-top: 120px;
   &::v-deep .form-control {
     margin-bottom: 0 !important;
   }

@@ -21,12 +21,7 @@ const router = new VueRouter({
 				{
 					path: 'profile',
 					name: 'profile',
-					component: () => import('./views/client/profile/Profile.vue'),
-					beforeEnter: (to, from,  next) => {
-						console.log(store.getters['auth/isLogged'])
-						if (store.getters['auth/isLogged']) next()
-						else next({ name: 'login' })
-					}
+					component: () => import('./views/client/profile/Profile.vue')
 				},
 				{
 					path: 'checkout',
@@ -44,20 +39,12 @@ const router = new VueRouter({
 		{
 			path: '/login',
 			name: 'login',
-			component: () => import('./views/auth/Login.vue'),
-			beforeEnter: (to, from,  next) => {
-				if (!store.getters['auth/isLogged']) next()
-				else next({ name: 'home' })
-			}
+			component: () => import('./views/auth/Login.vue')
 		},
 		{
 			path: '/register',
 			name: 'register',
-			component: () => import('./views/auth/Register.vue'),
-			beforeEnter: (to, from,  next) => {
-				if (!store.getters['auth/isLogged']) next()
-				else next({ name: 'home' })
-			}
+			component: () => import('./views/auth/Register.vue')
 		},
 		{
 			path: '/admin',

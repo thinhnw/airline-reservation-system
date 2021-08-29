@@ -1,32 +1,29 @@
 <template>
     <div class="col-md-12 p-0">
-        <b-table :items="customers" :fields="fields"  responsive="sm">
-            <template #cell(show_details)="row">
-                <b-button @click="row.toggleDetails" class="btn btn-outline-warning" >
-                    {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
-                </b-button>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody v-for="(rs,index) in this.customers" :key="index">
+            <tr>
+                <td>{{rs.first_name}}</td>
+                <td>{{rs.last_name}}</td>
+                <td>{{rs.gender}}</td>
+                <td>{{rs.email}}</td>
+                <td>
+                    <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
+                    <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-                <b-button class="btn btn-outline-warning" @click="editData(row.item.id)">Sửa</b-button>
-                <b-button class="btn btn-outline-warning" @click="deleteData(row.item.id)">Xóa</b-button>
-
-            </template>
-
-            <template #row-details="row">
-                <b-card>
-                    <b-row class="mb-2">
-                        <b-col sm="3" class="text-sm-right"><b>Address:</b></b-col>
-                        <b-col v-if="row.item.address!=null">{{ row.item.address }}</b-col>
-                        <b-col v-else>Undefined</b-col>
-                    </b-row>
-
-                    <b-row class="mb-2">
-                        <b-col sm="3" class="text-sm-right"><b>Tel:</b></b-col>
-                        <b-col  v-if="row.item.tel!=null">{{ row.item.tel }}</b-col>
-                        <b-col v-else>Undefined</b-col>
-                    </b-row>
-                </b-card>
-            </template>
-        </b-table>
         <paginate
             :page-count="rows"
             :page-range="pageRange"
@@ -40,7 +37,9 @@
         </paginate>
         {{created?listCreated():null}}
         {{updated?listUpdated():null}}
+
     </div>
+
 </template>
 
 <script>
@@ -52,14 +51,12 @@ export default {
     components:{
         Paginate
     },
-    props:['created','updated','showNav'],
+    props:['created','updated','shownForm'],
     data(){
         return{
             customers:[],
             pageRange: 5,
-            rows:0,
-            fields: ['first_name', 'last_name', 'gender', 'email', 'show_details'],
-
+            rows:0
         }
     },
     created() {
@@ -107,7 +104,7 @@ export default {
 
             })
 
-            this.$emit('setShowNavUser',false)
+            this.$emit('setShown',false)
 
         },
         editData(id){
@@ -118,7 +115,7 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShowNavUser',true)
+            this.$emit('setShown',true)
         },
         listCreated(){
             if (this.created){

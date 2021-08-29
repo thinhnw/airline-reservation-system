@@ -66,19 +66,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    cancel: function cancel() {
-      this.dataEdit = {};
-      this.showNav = false;
-    },
     setDataEdit: function setDataEdit(data) {
       this.dataEdit = data;
     },
     listUpdated: function listUpdated(res) {
-      console.log(res);
       return this.updated = res;
     },
     listCreated: function listCreated(res) {
-      console.log(res);
       return this.created = res;
     },
     resultUpdate: function resultUpdate() {
@@ -322,8 +316,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this.$emit("created", JSON.parse(response.config.data));
-      }).then(function () {
-        _this.cancel();
       });
       this.$swal({
         toast: true,
@@ -333,6 +325,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success',
         title: 'Created'
       });
+      this.dataCreate = {};
+      this.$emit('setShown', false);
     },
     updateData: function updateData(id) {
       var _this2 = this;
@@ -342,8 +336,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this2.$emit("updated", JSON.parse(response.config.data));
-      }).then(function () {
-        _this2.cancel();
       });
       this.$swal({
         toast: true,
@@ -353,6 +345,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success',
         title: 'Updated'
       });
+      this.$emit('updateDataEdit');
+      this.$emit('setShown', false);
     }
   }
 });
@@ -490,15 +484,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this3.$swal('Deleted!', 'User deleted successfully', 'success');
           }), axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri_data).then(function (res) {
             _this3.rows = res.data.airports.last_page;
-          })]).then(function () {
-            _this3.airports.splice(_this3.airports.findIndex(function (airport) {
-              return airport.id === id;
-            }), 1);
+          })]);
 
-            _this3.dataEdit.splice(_this3.airports.findIndex(function (airport) {
-              airport.id === _this3.dataEdit.id;
-            }), 1);
-          });
+          _this3.airports.splice(_this3.airports.findIndex(function (airport) {
+            return airport.id === id;
+          }), 1);
+
+          _this3.dataEdit.splice(_this3.airports.findIndex(function (airport) {
+            airport.id === _this3.dataEdit.id;
+          }), 1);
         }
       });
       this.$emit('setShowNav', false);
@@ -520,15 +514,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     listCreated: function listCreated() {
       var _this5 = this;
 
-      console.log(this.created);
-
       if (this.created) {
         var uri = '/api/api-airport-paginate';
         axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
+          var _this5$airports;
+
           console.log(res);
+          _this5.rows = 0;
+          _this5.airports = [];
           _this5.rows = res.data.airports.last_page;
 
-          _this5.airports.push(_this5.created);
+          (_this5$airports = _this5.airports).push.apply(_this5$airports, _toConsumableArray(res.data.airports.data));
 
           return _this5.$emit("resultCreate");
         });
@@ -566,7 +562,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-2672a3f5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.appear-enter-active[data-v-2672a3f5] {\n  -webkit-animation: appear-in-data-v-2672a3f5 0.3s linear;\n          animation: appear-in-data-v-2672a3f5 0.3s linear;\n}\n.appear-leave-active[data-v-2672a3f5] {\n  -webkit-animation: appear-out-data-v-2672a3f5 0.3s linear;\n          animation: appear-out-data-v-2672a3f5 0.3s linear;\n}\n@-webkit-keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@-webkit-keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}\n@keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-2672a3f5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.appear-enter-active[data-v-2672a3f5] {\n  -webkit-animation: appear-in-data-v-2672a3f5 0.5s linear;\n          animation: appear-in-data-v-2672a3f5 0.5s linear;\n}\n.appear-leave-active[data-v-2672a3f5] {\n  -webkit-animation: appear-out-data-v-2672a3f5 0.5s linear;\n          animation: appear-out-data-v-2672a3f5 0.5s linear;\n}\n@-webkit-keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@-webkit-keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}\n@keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1032,18 +1028,16 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showNav,
-              expression: "showNav"
-            }
-          ],
-          staticClass: "layoutForm",
-          on: { click: _vm.cancel }
-        }),
+        _vm.showNav
+          ? _c("div", {
+              staticClass: "layoutForm",
+              on: {
+                click: function($event) {
+                  _vm.showNav = !_vm.showNav
+                }
+              }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "transition",
