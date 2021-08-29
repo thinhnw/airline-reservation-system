@@ -78,9 +78,12 @@ class Reservation extends Model
     public function createTickets() {
         $passengers = json_decode($this->passengers, true);
         foreach($passengers as $passenger) {
+            $name = $passenger["title"] . ' ' . strtoupper($passenger["firstName"]) . ' ' . strtoupper($passenger["lastName"]);
+
             $ticketDeparture = new Ticket();
             $ticketDeparture->flight_id = $this->flight_departure_id;
             $ticketDeparture->reservation_id = $this->id;
+            $ticketDeparture->passenger_name = $name;
             if ($passenger["seatDeparture"]) {
                 $ticketDeparture->seat = $passenger["seatDeparture"];
             }
@@ -89,6 +92,7 @@ class Reservation extends Model
                 $ticketReturn = new Ticket();
                 $ticketReturn->flight_id = $this->flight_return_id;
                 $ticketReturn->reservation_id = $this->id;
+                $ticketReturn->passenger_name = $name;
                 if ($passenger["seatReturn"]) {
                     $ticketReturn->seat = $passenger["seatReturn"];
                 }
@@ -119,9 +123,9 @@ class Reservation extends Model
         $issueDate = Carbon::parse(json_decode($this->payment, true)["created"]);
         $section->addText('ISSUE DATE:  ' . $issueDate, [ 'size' => '12']);
 
-        $lineStyle = array('weight' => 1, 'width' => 400, 'height' => 0, 'color' => 000000);
+        $lineStyle = array('weight' => 1, 'width' => 450, 'height' => 0, 'color' => 000000);
         $section->addLine($lineStyle);
-        $section->addText('Itinerary Details');
+        $section->addText('Inbound Flight');
         
         $fancyTableStyleName = 'Fancy Table';
         $fancyTableStyle = array('borderSize' => 1, 'borderColor' => 'cccccc', 'cellMargin' => 80, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER, 'cellSpacing' => 10);
@@ -136,7 +140,7 @@ class Reservation extends Model
         $table->addCell(1750)->addText('AIRLINE', [ 'size' => '12' ]);
         $table->addCell(1750)->addText('DEPARTURE', [ 'size' => '12' ]);
         $table->addCell(1750)->addText('ARRIVAL', [ 'size' => '12' ]);
-        $table->addCell(1750)->addText('OTHER NOTES', [ 'size' => '12' ]);
+        $table->addCell(2000)->addText('OTHER NOTES', [ 'size' => '12' ]);
         $table->addRow();
 
         $flight_departure = Flight::find($this->flight_departure_id);
@@ -144,28 +148,18 @@ class Reservation extends Model
         $table->addCell(1750)->addText("AVIA AIRWAYS \n".$flight_departure->flight_number);
         $table->addCell(1750)->addText($flight_departure->airportFrom->cityname . "\n" . Carbon::parse($flight_departure->departure_time)->format('h:i'));
         $table->addCell(1750)->addText($flight_departure->airportTo->cityname . "\n" . Carbon::parse($flight_departure->arrival_time)->format('h:i'));
-        $table->addCell(1750)->addText('CLASS ' . $this->seat_class . "\n" . "BAGGAGE 2PC");
+        $table->addCell(2000)->addText('CLASS ' . $this->seat_class . "\n" . "BAGGAGE 2PC");
 
-        if ($this->flight_return_id) {
-            $table->addRow();
-
-            $flight_return = Flight::find($this->flight_return_id);
-            $table->addCell(1750)->addText(Carbon::parse($flight_return->departure_time)->format('dM'));
-            $table->addCell(1750)->addText("AVIA AIRWAYS \n".$flight_return->flight_number);
-            $table->addCell(1750)->addText($flight_return->airportFrom->cityname . "\n" . Carbon::parse($flight_return->departure_time)->format('h:i'));
-            $table->addCell(1750)->addText($flight_return->airportTo->cityname . "\n" . Carbon::parse($flight_return->arrival_time)->format('h:i'));
-            $table->addCell(1750)->addText('CLASS ' . $this->seat_class . "\n" . "BAGGAGE 2PC");
-        }
         $section->addText('Passenger Details:');
         $tablePassengers = $section->addTable($fancyTableStyleName);
         $tablePassengers->addRow();
-        $tablePassengers->addCell(3500)->addText('Passengers');
+        $tablePassengers->addCell(3750)->addText('Passengers');
         $tablePassengers->addCell(2500)->addText('Seat');
-        $tablePassengers->addCell(5000)->addText('Ticket Number');
+        $tablePassengers->addCell(2500)->addText('Ticket Number');
         foreach($passengers as $passenger) {
             $tablePassengers->addRow();
             $name = $passenger["title"] . ' ' . strtoupper($passenger["firstName"]) . ' ' . strtoupper($passenger["lastName"]);
-            $tablePassengers->addCell(3500)->addText($name);
+            $tablePassengers->addCell(3750)->addText($name);
             $seat = "Check-in required";
             if ($passenger["seatDeparture"] != "") {
                 $seat = $passenger["seatDeparture"];
@@ -178,6 +172,57 @@ class Reservation extends Model
             ])->first();
             $tablePassengers->addCell(2500)->addText($ticket->id);
         }
+
+
+        if ($this->flight_return_id) {
+            $section->addText('');
+            $section->addLine($lineStyle);
+
+            $section->addText('Outbound Flight');
+            
+            $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle);
+            $table = $section->addTable($fancyTableStyleName);
+
+            $table->addRow();
+            $table->addCell(1750)->addText('DATE', [ 'size' => '12' ]);
+            $table->addCell(1750)->addText('AIRLINE', [ 'size' => '12' ]);
+            $table->addCell(1750)->addText('DEPARTURE', [ 'size' => '12' ]);
+            $table->addCell(1750)->addText('ARRIVAL', [ 'size' => '12' ]);
+            $table->addCell(2000)->addText('OTHER NOTES', [ 'size' => '12' ]);
+            $table->addRow();
+
+            $flight_return = Flight::find($this->flight_return_id);
+            $table->addCell(1750)->addText(Carbon::parse($flight_return->departure_time)->format('dM'));
+            $table->addCell(1750)->addText("AVIA AIRWAYS \n".$flight_return->flight_number);
+            $table->addCell(1750)->addText($flight_return->airportFrom->cityname . "\n" . Carbon::parse($flight_return->departure_time)->format('h:i'));
+            $table->addCell(1750)->addText($flight_return->airportTo->cityname . "\n" . Carbon::parse($flight_return->arrival_time)->format('h:i'));
+            $table->addCell(2000)->addText('CLASS ' . $this->seat_class . "\n" . "BAGGAGE 2PC");
+            $section->addText('Passenger Details:');
+            $tablePassengers = $section->addTable($fancyTableStyleName);
+            $tablePassengers->addRow();
+            $tablePassengers->addCell(3750)->addText('Passengers');
+            $tablePassengers->addCell(2500)->addText('Seat');
+            $tablePassengers->addCell(2500)->addText('Ticket Number');
+            foreach($passengers as $passenger) {
+                $tablePassengers->addRow();
+                $name = $passenger["title"] . ' ' . strtoupper($passenger["firstName"]) . ' ' . strtoupper($passenger["lastName"]);
+                $tablePassengers->addCell(3750)->addText($name);
+                $seat = "Check-in required";
+                if ($passenger["seatReturn"] != "") {
+                    $seat = $passenger["seatReturn"];
+                }
+                $tablePassengers->addCell(2500)->addText($seat);
+                $ticket = Ticket::where([
+                    ['reservation_id', '=', $this->id],
+                    ['flight_id', '=', $this->flight_departure_id],
+                    ['passenger_name', '=', $name]
+                ])->first();
+                $tablePassengers->addCell(2500)->addText($ticket->id);
+            }
+        }
+
+    
+
 
         $section->addText('PAYMENT DETAILS');
         $section->addText('GRAND TOTAL:  VND ' . $this->price);

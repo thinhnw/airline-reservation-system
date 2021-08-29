@@ -1707,6 +1707,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import details from './tripSummaryDetails'
 
 var numericBiz = {
@@ -67927,7 +67933,26 @@ var render = function() {
                                                       )
                                                     ]
                                                   )
-                                                : _vm._e()
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _c(
+                                                "b-button",
+                                                {
+                                                  staticClass: "my-3 w-100",
+                                                  attrs: {
+                                                    variant: "outline-secondary"
+                                                  },
+                                                  on: {
+                                                    click:
+                                                      _vm.goToSelectionOfReturnFlight
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n\t\t\t\t\t\t\t\t\t\t\tSkip\n\t\t\t\t\t\t\t\t\t\t"
+                                                  )
+                                                ]
+                                              )
                                             ],
                                             1
                                           )
@@ -68088,7 +68113,25 @@ var render = function() {
                                                             )
                                                           ]
                                                         )
-                                                      : _vm._e()
+                                                      : _vm._e(),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "b-button",
+                                                      {
+                                                        staticClass:
+                                                          "my-3 w-100",
+                                                        attrs: {
+                                                          variant:
+                                                            "outline-secondary"
+                                                        },
+                                                        on: { click: _vm.done }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t\t\t\t\t\tSkip\n\t\t\t\t\t\t\t\t\t\t"
+                                                        )
+                                                      ]
+                                                    )
                                                   ],
                                                   1
                                                 )
@@ -68099,7 +68142,7 @@ var render = function() {
                                         ],
                                         null,
                                         false,
-                                        1681887922
+                                        401069693
                                       ),
                                       model: {
                                         value: _vm.currentPassenger,

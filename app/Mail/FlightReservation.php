@@ -41,11 +41,6 @@ class FlightReservation extends Mailable
 
         return $this->from('sender@example.org', 'Booking Reservation')
                     ->view('emails.booking-reservation')
-                    // ->with([
-                    //     'name' => 'e-ticket.png',
-                    //     'type' => $type,
-                    //     'base64Data' => $data
-                    // ]);
                     ->attachData($data, "e-ticket.png", [
                         "mime" => "image/png"
                     ]);

@@ -223,6 +223,7 @@ class ReservationController extends Controller
         try {
             //code...
             $payment = $this->checkoutWithStripe($request);
+            Mail::to($request->contact_details["email"])->send(new FlightReservation(Reservation::find($request->reservation_id)));
             return response()->json([
                 'payment' => $payment
             ], 200);
