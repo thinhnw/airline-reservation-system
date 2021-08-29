@@ -66509,7 +66509,7 @@ var render = function() {
                   _c("b-card", {
                     staticClass: "img-2nd",
                     attrs: {
-                      "img-src": "/images/Rabat.jpg",
+                      "img-src": "/images/rabat.jpg",
                       "img-alt": "Card image",
                       overlay: "",
                       title: "Rabat"

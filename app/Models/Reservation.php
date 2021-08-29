@@ -53,7 +53,7 @@ class Reservation extends Model
             $this->releaseSeatsReturn();
         }
 
-        Ticket::where(['reservation_id', '=', $this->id])->delete();
+        Ticket::where('reservation_id', $this->id)->delete();
     }
 
 
