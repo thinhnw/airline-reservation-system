@@ -625,7 +625,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var adults = parseInt(this.details.passengers.adults);
       var children = parseInt(this.details.passengers.children);
       var fare = this.details["class"] === 'Business' ? flight.fare_business : flight.fare_economy;
-      return (0,_helper__WEBPACK_IMPORTED_MODULE_0__.formatMoney)(fare * adults + fare * children * 2 / 3, 0);
+      return (0,_helper__WEBPACK_IMPORTED_MODULE_0__.formatMoney)(fare * adults + Math.ceil(fare * children * 2 / 3), 0);
     },
     handleStepDone: function handleStepDone() {
       var _this = this;
@@ -1276,7 +1276,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.details["class"] === 'Business' ? this.flightDeparture.fare_business + ((_this$flightReturn$fa = (_this$flightReturn = this.flightReturn) === null || _this$flightReturn === void 0 ? void 0 : _this$flightReturn.fare_business) !== null && _this$flightReturn$fa !== void 0 ? _this$flightReturn$fa : 0) : this.flightDeparture.fare_economy + ((_this$flightReturn$fa2 = (_this$flightReturn2 = this.flightReturn) === null || _this$flightReturn2 === void 0 ? void 0 : _this$flightReturn2.fare_economy) !== null && _this$flightReturn$fa2 !== void 0 ? _this$flightReturn$fa2 : 0);
     },
     grandTotal: function grandTotal() {
-      return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3;
+      return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3);
     }
   }
 });
@@ -2087,7 +2087,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return passengerCount * 150000;
     },
     grandTotal: function grandTotal() {
-      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0));
+      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0));
     }
   })
 });
@@ -2452,7 +2452,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return passengerCount * 150000;
     },
     grandTotal: function grandTotal() {
-      return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0);
+      return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0);
     }
   })
 });
@@ -69020,7 +69020,7 @@ var render = function() {
                   "b-tr",
                   [
                     _c("b-td", { staticClass: "font-weight-bold" }, [
-                      _vm._v("Passenger name")
+                      _vm._v("Contact name")
                     ]),
                     _vm._v(" "),
                     _c("b-td", { staticClass: "font-weight-bold" }, [
@@ -69036,11 +69036,7 @@ var render = function() {
                     _c("b-td", [
                       _vm._v(
                         "\n\t\t\t\t\t\t" +
-                          _vm._s(_vm.details.passengerDetails[0].title) +
-                          " " +
-                          _vm._s(_vm.details.passengerDetails[0].firstName) +
-                          " " +
-                          _vm._s(_vm.details.passengerDetails[0].lastName) +
+                          _vm._s(_vm.details.contact.name) +
                           "\n\t\t\t\t\t"
                       )
                     ]),

@@ -36,7 +36,17 @@ const router = new VueRouter({
 						console.log(store.getters['auth/isLogged'])
 						if (store.getters['auth/isLogged']) next()
 						else next({ name: 'login' })
-					}
+					},
+				},
+				{
+					path: 'checkout-success',
+					name: 'checkout-success',
+					component: () => import('./views/client/checkout/CheckoutSuccess.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'home' })
+					},
 				},
 				{
 						path: 'information/edit',

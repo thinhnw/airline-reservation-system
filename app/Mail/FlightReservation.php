@@ -39,9 +39,16 @@ class FlightReservation extends Mailable
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
 
+
         return $this->from('sender@example.org', 'Booking Reservation')
                     ->view('emails.booking-reservation')
-                    ->attachData($data, "e-ticket.png", [
+                    ->with([
+                        'reservation' => $this->reservation,
+                    ])
+                    ->attach(storage_path().'/app/public/receipt_'. $this->reservation->pnr .'.docx', [
+                        'as' => 'eTicket.docx'
+                    ])
+                    ->attachData($data, "trip-summary.png", [
                         "mime" => "image/png"
                     ]);
     }

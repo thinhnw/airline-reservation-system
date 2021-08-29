@@ -267,7 +267,7 @@ export default {
 				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3
+			return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3)
 		}
 	}
 }

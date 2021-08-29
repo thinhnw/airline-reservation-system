@@ -66,10 +66,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    cancel: function cancel() {
-      this.dataEdit = {};
-      this.showNav = false;
-    },
     setDataEdit: function setDataEdit(data) {
       this.dataEdit = data;
     },
@@ -566,7 +562,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-2672a3f5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.appear-enter-active[data-v-2672a3f5] {\n  -webkit-animation: appear-in-data-v-2672a3f5 0.3s linear;\n          animation: appear-in-data-v-2672a3f5 0.3s linear;\n}\n.appear-leave-active[data-v-2672a3f5] {\n  -webkit-animation: appear-out-data-v-2672a3f5 0.3s linear;\n          animation: appear-out-data-v-2672a3f5 0.3s linear;\n}\n@-webkit-keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@-webkit-keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}\n@keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".layoutForm[data-v-2672a3f5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 999;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.appear-enter-active[data-v-2672a3f5] {\n  -webkit-animation: appear-in-data-v-2672a3f5 0.5s linear;\n          animation: appear-in-data-v-2672a3f5 0.5s linear;\n}\n.appear-leave-active[data-v-2672a3f5] {\n  -webkit-animation: appear-out-data-v-2672a3f5 0.5s linear;\n          animation: appear-out-data-v-2672a3f5 0.5s linear;\n}\n@-webkit-keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@keyframes appear-in-data-v-2672a3f5 {\n0% {\n    transform: translate(100%);\n}\n30% {\n    transform: translate(60%);\n}\n60% {\n    transform: translate(30%);\n}\n100% {\n    transform: translate(0);\n}\n}\n@-webkit-keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}\n@keyframes appear-out-data-v-2672a3f5 {\n0% {\n    transform: translate(0);\n}\n30% {\n    transform: translate(30%);\n}\n60% {\n    transform: translate(60%);\n}\n100% {\n    transform: translate(100%);\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -614,7 +610,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-5fa03420] li{\r\n    border: 1px solid gray;\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-weight: 600;\r\n    font-size: 16px;\n}\n.pagination[data-v-5fa03420] .active{\r\n    color: white;\r\n    background-color: #ffc107;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1032,18 +1028,16 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showNav,
-              expression: "showNav"
-            }
-          ],
-          staticClass: "layoutForm",
-          on: { click: _vm.cancel }
-        }),
+        _vm.showNav
+          ? _c("div", {
+              staticClass: "layoutForm",
+              on: {
+                click: function($event) {
+                  _vm.showNav = !_vm.showNav
+                }
+              }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "transition",

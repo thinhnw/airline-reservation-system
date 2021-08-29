@@ -17819,7 +17819,7 @@ var render = function() {
     [
       _c(
         "b-table-simple",
-        { attrs: { borderless: "" } },
+        { attrs: { borderless: "", hover: "" } },
         [
           _c(
             "b-thead",

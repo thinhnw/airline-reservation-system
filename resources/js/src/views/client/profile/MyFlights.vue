@@ -1,6 +1,6 @@
 <template>
 	<div class="p-4">
-		<b-table-simple borderless>
+		<b-table-simple borderless hover>
 			<b-thead>
 				<b-tr>
 					<b-th>Reference</b-th>

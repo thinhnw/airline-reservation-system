@@ -165,6 +165,8 @@ export default {
       try {
         const { data } = await axios.get('/api/reservations/' + id)
         this.reservation = data.reservation
+        if (this.reservation.status === 'CONFIRMED')
+          this.$router.push({ name: 'home' })
         this.form.reservation_id = id
       } catch (error) {
         console.log(error)
@@ -199,6 +201,7 @@ export default {
       this.form.amount = this.reservation.price
       try {
         let res = await axios.post('/api/reservations/checkout', this.form)
+        this.$router.push({ name: 'checkout-success' })
       } catch (error) {
         console.error(error) 
         this.cardError = error.message

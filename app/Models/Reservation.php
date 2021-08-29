@@ -178,7 +178,7 @@ class Reservation extends Model
             $section->addText('');
             $section->addLine($lineStyle);
 
-            $section->addText('Outbound Flight');
+            $section->addText('Inbound Flight');
             
             $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle);
             $table = $section->addTable($fancyTableStyleName);
@@ -214,14 +214,12 @@ class Reservation extends Model
                 $tablePassengers->addCell(2500)->addText($seat);
                 $ticket = Ticket::where([
                     ['reservation_id', '=', $this->id],
-                    ['flight_id', '=', $this->flight_departure_id],
+                    ['flight_id', '=', $this->flight_return_id],
                     ['passenger_name', '=', $name]
                 ])->first();
                 $tablePassengers->addCell(2500)->addText($ticket->id);
             }
         }
-
-    
 
 
         $section->addText('PAYMENT DETAILS');
@@ -231,7 +229,7 @@ class Reservation extends Model
         
         // Saving the document as OOXML file...
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save('storage/app/receipt_' . $this->getPnrAttribute() . '.docx');
+        $objWriter->save(storage_path().'/app/public/receipt_' . $this->getPnrAttribute() . '.docx');
     }
 }
 

@@ -74,6 +74,7 @@ class ReservationController extends Controller
                 $this->reserveSeatsReturn($request->passenger_details, $request->flight_return_id);
             }
             $reservation->seat_class = $request->seat_class;
+            $reservation->skymiles = $request->skymiles;
             $reservation->save();
 
             // Mail::to($request->contact_details["email"])->send(new FlightReservation($reservation));
@@ -192,26 +193,26 @@ class ReservationController extends Controller
             ]
         );
         try {
+            $reservation = Reservation::find($request->reservation_id);
             $customer->createOrGetStripeCustomer();
             $payment = $customer->charge(
                 intval($request->amount),
                 $request->payment_method_id
             );
             $payment = $payment->asStripePaymentIntent();
-            $reservation = Reservation::find($request->reservation_id);
 
-            $user = $reservation->user;
+            $user = User::find($reservation->user_id);
             $skymiles = $user->skymiles;
             $user->update([
-                'skymiles' => $skymiles + $request->skymiles
+                'skymiles' => $skymiles + $reservation->skymiles
             ]);
 
             $reservation->update([
                 'payment' => json_encode($payment),
                 'status' => 'CONFIRMED'
             ]);
-
             $reservation->createTickets();
+            $reservation->exportReceipt();
 
             return $payment;
         } catch (\Throwable $th) {
@@ -223,7 +224,7 @@ class ReservationController extends Controller
         try {
             //code...
             $payment = $this->checkoutWithStripe($request);
-            Mail::to($request->contact_details["email"])->send(new FlightReservation(Reservation::find($request->reservation_id)));
+            Mail::to($request->txt_billing_email)->send(new FlightReservation(Reservation::find($request->reservation_id)));
             return response()->json([
                 'payment' => $payment
             ], 200);

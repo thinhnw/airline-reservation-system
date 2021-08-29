@@ -346,12 +346,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.reservation = data.reservation;
+                if (_this.reservation.status === 'CONFIRMED') _this.$router.push({
+                  name: 'home'
+                });
                 _this.form.reservation_id = id;
-                _context.next = 16;
+                _context.next = 17;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
 
@@ -361,12 +364,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 return _context.abrupt("return");
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[2, 11]]);
+        }, _callee, null, [[2, 12]]);
       }))();
     },
     processPayment: function processPayment() {
@@ -418,26 +421,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 15:
                 res = _context2.sent;
-                _context2.next = 22;
+
+                _this2.$router.push({
+                  name: 'checkout-success'
+                });
+
+                _context2.next = 23;
                 break;
 
-              case 18:
-                _context2.prev = 18;
+              case 19:
+                _context2.prev = 19;
                 _context2.t0 = _context2["catch"](12);
                 console.error(_context2.t0);
                 _this2.cardError = _context2.t0.message;
 
-              case 22:
-                _context2.prev = 22;
+              case 23:
+                _context2.prev = 23;
                 _this2.paymentProcessing = false;
-                return _context2.finish(22);
+                return _context2.finish(23);
 
-              case 25:
+              case 26:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[12, 18, 22, 25]]);
+        }, _callee2, null, [[12, 19, 23, 26]]);
       }))();
     },
     submit: function submit() {

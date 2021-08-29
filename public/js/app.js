@@ -2217,6 +2217,18 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
         });
       }
     }, {
+      path: 'checkout-success',
+      name: 'checkout-success',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_checkout_CheckoutSuccess_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/checkout/CheckoutSuccess.vue */ "./resources/js/src/views/client/checkout/CheckoutSuccess.vue"));
+      },
+      beforeEnter: function beforeEnter(to, from, next) {
+        console.log(_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]);
+        if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+          name: 'home'
+        });
+      }
+    }, {
       path: 'information/edit',
       name: 'user-edit',
       component: function component() {

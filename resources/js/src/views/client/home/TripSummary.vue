@@ -129,7 +129,7 @@ export default {
 			return passengerCount * 150000
 		},
 		grandTotal() {
-			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
+			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
 		}
 	}
 }
