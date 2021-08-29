@@ -2,7 +2,7 @@
   <b-container fluid="" class="p-0">
     <div class="ContactUs__banner">
       <h2 class="font-weight-bold">Contact us</h2>
-      <h4>Chúng tôi luôn sẵn sàng hỗ trợ, dù bạn ở bất cứ nơi đâu!</h4>
+      <h4>We're here to help, wherever you are!</h4>
     </div>
     <b-container class="py-5">
       <b-row>
