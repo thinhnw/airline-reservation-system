@@ -18,7 +18,7 @@
                 @setShowNav="setShowNav"
             />
 
-            <div class="layoutForm" @click="cancel" v-show="showNav"></div>
+            <div class="layoutForm" @click="showNav = !showNav" v-if="showNav"></div>
             <transition name="appear">
                 <CreateAndEdit
                     v-if="showNav"
@@ -53,10 +53,6 @@ export default {
         }
     },
     methods: {
-        cancel() {
-            this.dataEdit = {}
-            this.showNav = false;
-        },
         setDataEdit(data) {
             this.dataEdit = data;
         },
@@ -93,10 +89,10 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
 }
 .appear-enter-active {
-    animation: appear-in 0.3s linear;
+    animation: appear-in 0.5s linear;
 }
 .appear-leave-active {
-    animation: appear-out 0.3s linear;
+    animation: appear-out 0.5s linear;
 }
 @keyframes appear-in {
     0% {

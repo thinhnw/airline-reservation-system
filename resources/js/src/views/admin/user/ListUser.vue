@@ -37,7 +37,9 @@
         </paginate>
         {{created?listCreated():null}}
         {{updated?listUpdated():null}}
+
     </div>
+
 </template>
 
 <script>
@@ -49,7 +51,7 @@ export default {
     components:{
         Paginate
     },
-    props:['created','updated','showNav'],
+    props:['created','updated','shownForm'],
     data(){
         return{
             customers:[],
@@ -102,7 +104,7 @@ export default {
 
             })
 
-            this.$emit('setShowNavUser',false)
+            this.$emit('setShown',false)
 
         },
         editData(id){
@@ -113,7 +115,7 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShowNavUser',true)
+            this.$emit('setShown',true)
         },
         listCreated(){
             if (this.created){

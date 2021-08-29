@@ -1210,6 +1210,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1224,7 +1228,8 @@ __webpack_require__.r(__webpack_exports__);
       regions: _data_regions__WEBPACK_IMPORTED_MODULE_0__.default,
       passengerDetails: [],
       contact: {
-        email: ''
+        email: '',
+        name: ''
       }
     };
   },
@@ -2005,6 +2010,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 postData = {
                   e_ticket: output,
                   price: _this.grandTotal,
+                  seat_class: _this.details["class"],
                   passenger_details: _this.details.passengerDetails,
                   contact_details: _this.details.contact,
                   skymiles: _this.skymiles
@@ -67088,6 +67094,31 @@ var render = function() {
                       _c(
                         "b-card-body",
                         [
+                          _c(
+                            "b-form-group",
+                            [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Full Name")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-form-input", {
+                                attrs: {
+                                  placeholder: "Enter your full name",
+                                  type: "text",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.contact.name,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.contact, "name", $$v)
+                                  },
+                                  expression: "contact.name"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
                           _c(
                             "b-form-group",
                             [

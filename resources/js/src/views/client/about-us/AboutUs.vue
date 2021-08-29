@@ -10,7 +10,7 @@
             </h2>
           </b-col>
           <b-col class="container-img ml-auto" md="6" sm="6" lg="6" xl="6">
-            <img class="w-100 img-fluid" src="../../../../../../public/images/logoBanner.png"/
+            <img class="w-100 img-fluid" src="../../../../../../public/images/logoBanner.png"/>
           </b-col>
         </b-row>
       </b-container>
@@ -18,7 +18,7 @@
     <b-container>
       <b-row class="aboutUs__content my-5">
         <b-col md="4" sm="4" lg="4" xl="4">
-          <img class="img-fluid w-100" src="../../../../../../public/images/AboutUsContent1.png" height="350" width="590"/>
+          <img class="img-fluid w-100" src="../../../../../../public/images/AboutUsContent1.png"/>
         </b-col>
         <b-col md="1" sm="1" lg="1" xl="1"></b-col>
         <b-col md="7" sm="7" lg="7" xl="7">

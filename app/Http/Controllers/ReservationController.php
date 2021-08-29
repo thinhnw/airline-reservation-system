@@ -73,9 +73,10 @@ class ReservationController extends Controller
                 $reservation->flight_return_id = $request->flight_return_id;
                 $this->reserveSeatsReturn($request->passenger_details, $request->flight_return_id);
             }
+            $reservation->seat_class = $request->seat_class;
             $reservation->save();
 
-            Mail::to($request->contact_details["email"])->send(new FlightReservation($reservation));
+            // Mail::to($request->contact_details["email"])->send(new FlightReservation($reservation));
             return response()->json([
                 'reservation' => $reservation
             ], 200);
@@ -204,6 +205,13 @@ class ReservationController extends Controller
             $user->update([
                 'skymiles' => $skymiles + $request->skymiles
             ]);
+
+            $reservation->update([
+                'payment' => json_encode($payment),
+                'status' => 'CONFIRMED'
+            ]);
+
+            $reservation->createTickets();
 
             return $payment;
         } catch (\Throwable $th) {

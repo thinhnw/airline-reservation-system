@@ -79,6 +79,7 @@ export default {
 				let postData = {
 					e_ticket: output,
 					price: this.grandTotal,
+					seat_class: this.details.class,
 					passenger_details: this.details.passengerDetails,
 					contact_details: this.details.contact,
 					skymiles: this.skymiles

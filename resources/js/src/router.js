@@ -21,12 +21,22 @@ const router = new VueRouter({
 				{
 					path: 'profile',
 					name: 'profile',
-					component: () => import('./views/client/profile/Profile.vue')
+					component: () => import('./views/client/profile/Profile.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'login' })
+					}
 				},
 				{
 					path: 'checkout',
 					name: 'checkout',
-					component: () => import('./views/client/checkout/Checkout.vue')
+					component: () => import('./views/client/checkout/Checkout.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'login' })
+					}
 				},
 				{
 						path: 'information/edit',
@@ -39,12 +49,20 @@ const router = new VueRouter({
 		{
 			path: '/login',
 			name: 'login',
-			component: () => import('./views/auth/Login.vue')
+			component: () => import('./views/auth/Login.vue'),
+			beforeEnter: (to, from,  next) => {
+				if (!store.getters['auth/isLogged']) next()
+				else next({ name: 'home' })
+			}
 		},
 		{
 			path: '/register',
 			name: 'register',
-			component: () => import('./views/auth/Register.vue')
+			component: () => import('./views/auth/Register.vue'),
+			beforeEnter: (to, from,  next) => {
+				if (!store.getters['auth/isLogged']) next()
+				else next({ name: 'home' })
+			}
 		},
 		{
 			path: '/admin',
