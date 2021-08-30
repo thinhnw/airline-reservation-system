@@ -259,6 +259,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -551,7 +553,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li{\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active{\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-00e025da] li {\n    border: 1px solid gray;\n    text-align: center;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    font-weight: 600;\n    font-size: 16px;\n}\n.pagination[data-v-00e025da] .active {\n    color: white;\n    background-color: #ffc107;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1310,18 +1312,18 @@ var render = function() {
     [
       _c("b-table", {
         attrs: { items: _vm.customers, fields: _vm.fields, responsive: "sm" },
-        on: {
-          "row-clicked": function(item) {
-            return _vm.$set(item, "_showDetails", !item._showDetails)
-          }
-        },
         scopedSlots: _vm._u([
           {
             key: "cell(control)",
             fn: function(row) {
               return [
                 _c("i", {
-                  staticClass: "far fa-edit btn-icon text-dark mr-3",
+                  class: row.detailsShowing ? "far fa-eye-slash" : "far fa-eye",
+                  on: { click: row.toggleDetails }
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "far fa-edit btn-icon text-dark mx-2",
                   on: {
                     click: function($event) {
                       return _vm.editData(row.item.id)
