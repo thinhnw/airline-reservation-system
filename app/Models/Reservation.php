@@ -46,6 +46,10 @@ class Reservation extends Model
     }
 
     protected function pruning() {
+        $this->releaseSeatsAndDeleteTickets();
+    }
+
+    public function releaseSeatsAndDeleteTickets() {
         if ($this->flight_departure_id) {
             $this->releaseSeatsDeparture();
         }
@@ -56,8 +60,7 @@ class Reservation extends Model
         Ticket::where('reservation_id', $this->id)->delete();
     }
 
-
-    private function releaseSeatsDeparture() {
+    public function releaseSeatsDeparture() {
         $passengers = json_decode($this->passengers, true);
         $flight = Flight::find($this->flight_departure_id);
         foreach($passengers as $passenger) {
@@ -66,7 +69,7 @@ class Reservation extends Model
         }
     }
 
-    private function releaseSeatsReturn() {
+    public function releaseSeatsReturn() {
         $passengers = json_decode($this->passengers, true);
         $flight = Flight::find($this->flight_return_id);
         foreach($passengers as $passenger) {
@@ -230,6 +233,18 @@ class Reservation extends Model
         // Saving the document as OOXML file...
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save(storage_path().'/app/public/receipt_' . $this->getPnrAttribute() . '.docx');
+    }
+
+
+    public function cancel() {
+        try {
+            $paymentId = json_decode($this->payment, true)["id"];
+            $this->pruning();
+            // $this->del
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
     }
 }
 

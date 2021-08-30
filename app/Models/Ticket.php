@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\CheckInMail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class Ticket extends Model
 {
@@ -19,41 +23,40 @@ class Ticket extends Model
 
     public function checkIn() {
         
-        if (!$this->seat) {
-            $this->update([
-                'seat' => $this->flight->findFirstAvailableSeat($this->reservation->seat_class)
-            ]);
-            $this->flight->reserveSeat($this->seat);
+        try {
+            if (!$this->seat) {
+                $this->update([
+                    'seat' => $this->flight->findFirstAvailableSeat($this->reservation->seat_class)
+                ]);
+                $this->flight->reserveSeat($this->seat);
+            }
+            $this->exportBoardingPass();
+            $contact = json_decode($this->reservation->contact, true);
+            $receipt_email = $contact["email"];
+            Mail::to($receipt_email)->send(new CheckInMail($this));
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
         }
-        $this->exportBoardingPass();
     }
 
     public function exportBoardingPass() {
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $templateProcessor = new TemplateProcessor(public_path() . '/boarding-pass.docx');
+        $templateProcessor->setValue('passenger_name', $this->passenger_name);
+        $templateProcessor->setValue('flight_number', $this->flight->flight_number);
 
-        /* Note: any element you append to a document must reside inside of a Section. */
+        list($seatClass, $row, $col) = explode(" ", $this->seat);
 
-        // Adding an empty Section to the document...
-        $section = $phpWord->addSection();
-
-        $header = array('size' => 16, 'bold' => true);
-
-        // 1. Basic table
-        
-        $rows = 10;
-        $cols = 5;
-        $section->addText('Basic table', $header);
-        
-        $table = $section->addTable();
-        for ($r = 1; $r <= $rows; $r++) {
-            $table->addRow();
-            for ($c = 1; $c <= $cols; $c++) {
-                $table->addCell(1750)->addText("Row {$r}, Cell {$c}");
-            }
-        }
-
-        // Saving the document as OOXML file...
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save('storage/app/helloWorld.docx');
+        $templateProcessor->setValue('seat_class', $seatClass);
+        $templateProcessor->setValue('seat', $row . $col);
+        $templateProcessor->setValue('boarding_time', Carbon::parse($this->flight->departure_time)->subHour()->format('H:i'));
+        $templateProcessor->setValue('airport_from', $this->flight->airportFrom->cityname . '(' . $this->flight->airportFrom->code . ')');
+        $templateProcessor->setValue('airport_to', $this->flight->airportTo->cityname . '(' . $this->flight->airportTo->code . ')');
+        $templateProcessor->setValue('departure_date', Carbon::parse($this->flight->departure_time)->format("dM"));
+        $templateProcessor->setValue('departure_time', Carbon::parse($this->flight->departure_time)->format('H:i'));
+        $templateProcessor->setValue('ticket_number', $this->id);
+        $templateProcessor->saveAs(storage_path().'/app/public/boarding-pass-'.$this->id.'.docx');
     }
 }
