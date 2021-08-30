@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Helpers\AirportPriorityQueue;
 use App\Models\Airport;
+use Exception;
 use PhpParser\Node\Stmt\TryCatch;
 
 class FlightController extends Controller
@@ -18,7 +19,7 @@ class FlightController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('JWT', ['except' => ['index', 'show', 'search', 'details']]);
     }
     /**
      * Display a listing of the resource.
@@ -92,6 +93,29 @@ class FlightController extends Controller
         try {
             //code...
             $flight = Flight::findOrFail($id);
+            return response()->json([
+                'flight' => $flight
+            ], 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => $th->getMessage()
+            ], 404);
+        }
+    }
+
+    public function details(Request $request) {
+        try {
+            //code...
+            $filter = json_decode($request->filter);
+            $flight = Flight::where([
+                [ 'flight_number', '=', $filter->flightNumber ],
+                [ 'departure_id', '=', $filter->cityFrom->id ],
+                [ 'destination_id', '=', $filter->cityTo->id ],
+                [ 'departure_time', '>=', $filter->date . ' 00:00:00' ],
+                [ 'departure_time', '<=', $filter->date . ' 23:59:59' ],
+            ])->first();
+            if (!$flight) throw new Exception('There is no such flight at the moment.');
             return response()->json([
                 'flight' => $flight
             ], 200);

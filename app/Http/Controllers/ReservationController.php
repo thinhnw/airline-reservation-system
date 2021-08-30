@@ -38,6 +38,9 @@ class ReservationController extends Controller
     public function index()
     {
         //
+        return response()->json([
+            'reservations' => Reservation::all()
+        ], 200);
     }
 
     /**
@@ -240,20 +243,21 @@ class ReservationController extends Controller
             if ($reservation->status == 'PENDING') {
                 $reservation->releaseSeatsAndDeleteTickets();
                 $reservation->update([
-                    'status' => 'CANCEL'
+                    'status' => 'CANCELED'
                 ]);
-            } else if ($reservation == 'CONFIRMED') {
+            } else if ($reservation->status == 'CONFIRMED') {
+                $payment = json_decode($reservation->payment, true);
+                $customer = StripeCustomer::where('email', $payment["charges"]["data"][0]["billing_details"]["email"])->first();
+                
+                $refunded = $customer->refund($payment["id"]);
+
                 $reservation->releaseSeatsAndDeleteTickets();
                 $reservation->update([
-                    'status' => 'CANCEL'
+                    'status' => 'CANCELED'
                 ]);
                 $reservation->user->update([
                     'skymiles' => $reservation->user->skymiles - $reservation->skymiles
                 ]);
-                $payment = json_decode($reservation->payment, true);
-                $customer = StripeCustomer::where('email', $payment["charges"]["data"][0]["billing_details"]["email"]);
-                
-                $refunded = $customer->refund($payment["id"]);
                 return response()->json([
                     'refunded' => $refunded
                 ], 200);

@@ -85,6 +85,11 @@ const router = new VueRouter({
 					component: () => import('./views/admin/dashboard/Dashboard.vue')
 				},
 				{
+					path: 'reservations',
+					name: 'admin-reservations',
+					component: () => import('./views/admin/reservations/Reservations.vue')
+				},
+				{
 					path: 'flights',
 					name: 'admin-flights',
 					component: () => import('./views/admin/flights/Flights.vue')

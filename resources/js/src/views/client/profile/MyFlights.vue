@@ -14,18 +14,21 @@
 			<b-tbody>
 				<b-tr v-for="(reservation, index) in reservations" :key="index" @click="goToPayment(reservation)">
 					<b-td>{{ reservation.pnr }}</b-td>
-					<b-td :class="{ 'text-warning': reservation.status === 'PENDING', 'text-success': reservation.status === 'PAID'}">{{ reservation.status }}</b-td>
+					<b-td :class="{ 'text-warning': reservation.status === 'PENDING', 'text-success': reservation.status === 'CONFIRMED', 'text-danger': reservation.status === 'CANCELED'}">{{ reservation.status }}</b-td>
 					<b-td>{{ formatMoney(reservation.price, 0) }} VND</b-td>
 					<b-td>{{ new Date(reservation.updated_at).toLocaleDateString() }}</b-td>
 					<b-td class="text-center">
 						<i class="fas fa-arrow-to-bottom btn-icon font-size-large text-primary" @click="download(index)"></i>		
 					</b-td>
 					<b-td>
-						<b-button variant="outline-danger" size="sm">Cancel</b-button>
+						<b-button variant="outline-danger" size="sm" @click="cancelStepOne(reservation)">Cancel</b-button>
 					</b-td>
 				</b-tr>
 			</b-tbody>
 		</b-table-simple>
+		<b-modal id="cancel" title="Reservation Cancellation" ok-only ok-title="Confirm" @ok="cancelConfirm">
+			The cancellation cannot be undone. Do you want to proceed?
+		</b-modal>
 	</div>
 </template>
 
@@ -36,7 +39,8 @@ import { formatMoney } from '@/helper'
 export default {
 	data() {
 		return {
-			reservations: []
+			reservations: [],
+			toBeCancelledReservation: null,
 		}
 	},
 	methods: {
@@ -67,6 +71,36 @@ export default {
 		goToPayment(reservation) {
 			if (reservation.status === 'PENDING')
 				this.$router.push(`/checkout?reservation_id=${reservation.id}`)
+		},
+		cancelStepOne(reservation) {
+			this.toBeCancelledReservation = reservation
+			this.$bvModal.show('cancel')
+		},
+		async cancelConfirm() {
+			try {
+				let res = await axios.post('/api/reservations/cancel', {
+					id: this.toBeCancelledReservation.id
+				})
+				this.toBeCancelledReservation.status = 'CANCELED'
+				this.$bvModal.hide("cancel")
+				this.$bvToast.toast('You have cancelled reservation ' + this.toBeCancelledReservation.pnr, {
+					title: 'Cancellation succeeed',
+					autoHideDelay: 1000,
+					appendToast: false,
+					solid: true,
+					toaster: 'b-toaster-top-right',
+					variant: 'success'
+				})
+			} catch (error) {
+				this.$bvToast.toast(error.message, {
+					title: 'Cancellation failed',
+					autoHideDelay: 1000,
+					appendToast: false,
+					solid: true,
+					toaster: 'b-toaster-top-right',
+					variant: 'danger'
+				})
+			}
 		}
 	},
 	computed: {

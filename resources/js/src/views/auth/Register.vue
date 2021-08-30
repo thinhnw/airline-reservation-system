@@ -3,7 +3,7 @@
 		<b-row align-h="center" class="h-100">
 			<b-col cols="8" lg="4" class="h-100 text-center d-flex align-items-center">
 				<div class="form-wrapper">
-					<h1 class="text-warning">
+					<h1 class="text-warning" @click="$router.push({ name: 'home'})">
 						Welcome to Avia Airways!
 					</h1>
 					<p >Please register to your account.</p>
@@ -149,6 +149,14 @@ export default {
 				await store.dispatch('auth/registerUserJWT', payload)
 			} catch (error) {
 				console.error(error)	
+				this.$bvToast.toast(error.message, {
+					title: 'Register failed',
+					autoHideDelay: 1000,
+					appendToast: false,
+					solid: true,
+					toaster: 'b-toaster-top-right',
+					variant: 'danger'
+				})
 			}
     }
 	},

@@ -16,10 +16,14 @@ class Reservation extends Model
     use HasFactory, Prunable;
     protected $guarded = [];
 
-    protected $appends = [ 'pnr' ];
+    protected $appends = [ 'pnr', 'user_email' ];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function getUserEmailAttribute() {
+        return $this->user->email;
     }
 
     public function getPnrAttribute() {
@@ -235,16 +239,5 @@ class Reservation extends Model
         $objWriter->save(storage_path().'/app/public/receipt_' . $this->getPnrAttribute() . '.docx');
     }
 
-
-    public function cancel() {
-        try {
-            $paymentId = json_decode($this->payment, true)["id"];
-            $this->pruning();
-            // $this->del
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-        
-    }
 }
 
