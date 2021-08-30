@@ -109,7 +109,7 @@ export default {
 	background: transparent;
 	position: fixed;
 	top: 0;
-	z-index: 9999;
+	z-index: 2;
 	color: white;
 	border-bottom: 1px solid #4d668f;
 	.navbar-collapse {

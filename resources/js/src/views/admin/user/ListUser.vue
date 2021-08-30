@@ -54,6 +54,7 @@
         </paginate>
         {{created?listCreated():null}}
         {{updated?listUpdated():null}}
+
     </div>
 
 </template>

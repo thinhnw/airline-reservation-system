@@ -55,13 +55,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      reservations: []
+      reservations: [],
+      toBeCancelledReservation: null
     };
   },
   methods: {
@@ -114,6 +122,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     goToPayment: function goToPayment(reservation) {
       if (reservation.status === 'PENDING') this.$router.push("/checkout?reservation_id=".concat(reservation.id));
+    },
+    cancelStepOne: function cancelStepOne(reservation) {
+      this.toBeCancelledReservation = reservation;
+      this.$bvModal.show('cancel');
+    },
+    cancelConfirm: function cancelConfirm() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _axios__WEBPACK_IMPORTED_MODULE_1__.default.post('/api/reservations/cancel', {
+                  id: _this2.toBeCancelledReservation.id
+                });
+
+              case 3:
+                res = _context2.sent;
+                _this2.toBeCancelledReservation.status = 'CANCELED';
+
+                _this2.$bvModal.hide("cancel");
+
+                _this2.$bvToast.toast('You have cancelled reservation ' + _this2.toBeCancelledReservation.pnr, {
+                  title: 'Cancellation succeeed',
+                  autoHideDelay: 1000,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'success'
+                });
+
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+                _this2.$bvToast.toast(_context2.t0.message, {
+                  title: 'Cancellation failed',
+                  autoHideDelay: 1000,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'danger'
+                });
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
     }
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
@@ -18124,7 +18190,7 @@ var render = function() {
     [
       _c(
         "b-table-simple",
-        { attrs: { borderless: "" } },
+        { attrs: { borderless: "", hover: "" } },
         [
           _c(
             "b-thead",
@@ -18141,8 +18207,10 @@ var render = function() {
                   _c("b-th", [_vm._v("Updated")]),
                   _vm._v(" "),
                   _c("b-th", { staticClass: "text-center" }, [
-                    _vm._v("Download")
-                  ])
+                    _vm._v("Summary")
+                  ]),
+                  _vm._v(" "),
+                  _c("b-th")
                 ],
                 1
               )
@@ -18171,7 +18239,8 @@ var render = function() {
                     {
                       class: {
                         "text-warning": reservation.status === "PENDING",
-                        "text-success": reservation.status === "PAID"
+                        "text-success": reservation.status === "CONFIRMED",
+                        "text-danger": reservation.status === "CANCELED"
                       }
                     },
                     [_vm._v(_vm._s(reservation.status))]
@@ -18201,7 +18270,26 @@ var render = function() {
                         }
                       }
                     })
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-td",
+                    [
+                      _c(
+                        "b-button",
+                        {
+                          attrs: { variant: "outline-danger", size: "sm" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cancelStepOne(reservation)
+                            }
+                          }
+                        },
+                        [_vm._v("Cancel")]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -18210,6 +18298,24 @@ var render = function() {
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "cancel",
+            title: "Reservation Cancellation",
+            "ok-only": "",
+            "ok-title": "Confirm"
+          },
+          on: { ok: _vm.cancelConfirm }
+        },
+        [
+          _vm._v(
+            "\n\t\tThe cancellation cannot be undone. Do you want to proceed?\n\t"
+          )
+        ]
       )
     ],
     1
@@ -18729,7 +18835,7 @@ var render = function() {
                             "b-tab",
                             {
                               attrs: {
-                                title: "My Flights",
+                                title: "My Reservations",
                                 "title-link-class": ""
                               }
                             },

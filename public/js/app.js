@@ -2197,12 +2197,36 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       name: 'profile',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_profile_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/profile/Profile.vue */ "./resources/js/src/views/client/profile/Profile.vue"));
+      },
+      beforeEnter: function beforeEnter(to, from, next) {
+        console.log(_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]);
+        if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+          name: 'login'
+        });
       }
     }, {
       path: 'checkout',
       name: 'checkout',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_checkout_Checkout_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/checkout/Checkout.vue */ "./resources/js/src/views/client/checkout/Checkout.vue"));
+      },
+      beforeEnter: function beforeEnter(to, from, next) {
+        console.log(_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]);
+        if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+          name: 'login'
+        });
+      }
+    }, {
+      path: 'checkout-success',
+      name: 'checkout-success',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_checkout_CheckoutSuccess_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/checkout/CheckoutSuccess.vue */ "./resources/js/src/views/client/checkout/CheckoutSuccess.vue"));
+      },
+      beforeEnter: function beforeEnter(to, from, next) {
+        console.log(_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]);
+        if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+          name: 'home'
+        });
       }
     }, {
       path: 'information/edit',
@@ -2216,12 +2240,22 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
     name: 'login',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Login.vue */ "./resources/js/src/views/auth/Login.vue"));
+    },
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (!_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+        name: 'home'
+      });
     }
   }, {
     path: '/register',
     name: 'register',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_src_views_auth_Register_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/auth/Register.vue */ "./resources/js/src/views/auth/Register.vue"));
+    },
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (!_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isLogged"]) next();else next({
+        name: 'home'
+      });
     }
   }, {
     path: '/admin',
@@ -2234,6 +2268,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       name: 'admin-dashboard',
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_dashboard_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/dashboard/Dashboard.vue */ "./resources/js/src/views/admin/dashboard/Dashboard.vue"));
+      }
+    }, {
+      path: 'reservations',
+      name: 'admin-reservations',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_reservations_Reservations_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/reservations/Reservations.vue */ "./resources/js/src/views/admin/reservations/Reservations.vue"));
       }
     }, {
       path: 'flights',

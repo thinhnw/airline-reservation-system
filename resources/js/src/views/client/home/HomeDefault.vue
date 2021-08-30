@@ -39,7 +39,7 @@
 					</b-card>
 				</b-col>
 				<b-col>
-					<b-card img-src="/images/Rabat.jpg" img-alt="Card image" overlay title="Rabat" class="img-2nd">
+					<b-card img-src="/images/rabat.jpg" img-alt="Card image" overlay title="Rabat" class="img-2nd">
 					</b-card>
 				</b-col>
 			</b-row>

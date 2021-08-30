@@ -16,7 +16,7 @@
                 <td>{{rs.name}}</td>
                 <td>{{rs.cityname}}</td>
                 <td>{{rs.countryname}}</td>
-                <td>
+                <td class="text-center">
                     <i @click="editData(rs.id)" class="far fa-edit btn-icon text-dark mr-3"></i>
                     <i @click="deleteData(rs.id)" class="far fa-times-octagon btn-icon text-danger"></i>
                 </td>
@@ -100,14 +100,12 @@ export default {
                         this.rows=res.data.airports.last_page;
                     })
                 ]
-                ).then(()=>{
-                    this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
-                    this.dataEdit.splice(this.airports.findIndex(airport => {
-                        airport.id === this.dataEdit.id;
-                    }), 1)
-                })
+                )
 
-
+                this.airports.splice(this.airports.findIndex(airport => airport.id === id), 1)
+                this.dataEdit.splice(this.airports.findIndex(airport => {
+                    airport.id === this.dataEdit.id;
+                }), 1)
             }
 
         })
@@ -125,13 +123,14 @@ export default {
             this.$emit('setShowNav',true)
         },
         listCreated(){
-            console.log(this.created)
             if (this.created){
                 let uri = '/api/api-airport-paginate';
                 axios.get(uri).then(res => {
                     console.log(res)
+                    this.rows=0;
+                    this.airports=[];
                     this.rows=res.data.airports.last_page;
-                    this.airports.push(this.created)
+                    this.airports.push(...res.data.airports.data)
                     return this.$emit("resultCreate");
 
                 });

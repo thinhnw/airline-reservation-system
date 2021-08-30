@@ -228,12 +228,12 @@
 				<b-table-simple>
 					<b-tbody>
 						<b-tr>
-							<b-td class="font-weight-bold">Passenger name</b-td>
+							<b-td class="font-weight-bold">Contact name</b-td>
 							<b-td class="font-weight-bold">Email</b-td>
 						</b-tr>
 						<b-tr>
 							<b-td>
-								{{ details.passengerDetails[0].title }} {{ details.passengerDetails[0].firstName }} {{ details.passengerDetails[0].lastName }}
+								{{ details.contact.name }}
 							</b-td>
 							<b-td>
 								{{ details.contact.email }}
@@ -338,7 +338,7 @@ export default {
 			return passengerCount * 150000
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0)
+			return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0)
 		}
 	}
 }

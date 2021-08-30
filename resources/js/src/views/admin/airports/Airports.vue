@@ -60,7 +60,6 @@ export default {
             return this.updated = res;
         },
         listCreated(res) {
-            console.log(res)
             return this.created = res;
         },
         resultUpdate() {

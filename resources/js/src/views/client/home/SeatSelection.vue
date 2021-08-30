@@ -19,6 +19,9 @@
 											<b-button variant="warning" class="w-100" v-if="isAllSelectedForDeparture" @click="goToSelectionOfReturnFlight">
 												Continue
 											</b-button>
+											<b-button variant="outline-secondary" class="my-3 w-100" @click="goToSelectionOfReturnFlight">
+												Skip
+											</b-button>
 										</div>
 									</template>
 									<b-tab v-for="(passenger, index) in details.passengerDetails" 
@@ -54,6 +57,9 @@
 										<div class="py-5 w-100">
 											<b-button variant="warning" class="w-100" v-if="isAllSelectedForReturn" @click="done">
 												Continue
+											</b-button>
+											<b-button variant="outline-secondary" class="my-3 w-100" @click="done">
+												Skip
 											</b-button>
 										</div>
 									</template>

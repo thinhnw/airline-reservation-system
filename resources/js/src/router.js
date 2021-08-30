@@ -21,12 +21,32 @@ const router = new VueRouter({
 				{
 					path: 'profile',
 					name: 'profile',
-					component: () => import('./views/client/profile/Profile.vue')
+					component: () => import('./views/client/profile/Profile.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'login' })
+					}
 				},
 				{
 					path: 'checkout',
 					name: 'checkout',
-					component: () => import('./views/client/checkout/Checkout.vue')
+					component: () => import('./views/client/checkout/Checkout.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'login' })
+					},
+				},
+				{
+					path: 'checkout-success',
+					name: 'checkout-success',
+					component: () => import('./views/client/checkout/CheckoutSuccess.vue'),
+					beforeEnter: (to, from,  next) => {
+						console.log(store.getters['auth/isLogged'])
+						if (store.getters['auth/isLogged']) next()
+						else next({ name: 'home' })
+					},
 				},
 				{
 						path: 'information/edit',
@@ -39,12 +59,20 @@ const router = new VueRouter({
 		{
 			path: '/login',
 			name: 'login',
-			component: () => import('./views/auth/Login.vue')
+			component: () => import('./views/auth/Login.vue'),
+			beforeEnter: (to, from,  next) => {
+				if (!store.getters['auth/isLogged']) next()
+				else next({ name: 'home' })
+			}
 		},
 		{
 			path: '/register',
 			name: 'register',
-			component: () => import('./views/auth/Register.vue')
+			component: () => import('./views/auth/Register.vue'),
+			beforeEnter: (to, from,  next) => {
+				if (!store.getters['auth/isLogged']) next()
+				else next({ name: 'home' })
+			}
 		},
 		{
 			path: '/admin',
@@ -55,6 +83,11 @@ const router = new VueRouter({
 					path: 'dashboard',
 					name: 'admin-dashboard',
 					component: () => import('./views/admin/dashboard/Dashboard.vue')
+				},
+				{
+					path: 'reservations',
+					name: 'admin-reservations',
+					component: () => import('./views/admin/reservations/Reservations.vue')
 				},
 				{
 					path: 'flights',

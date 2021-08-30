@@ -273,7 +273,7 @@ export default {
 			let adults = parseInt(this.details.passengers.adults)
 			let children = parseInt(this.details.passengers.children)
 			let fare = this.details.class === 'Business' ? flight.fare_business : flight.fare_economy
-			return formatMoney(fare * adults + fare * children * 2 / 3, 0)
+			return formatMoney(fare * adults + Math.ceil(fare * children * 2 / 3), 0)
 		},
 		handleStepDone() {
 			if (!this.isLogged) {

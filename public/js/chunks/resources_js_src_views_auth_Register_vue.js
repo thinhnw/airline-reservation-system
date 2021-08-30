@@ -184,7 +184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _store__WEBPACK_IMPORTED_MODULE_1__.default.dispatch('auth/registerUserJWT', payload);
 
               case 6:
-                _context.next = 11;
+                _context.next = 12;
                 break;
 
               case 8:
@@ -192,7 +192,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.t0 = _context["catch"](2);
                 console.error(_context.t0);
 
-              case 11:
+                _this.$bvToast.toast(_context.t0.message, {
+                  title: 'Register failed',
+                  autoHideDelay: 1000,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'danger'
+                });
+
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -374,9 +383,18 @@ var render = function() {
                 "div",
                 { staticClass: "form-wrapper" },
                 [
-                  _c("h1", { staticClass: "text-warning" }, [
-                    _vm._v("\n\t\t\t\t\tWelcome to Avia Airways!\n\t\t\t\t")
-                  ]),
+                  _c(
+                    "h1",
+                    {
+                      staticClass: "text-warning",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({ name: "home" })
+                        }
+                      }
+                    },
+                    [_vm._v("\n\t\t\t\t\tWelcome to Avia Airways!\n\t\t\t\t")]
+                  ),
                   _vm._v(" "),
                   _c("p", [_vm._v("Please register to your account.")]),
                   _vm._v(" "),

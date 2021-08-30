@@ -79,6 +79,7 @@ export default {
 				let postData = {
 					e_ticket: output,
 					price: this.grandTotal,
+					seat_class: this.details.class,
 					passenger_details: this.details.passengerDetails,
 					contact_details: this.details.contact,
 					skymiles: this.skymiles
@@ -128,7 +129,7 @@ export default {
 			return passengerCount * 150000
 		},
 		grandTotal() {
-			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3 + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
+			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
 		}
 	}
 }

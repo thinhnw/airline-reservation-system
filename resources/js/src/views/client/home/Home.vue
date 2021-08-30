@@ -13,14 +13,14 @@
 										@list-flights="handleListingFlights"
 									/>	
 								</b-tab>
-								<b-tab title="My Trips">
-									<MyTrip />
-								</b-tab>
 								<b-tab title="Check-in">
 									<CheckIn />
 								</b-tab>
 								<b-tab title="Flight Status">
-									<FlightStatus />
+									<FlightStatus :airports="airports" @query-flight-details="handleQueryingFlightDetails" />
+								</b-tab>
+								<b-tab title="My Trips">
+									<MyTrip />
 								</b-tab>
 							</b-tabs>
 						</b-card>
@@ -28,16 +28,19 @@
 				</b-row>
 			</b-container>
 		</div>
-		<div v-if="!isBookingFlight">
+		<div v-if="current === 'HOME'">
 			<HomeDefault />
 		</div>
-		<div v-if="isBookingFlight">
+		<div v-if="current === 'SEARCH'">
 			<!-- <img :src="abc" alt=""> -->
 			<FlightBooking 
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
 			<!-- <TripSummary /> -->
+		</div>
+		<div v-if="current === 'DETAILS'">
+			<FlightDetails :flight="flightDetails" />
 		</div>
 	</div>
 </template>
@@ -53,6 +56,7 @@ import TripSummary from './TripSummary.vue'
 import SeatSelection from './SeatSelection.vue'
 import abc from './abc'
 import HomeDefault from './HomeDefault.vue'
+import FlightDetails from './FlightDetails.vue'
 export default {
 	components: {
 		SearchFlightsForm,
@@ -62,18 +66,24 @@ export default {
 		FlightStatus,
 		TripSummary,
 		SeatSelection,
-		HomeDefault
+		HomeDefault,
+		FlightDetails
 	},
 	data() {
 		return {
 			fetchedAirports: [],
 			// flightsDetails: null,
 			searchedInfo: null,
-      isBookingFlight: false,
-			abc
+			flightDetails: null,
+			abc,
+			current: 'HOME'
 		}
 	},
 	methods: {
+		handleQueryingFlightDetails(flight) {
+			this.flightDetails = flight
+			this.current = 'DETAILS'
+		},
 		async fetchAirports() {
 			try {
 				let res = await axios.get('/api/airports')
@@ -85,7 +95,7 @@ export default {
 		handleListingFlights(event) {
 			console.log('event', event)
 			this.searchedInfo = JSON.parse(JSON.stringify(event))
-      this.isBookingFlight = true
+      this.current = 'SEARCH'
 		}
 	},
 	computed: {

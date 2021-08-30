@@ -302,7 +302,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".top-nav[data-v-11406edb] {\n  width: 100%;\n  background: transparent;\n  position: fixed;\n  top: 0;\n  z-index: 9999;\n  color: white;\n  border-bottom: 1px solid #4d668f;\n}\n.top-nav .navbar-collapse[data-v-11406edb] {\n  font-size: 1.1rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".top-nav[data-v-11406edb] {\n  width: 100%;\n  background: transparent;\n  position: fixed;\n  top: 0;\n  z-index: 2;\n  color: white;\n  border-bottom: 1px solid #4d668f;\n}\n.top-nav .navbar-collapse[data-v-11406edb] {\n  font-size: 1.1rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

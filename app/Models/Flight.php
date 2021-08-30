@@ -90,4 +90,27 @@ class Flight extends Model
             }
         }
     }
+
+    public function findFirstAvailableSeat($seatClass) {
+        if ($seatClass == "Business") {
+            $seat_map = json_decode($this->business_seats);
+            for ($row = 1; $row <= count($seat_map); $row++) {
+                foreach(self::NUMERIC_BIZ as $col => $num) {
+                    $seat = $seatClass . ' ' . $row . ' ' . $col;
+                    if ($this->checkAvailableSeat($seat)) {
+                        return $seat;
+                    }
+                }
+            }
+        }
+        $seat_map = json_decode($this->economy_seats);
+        for ($row = 1; $row <= count($seat_map); $row++) {
+            foreach(self::NUMERIC_ECO as $col => $num) {
+                $seat = $seatClass . ' ' . $row . ' ' . $col;
+                if ($this->checkAvailableSeat($seat)) {
+                    return $seat;
+                }
+            }
+        }
+    }
 }

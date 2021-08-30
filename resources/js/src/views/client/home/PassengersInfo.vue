@@ -145,6 +145,10 @@
 						</b-card-header>
 						<b-card-body>
 							<b-form-group>
+								<label for="">Full Name</label>
+								<b-form-input placeholder="Enter your full name" type="text" required v-model="contact.name"></b-form-input>
+							</b-form-group>
+							<b-form-group>
 								<label for="">E-mail</label>
 								<b-form-input placeholder="Enter your email" type="email" required v-model="contact.email"></b-form-input>
 							</b-form-group>
@@ -218,7 +222,8 @@ export default {
 			regions,
 			passengerDetails: [],
 			contact: {
-				email: ''
+				email: '',
+				name: ''
 			}
 		}
 	},
@@ -262,7 +267,7 @@ export default {
 				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + this.pricePerAdult * this.details.passengers.children * 2 / 3
+			return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3)
 		}
 	}
 }
