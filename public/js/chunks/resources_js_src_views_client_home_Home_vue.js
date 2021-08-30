@@ -222,6 +222,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -238,7 +247,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      ticketNumber: '',
+      lastName: ''
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _axios__WEBPACK_IMPORTED_MODULE_1__.default.post("/api/tickets/".concat(_this.ticketNumber, "/checkin"));
+
+              case 3:
+                res = _context.sent;
+                _context.next = 9;
+                break;
+
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 6]]);
+      }))();
+    }
+  }
+});
 
 /***/ }),
 
@@ -65225,13 +65275,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "p-3 px-5" },
+    "b-form",
+    {
+      staticClass: "p-3 px-5",
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.submit.apply(null, arguments)
+        }
+      }
+    },
     [
       _c("label", [
-        _vm._v(
-          "\n\t\tCheck in for your flight at your convenience (this feature is coming soon)\n\t"
-        )
+        _vm._v("\n\t\tCheck in for your flight at your convenience \n\t")
       ]),
       _vm._v(" "),
       _c(
@@ -65242,7 +65298,7 @@ var render = function() {
               key: "append",
               fn: function() {
                 return [
-                  _c("b-button", { attrs: { variant: "warning" } }, [
+                  _c("b-button", { attrs: { variant: "primary" } }, [
                     _vm._v("Check-in")
                   ])
                 ]
@@ -65254,10 +65310,25 @@ var render = function() {
         [
           _c("b-form-input", {
             staticClass: "py-4",
-            attrs: { placeholder: "Booking reference" }
+            attrs: { placeholder: "Ticket number" },
+            model: {
+              value: _vm.ticketNumber,
+              callback: function($$v) {
+                _vm.ticketNumber = $$v
+              },
+              expression: "ticketNumber"
+            }
           }),
           _vm._v(" "),
           _c("b-form-input", {
+            directives: [
+              {
+                name: "mode",
+                rawName: "v-mode",
+                value: _vm.lastName,
+                expression: "lastName"
+              }
+            ],
             staticClass: "py-4",
             attrs: { placeholder: "Last Name" }
           })
@@ -66311,13 +66382,6 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "b-tab",
-                              { attrs: { title: "My Trips" } },
-                              [_c("MyTrip")],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "b-tab",
                               { attrs: { title: "Check-in" } },
                               [_c("CheckIn")],
                               1
@@ -66327,6 +66391,13 @@ var render = function() {
                               "b-tab",
                               { attrs: { title: "Flight Status" } },
                               [_c("FlightStatus")],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-tab",
+                              { attrs: { title: "My Trips" } },
+                              [_c("MyTrip")],
                               1
                             )
                           ],
@@ -66509,7 +66580,7 @@ var render = function() {
                   _c("b-card", {
                     staticClass: "img-2nd",
                     attrs: {
-                      "img-src": "/images/Rabat.jpg",
+                      "img-src": "/images/rabat.jpg",
                       "img-alt": "Card image",
                       overlay: "",
                       title: "Rabat"

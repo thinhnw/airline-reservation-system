@@ -301,26 +301,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       stripe: {},
       cardElement: {},
       paymentProcessing: false,
-      // form: {
-      //   reservation_id: '',
-      //   txt_billing_fullname: '',
-      //   txt_billing_email: '',
-      //   txt_inv_addr1: '',
-      //   txt_bill_city: '',
-      //   txt_bill_country: '',
-      //   txt_expire: '',
-      //   zip_code: ''
-      // },
       form: {
-        reservation_id: '53',
-        txt_billing_fullname: 'NGUYEN VINH THINH',
-        txt_billing_email: 'nvt0412@gmail.com',
-        txt_inv_addr1: '502 LD',
-        txt_bill_city: 'Hanoi',
-        txt_bill_country: 'VN',
+        reservation_id: '',
+        txt_billing_fullname: '',
+        txt_billing_email: '',
+        txt_inv_addr1: '',
+        txt_bill_city: '',
+        txt_bill_country: '',
         txt_expire: '',
         zip_code: ''
       },
+      // form: {
+      //   reservation_id: '53',
+      //   txt_billing_fullname: 'NGUYEN VINH THINH',
+      //   txt_billing_email: 'nvt0412@gmail.com',
+      //   txt_inv_addr1: '502 LD',
+      //   txt_bill_city: 'Hanoi',
+      //   txt_bill_country: 'VN',
+      //   txt_expire: '',
+      //   zip_code: ''
+      // },
       reservation: null,
       cardError: ''
     };
