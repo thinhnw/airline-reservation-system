@@ -1,11 +1,12 @@
 <template>
     <div class="col-md-12 p-0">
-        <b-table :items="customers" :fields="fields"  responsive="sm">
-            <template #cell(show_details)="row">
+        <b-table :items="customers"
+                 :fields="fields"
+                 responsive="sm">
+            <template #cell(control)="row">
                 <b-button @click="row.toggleDetails" class="btn btn-outline-warning" >
                     {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
                 </b-button>
-
                 <b-button class="btn btn-outline-warning" @click="editData(row.item.id)">Sửa</b-button>
                 <b-button class="btn btn-outline-warning" @click="deleteData(row.item.id)">Xóa</b-button>
 
@@ -74,7 +75,7 @@ export default {
             customers:[],
             pageRange: 5,
             rows:0,
-            fields: ['first_name', 'last_name', 'gender', 'email', 'show_details'],
+            fields: ['first_name', 'last_name', 'gender', 'email', 'control'],
 
         }
     },
@@ -108,23 +109,32 @@ export default {
                 if (result.value) {
                     //Send Request to server
                     let uri = `/api/customer/delete/${id}`;
-                    axios.delete(uri).then(() => {
-                    }).then((response)=> {
-                        this.$swal(
-                            'Deleted!',
-                            'User deleted successfully',
-                            'success'
-                        )
+                    let uri_data = '/api/api-customer';
+                    Promise.all([
+                            axios.delete(uri).then(()=> {
+                                this.$swal(
+                                    'Deleted!',
+                                    'User deleted successfully',
+                                    'success'
+                                )
+                            }),
+                            axios.get(uri_data).then(res => {
+                                this.rows=res.data.customers.last_page;
+                            })
+                        ]
+                    ).then(()=>{
+                        this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
+                        this.dataEdit.splice(this.customers.findIndex(customer => {
+                            customer.id === this.dataEdit.id;
+                        }), 1)
+                        this.$emit('setShowNav',false)
                     })
-                    this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
-                    this.dataEdit.splice(this.customers.findIndex(customer => {
-                        customer.id === this.dataEdit.id;
-                    }), 1)
+
+
                 }
 
             })
-
-            this.$emit('setShown',false)
+            this.$emit('setShowNav',false)
 
         },
         editData(id){
@@ -135,7 +145,7 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShown',true)
+            this.$emit('setShowNav',true)
         },
         listCreated(){
             if (this.created){
@@ -146,6 +156,7 @@ export default {
                     this.customers=[];
                     this.rows=res.data.customers.last_page;
                     this.customers.push(...res.data.customers.data)
+                    this.customers.shift();
                     return this.$emit("resultCreate");
 
                 });

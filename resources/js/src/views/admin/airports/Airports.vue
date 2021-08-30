@@ -57,7 +57,6 @@ export default {
             this.dataEdit = data;
         },
         listUpdated(res) {
-            console.log(res)
             return this.updated = res;
         },
         listCreated(res) {
