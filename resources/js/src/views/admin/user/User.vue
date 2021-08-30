@@ -37,6 +37,7 @@
 
 import ListUser from "./ListUser";
 import CreateAndEdit from "./CreateAndEdit";
+
 export default {
 
     name: "User",
@@ -49,22 +50,26 @@ export default {
             showNav:false,
         }
     },
-    methods:{
-        setDataEdit(data){
-            this.dataEdit=data;
+    methods: {
+        cancel() {
+            this.dataEdit = {}
+            this.showNav = false;
         },
-        listUpdated(res){
-            return this.updated=res;
+        setDataEdit(data) {
+            this.dataEdit = data;
         },
-        listCreated(res){
-            return this.created=res;
+        listUpdated(res) {
+            return this.updated = res;
         },
-        resultUpdate(){
-            return this.updated=false;
+        listCreated(res) {
+            return this.created = res;
         },
-        resultCreate(){
+        resultUpdate() {
+            return this.updated = false;
+        },
+        resultCreate() {
             this.shownForm();
-            return this.created=false;
+            return this.created = false;
         },
         setShowNav(res) {
             return this.showNav = res
@@ -121,5 +126,4 @@ export default {
 
     }
 }
-
 </style>

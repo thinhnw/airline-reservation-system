@@ -52,9 +52,8 @@
             :page-class="'page-item'"
         >
         </paginate>
-        {{created?listCreated():null}}
-        {{updated?listUpdated():null}}
-
+        {{ created ? listCreated() : null }}
+        {{ updated ? listUpdated() : null }}
     </div>
 
 </template>
@@ -65,13 +64,13 @@ import axios from "axios";
 
 export default {
     name: "ListUser",
-    components:{
+    components: {
         Paginate
     },
-    props:['created','updated','shownForm'],
-    data(){
-        return{
-            customers:[],
+    props: ['created', 'updated', 'showNav'],
+    data() {
+        return {
+            customers: [],
             pageRange: 5,
             rows:0,
             fields: ['first_name', 'last_name', 'gender', 'email', 'control'],
@@ -82,20 +81,20 @@ export default {
         let uri = '/api/api-customer';
         axios.get(uri).then(res => {
             console.log(res)
-            this.rows=res.data.customers.last_page;
+            this.rows = res.data.customers.last_page;
             this.customers.push(...res.data.customers.data)
             this.customers.shift();
         });
     },
-    methods:{
-        clickCallback(pageNum){
-            let uri = '/api/api-customer?page='+(pageNum);
+    methods: {
+        clickCallback(pageNum) {
+            let uri = '/api/api-customer?page=' + (pageNum);
             axios.get(uri).then(res => {
-                this.customers=[];
+                this.customers = [];
                 this.customers.push(...res.data.customers.data);
             });
         },
-        deleteData(id){
+        deleteData(id) {
             this.$swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -136,24 +135,25 @@ export default {
             this.$emit('setShowNav',false)
 
         },
-        editData(id){
+
+        editData(id) {
             let uri = `/api/customer/edit/${id}`;
-            axios.get(uri).then(res=>{
-                this.dataEdit={};
-                this.dataEdit=res.data.customer;
-                this.$emit('setDataEdit',this.dataEdit)
+            axios.get(uri).then(res => {
+                this.dataEdit = {};
+                this.dataEdit = res.data.customer;
+                this.$emit('setDataEdit', this.dataEdit)
                 console.log(res)
             })
             this.$emit('setShowNav',true)
         },
-        listCreated(){
-            if (this.created){
+        listCreated() {
+            if (this.created) {
                 let uri = '/api/api-customer';
                 axios.get(uri).then(res => {
                     console.log(res)
-                    this.rows=0;
-                    this.customers=[];
-                    this.rows=res.data.customers.last_page;
+                    this.rows = 0;
+                    this.customers = [];
+                    this.rows = res.data.customers.last_page;
                     this.customers.push(...res.data.customers.data)
                     this.customers.shift();
                     return this.$emit("resultCreate");
@@ -161,12 +161,12 @@ export default {
                 });
             }
         },
-        listUpdated(){
-            if (this.updated){
+        listUpdated() {
+            if (this.updated) {
                 this.customers.splice(
                     this.customers.findIndex(
                         customer => customer.id === this.updated.id),
-                    1,this.updated)
+                    1, this.updated)
                 return this.$emit("resultUpdate");
             }
         }
@@ -175,7 +175,7 @@ export default {
 </script>
 
 <style scoped>
-.pagination >>> li{
+.pagination >>> li {
     border: 1px solid gray;
     text-align: center;
     width: 40px;
@@ -184,7 +184,8 @@ export default {
     font-weight: 600;
     font-size: 16px;
 }
-.pagination >>> .active{
+
+.pagination >>> .active {
     color: white;
     background-color: #ffc107;
 }
