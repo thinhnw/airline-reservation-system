@@ -71,6 +71,11 @@ const router = new VueRouter({
                     name: 'admin-user',
                     component: () => import('./views/admin/user/User.vue')
                 },
+                {
+                    path: 'customer-feedback',
+                    name: 'customer-feedback',
+                    component: () => import('./views/admin/customer_feedback/CustomerFeedback.vue')
+                },
 			]
 		},
 		{
