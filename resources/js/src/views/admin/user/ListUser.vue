@@ -1,29 +1,46 @@
 <template>
     <div class="col-md-12 p-0">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Email</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody v-for="(rs,index) in this.customers" :key="index">
-            <tr>
-                <td>{{rs.first_name}}</td>
-                <td>{{rs.last_name}}</td>
-                <td>{{rs.gender}}</td>
-                <td>{{rs.email}}</td>
-                <td class="text-center">
-                    <i class="far fa-edit btn-icon text-dark mr-3" @click="editData(rs.id)"></i>
-                    <i class="far fa-times-octagon btn-icon text-danger" @click="deleteData(rs.id)"></i>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <b-table :items="customers"
+                 :fields="fields"
+                 responsive="sm"
+                 @row-clicked="item=>$set(item, '_showDetails', !item._showDetails)">
+            <template #cell(control)="row">
+                <i @click="editData(row.item.id)" class="far fa-edit btn-icon text-dark mr-3"></i>
+                <i @click="deleteData(row.item.id)" class="far fa-times-octagon btn-icon text-danger"></i>
 
+            </template>
+
+            <template #row-details="row">
+                <b-card>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>Address:</b></b-col>
+                        <b-col v-if="row.item.address!=null">{{ row.item.address }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>Tel:</b></b-col>
+                        <b-col  v-if="row.item.tel!=null">{{ row.item.tel }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>City:</b></b-col>
+                        <b-col v-if="row.item.city!=null">{{ row.item.city }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>State:</b></b-col>
+                        <b-col v-if="row.item.state!=null">{{ row.item.state }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                    <b-row class="mb-2">
+                        <b-col sm="3" class="text-sm-right"><b>Country:</b></b-col>
+                        <b-col v-if="row.item.country!=null">{{ row.item.country }}</b-col>
+                        <b-col v-else>Undefined</b-col>
+                    </b-row>
+                </b-card>
+            </template>
+        </b-table>
         <paginate
             :page-count="rows"
             :page-range="pageRange"
@@ -37,7 +54,6 @@
         </paginate>
         {{created?listCreated():null}}
         {{updated?listUpdated():null}}
-
     </div>
 
 </template>
@@ -51,12 +67,14 @@ export default {
     components:{
         Paginate
     },
-    props:['created','updated','shownForm'],
+    props:['created','updated','showNav'],
     data(){
         return{
             customers:[],
             pageRange: 5,
-            rows:0
+            rows:0,
+            fields: ['first_name', 'last_name', 'gender', 'email', 'control'],
+
         }
     },
     created() {
@@ -65,6 +83,7 @@ export default {
             console.log(res)
             this.rows=res.data.customers.last_page;
             this.customers.push(...res.data.customers.data)
+            this.customers.shift();
         });
     },
     methods:{
@@ -88,25 +107,35 @@ export default {
                 if (result.value) {
                     //Send Request to server
                     let uri = `/api/customer/delete/${id}`;
-                    axios.delete(uri).then(() => {
-                    }).then((response)=> {
-                        this.$swal(
-                            'Deleted!',
-                            'User deleted successfully',
-                            'success'
-                        )
+                    let uri_data = '/api/api-customer';
+                    Promise.all([
+                            axios.delete(uri).then(()=> {
+                                this.$swal(
+                                    'Deleted!',
+                                    'User deleted successfully',
+                                    'success'
+                                )
+                            }),
+                            axios.get(uri_data).then(res => {
+                                this.rows=res.data.customers.last_page;
+                            })
+                        ]
+                    ).then(()=>{
+                        this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
+                        this.dataEdit.splice(this.customers.findIndex(customer => {
+                            customer.id === this.dataEdit.id;
+                        }), 1)
+                        this.$emit('setShowNav',false)
                     })
-                    this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
-                    this.dataEdit.splice(this.customers.findIndex(customer => {
-                        customer.id === this.dataEdit.id;
-                    }), 1)
+
+
                 }
 
             })
-
-            this.$emit('setShown',false)
+            this.$emit('setShowNav',false)
 
         },
+
         editData(id){
             let uri = `/api/customer/edit/${id}`;
             axios.get(uri).then(res=>{
@@ -115,7 +144,7 @@ export default {
                 this.$emit('setDataEdit',this.dataEdit)
                 console.log(res)
             })
-            this.$emit('setShown',true)
+            this.$emit('setShowNav',true)
         },
         listCreated(){
             if (this.created){

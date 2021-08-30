@@ -6,7 +6,7 @@
                     <i class="far fa-times"></i>
                 </div>
                 <div>
-                    <h3>Add Airport</h3>
+                    <h3>Airport</h3>
                 </div>
             </div>
             <div class=" mb-3">

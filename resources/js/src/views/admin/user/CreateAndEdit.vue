@@ -1,14 +1,21 @@
 <template>
-    <div class="box-createAndEdit py-3" v-show="shownForm">
+    <div class="box-createAndEdit p-3" v-show="shownForm">
         <form
             @submit.prevent="
             Object.keys(dataEdit).length!==0 ?
             updateData(dataEdit.id) :
             createData()">
             <div>
-                <button class="btn btn-danger mb-3 float-right" type="button" @click="cancel()">X</button>
-                <div>
-                    <label class="form-label">First Name</label>
+                <div class="d-flex justify-content-between mb-3">
+                    <div style="cursor: pointer" class="mb-2 btn-close" @click="cancel">
+                        <i class="far fa-times"></i>
+                    </div>
+                    <div>
+                        <h3>User</h3>
+                    </div>
+                </div>
+                <div  class=" mb-3">
+                    <label>First Name</label>
                     <input name="first_name"
                            v-if="Object.keys(dataEdit).length!==0"
                            v-model="dataEdit.first_name"
@@ -22,8 +29,8 @@
                            required>
                 </div>
             </div>
-            <div>
-                <label class="form-label">Last Name</label>
+            <div class=" mb-3">
+                <label>Last Name</label>
                 <input name="last_name"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.last_name"
@@ -38,8 +45,8 @@
                        required>
 
             </div>
-            <div>
-                <label class="form-label">Gender</label>
+            <div class=" mb-3">
+                <label>Gender</label>
                 <input name="gender"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.gender"
@@ -52,8 +59,8 @@
                        required>
 
             </div>
-            <div>
-                <label class="form-label">Email</label>
+            <div class=" mb-3">
+                <label>Email</label>
                 <input name="email"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.email"
@@ -65,8 +72,8 @@
                        type="email" class="form-control"
                        required>
             </div>
-            <div >
-                <label class="form-label" v-if="Object.keys(dataEdit).length===0">Password</label>
+            <div class=" mb-3" >
+                <label v-if="Object.keys(dataEdit).length===0">Password</label>
                 <input name="password"
                        v-if="Object.keys(dataEdit).length!==0"
                        v-model="dataEdit.password"
@@ -81,8 +88,8 @@
             </div>
 
             <div class="mt-3">
-                <button class="btn btn-primary" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update</button>
-                <button class="btn btn-primary" type="submit" v-else> Add</button>
+                <button class="btn w-100 btn-warning rounded-0" type="submit" v-if="Object.keys(dataEdit).length!==0"> Update</button>
+                <button class="btn w-100 btn-warning rounded-0" type="submit" v-else> Add</button>
             </div>
         </form>
     </div>
@@ -104,7 +111,7 @@ export default {
         cancel() {
             this.$emit('updateDataEdit')
             this.dataCreate = {}
-            this.$emit('setShown', false)
+            this.$emit('setShowNav', false)
         },
         createData() {
             console.log(this.dataCreate);
@@ -146,15 +153,13 @@ export default {
 
 <style scoped>
 .box-createAndEdit {
+    z-index: 9999;
     position: fixed;
-    width: 500px;
-    padding: 20px;
-    margin-top: 38px;
+    width: 600px;
     top: 0;
     right: 0;
     bottom: 0;
     background-color: #ffffff;
-    box-shadow: -5px 0 10px 5px rgba(0, 0, 0, 0.63);
 }
 
 </style>
