@@ -4,12 +4,10 @@
                  :fields="fields"
                  responsive="sm">
             <template #cell(control)="row">
-                <b-button @click="row.toggleDetails" class="btn btn-outline-warning" >
-                    {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
-                </b-button>
-                <b-button class="btn btn-outline-warning" @click="editData(row.item.id)">Sửa</b-button>
-                <b-button class="btn btn-outline-warning" @click="deleteData(row.item.id)">Xóa</b-button>
-
+                <i @click="row.toggleDetails" :class="row.detailsShowing ? 'fal fa-caret-up  mr-3' : 'fal fa-caret-down  mr-3' "  >
+                </i>
+                <i @click="editData(row.id)" class="far fa-edit btn-icon text-dark mr-3" ></i>
+                <i @click="deleteData(row.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
             </template>
 
             <template #row-details="row">

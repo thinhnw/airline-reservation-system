@@ -17,8 +17,8 @@
                 <td>{{rs.cityname}}</td>
                 <td>{{rs.countryname}}</td>
                 <td>
-                    <button class="btn btn-outline-warning" @click="editData(rs.id)">Sửa</button>
-                    <button class="btn btn-outline-warning" @click="deleteData(rs.id)">Xóa</button>
+                    <i @click="editData(rs.id)" class="far fa-edit btn-icon text-dark mr-3"></i>
+                    <i @click="deleteData(rs.id)" class="far fa-times-octagon btn-icon text-danger"></i>
                 </td>
             </tr>
             </tbody>

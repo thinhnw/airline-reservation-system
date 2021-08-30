@@ -85,7 +85,7 @@
                     <router-link to="/admin/customer-feedback" class="nav-link"  :class="{ 'text-warning': $route.name === 'customer-feedback' }">
                         <b-row>
                             <b-col cols="2" xl="1">
-                                <i class="fas fa-plane-arrival mr-3"></i>
+                                <i class="far fa-comments mr-3"></i>
                             </b-col>
                             <b-col>
                                 Customer's Feedback

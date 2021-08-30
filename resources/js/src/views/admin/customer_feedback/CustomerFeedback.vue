@@ -5,8 +5,7 @@
                  responsive="sm"
                  @row-clicked="item=>$set(item, '_showDetails', !item._showDetails)">
             <template #cell(control)="row">
-                <b-button class="btn btn-outline-warning">Sửa</b-button>
-                <b-button class="btn btn-outline-warning" >Xóa</b-button>
+                <i @click="deleteData(row.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
             </template>
 
             <template #row-details="row">
@@ -134,40 +133,6 @@ export default {
             this.$emit('setShowNav',false)
 
         },
-
-        editData(id){
-            let uri = `/api/customer/edit/${id}`;
-            axios.get(uri).then(res=>{
-                this.dataEdit={};
-                this.dataEdit=res.data.customer;
-                this.$emit('setDataEdit',this.dataEdit)
-                console.log(res)
-            })
-            this.$emit('setShown',true)
-        },
-        listCreated(){
-            if (this.created){
-                let uri = '/api/api-customer';
-                axios.get(uri).then(res => {
-                    console.log(res)
-                    this.rows=0;
-                    this.customers=[];
-                    this.rows=res.data.customers.last_page;
-                    this.customers.push(...res.data.customers.data)
-                    return this.$emit("resultCreate");
-
-                });
-            }
-        },
-        listUpdated(){
-            if (this.updated){
-                this.customers.splice(
-                    this.customers.findIndex(
-                        customer => customer.id === this.updated.id),
-                    1,this.updated)
-                return this.$emit("resultUpdate");
-            }
-        }
     }
 }
 </script>
