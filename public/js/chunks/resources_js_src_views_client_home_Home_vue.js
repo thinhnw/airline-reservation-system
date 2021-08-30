@@ -381,6 +381,85 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    flight: Object
+  },
+  computed: {
+    status: function status() {
+      var time = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.flight.departure_time);
+      var now = moment__WEBPACK_IMPORTED_MODULE_0___default()();
+      if (now.isAfter(time)) return 'DEPARTED';
+      if (time.diff(now, 'seconds') <= 60 * 60) return 'BOARDING';
+      return 'SCHEDULED';
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js& ***!
@@ -760,6 +839,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -778,7 +866,140 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    airports: Array
+  },
+  data: function data() {
+    return {
+      flightNumber: '',
+      cityFrom: '',
+      cityTo: '',
+      date: '',
+      error: ''
+    };
+  },
+  methods: {
+    airportFilterBy: function airportFilterBy(option, label, search) {
+      return (label || '').indexOf(search) > -1;
+    },
+    validate: function validate() {
+      if (!this.flightNumber) return false;
+      if (!this.cityTo) return false;
+      if (!this.cityFrom) return false;
+      if (!this.date) return false;
+      this.error = "";
+      return true;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var filter, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (_this.validate()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                _this.error = "Please fill out your flight information";
+                return _context.abrupt("return");
+
+              case 3:
+                _context.prev = 3;
+                filter = {
+                  flightNumber: _this.flightNumber,
+                  cityFrom: _this.cityFrom,
+                  cityTo: _this.cityTo,
+                  date: _this.date
+                };
+                _context.next = 7;
+                return _axios__WEBPACK_IMPORTED_MODULE_1__.default.get("/api/flights/details?filter=".concat(JSON.stringify(filter)));
+
+              case 7:
+                res = _context.sent;
+
+                _this.$emit('query-flight-details', res.data.flight);
+
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0);
+                _this.error = _context.t0.message;
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 11]]);
+      }))();
+    }
+  }
+});
 
 /***/ }),
 
@@ -805,6 +1026,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SeatSelection_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SeatSelection.vue */ "./resources/js/src/views/client/home/SeatSelection.vue");
 /* harmony import */ var _abc__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./abc */ "./resources/js/src/views/client/home/abc.js");
 /* harmony import */ var _HomeDefault_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./HomeDefault.vue */ "./resources/js/src/views/client/home/HomeDefault.vue");
+/* harmony import */ var _FlightDetails_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./FlightDetails.vue */ "./resources/js/src/views/client/home/FlightDetails.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -861,6 +1083,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -880,18 +1106,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     FlightStatus: _FlightStatus_vue__WEBPACK_IMPORTED_MODULE_4__.default,
     TripSummary: _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__.default,
     SeatSelection: _SeatSelection_vue__WEBPACK_IMPORTED_MODULE_8__.default,
-    HomeDefault: _HomeDefault_vue__WEBPACK_IMPORTED_MODULE_10__.default
+    HomeDefault: _HomeDefault_vue__WEBPACK_IMPORTED_MODULE_10__.default,
+    FlightDetails: _FlightDetails_vue__WEBPACK_IMPORTED_MODULE_11__.default
   },
   data: function data() {
     return {
       fetchedAirports: [],
       // flightsDetails: null,
       searchedInfo: null,
-      isBookingFlight: false,
-      abc: _abc__WEBPACK_IMPORTED_MODULE_9__.default
+      flightDetails: null,
+      abc: _abc__WEBPACK_IMPORTED_MODULE_9__.default,
+      current: 'HOME'
     };
   },
   methods: {
+    handleQueryingFlightDetails: function handleQueryingFlightDetails(flight) {
+      this.flightDetails = flight;
+      this.current = 'DETAILS';
+    },
     fetchAirports: function fetchAirports() {
       var _this = this;
 
@@ -927,7 +1159,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     handleListingFlights: function handleListingFlights(event) {
       console.log('event', event);
       this.searchedInfo = JSON.parse(JSON.stringify(event));
-      this.isBookingFlight = true;
+      this.current = 'SEARCH';
     }
   },
   computed: {
@@ -16888,6 +17120,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".flight-item[data-v-fc15b678] {\n  width: 100%;\n  margin-bottom: 20px;\n  border-radius: 10px;\n  border: none;\n}\n.flight-item .flight-time-text[data-v-fc15b678] {\n  font-size: 1.5rem;\n  color: var(--primary);\n}\n.flight-item .flight-radio-button[data-v-fc15b678] {\n  width: 100%;\n}\n.flight-item .flight-radio-button[data-v-fc15b678] label.btn {\n  width: 100%;\n  border-radius: 10px;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".flight-number[data-v-113a8e98] {\n  border-top-right-radius: 0 !important;\n  border-bottom-right-radius: 0 !important;\n  height: 35px !important;\n}\n.from-city-select[data-v-113a8e98] .vs__dropdown-toggle {\n  border-radius: 0px;\n  border-left: 0;\n}\n.search-btn[data-v-113a8e98] {\n  height: 35px;\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -63623,6 +63879,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_style_index_0_id_113a8e98_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_style_index_0_id_113a8e98_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_style_index_0_id_113a8e98_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss& ***!
@@ -63954,6 +64240,45 @@ component.options.__file = "resources/js/src/views/client/home/FlightBooking.vue
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/FlightDetails.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightDetails.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FlightDetails.vue?vue&type=template&id=569ffee8& */ "./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8&");
+/* harmony import */ var _FlightDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FlightDetails.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _FlightDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/src/views/client/home/FlightDetails.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/FlightList.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/src/views/client/home/FlightList.vue ***!
@@ -64006,23 +64331,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FlightStatus.vue?vue&type=template&id=113a8e98& */ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&");
+/* harmony import */ var _FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true& */ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true&");
 /* harmony import */ var _FlightStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FlightStatus.vue?vue&type=script&lang=js& */ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _FlightStatus_vue_vue_type_style_index_0_id_113a8e98_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& */ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _FlightStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__.render,
-  _FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "113a8e98",
   null
   
 )
@@ -64408,6 +64735,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js&":
 /*!************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/FlightList.vue?vue&type=script&lang=js& ***!
@@ -64607,6 +64950,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& ***!
+  \***********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_style_index_0_id_113a8e98_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=style&index=0&id=113a8e98&scoped=true&lang=scss&");
+
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss&":
 /*!***************************************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/Home.vue?vue&type=style&index=0&id=aa6b8316&scoped=true&lang=scss& ***!
@@ -64749,6 +65105,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightDetails_vue_vue_type_template_id_569ffee8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightDetails.vue?vue&type=template&id=569ffee8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8&");
+
+
+/***/ }),
+
 /***/ "./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true&":
 /*!******************************************************************************************************!*\
   !*** ./resources/js/src/views/client/home/FlightList.vue?vue&type=template&id=fc15b678&scoped=true& ***!
@@ -64766,19 +65139,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true& ***!
+  \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightStatus.vue?vue&type=template&id=113a8e98& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FlightStatus_vue_vue_type_template_id_113a8e98_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true&");
 
 
 /***/ }),
@@ -65393,6 +65766,149 @@ var render = function() {
             on: { back: _vm.backStep }
           })
         : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightDetails.vue?vue&type=template&id=569ffee8& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-container",
+    [
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            { staticClass: "py-5" },
+            [
+              _c("h4", [
+                _vm._v("Flight Number " + _vm._s(_vm.flight.flight_number))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "mt-4" }, [
+                _vm._v(
+                  "Departure: " +
+                    _vm._s(
+                      new Date(_vm.flight.departure_time).toLocaleDateString()
+                    )
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "mt-3" }, [
+                _vm._v("Status: " + _vm._s(_vm.status))
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", [
+                    _c("p", [_c("b", [_vm._v("Origin")])]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(
+                            _vm.flight.airport_from.name +
+                              " (" +
+                              _vm.flight.airport_from.code +
+                              "), " +
+                              _vm.flight.airport_from.cityname +
+                              " , " +
+                              _vm.flight.airport_from.countryname
+                          ) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("b-col", [
+                    _c("p", [_c("b", [_vm._v("Destination")])]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(
+                            _vm.flight.airport_to.name +
+                              " (" +
+                              _vm.flight.airport_to.code +
+                              "), " +
+                              _vm.flight.airport_to.cityname +
+                              " , " +
+                              _vm.flight.airport_to.countryname
+                          ) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                [
+                  _c("b-col", [
+                    _c("p", [_c("b", [_vm._v("Departure Time")])]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(
+                            new Date(
+                              _vm.flight.departure_time
+                            ).toLocaleTimeString()
+                          ) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("b-col", [
+                    _c("p", [_c("b", [_vm._v("Arrival Time")])]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(
+                            new Date(
+                              _vm.flight.arrival_time
+                            ).toLocaleTimeString()
+                          ) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ])
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -66239,10 +66755,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/src/views/client/home/FlightStatus.vue?vue&type=template&id=113a8e98&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -66257,48 +66773,203 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "p-3 px-5" },
+    { staticClass: "p-3 px-5 flight-status" },
     [
-      _c("label", [
-        _vm._v(
-          "\n\t\tManage your upcoming trip (this feature is coming soon)\n\t"
-        )
-      ]),
+      _c("label", [_vm._v("\n\t\tGet your flight details\n\t")]),
       _vm._v(" "),
       _c(
-        "b-input-group",
+        "b-form",
         {
-          scopedSlots: _vm._u([
-            {
-              key: "append",
-              fn: function() {
-                return [
-                  _c("b-button", { attrs: { variant: "warning" } }, [
-                    _vm._v("Search flights")
-                  ])
-                ]
-              },
-              proxy: true
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit.apply(null, arguments)
             }
-          ])
+          }
         },
         [
-          _c("b-form-input", {
-            staticClass: "py-4",
-            attrs: { placeholder: "Flight number" }
-          }),
+          _c(
+            "b-row",
+            { attrs: { "no-gutters": "" } },
+            [
+              _c(
+                "b-col",
+                { attrs: { cols: "2" } },
+                [
+                  _c("b-form-input", {
+                    staticClass: "flight-number py-3",
+                    attrs: {
+                      size: "sm",
+                      placeholder: "Flight number",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.flightNumber,
+                      callback: function($$v) {
+                        _vm.flightNumber = $$v
+                      },
+                      expression: "flightNumber"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("v-select", {
+                    staticClass: "from-city-select",
+                    attrs: {
+                      options: _vm.airports,
+                      required: "",
+                      label: "label",
+                      placeholder: "From Airport/City",
+                      clearable: false,
+                      filterBy: _vm.airportFilterBy
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "search",
+                        fn: function(ref) {
+                          var attributes = ref.attributes
+                          var events = ref.events
+                          return [
+                            _c(
+                              "input",
+                              _vm._g(
+                                _vm._b(
+                                  {
+                                    staticClass: "vs__search",
+                                    attrs: { required: !_vm.cityFrom }
+                                  },
+                                  "input",
+                                  attributes,
+                                  false
+                                ),
+                                events
+                              )
+                            )
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.cityFrom,
+                      callback: function($$v) {
+                        _vm.cityFrom = $$v
+                      },
+                      expression: "cityFrom"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("v-select", {
+                    staticClass: "from-city-select",
+                    attrs: {
+                      options: _vm.airports,
+                      required: "",
+                      label: "label",
+                      placeholder: "From Airport/City",
+                      clearable: false,
+                      filterBy: _vm.airportFilterBy
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "search",
+                        fn: function(ref) {
+                          var attributes = ref.attributes
+                          var events = ref.events
+                          return [
+                            _c(
+                              "input",
+                              _vm._g(
+                                _vm._b(
+                                  {
+                                    staticClass: "vs__search",
+                                    attrs: { required: !_vm.cityTo }
+                                  },
+                                  "input",
+                                  attributes,
+                                  false
+                                ),
+                                events
+                              )
+                            )
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.cityTo,
+                      callback: function($$v) {
+                        _vm.cityTo = $$v
+                      },
+                      expression: "cityTo"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("b-form-datepicker", {
+                    staticClass: "rounded-0",
+                    attrs: { required: "", min: new Date() },
+                    model: {
+                      value: _vm.date,
+                      callback: function($$v) {
+                        _vm.date = $$v
+                      },
+                      expression: "date"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "1" } },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      staticClass: "search-btn",
+                      attrs: { type: "submit", variant: "primary" }
+                    },
+                    [_vm._v("Search")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("b-form-input", {
-            staticClass: "py-4",
-            attrs: { placeholder: "From" }
-          }),
-          _vm._v(" "),
-          _c("b-form-input", {
-            staticClass: "py-4",
-            attrs: { placeholder: "To" }
-          }),
-          _vm._v(" "),
-          _c("b-form-select", { staticClass: "py-4", attrs: { options: [] } })
+          _vm.error
+            ? _c(
+                "b-row",
+                [
+                  _c("b-col", [
+                    _c("small", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.error))
+                    ])
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       )
@@ -66390,7 +67061,15 @@ var render = function() {
                             _c(
                               "b-tab",
                               { attrs: { title: "Flight Status" } },
-                              [_c("FlightStatus")],
+                              [
+                                _c("FlightStatus", {
+                                  attrs: { airports: _vm.airports },
+                                  on: {
+                                    "query-flight-details":
+                                      _vm.handleQueryingFlightDetails
+                                  }
+                                })
+                              ],
                               1
                             ),
                             _vm._v(" "),
@@ -66419,9 +67098,9 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    !_vm.isBookingFlight ? _c("div", [_c("HomeDefault")], 1) : _vm._e(),
+    _vm.current === "HOME" ? _c("div", [_c("HomeDefault")], 1) : _vm._e(),
     _vm._v(" "),
-    _vm.isBookingFlight
+    _vm.current === "SEARCH"
       ? _c(
           "div",
           [
@@ -66429,6 +67108,14 @@ var render = function() {
               attrs: { airports: _vm.airports, searchedInfo: _vm.searchedInfo }
             })
           ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.current === "DETAILS"
+      ? _c(
+          "div",
+          [_c("FlightDetails", { attrs: { flight: _vm.flightDetails } })],
           1
         )
       : _vm._e()

@@ -2270,6 +2270,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_dashboard_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/dashboard/Dashboard.vue */ "./resources/js/src/views/admin/dashboard/Dashboard.vue"));
       }
     }, {
+      path: 'reservations',
+      name: 'admin-reservations',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_reservations_Reservations_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/reservations/Reservations.vue */ "./resources/js/src/views/admin/reservations/Reservations.vue"));
+      }
+    }, {
       path: 'flights',
       name: 'admin-flights',
       component: function component() {

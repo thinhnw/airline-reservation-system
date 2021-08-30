@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -89,12 +91,13 @@ class AuthController extends Controller
     public function register(Request $request) {
         try {
             $request->validate([
-                'email' => ['required', 'unique:users' , 'max:255'],
+                'email' => ['required', 'max:255'],
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'gender' => 'required',
                 'password' => ['required' , 'min:6']
             ]);
+            if (User::where('email', $request->email)->first()) throw new Exception('The email has already been taken');
             $data = array();
             $data['last_name'] = $request->last_name;
             $data['first_name'] = $request->first_name;
@@ -107,7 +110,7 @@ class AuthController extends Controller
         } catch (Throwable $e) {
             return response()->json([
                 'message' => $e->getMessage()
-            ], 200);
+            ], 404);
         }
     }
 }
