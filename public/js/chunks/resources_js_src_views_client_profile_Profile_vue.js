@@ -55,6 +55,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -17836,8 +17840,10 @@ var render = function() {
                   _c("b-th", [_vm._v("Updated")]),
                   _vm._v(" "),
                   _c("b-th", { staticClass: "text-center" }, [
-                    _vm._v("Download")
-                  ])
+                    _vm._v("Summary")
+                  ]),
+                  _vm._v(" "),
+                  _c("b-th")
                 ],
                 1
               )
@@ -17896,7 +17902,19 @@ var render = function() {
                         }
                       }
                     })
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-td",
+                    [
+                      _c(
+                        "b-button",
+                        { attrs: { variant: "outline-danger", size: "sm" } },
+                        [_vm._v("Cancel")]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               )

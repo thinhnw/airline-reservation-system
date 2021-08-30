@@ -7,7 +7,8 @@
 					<b-th>Status</b-th>
 					<b-th>Price</b-th>
 					<b-th>Updated</b-th>
-					<b-th class="text-center">Download</b-th>
+					<b-th class="text-center">Summary</b-th>
+					<b-th></b-th>
 				</b-tr>
 			</b-thead>
 			<b-tbody>
@@ -18,6 +19,9 @@
 					<b-td>{{ new Date(reservation.updated_at).toLocaleDateString() }}</b-td>
 					<b-td class="text-center">
 						<i class="fas fa-arrow-to-bottom btn-icon font-size-large text-primary" @click="download(index)"></i>		
+					</b-td>
+					<b-td>
+						<b-button variant="outline-danger" size="sm">Cancel</b-button>
 					</b-td>
 				</b-tr>
 			</b-tbody>
