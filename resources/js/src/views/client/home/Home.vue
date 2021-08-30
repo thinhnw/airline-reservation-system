@@ -13,14 +13,14 @@
 										@list-flights="handleListingFlights"
 									/>	
 								</b-tab>
-								<b-tab title="My Trips">
-									<MyTrip />
-								</b-tab>
 								<b-tab title="Check-in">
 									<CheckIn />
 								</b-tab>
 								<b-tab title="Flight Status">
 									<FlightStatus />
+								</b-tab>
+								<b-tab title="My Trips">
+									<MyTrip />
 								</b-tab>
 							</b-tabs>
 						</b-card>

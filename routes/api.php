@@ -7,6 +7,7 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::get('reservations/vnpay_return', [ ReservationController::class, 'vnpayRe
 Route::resource('reservations', ReservationController::class)->middleware('api');
 Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
 Route::resource('flights', FlightController::class)->middleware('api');
+
+Route::post('/tickets/{id}/checkin', [ TicketController::class, 'checkin' ])->middleware('api');
+Route::resource('tickets', TicketController::class)->middleware('api');
+
 //airport
 Route::resource('airports', AirportController::class)->middleware('api');
 Route::get("/api-airport",[AirportController::class,"index"]);

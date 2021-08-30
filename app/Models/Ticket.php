@@ -10,7 +10,25 @@ class Ticket extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function exportWord() {
+    public function flight() {
+        return $this->hasOne(Flight::class, 'id', 'flight_id');
+    }
+    public function reservation() {
+        return $this->hasOne(Reservation::class, 'id', 'reservation_id');
+    }
+
+    public function checkIn() {
+        
+        if (!$this->seat) {
+            $this->update([
+                'seat' => $this->flight->findFirstAvailableSeat($this->reservation->seat_class)
+            ]);
+            $this->flight->reserveSeat($this->seat);
+        }
+        $this->exportBoardingPass();
+    }
+
+    public function exportBoardingPass() {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
         /* Note: any element you append to a document must reside inside of a Section. */
