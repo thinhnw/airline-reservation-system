@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\SupportCustomer;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
@@ -26,5 +27,10 @@ class SupportCustomerController extends Controller
         }catch (\Exception $exception){
             abort(404);
         }
+    }
+    public function delete($id){
+        $customerFeedback=SupportCustomer::findOrFail($id);
+        $customerFeedback->delete();
+        return response()->json('successfully deleted');
     }
 }

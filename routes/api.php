@@ -39,12 +39,13 @@ Route::get('reservations/get_by_user_id', [ ReservationController::class, 'getBy
 Route::post('reservations/checkout', [ ReservationController::class, 'checkout' ])->middleware('api');
 Route::post('reservations/cancel', [ ReservationController::class, 'cancel' ])->middleware('api');
 Route::get('reservations/vnpay_return', [ ReservationController::class, 'vnpayReturn' ])->middleware('api');
+Route::get('reservations/checkin', [ ReservationController::class, 'checkin' ])->middleware('api');
 Route::resource('reservations', ReservationController::class)->middleware('api');
 Route::get('flights/search', [ FlightController::class, 'search' ])->middleware('api');
 Route::get('flights/details', [ FlightController::class, 'details' ])->middleware('api');
 Route::resource('flights', FlightController::class)->middleware('api');
 
-Route::post('/tickets/{id}/checkin', [ TicketController::class, 'checkin' ])->middleware('api');
+Route::post('/tickets/checkin', [ TicketController::class, 'checkin' ])->middleware('api');
 Route::resource('tickets', TicketController::class)->middleware('api');
 
 //airport
@@ -70,4 +71,5 @@ Route::post("/customer/checkPass/{id}",[CustomerController::class,"checkPass"]);
 //customer feedback
 Route::get("/customer-feedback",[SupportCustomerController::class,"index"]);
 Route::post('/customer-feedback/save',[SupportCustomerController::class,'save']);
+Route::delete('/customer-feedback/delete/{id}',[SupportCustomerController::class,'delete']);
 
