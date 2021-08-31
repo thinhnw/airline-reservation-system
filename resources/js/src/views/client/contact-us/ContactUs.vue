@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="" class="p-0 styleBLock">
+  <b-container fluid="" class="p-0">
     <div class="ContactUs__banner">
       <h2 class="font-weight-bold">Contact us</h2>
       <h4>We're here to help, wherever you are!</h4>
@@ -40,7 +40,7 @@
           </b-card>
         </b-col>
         <b-col class="text-center align-items-center" col md="8" xl="8" xs="8" sm="8">
-          <img src="/images/contactUsImg1.png" alt="">
+          <img src="../../../../../../public/images/contactUsImg1.png" alt="">
           <h4 class="w-75 m-auto p-2 text-secondary">
             For faster support, please submit your request via the following form.
           </h4>
@@ -66,9 +66,6 @@ export default {
 </script>
 
 <style scoped>
-.styleBLock{
-    margin-top: 72px;
-}
   .ContactUs__banner{
     background-image: linear-gradient(
         -180deg

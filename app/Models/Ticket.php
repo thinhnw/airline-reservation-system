@@ -26,13 +26,10 @@ class Ticket extends Model
         try {
             if (!$this->seat) {
                 $this->update([
-                    'seat' => $this->flight->findFirstAvailableSeat($this->reservation->seat_class),
+                    'seat' => $this->flight->findFirstAvailableSeat($this->reservation->seat_class)
                 ]);
                 $this->flight->reserveSeat($this->seat);
             }
-            $this->update([
-                'status' => 'CHECKED-IN'
-            ]);
             $this->exportBoardingPass();
             $contact = json_decode($this->reservation->contact, true);
             $receipt_email = $contact["email"];

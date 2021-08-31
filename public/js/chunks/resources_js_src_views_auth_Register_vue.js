@@ -386,7 +386,7 @@ var render = function() {
                   _c(
                     "h1",
                     {
-                      staticClass: "text-warning pointer",
+                      staticClass: "text-warning",
                       on: {
                         click: function($event) {
                           return _vm.$router.push({ name: "home" })

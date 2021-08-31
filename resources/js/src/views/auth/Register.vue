@@ -3,7 +3,7 @@
 		<b-row align-h="center" class="h-100">
 			<b-col cols="8" lg="4" class="h-100 text-center d-flex align-items-center">
 				<div class="form-wrapper">
-					<h1 class="text-warning pointer" @click="$router.push({ name: 'home'})">
+					<h1 class="text-warning" @click="$router.push({ name: 'home'})">
 						Welcome to Avia Airways!
 					</h1>
 					<p >Please register to your account.</p>

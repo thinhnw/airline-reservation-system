@@ -55,14 +55,10 @@
 											month: 'short',
 											day: 'numeric'
 										}"
-										@input="errors[index].dateOfBirth = ''"
-									></b-form-datepicker>
-									<div v-if="errors[index].dateOfBirth">
-										<p class="font-size-small text-danger">{{ errors[index].dateOfBirth }}</p>
-									</div>
+									>
+									</b-form-datepicker>
 								</b-col>
 								<b-col cols="5">
-									
 									<v-select
 										v-model="passenger.nationality"
 										:options="regions"
@@ -103,11 +99,7 @@
 												month: 'short',
 												day: 'numeric'
 											}"
-											@input="errors[index].passportExpiryDate = ''"
 										></b-form-datepicker>
-										<div v-if="errors[index].passportExpiryDate">
-											<p class="font-size-small text-danger">{{ errors[index].passportExpiryDate }}</p>
-										</div>
 									</b-col>
 								</b-form-row>
 							</b-form-group>
@@ -163,12 +155,9 @@
 						</b-card-body>
 					</b-card>
 					<b-card>
-						<b-form-group>
-							<b-form-checkbox required v-model="isTermAgreed" @change="termError = isTermAgreed ? '' : termError">	
-								I have verified that the information provided matches the passport information
-							</b-form-checkbox>
-							<small class="text-danger" v-if="termError">{{ termError }}</small>
-						</b-form-group>
+						<b-form-checkbox required>
+							I have verified that the information provided matches the passport information
+						</b-form-checkbox>
 					</b-card>
 				</b-col>
 				<b-col cols="4" class="pr-0">
@@ -232,13 +221,10 @@ export default {
 		return {
 			regions,
 			passengerDetails: [],
-			errors: [],
-			isTermAgreed: false,
-			termError: false,
 			contact: {
 				email: '',
 				name: ''
-			},
+			}
 		}
 	},
 	mounted() {
@@ -256,36 +242,11 @@ export default {
 				travelDocumentType: 'Passport',
 				travelDocumentCountry: ''
 			})
-			this.errors.push({
-				dateOfBirth: '',
-				passportExpiryDate: ''
-			})
 		}
 	},
 	methods: {
 		formatMoney,
-		validate() {
-			let validation = true
-			this.passengerDetails.some((passenger, index) => {
-				if (!passenger.dateOfBirth) {
-					this.errors[index].dateOfBirth = 'You must fill out this field'
-					validation = false
-					return
-				}
-				if (!passenger.passportExpiryDate) {
-					this.errors[index].passportExpiryDate = 'You must fill out this field'
-					validation = false
-					return 
-				}
-			})
-			if (!this.isTermAgreed) {
-				validation = false
-				this.termError = 'You must verified the given information.'
-			}
-			return validation
-		},
 		handleStepDone() {
-			if (!this.validate()) return
 			let passengerDetails = JSON.parse(JSON.stringify(this.passengerDetails))
 			let contact = JSON.parse(JSON.stringify(this.contact))
 			this.$emit('done', {

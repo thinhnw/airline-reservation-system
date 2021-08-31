@@ -124,31 +124,12 @@ export default {
 			return this.details.class === 'Business' ? 
 				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0))
 		},
-		priceForSeatsDeparture() {
-			let seatPrice = 150000 // VND
-			let sum = 0
-
-			this.details.passengerDetails.forEach(passenger => {
-				if (passenger.seatDeparture != "") sum += seatPrice
-			})
-			return sum
-		},
-		priceForSeatsReturn() {
-			let seatPrice = 150000 // VND
-			let sum = 0
-
-			this.details.passengerDetails.forEach(passenger => {
-				if (passenger.seatDeparture != "") sum += seatPrice
-			})
-			return sum
+		priceForSeats() {
+			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
+			return passengerCount * 150000
 		},
 		grandTotal() {
-			return Math.ceil(
-				this.pricePerAdult * this.details.passengers.adults 
-				+ Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) 
-				+ this.priceForSeatsDeparture
-				+ this.priceForSeatsReturn
-			)
+			return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0))
 		}
 	}
 }
