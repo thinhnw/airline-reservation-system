@@ -1021,7 +1021,7 @@ var render = function() {
                                     "router-link",
                                     {
                                       staticClass: "text-light px-3",
-                                      attrs: { to: "/" }
+                                      attrs: { to: "/about-us" }
                                     },
                                     [_vm._v("About Us")]
                                   )
@@ -1036,7 +1036,7 @@ var render = function() {
                                     "router-link",
                                     {
                                       staticClass: "text-light",
-                                      attrs: { to: "/" }
+                                      attrs: { to: "/contact-us" }
                                     },
                                     [_vm._v("Contact Us")]
                                   )
