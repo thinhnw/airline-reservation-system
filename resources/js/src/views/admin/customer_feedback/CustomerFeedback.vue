@@ -1,12 +1,10 @@
 <template>
     <div class="col-md-12 p-0">
-        <b-table :items="customers"
+        <b-table :items="sp_customers"
                  :fields="fields"
-                 responsive="sm">
+                 responsive="sm"
+                 @row-clicked="item=>$set(item, '_showDetails', !item._showDetails)">
             <template #cell(control)="row">
-                <i @click="row.toggleDetails" :class="row.detailsShowing ? 'fal fa-caret-up  mr-3' : 'fal fa-caret-down  mr-3' "  >
-                </i>
-                <i @click="editData(row.id)" class="far fa-edit btn-icon text-dark mr-3" ></i>
                 <i @click="deleteData(row.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
             </template>
 
@@ -52,8 +50,8 @@
             :page-class="'page-item'"
         >
         </paginate>
-        {{ created ? listCreated() : null }}
-        {{ updated ? listUpdated() : null }}
+        {{created?listCreated():null}}
+        {{updated?listUpdated():null}}
     </div>
 
 </template>
@@ -63,38 +61,38 @@ import Paginate from "vuejs-paginate";
 import axios from "axios";
 
 export default {
-    name: "ListUser",
-    components: {
+    name: "CustomerFeedback",
+    components:{
         Paginate
     },
-    props: ['created', 'updated', 'showNav'],
-    data() {
-        return {
-            customers: [],
+    props:['created','updated','shownForm'],
+    data(){
+        return{
+            sp_customers:[],
             pageRange: 5,
             rows:0,
-            fields: ['first_name', 'last_name', 'gender', 'email', 'control'],
+            fields: ['name', 'email', 'class', 'content','control'],
 
         }
     },
     created() {
-        let uri = '/api/api-customer';
+        let uri = '/api/customer-feedback';
         axios.get(uri).then(res => {
             console.log(res)
-            this.rows = res.data.customers.last_page;
-            this.customers.push(...res.data.customers.data)
-            this.customers.shift();
+            this.rows=res.data.sp_customers.last_page;
+            this.sp_customers.push(...(res.data.sp_customers.data));
+
         });
     },
-    methods: {
-        clickCallback(pageNum) {
-            let uri = '/api/api-customer?page=' + (pageNum);
+    methods:{
+        clickCallback(pageNum){
+            let uri = '/api/api-customer?page='+(pageNum);
             axios.get(uri).then(res => {
-                this.customers = [];
+                this.customers=[];
                 this.customers.push(...res.data.customers.data);
             });
         },
-        deleteData(id) {
+        deleteData(id){
             this.$swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -125,7 +123,7 @@ export default {
                         this.dataEdit.splice(this.customers.findIndex(customer => {
                             customer.id === this.dataEdit.id;
                         }), 1)
-                        this.$emit('setShowNav',false)
+                        this.$emit('setShown',false)
                     })
 
 
@@ -135,47 +133,12 @@ export default {
             this.$emit('setShowNav',false)
 
         },
-
-        editData(id) {
-            let uri = `/api/customer/edit/${id}`;
-            axios.get(uri).then(res => {
-                this.dataEdit = {};
-                this.dataEdit = res.data.customer;
-                this.$emit('setDataEdit', this.dataEdit)
-                console.log(res)
-            })
-            this.$emit('setShowNav',true)
-        },
-        listCreated() {
-            if (this.created) {
-                let uri = '/api/api-customer';
-                axios.get(uri).then(res => {
-                    console.log(res)
-                    this.rows = 0;
-                    this.customers = [];
-                    this.rows = res.data.customers.last_page;
-                    this.customers.push(...res.data.customers.data)
-                    this.customers.shift();
-                    return this.$emit("resultCreate");
-
-                });
-            }
-        },
-        listUpdated() {
-            if (this.updated) {
-                this.customers.splice(
-                    this.customers.findIndex(
-                        customer => customer.id === this.updated.id),
-                    1, this.updated)
-                return this.$emit("resultUpdate");
-            }
-        }
     }
 }
 </script>
 
 <style scoped>
-.pagination >>> li {
+.pagination >>> li{
     border: 1px solid gray;
     text-align: center;
     width: 40px;
@@ -184,8 +147,7 @@ export default {
     font-weight: 600;
     font-size: 16px;
 }
-
-.pagination >>> .active {
+.pagination >>> .active{
     color: white;
     background-color: #ffc107;
 }

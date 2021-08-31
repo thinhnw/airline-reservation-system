@@ -7,6 +7,7 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SupportCustomerController;
 use App\Http\Controllers\TicketController;
 
 /*
@@ -65,4 +66,8 @@ Route::post('/customer/update/{id}',[CustomerController::class,'update']);
 Route::delete('/customer/delete/{id}',[CustomerController::class,'delete']);
 Route::post('/customer/save',[CustomerController::class,'save']);
 Route::post("/customer/checkPass/{id}",[CustomerController::class,"checkPass"]);
+
+//customer feedback
+Route::get("/customer-feedback",[SupportCustomerController::class,"index"]);
+Route::post('/customer-feedback/save',[SupportCustomerController::class,'save']);
 

@@ -1,12 +1,16 @@
 <template>
     <div class="box-CUD p-3">
-        <form @submit.prevent="Object.keys(dataEdit).length!==0?updateData(dataEdit.id):createData()">
+        <form
+            @submit.prevent="
+            Object.keys(dataEdit).length!==0 ?
+            updateData(dataEdit.id) :
+            createData()">
             <div class="d-flex justify-content-between mb-3">
                 <div style="cursor: pointer" class="mb-2 btn-close" @click="cancel">
                     <i class="far fa-times"></i>
                 </div>
                 <div>
-                    <h3>Add Airport</h3>
+                    <h3>Airport</h3>
                 </div>
             </div>
             <div class=" mb-3">

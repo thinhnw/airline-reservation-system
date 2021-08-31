@@ -16,7 +16,11 @@ class Customer extends Model
         'gender',
         'email',
         'user_type',
-        'password'
+        'password',
+        'city',
+        'country',
+        'address',
+
     ];
 
 }

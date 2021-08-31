@@ -2293,6 +2293,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_user_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/user/User.vue */ "./resources/js/src/views/admin/user/User.vue"));
       }
+    }, {
+      path: 'customer-feedback',
+      name: 'customer-feedback',
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_src_views_admin_customer_feedback_CustomerFeedback_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/admin/customer_feedback/CustomerFeedback.vue */ "./resources/js/src/views/admin/customer_feedback/CustomerFeedback.vue"));
+      }
     }]
   }, {
     path: '/errors/not-authorized',
