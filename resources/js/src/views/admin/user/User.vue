@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex justify-content-between mb-3">
-            <h2>AIRPORTS</h2>
+            <h2>Users</h2>
             <b-button variant="outline-warning" squared class="py-1" @click="showNav = !showNav">
                 Add User
                 <i class="ml-1 fal fa-plus"></i>
@@ -38,7 +38,6 @@ import ListUser from "./ListUser";
 import CreateAndEdit from "./CreateAndEdit";
 
 export default {
-
     name: "User",
     components: {CreateAndEdit, ListUser},
     data() {
@@ -67,19 +66,18 @@ export default {
             return this.updated = false;
         },
         resultCreate() {
-            this.shownForm();
+            this.showNav();
             return this.created = false;
         },
-        shownForm() {
+        showNav() {
             this.dataEdit = "";
-            return this.shown = !this.shown;
+            return this.showNav = !this.showNav;
         },
         setShowNav(res) {
             return this.showNav = res
         },
         updateDataEdit() {
-            this.shownForm();
-
+            this.showNav();
             return this.dataEdit = "";
         }
     }

@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CreateAndEdit",
-  props: ['dataEdit', 'shownForm'],
+  props: ['dataEdit', 'shownForm', 'showNav'],
   data: function data() {
     return {
       dataCreate: {}
@@ -135,8 +135,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this.$emit("created", JSON.parse(response.config.data));
-
-        _this.$emit("resultCreate");
       });
       this.$swal({
         toast: true,
@@ -146,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success',
         title: 'Created'
       });
-      this.dataCreate = {};
+      this.cancel();
     },
     updateData: function updateData(id) {
       var _this2 = this;
@@ -358,6 +356,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this5 = this;
 
       if (this.created) {
+        console.log(this.created);
         var uri = '/api/api-customer';
         axios__WEBPACK_IMPORTED_MODULE_1___default().get(uri).then(function (res) {
           var _this5$customers;
@@ -368,6 +367,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _this5.rows = res.data.customers.last_page;
 
           (_this5$customers = _this5.customers).push.apply(_this5$customers, _toConsumableArray(res.data.customers.data));
+
+          _this5.customers.shift();
 
           return _this5.$emit("resultCreate");
         });
@@ -469,18 +470,18 @@ __webpack_require__.r(__webpack_exports__);
       return this.updated = false;
     },
     resultCreate: function resultCreate() {
-      this.shownForm();
+      this.showNav();
       return this.created = false;
     },
-    shownForm: function shownForm() {
+    showNav: function showNav() {
       this.dataEdit = "";
-      return this.shown = !this.shown;
+      return this.showNav = !this.showNav;
     },
     setShowNav: function setShowNav(res) {
       return this.showNav = res;
     },
     updateDataEdit: function updateDataEdit() {
-      this.shownForm();
+      this.showNav();
       return this.dataEdit = "";
     }
   }
@@ -1495,7 +1496,7 @@ var render = function() {
         "div",
         { staticClass: "d-flex justify-content-between mb-3" },
         [
-          _c("h2", [_vm._v("AIRPORTS")]),
+          _c("h2", [_vm._v("Users")]),
           _vm._v(" "),
           _c(
             "b-button",

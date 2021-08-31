@@ -101,7 +101,7 @@ import axios from "axios";
 
 export default {
     name: "CreateAndEdit",
-    props: ['dataEdit', 'shownForm'],
+    props: ['dataEdit', 'shownForm', 'showNav'],
     data() {
         return {
             dataCreate: {},
@@ -119,7 +119,6 @@ export default {
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
-                this.$emit("resultCreate");
             });
             this.$swal({
                 toast: true,
@@ -129,7 +128,7 @@ export default {
                 icon: 'success',
                 title: 'Created',
             });
-            this.dataCreate = {}
+            this.cancel();
         },
         updateData(id) {
             let uri_u = `/api/customer/update/${id}`;

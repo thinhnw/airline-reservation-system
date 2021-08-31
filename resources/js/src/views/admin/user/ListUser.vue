@@ -148,15 +148,17 @@ export default {
             })
             this.$emit('setShowNav', true)
         },
-        listCreated() {
-            if (this.created) {
+        listCreated(){
+            if (this.created){
+                console.log(this.created)
                 let uri = '/api/api-customer';
                 axios.get(uri).then(res => {
                     console.log(res)
-                    this.rows = 0;
-                    this.customers = [];
-                    this.rows = res.data.customers.last_page;
+                    this.rows=0;
+                    this.customers=[];
+                    this.rows=res.data.customers.last_page;
                     this.customers.push(...res.data.customers.data)
+                    this.customers.shift();
                     return this.$emit("resultCreate");
 
                 });
