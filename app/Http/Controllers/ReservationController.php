@@ -8,6 +8,7 @@ use App\Models\Flight;
 use App\Models\Reservation;
 use App\Models\StripeCustomer;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class ReservationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT');
+        $this->middleware('JWT', ['except' => ['checkin']]);
     }
     /**
      * Display a listing of the resource.
@@ -261,8 +262,10 @@ class ReservationController extends Controller
                 return response()->json([
                     'refunded' => $refunded
                 ], 200);
-            } else {
+            } else if ($reservation->status == 'CANCELED') {
                 throw new Exception('This reservation has been canceled already.');
+            } else if ($reservation->status == 'CHECKED-IN') {
+                throw new Exception('This reservation can no longer be canceled.');
             }
         } catch (\Throwable $th) {
             return response()->json([

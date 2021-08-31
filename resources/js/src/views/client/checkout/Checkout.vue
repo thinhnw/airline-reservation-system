@@ -62,11 +62,26 @@
                     <label for="">
                       Country
                     </label>
-                    <b-form-input 
+                    <v-select
                       v-model="form.txt_bill_country"
+                      :options="regions"
+                      required
+                      label="countryname"
+                      :reduce="country => country.countryShortCode"
                       placeholder="Enter your country"
-                    ></b-form-input>
+                      :clearable="false"
+                    >
+                      <template #search="{attributes, events}">
+                        <input
+                          class="vs__search"
+                          :required="!form.txt_bill_country"
+                          v-bind="attributes"
+                          v-on="events"
+                        />
+                      </template>
+                    </v-select>
                   </b-form-group>
+
                 </b-col>
                 <b-col>
                   <b-form-group>
@@ -125,11 +140,13 @@
 
 <script>
 import { loadStripe } from '@stripe/stripe-js'
+import regions from '@/data/regions'
 import axios from '@/axios'
 import { formatMoney } from '@/helper'
 export default {
   data() {
     return {
+      regions,
       stripe: {},
       cardElement: {},
       paymentProcessing: false,

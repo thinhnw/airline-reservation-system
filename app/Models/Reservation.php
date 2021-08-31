@@ -228,7 +228,7 @@ class Reservation extends Model
             }
         }
 
-
+        $section->addText('');
         $section->addText('PAYMENT DETAILS');
         $section->addText('GRAND TOTAL:  VND ' . $this->price);
         $payment = json_decode($this->payment, true);

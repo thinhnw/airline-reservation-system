@@ -289,9 +289,18 @@ var render = function() {
                 "div",
                 { staticClass: "form-wrapper" },
                 [
-                  _c("h1", { staticClass: "text-warning" }, [
-                    _vm._v("\n\t\t\t\t\tWelcome to Avia Airways!\n\t\t\t\t")
-                  ]),
+                  _c(
+                    "h1",
+                    {
+                      staticClass: "text-warning pointer",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({ name: "home" })
+                        }
+                      }
+                    },
+                    [_vm._v("\n\t\t\t\t\tWelcome to Avia Airways!\n\t\t\t\t")]
+                  ),
                   _vm._v(" "),
                   _c("p", [_vm._v("Please login to your account.")]),
                   _vm._v(" "),

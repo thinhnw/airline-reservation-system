@@ -247,12 +247,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       ticketNumber: '',
-      lastName: ''
+      lastName: '',
+      isFetching: false
     };
   },
   methods: {
@@ -266,25 +269,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return _axios__WEBPACK_IMPORTED_MODULE_1__.default.post("/api/tickets/".concat(_this.ticketNumber, "/checkin"));
+                _this.isFetching = true;
+                _context.next = 4;
+                return _axios__WEBPACK_IMPORTED_MODULE_1__.default.post("/api/tickets/checkin", {
+                  ticketNumber: _this.ticketNumber,
+                  lastName: _this.lastName
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
-                _context.next = 9;
+
+                _this.$bvToast.toast('Please check your email for the boarding passes!', {
+                  title: 'Check-in Succeed',
+                  autoHideDelay: 3500,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'success'
+                });
+
+                _context.next = 12;
                 break;
 
-              case 6:
-                _context.prev = 6;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 9:
+                _this.$bvToast.toast(_context.t0.message, {
+                  title: 'Check-in Failed',
+                  autoHideDelay: 3500,
+                  appendToast: false,
+                  solid: true,
+                  toaster: 'b-toaster-top-right',
+                  variant: 'danger'
+                });
+
+              case 12:
+                _context.prev = 12;
+                _this.isFetching = false;
+                return _context.finish(12);
+
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 6]]);
+        }, _callee, null, [[0, 8, 12, 15]]);
       }))();
     }
   }
@@ -1022,7 +1053,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FlightStatus_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FlightStatus.vue */ "./resources/js/src/views/client/home/FlightStatus.vue");
 /* harmony import */ var _FlightBooking_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FlightBooking.vue */ "./resources/js/src/views/client/home/FlightBooking.vue");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/axios */ "./resources/js/src/axios.js");
-/* harmony import */ var _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TripSummary.vue */ "./resources/js/src/views/client/home/TripSummary.vue");
+/* harmony import */ var _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TripSummaryPrintable.vue */ "./resources/js/src/views/client/home/TripSummaryPrintable.vue");
 /* harmony import */ var _SeatSelection_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SeatSelection.vue */ "./resources/js/src/views/client/home/SeatSelection.vue");
 /* harmony import */ var _abc__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./abc */ "./resources/js/src/views/client/home/abc.js");
 /* harmony import */ var _HomeDefault_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./HomeDefault.vue */ "./resources/js/src/views/client/home/HomeDefault.vue");
@@ -1104,7 +1135,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     MyTrip: _MyTrip_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     CheckIn: _CheckIn_vue__WEBPACK_IMPORTED_MODULE_3__.default,
     FlightStatus: _FlightStatus_vue__WEBPACK_IMPORTED_MODULE_4__.default,
-    TripSummary: _TripSummary_vue__WEBPACK_IMPORTED_MODULE_7__.default,
+    TripSummaryPrintable: _TripSummaryPrintable_vue__WEBPACK_IMPORTED_MODULE_7__.default,
     SeatSelection: _SeatSelection_vue__WEBPACK_IMPORTED_MODULE_8__.default,
     HomeDefault: _HomeDefault_vue__WEBPACK_IMPORTED_MODULE_10__.default,
     FlightDetails: _FlightDetails_vue__WEBPACK_IMPORTED_MODULE_11__.default
@@ -1160,6 +1191,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log('event', event);
       this.searchedInfo = JSON.parse(JSON.stringify(event));
       this.current = 'SEARCH';
+    },
+    handleCheckIn: function handleCheckIn(event) {
+      console.log('event', event);
+      this.current = 'CHECK-IN';
     }
   },
   computed: {
@@ -1496,6 +1531,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1509,6 +1555,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       regions: _data_regions__WEBPACK_IMPORTED_MODULE_0__.default,
       passengerDetails: [],
+      errors: [],
+      isTermAgreed: false,
+      termError: false,
       contact: {
         email: '',
         name: ''
@@ -1531,11 +1580,41 @@ __webpack_require__.r(__webpack_exports__);
         travelDocumentType: 'Passport',
         travelDocumentCountry: ''
       });
+      this.errors.push({
+        dateOfBirth: '',
+        passportExpiryDate: ''
+      });
     }
   },
   methods: {
     formatMoney: _helper__WEBPACK_IMPORTED_MODULE_1__.formatMoney,
+    validate: function validate() {
+      var _this = this;
+
+      var validation = true;
+      this.passengerDetails.some(function (passenger, index) {
+        if (!passenger.dateOfBirth) {
+          _this.errors[index].dateOfBirth = 'You must fill out this field';
+          validation = false;
+          return;
+        }
+
+        if (!passenger.passportExpiryDate) {
+          _this.errors[index].passportExpiryDate = 'You must fill out this field';
+          validation = false;
+          return;
+        }
+      });
+
+      if (!this.isTermAgreed) {
+        validation = false;
+        this.termError = 'You must verified the given information.';
+      }
+
+      return validation;
+    },
     handleStepDone: function handleStepDone() {
+      if (!this.validate()) return;
       var passengerDetails = JSON.parse(JSON.stringify(this.passengerDetails));
       var contact = JSON.parse(JSON.stringify(this.contact));
       this.$emit('done', {
@@ -2364,12 +2443,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return this.details["class"] === 'Business' ? this.flightDeparture.fare_business + ((_this$flightReturn$fa = (_this$flightReturn = this.flightReturn) === null || _this$flightReturn === void 0 ? void 0 : _this$flightReturn.fare_business) !== null && _this$flightReturn$fa !== void 0 ? _this$flightReturn$fa : 0) : this.flightDeparture.fare_economy + ((_this$flightReturn$fa2 = (_this$flightReturn2 = this.flightReturn) === null || _this$flightReturn2 === void 0 ? void 0 : _this$flightReturn2.fare_economy) !== null && _this$flightReturn$fa2 !== void 0 ? _this$flightReturn$fa2 : 0);
     },
-    priceForSeats: function priceForSeats() {
-      var passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children);
-      return passengerCount * 150000;
+    priceForSeatsDeparture: function priceForSeatsDeparture() {
+      var seatPrice = 150000; // VND
+
+      var sum = 0;
+      this.details.passengerDetails.forEach(function (passenger) {
+        if (passenger.seatDeparture != "") sum += seatPrice;
+      });
+      return sum;
+    },
+    priceForSeatsReturn: function priceForSeatsReturn() {
+      var seatPrice = 150000; // VND
+
+      var sum = 0;
+      this.details.passengerDetails.forEach(function (passenger) {
+        if (passenger.seatDeparture != "") sum += seatPrice;
+      });
+      return sum;
     },
     grandTotal: function grandTotal() {
-      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0));
+      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeatsDeparture + this.priceForSeatsReturn);
     }
   })
 });
@@ -2398,6 +2491,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -2726,15 +2821,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log('details', this.details);
       return Math.ceil(this.details["class"] === 'Business' ? this.flightDeparture.fare_business + ((_this$flightReturn$fa = (_this$flightReturn = this.flightReturn) === null || _this$flightReturn === void 0 ? void 0 : _this$flightReturn.fare_business) !== null && _this$flightReturn$fa !== void 0 ? _this$flightReturn$fa : 0) : this.flightDeparture.fare_economy + ((_this$flightReturn$fa2 = (_this$flightReturn2 = this.flightReturn) === null || _this$flightReturn2 === void 0 ? void 0 : _this$flightReturn2.fare_economy) !== null && _this$flightReturn$fa2 !== void 0 ? _this$flightReturn$fa2 : 0));
     },
-    priceForChild: function priceForChild() {
+    pricePerChild: function pricePerChild() {
       return Math.ceil(this.pricePerAdult * 2 / 3);
     },
-    priceForSeats: function priceForSeats() {
-      var passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children);
-      return passengerCount * 150000;
+    seatPrice: function seatPrice() {
+      return 150000;
+    },
+    seatsDepartureCount: function seatsDepartureCount() {
+      var sum = 0;
+      this.details.passengerDetails.forEach(function (passenger) {
+        if (passenger.seatDeparture != "") sum += 1;
+      });
+      return sum;
+    },
+    seatsReturnCount: function seatsReturnCount() {
+      var sum = 0;
+      this.details.passengerDetails.forEach(function (passenger) {
+        if (passenger.seatReturn != "") sum += 1;
+      });
+      return sum;
+    },
+    priceForSeatsDeparture: function priceForSeatsDeparture() {
+      return this.seatPrice * this.seatsDepartureCount;
+    },
+    priceForSeatsReturn: function priceForSeatsReturn() {
+      return this.seatPrice * this.seatsReturnCount;
     },
     grandTotal: function grandTotal() {
-      return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0);
+      return Math.ceil(this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeatsDeparture + this.priceForSeatsReturn);
     }
   })
 });
@@ -16673,11 +16787,11 @@ __webpack_require__.r(__webpack_exports__);
   "trip_type": "Return",
   "departure_date": "2021-08-30",
   "passengers": {
-    "adults": "2",
+    "adults": 1,
     "children": "1",
     "babies": 0
   },
-  "class": "Economy",
+  "class": "Business",
   "return_date": "2021-09-01",
   "flightsDeparture": [{
     "id": 1,
@@ -16687,13 +16801,14 @@ __webpack_require__.r(__webpack_exports__);
     "departure_time": "2021-08-30 01:00:00",
     "arrival_time": "2021-08-30 02:00:00",
     "created_at": "2021-08-15T11:29:38.000000Z",
-    "updated_at": "2021-08-15T11:29:38.000000Z",
-    "business_seats": "[[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
-    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
-    "economy_seat_count": 300,
-    "business_seat_count": 10,
-    "fare_economy": 58.00995248987101,
-    "fare_business": 116.01990497974202,
+    "updated_at": "2021-08-30T09:27:40.000000Z",
+    "business_seats": "[[false,true,true,true],[false,true,false,true],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
+    "economy_seats": "[[true,true,true,true,true,true,false,false,false,false],[true,true,true,false,false,false,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
+    "economy_seat_count": 234,
+    "business_seat_count": 5,
+    "fare_economy": 1357000,
+    "fare_business": 2691000,
+    "skymiles": 1161,
     "airport_from": {
       "id": 1332,
       "code": "HAN",
@@ -16769,13 +16884,14 @@ __webpack_require__.r(__webpack_exports__);
     "departure_time": "2021-09-01 21:00:00",
     "arrival_time": "2021-09-01 23:00:00",
     "created_at": "2021-08-15T11:30:11.000000Z",
-    "updated_at": "2021-08-15T11:30:11.000000Z",
+    "updated_at": "2021-08-30T09:25:05.000000Z",
     "business_seats": "[[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
-    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
-    "economy_seat_count": 300,
+    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
+    "economy_seat_count": 279,
     "business_seat_count": 40,
-    "fare_economy": 58.00995248987101,
-    "fare_business": 116.01990497974202,
+    "fare_economy": 1357000,
+    "fare_business": 2691000,
+    "skymiles": 1161,
     "airport_from": {
       "id": 3207,
       "code": "SGN",
@@ -16851,13 +16967,14 @@ __webpack_require__.r(__webpack_exports__);
     "departure_time": "2021-08-30 01:00:00",
     "arrival_time": "2021-08-30 02:00:00",
     "created_at": "2021-08-15T11:29:38.000000Z",
-    "updated_at": "2021-08-15T11:29:38.000000Z",
-    "business_seats": "[[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
-    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
-    "economy_seat_count": 300,
-    "business_seat_count": 10,
-    "fare_economy": 58.00995248987101,
-    "fare_business": 116.01990497974202,
+    "updated_at": "2021-08-30T09:27:40.000000Z",
+    "business_seats": "[[false,true,true,true],[false,true,false,true],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
+    "economy_seats": "[[true,true,true,true,true,true,false,false,false,false],[true,true,true,false,false,false,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,true,true,true,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
+    "economy_seat_count": 234,
+    "business_seat_count": 5,
+    "fare_economy": 1357000,
+    "fare_business": 2691000,
+    "skymiles": 1161,
     "airport_from": {
       "id": 1332,
       "code": "HAN",
@@ -16933,13 +17050,14 @@ __webpack_require__.r(__webpack_exports__);
     "departure_time": "2021-09-01 21:00:00",
     "arrival_time": "2021-09-01 23:00:00",
     "created_at": "2021-08-15T11:30:11.000000Z",
-    "updated_at": "2021-08-15T11:30:11.000000Z",
+    "updated_at": "2021-08-30T09:25:05.000000Z",
     "business_seats": "[[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]",
-    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
-    "economy_seat_count": 300,
+    "economy_seats": "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,true,true,true],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]",
+    "economy_seat_count": 279,
     "business_seat_count": 40,
-    "fare_economy": 58.00995248987101,
-    "fare_business": 116.01990497974202,
+    "fare_economy": 1357000,
+    "fare_business": 2691000,
+    "skymiles": 1161,
     "airport_from": {
       "id": 3207,
       "code": "SGN",
@@ -17009,46 +17127,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   "passengerDetails": [{
     "title": "Mr",
-    "firstName": "A",
+    "firstName": "Thinh",
     "lastName": "Nguyen",
-    "dateOfBirth": "1999-12-04",
-    "nationality": "VN",
+    "dateOfBirth": "2021-08-18",
+    "nationality": "AD",
     "nationalityId": -1,
-    "passportNumber": "C12345678",
-    "passportExpiryDate": "2022-08-26",
+    "passportNumber": "C234234",
+    "passportExpiryDate": "2021-08-31",
     "travelDocumentType": "Passport",
-    "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 21 D",
-    "seatReturn": "Economy 21 H"
+    "travelDocumentCountry": "AO",
+    "seatDeparture": "Business 2 B",
+    "seatReturn": "Business 1 A"
   }, {
     "title": "Mrs",
-    "firstName": "E",
+    "firstName": "Huong",
     "lastName": "Nguyen",
-    "dateOfBirth": "1999-01-03",
-    "nationality": "VN",
+    "dateOfBirth": "2021-08-28",
+    "nationality": "AD",
     "nationalityId": -1,
-    "passportNumber": "C23456781",
-    "passportExpiryDate": "2022-08-31",
+    "passportNumber": "C23423",
+    "passportExpiryDate": "2021-08-31",
     "travelDocumentType": "Passport",
-    "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 21 E",
-    "seatReturn": "Economy 21 J"
-  }, {
-    "title": "Ms",
-    "firstName": "I",
-    "lastName": "Nguyen",
-    "dateOfBirth": "2018-08-08",
-    "nationality": "VN",
-    "nationalityId": -1,
-    "passportNumber": "C3456712",
-    "passportExpiryDate": "2022-08-31",
-    "travelDocumentType": "Passport",
-    "travelDocumentCountry": "VN",
-    "seatDeparture": "Economy 21 F",
-    "seatReturn": "Economy 21 K"
+    "travelDocumentCountry": "AI",
+    "seatDeparture": "Business 1 A",
+    "seatReturn": "Business 2 B"
   }],
   "contact": {
-    "email": "nvt0412@gmail.com"
+    "email": "nvt0412@gmail.com",
+    "name": "Thinh Nguyen"
   }
 });
 
@@ -65671,9 +65777,25 @@ var render = function() {
               key: "append",
               fn: function() {
                 return [
-                  _c("b-button", { attrs: { variant: "primary" } }, [
-                    _vm._v("Check-in")
-                  ])
+                  _c(
+                    "b-button",
+                    {
+                      attrs: {
+                        type: "submit",
+                        variant: "primary",
+                        disabled: _vm.isFetching
+                      }
+                    },
+                    [
+                      _vm._v("\n\t\t\t\tCheck-in\n\t\t\t\t"),
+                      _vm.isFetching
+                        ? _c("b-spinner", {
+                            attrs: { small: "", variant: "light" }
+                          })
+                        : _vm._e()
+                    ],
+                    1
+                  )
                 ]
               },
               proxy: true
@@ -65694,16 +65816,15 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("b-form-input", {
-            directives: [
-              {
-                name: "mode",
-                rawName: "v-mode",
-                value: _vm.lastName,
-                expression: "lastName"
-              }
-            ],
             staticClass: "py-4",
-            attrs: { placeholder: "Last Name" }
+            attrs: { placeholder: "Last Name" },
+            model: {
+              value: _vm.lastName,
+              callback: function($$v) {
+                _vm.lastName = $$v
+              },
+              expression: "lastName"
+            }
           })
         ],
         1
@@ -67044,7 +67165,7 @@ var render = function() {
                                   attrs: { airports: _vm.airports },
                                   on: {
                                     searching: function($event) {
-                                      _vm.isBookingFlight = false
+                                      _vm.current = "NOTHING"
                                     },
                                     "list-flights": _vm.handleListingFlights
                                   }
@@ -67056,7 +67177,11 @@ var render = function() {
                             _c(
                               "b-tab",
                               { attrs: { title: "Check-in" } },
-                              [_c("CheckIn")],
+                              [
+                                _c("CheckIn", {
+                                  on: { "check-in": _vm.handleCheckIn }
+                                })
+                              ],
                               1
                             ),
                             _vm._v(" "),
@@ -67570,6 +67695,11 @@ var render = function() {
                                           day: "numeric"
                                         }
                                       },
+                                      on: {
+                                        input: function($event) {
+                                          _vm.errors[index].dateOfBirth = ""
+                                        }
+                                      },
                                       model: {
                                         value: passenger.dateOfBirth,
                                         callback: function($$v) {
@@ -67581,7 +67711,26 @@ var render = function() {
                                         },
                                         expression: "passenger.dateOfBirth"
                                       }
-                                    })
+                                    }),
+                                    _vm._v(" "),
+                                    _vm.errors[index].dateOfBirth
+                                      ? _c("div", [
+                                          _c(
+                                            "p",
+                                            {
+                                              staticClass:
+                                                "font-size-small text-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors[index].dateOfBirth
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      : _vm._e()
                                   ],
                                   1
                                 ),
@@ -67702,6 +67851,13 @@ var render = function() {
                                               day: "numeric"
                                             }
                                           },
+                                          on: {
+                                            input: function($event) {
+                                              _vm.errors[
+                                                index
+                                              ].passportExpiryDate = ""
+                                            }
+                                          },
                                           model: {
                                             value: passenger.passportExpiryDate,
                                             callback: function($$v) {
@@ -67714,7 +67870,27 @@ var render = function() {
                                             expression:
                                               "passenger.passportExpiryDate"
                                           }
-                                        })
+                                        }),
+                                        _vm._v(" "),
+                                        _vm.errors[index].passportExpiryDate
+                                          ? _c("div", [
+                                              _c(
+                                                "p",
+                                                {
+                                                  staticClass:
+                                                    "font-size-small text-danger"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors[index]
+                                                        .passportExpiryDate
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            ])
+                                          : _vm._e()
                                       ],
                                       1
                                     )
@@ -67919,11 +68095,43 @@ var render = function() {
                   _c(
                     "b-card",
                     [
-                      _c("b-form-checkbox", { attrs: { required: "" } }, [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tI have verified that the information provided matches the passport information\n\t\t\t\t\t"
-                        )
-                      ])
+                      _c(
+                        "b-form-group",
+                        [
+                          _c(
+                            "b-form-checkbox",
+                            {
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  _vm.termError = _vm.isTermAgreed
+                                    ? ""
+                                    : _vm.termError
+                                }
+                              },
+                              model: {
+                                value: _vm.isTermAgreed,
+                                callback: function($$v) {
+                                  _vm.isTermAgreed = $$v
+                                },
+                                expression: "isTermAgreed"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\t\n\t\t\t\t\t\t\tI have verified that the information provided matches the passport information\n\t\t\t\t\t\t"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.termError
+                            ? _c("small", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.termError))
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -69872,37 +70080,45 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _c(
-              "b-tr",
-              [
-                _c("b-td", [_vm._v("Seat Selection for inbound flight")]),
-                _vm._v(" "),
-                _c("b-td", { staticClass: "text-right" }, [
-                  _vm._v(
-                    "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.priceForSeats, 0)) +
-                      " VND\n\t\t\t\t"
-                  )
-                ])
-              ],
-              1
-            ),
+            _vm.seatsDepartureCount > 0
+              ? _c(
+                  "b-tr",
+                  [
+                    _c("b-td", [_vm._v("Seat Selection for inbound flight")]),
+                    _vm._v(" "),
+                    _c("b-td", { staticClass: "text-right" }, [
+                      _vm._v(
+                        "\n\t\t\t\t\t" +
+                          _vm._s(_vm.formatMoney(_vm.seatPrice, 0)) +
+                          " VND\n\t\t\t\t\tx " +
+                          _vm._s(_vm.seatsDepartureCount) +
+                          "\n\t\t\t\t"
+                      )
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "b-tr",
-              [
-                _c("b-td", [_vm._v("Seat Selection for outbound flight")]),
-                _vm._v(" "),
-                _c("b-td", { staticClass: "text-right" }, [
-                  _vm._v(
-                    "\n\t\t\t\t\t" +
-                      _vm._s(_vm.formatMoney(_vm.priceForSeats, 0)) +
-                      " VND\n\t\t\t\t"
-                  )
-                ])
-              ],
-              1
-            ),
+            _vm.seatsReturnCount > 0
+              ? _c(
+                  "b-tr",
+                  [
+                    _c("b-td", [_vm._v("Seat Selection for outbound flight")]),
+                    _vm._v(" "),
+                    _c("b-td", { staticClass: "text-right" }, [
+                      _vm._v(
+                        "\n\t\t\t\t\t" +
+                          _vm._s(_vm.formatMoney(_vm.seatPrice, 0)) +
+                          " VND\n\t\t\t\t\tx " +
+                          _vm._s(_vm.seatsReturnCount) +
+                          "\n\t\t\t\t"
+                      )
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "b-tr",

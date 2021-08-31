@@ -2464,7 +2464,7 @@ __webpack_require__.r(__webpack_exports__);
 
           commit('UPDATE_USER_INFO', response.data.userInfo); // Navigate User to homepage
 
-          if (response.data.userInfo.user_type === 'customer') _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');else _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/admin/dashboard');
+          if (response.data.userInfo.user_type.toLowerCase() === 'customer') _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');else _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/admin/dashboard');
           resolve(response);
         } else {
           reject({

@@ -4,21 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\throwException;
 
 class TicketController extends Controller
 {
 
     public function checkin(Request $request) {
-        $ticket = Ticket::find($request->ticketNumber);
-        $departureTime = Carbon::parse($ticket->flight->departure_time);
-        $diffInSeconds = $departureTime->diffInSeconds(Carbon::now());
-        if ($diffInSeconds > 24 * 60 * 60) {
+        try {
+            //code...
+            $ticket = Ticket::find($request->ticketNumber);
+            $fullName = explode(" ", $ticket->passenger_name);
+            if (end($fullName) != $request->lastName) throw new Exception('Credentials are invalid.');
+            if ($ticket->status == 'CHECKED-IN') throw new Exception('Your ticket has already been checked-in.');
+            $departureTime = Carbon::parse($ticket->flight->departure_time);
+            $diffInSeconds = $departureTime->diffInSeconds(Carbon::now());
+            // if ($diffInSeconds > 24 * 60 * 60) {
+            //     throw new Exception('Online check-in is only available 24 hours prior to departure of the flight.');
+            // }
+            $ticket->checkIn();
+            $ticket->reservation->update([
+                'status' => 'CHECKED-IN'
+            ]);
+        } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Online check-in is only available 24 hours prior to departure of the flight.'
+                'message' => $th->getMessage()
             ], 404);
         }
-        $ticket->checkIn();
     }
 
     /**

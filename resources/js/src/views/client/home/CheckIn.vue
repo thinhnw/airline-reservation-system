@@ -5,10 +5,12 @@
 		</label>
 		<b-input-group>
 			<b-form-input v-model="ticketNumber" placeholder="Ticket number" class="py-4"></b-form-input>
-			<b-form-input v-mode="lastName" placeholder="Last Name" class="py-4"></b-form-input>
-
+			<b-form-input v-model="lastName" placeholder="Last Name" class="py-4"></b-form-input>
 			<template #append>
-				<b-button variant="primary">Check-in</b-button>
+				<b-button type="submit" variant="primary" :disabled="isFetching">
+					Check-in
+					<b-spinner small variant="light" v-if="isFetching"></b-spinner>
+				</b-button>
 			</template>
 		</b-input-group>
 	</b-form>
@@ -20,15 +22,38 @@ export default {
 	data() {
 		return {
 			ticketNumber: '',
-			lastName: ''
+			lastName: '',
+			isFetching: false
 		}
 	},
 	methods: {
 		async submit() {
 			try {
-				let res = await axios.post(`/api/tickets/${this.ticketNumber}/checkin`);
+				this.isFetching = true
+				let res = await axios.post(`/api/tickets/checkin`, {
+					ticketNumber: this.ticketNumber,
+					lastName: this.lastName
+				});
+				this.$bvToast.toast('Please check your email for the boarding passes!', {
+					title: 'Check-in Succeed',
+					autoHideDelay: 3500,
+					appendToast: false,
+					solid: true,
+					toaster: 'b-toaster-top-right',
+					variant: 'success'
+				})
 			} catch (error) {
 				console.error(error)	
+				this.$bvToast.toast(error.message, {
+					title: 'Check-in Failed',
+					autoHideDelay: 3500,
+					appendToast: false,
+					solid: true,
+					toaster: 'b-toaster-top-right',
+					variant: 'danger'
+				})
+			} finally {
+				this.isFetching = false
 			}
 		}
 	}
