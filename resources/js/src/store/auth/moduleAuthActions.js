@@ -38,7 +38,7 @@ export default {
 
 
             // Navigate User to homepage
-            if (response.data.userInfo.user_type.toLowerCase() === 'customer')
+            if (response.data.userInfo.user_type === 'customer')
               router.push(router.currentRoute.query.to || '/')
             else 
               router.push(router.currentRoute.query.to || '/admin/dashboard')

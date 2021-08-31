@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="" class="p-0 styleBLock">
+  <b-container fluid="" class="p-0">
     <div class="aboutUs__banner">
       <b-container>
         <b-row>
@@ -10,7 +10,7 @@
             </h2>
           </b-col>
           <b-col class="container-img ml-auto" md="6" sm="6" lg="6" xl="6">
-            <img class="w-100 img-fluid" src="/images/logoBanner.png"/>
+            <img class="w-100 img-fluid" src="../../../../../../public/images/logoBanner.png"/>
           </b-col>
         </b-row>
       </b-container>
@@ -18,7 +18,7 @@
     <b-container>
       <b-row class="aboutUs__content my-5">
         <b-col md="4" sm="4" lg="4" xl="4">
-          <img class="img-fluid w-100" src="/images/AboutUsContent1.png"/>
+          <img class="img-fluid w-100" src="../../../../../../public/images/AboutUsContent1.png"/>
         </b-col>
         <b-col md="1" sm="1" lg="1" xl="1"></b-col>
         <b-col md="7" sm="7" lg="7" xl="7">
@@ -46,12 +46,12 @@
         </b-col>
         <b-col md="1" sm="1" lg="1" xl="1"></b-col>
         <b-col md="4" sm="4" lg="4" xl="4">
-          <img class="img-fluid w-100" src="/images/AboutUsContent4.jpg"/>
+          <img class="img-fluid w-100" src="../../../../../../public/images/AboutUsContent4.jpg"/>
         </b-col>
       </b-row>
       <b-row class="aboutUs__content my-5">
         <b-col md="4" sm="4" lg="4" xl="4">
-          <img class="img-fluid w-100" src="/images/AboutUsContent5.png"/>
+          <img class="img-fluid w-100" src="../../../../../../public/images/AboutUsContent5.png"/>
         </b-col>
         <b-col md="1" sm="1" lg="1" xl="1"></b-col>
         <b-col md="7" sm="7" lg="7" xl="7">
@@ -73,18 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.styleBLock{
-    margin-top: 72px;
-}
 .aboutUs__banner {
   display: inline-block;
   color: #ffffff;
   padding: 50px 0;
   max-height: 300px;
   width: 100%;
-    background-image: linear-gradient(
-            -180deg
-        , #1BA0E2 0%, #007CE8 100%);
+  background-color: #1BA0E2;
 
   .container-img {
     max-height: 300px;

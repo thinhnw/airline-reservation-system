@@ -56,7 +56,8 @@ class CustomerController extends Controller
             'password' => $password,
             'country'=>$request->country,
             'city'=>$request->city,
-            'address'=>$request->address
+            'address'=>$request->address,
+            'tel'=>$request->tel
         ]);
         return response()->json('successfully updated');
     }

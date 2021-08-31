@@ -21,10 +21,10 @@
 									<router-link class="text-light" to="/" @click="goHome">Home</router-link>
 								</b-nav-item>
 								<b-nav-item>
-									<router-link class="text-light px-3" to="/about-us">About Us</router-link>
+									<router-link class="text-light px-3" to="/">About Us</router-link>
 								</b-nav-item>
 								<b-nav-item>
-									<router-link class="text-light" to="/contact-us">Contact Us</router-link>
+									<router-link class="text-light" to="/">Contact Us</router-link>
 								</b-nav-item>
 							</b-navbar-nav>
 							<!-- Right aligned nav items -->

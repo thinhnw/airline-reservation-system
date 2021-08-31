@@ -9,12 +9,12 @@
 								<b-tab title="Book">
 									<SearchFlightsForm 
 										:airports="airports"
-										@searching="current = 'NOTHING'"
+										@searching="isBookingFlight = false"
 										@list-flights="handleListingFlights"
 									/>	
 								</b-tab>
 								<b-tab title="Check-in">
-									<CheckIn @check-in="handleCheckIn" />
+									<CheckIn />
 								</b-tab>
 								<b-tab title="Flight Status">
 									<FlightStatus :airports="airports" @query-flight-details="handleQueryingFlightDetails" />
@@ -28,7 +28,6 @@
 				</b-row>
 			</b-container>
 		</div>
-			<!-- <TripSummaryPrintable /> -->
 		<div v-if="current === 'HOME'">
 			<HomeDefault />
 		</div>
@@ -38,6 +37,7 @@
 				:airports="airports"
 				:searchedInfo="searchedInfo"
 			/>	
+			<!-- <TripSummary /> -->
 		</div>
 		<div v-if="current === 'DETAILS'">
 			<FlightDetails :flight="flightDetails" />
@@ -52,7 +52,7 @@ import CheckIn from './CheckIn.vue'
 import FlightStatus from './FlightStatus.vue'
 import FlightBooking from './FlightBooking.vue'
 import axios from '@/axios'
-import TripSummaryPrintable from './TripSummaryPrintable.vue'
+import TripSummary from './TripSummary.vue'
 import SeatSelection from './SeatSelection.vue'
 import abc from './abc'
 import HomeDefault from './HomeDefault.vue'
@@ -64,7 +64,7 @@ export default {
 		MyTrip,
 		CheckIn,
 		FlightStatus,
-		TripSummaryPrintable,
+		TripSummary,
 		SeatSelection,
 		HomeDefault,
 		FlightDetails
@@ -96,10 +96,6 @@ export default {
 			console.log('event', event)
 			this.searchedInfo = JSON.parse(JSON.stringify(event))
       this.current = 'SEARCH'
-		},
-		handleCheckIn(event) {
-			console.log('event', event)
-			this.current = 'CHECK-IN'
 		}
 	},
 	computed: {

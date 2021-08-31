@@ -2234,18 +2234,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_user_information_UserEditInformation_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/user_information/UserEditInformation.vue */ "./resources/js/src/views/client/user_information/UserEditInformation.vue"));
       }
-    }, {
-      path: '/contact-us',
-      name: 'contact-us',
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_contact-us_ContactUs_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/contact-us/ContactUs */ "./resources/js/src/views/client/contact-us/ContactUs.vue"));
-      }
-    }, {
-      path: '/about-us',
-      name: 'about-us',
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_src_views_client_about-us_AboutUs_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/client/about-us/AboutUs */ "./resources/js/src/views/client/about-us/AboutUs.vue"));
-      }
     }]
   }, {
     path: '/login',
@@ -2476,7 +2464,7 @@ __webpack_require__.r(__webpack_exports__);
 
           commit('UPDATE_USER_INFO', response.data.userInfo); // Navigate User to homepage
 
-          if (response.data.userInfo.user_type.toLowerCase() === 'customer') _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');else _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/admin/dashboard');
+          if (response.data.userInfo.user_type === 'customer') _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/');else _router__WEBPACK_IMPORTED_MODULE_1__.default.push(_router__WEBPACK_IMPORTED_MODULE_1__.default.currentRoute.query.to || '/admin/dashboard');
           resolve(response);
         } else {
           reject({
