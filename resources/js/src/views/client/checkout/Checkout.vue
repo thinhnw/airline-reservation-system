@@ -1,5 +1,5 @@
 <template>
-  <b-container class="checkout" v-if="reservation">
+  <b-container class="checkout">
     <b-row>
       <b-col cols="9">
         <b-card no-body class="p-4">

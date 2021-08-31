@@ -109,7 +109,7 @@
 					</div>
 				</b-col>
 				<b-col cols="12" class="text-center" v-if="selectedFlightDeparture > -1 && details.flightsDeparture.length > 1">
-					<b-button variant="outline-warning" type="button" @click="selectedFlightDeparture = -1">
+					<b-button variant="outline-warning" type="button" @click="selectedFlightDeparture = -1" class="mb-3">
 						View other flights
 					</b-button>
 				</b-col>
@@ -222,7 +222,7 @@
 					</div>
 				</b-col>
 				<b-col cols="12" class="text-center" v-if="selectedFlightReturn > -1 && details.flightsReturn.length > 1">
-					<b-button variant="outline-warning" type="button" @click="selectedFlightReturn = -1">
+					<b-button variant="outline-warning" type="button" @click="selectedFlightReturn = -1" class="mb-3">
 						View other flights
 					</b-button>
 				</b-col>

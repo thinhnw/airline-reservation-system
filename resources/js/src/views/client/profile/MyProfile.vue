@@ -110,13 +110,14 @@
                     ></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-2" label="Password:" label-for="input-2">
+                <b-form-group id="input-group-2" label="Password:" label-for="input-2" v-if="false">
                     <b-form-input
                         id="input-2"
                         v-model="form.password"
                         placeholder="Enter password"
                         required
                         type="password"
+                        readonly
                     ></b-form-input>
                 </b-form-group>
 

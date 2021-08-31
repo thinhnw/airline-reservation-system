@@ -66284,6 +66284,7 @@ var render = function() {
                       _c(
                         "b-button",
                         {
+                          staticClass: "mb-3",
                           attrs: { variant: "outline-warning", type: "button" },
                           on: {
                             click: function($event) {
@@ -66674,6 +66675,7 @@ var render = function() {
                           _c(
                             "b-button",
                             {
+                              staticClass: "mb-3",
                               attrs: {
                                 variant: "outline-warning",
                                 type: "button"
