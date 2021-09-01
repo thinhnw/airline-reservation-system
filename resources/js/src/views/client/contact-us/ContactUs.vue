@@ -58,7 +58,7 @@ export default {
       form :{
         selectOne: null,
       },
-      selectOne: [{ text: 'Select Product', value: null }, 'Chuyến bay phổ thông', 'Chuyến bay thương gia', 'Flight + hotels', 'khác...'],
+      selectOne: [{ text: 'Select Product', value: null }, 'Economy Class Flights', 'Business Class Flights', 'Flight + hotels', 'Others...'],
       show: true
     }
   }
