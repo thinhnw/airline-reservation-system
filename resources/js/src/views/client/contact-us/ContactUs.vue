@@ -9,25 +9,26 @@
         <b-col col md="4" xl="4" xs="4" sm="4">
           <b-card>
             <h5 class="font-weight-bold">Customer support</h5>
-            <form action="">
+            <form @submit.prevent="createData">
               <b-form-group id="input-group-3" label="Product:" label-for="input-3" class="pt-3">
                 <b-form-select
                     id="input-3"
-                    v-model="form.selectOne"
+                    v-model="form.class"
                     :options="selectOne"
                     required
                 ></b-form-select>
 
                 <label class="pt-3">Your name :</label>
-                <b-form-input name="NameCustomer" type="password" id="NameCustomer" placeholder="Nguyen Van A" required></b-form-input>
+                <b-form-input name="NameCustomer" type="text" id="NameCustomer" v-model="form.name" placeholder="Nguyen Van A" required></b-form-input>
 
                 <label class="pt-3">Your email :</label>
-                <b-form-input name="EmailCustomer" type="email" id="EmailCustomer" placeholder="yourEmail@gmail.com" required></b-form-input>
+                <b-form-input name="EmailCustomer" type="email" id="EmailCustomer" v-model="form.email" placeholder="yourEmail@gmail.com" required></b-form-input>
 
                 <label class="pt-3">Please share your concerns :</label>
                 <b-form-textarea
                     id="textarea"
                     placeholder="State your concerns..."
+                    v-model="form.content"
                     rows="3"
                     max-rows="6"
                 ></b-form-textarea>
@@ -51,17 +52,46 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "ContactUs",
   data() {
     return{
       form :{
-        selectOne: null,
+        class: null,
+        name:'',
+        email:'',
+        content:''
       },
       selectOne: [{ text: 'Select Product', value: null }, 'Economy Class Flights', 'Business Class Flights', 'Flight + hotels', 'Others...'],
       show: true
     }
-  }
+  },
+    methods:{
+       createData(){
+           console.log(this.form);
+           const url='/api/customer-feedback/save'
+           axios.post(url,this.form).then((respone)=>{
+               console.log(respone);
+           }).then(()=>{
+               this.form ={
+                   class: null,
+                       name:'',
+                       email:'',
+                       content:''
+               };
+               this.$swal({
+                   toast: true,
+                   position: 'top-end',
+                   showConfirmButton: false,
+                   timer: 3000,
+                   icon: 'success',
+                   title: 'Thank you for responding',
+               });
+           })
+       }
+    }
 }
 </script>
 

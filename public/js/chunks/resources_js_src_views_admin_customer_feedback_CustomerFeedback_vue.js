@@ -84,7 +84,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -141,26 +140,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          var uri = "/api/customer/delete/".concat(id);
-          var uri_data = '/api/api-customer';
+          var uri = "/api/customer-feedback/delete/".concat(id);
+          var uri_data = '/api/customer-feedback';
           Promise.all([axios__WEBPACK_IMPORTED_MODULE_1___default().delete(uri).then(function () {
             _this3.$swal('Deleted!', 'User deleted successfully', 'success');
           }), axios__WEBPACK_IMPORTED_MODULE_1___default().get(uri_data).then(function (res) {
-            _this3.rows = res.data.customers.last_page;
+            _this3.rows = res.data.sp_customers.last_page;
           })]).then(function () {
-            _this3.customers.splice(_this3.customers.findIndex(function (customer) {
-              return customer.id === id;
+            _this3.sp_customers.splice(_this3.sp_customers.findIndex(function (sp_customers) {
+              return sp_customers.id === id;
             }), 1);
-
-            _this3.dataEdit.splice(_this3.customers.findIndex(function (customer) {
-              customer.id === _this3.dataEdit.id;
-            }), 1);
-
-            _this3.$emit('setShown', false);
           });
         }
       });
-      this.$emit('setShowNav', false);
     }
   }
 });
@@ -334,11 +326,6 @@ var render = function() {
           fields: _vm.fields,
           responsive: "sm"
         },
-        on: {
-          "row-clicked": function(item) {
-            return _vm.$set(item, "_showDetails", !item._showDetails)
-          }
-        },
         scopedSlots: _vm._u([
           {
             key: "cell(control)",
@@ -348,7 +335,7 @@ var render = function() {
                   staticClass: "far fa-times-octagon btn-icon text-danger",
                   on: {
                     click: function($event) {
-                      return _vm.deleteData(row.id)
+                      return _vm.deleteData(row.item.id)
                     }
                   }
                 })

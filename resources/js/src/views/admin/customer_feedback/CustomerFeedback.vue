@@ -2,10 +2,9 @@
     <div class="col-md-12 p-0">
         <b-table :items="sp_customers"
                  :fields="fields"
-                 responsive="sm"
-                 @row-clicked="item=>$set(item, '_showDetails', !item._showDetails)">
+                 responsive="sm">
             <template #cell(control)="row">
-                <i @click="deleteData(row.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
+                <i @click="deleteData(row.item.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
             </template>
 
             <template #row-details="row">
@@ -104,8 +103,8 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     //Send Request to server
-                    let uri = `/api/customer/delete/${id}`;
-                    let uri_data = '/api/api-customer';
+                    let uri = `/api/customer-feedback/delete/${id}`;
+                    let uri_data = '/api/customer-feedback';
                     Promise.all([
                             axios.delete(uri).then(()=> {
                                 this.$swal(
@@ -115,23 +114,14 @@ export default {
                                 )
                             }),
                             axios.get(uri_data).then(res => {
-                                this.rows=res.data.customers.last_page;
+                                this.rows=res.data.sp_customers.last_page;
                             })
                         ]
                     ).then(()=>{
-                        this.customers.splice(this.customers.findIndex(customer => customer.id === id), 1)
-                        this.dataEdit.splice(this.customers.findIndex(customer => {
-                            customer.id === this.dataEdit.id;
-                        }), 1)
-                        this.$emit('setShown',false)
+                        this.sp_customers.splice(this.sp_customers.findIndex(sp_customers => sp_customers.id === id), 1)
                     })
-
-
                 }
-
             })
-            this.$emit('setShowNav',false)
-
         },
     }
 }

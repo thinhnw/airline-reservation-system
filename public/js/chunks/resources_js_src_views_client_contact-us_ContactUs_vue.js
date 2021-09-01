@@ -11,6 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -63,12 +65,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ContactUs",
   data: function data() {
     return {
       form: {
-        selectOne: null
+        "class": null,
+        name: '',
+        email: '',
+        content: ''
       },
       selectOne: [{
         text: 'Select Product',
@@ -76,6 +83,33 @@ __webpack_require__.r(__webpack_exports__);
       }, 'Economy Class Flights', 'Business Class Flights', 'Flight + hotels', 'Others...'],
       show: true
     };
+  },
+  methods: {
+    createData: function createData() {
+      var _this = this;
+
+      console.log(this.form);
+      var url = '/api/customer-feedback/save';
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, this.form).then(function (respone) {
+        console.log(respone);
+      }).then(function () {
+        _this.form = {
+          "class": null,
+          name: '',
+          email: '',
+          content: ''
+        };
+
+        _this.$swal({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          icon: 'success',
+          title: 'Thank you for responding'
+        });
+      });
+    }
   }
 });
 
@@ -259,7 +293,14 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "form",
-                      { attrs: { action: "" } },
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.createData.apply(null, arguments)
+                          }
+                        }
+                      },
                       [
                         _c(
                           "b-form-group",
@@ -279,11 +320,11 @@ var render = function() {
                                 required: ""
                               },
                               model: {
-                                value: _vm.form.selectOne,
+                                value: _vm.form.class,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.form, "selectOne", $$v)
+                                  _vm.$set(_vm.form, "class", $$v)
                                 },
-                                expression: "form.selectOne"
+                                expression: "form.class"
                               }
                             }),
                             _vm._v(" "),
@@ -294,10 +335,17 @@ var render = function() {
                             _c("b-form-input", {
                               attrs: {
                                 name: "NameCustomer",
-                                type: "password",
+                                type: "text",
                                 id: "NameCustomer",
                                 placeholder: "Nguyen Van A",
                                 required: ""
+                              },
+                              model: {
+                                value: _vm.form.name,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "name", $$v)
+                                },
+                                expression: "form.name"
                               }
                             }),
                             _vm._v(" "),
@@ -312,6 +360,13 @@ var render = function() {
                                 id: "EmailCustomer",
                                 placeholder: "yourEmail@gmail.com",
                                 required: ""
+                              },
+                              model: {
+                                value: _vm.form.email,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "email", $$v)
+                                },
+                                expression: "form.email"
                               }
                             }),
                             _vm._v(" "),
@@ -325,6 +380,13 @@ var render = function() {
                                 placeholder: "State your concerns...",
                                 rows: "3",
                                 "max-rows": "6"
+                              },
+                              model: {
+                                value: _vm.form.content,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "content", $$v)
+                                },
+                                expression: "form.content"
                               }
                             }),
                             _vm._v(" "),

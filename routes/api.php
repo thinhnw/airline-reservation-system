@@ -71,4 +71,5 @@ Route::post("/customer/checkPass/{id}",[CustomerController::class,"checkPass"]);
 //customer feedback
 Route::get("/customer-feedback",[SupportCustomerController::class,"index"]);
 Route::post('/customer-feedback/save',[SupportCustomerController::class,'save']);
+Route::delete('/customer-feedback/delete/{id}',[SupportCustomerController::class,'delete']);
 
