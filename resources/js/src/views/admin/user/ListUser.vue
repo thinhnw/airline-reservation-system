@@ -11,6 +11,7 @@
                 <i @click="deleteData(row.item.id)" class="far fa-times-octagon btn-icon text-danger" ></i>
             </template>
 
+
             <template #row-details="row">
                 <b-card>
                     <b-row class="mb-2">
