@@ -261,16 +261,18 @@
 							x {{ details.passengers.children }}
 						</b-td>
 					</b-tr>
-					<b-tr>
+					<b-tr v-if="seatsDepartureCount > 0">
 						<b-td>Seat Selection for inbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats, 0) }} VND
+							{{ formatMoney(seatPrice, 0) }} VND
+							x {{ seatsDepartureCount }}
 						</b-td>
 					</b-tr>
-					<b-tr>
+					<b-tr v-if="seatsReturnCount > 0">
 						<b-td>Seat Selection for outbound flight</b-td>
 						<b-td class="text-right">
-							{{ formatMoney(priceForSeats, 0) }} VND
+							{{ formatMoney(seatPrice, 0) }} VND
+							x {{ seatsReturnCount }}
 						</b-td>
 					</b-tr>
 					<b-tr>
@@ -330,15 +332,39 @@ export default {
 			return Math.ceil(this.details.class === 'Business' ? 
 				(this.flightDeparture.fare_business + (this.flightReturn?.fare_business ?? 0)) : (this.flightDeparture.fare_economy + (this.flightReturn?.fare_economy ?? 0)))
 		},
-		priceForChild() {
+		pricePerChild() {
 			return Math.ceil(this.pricePerAdult * 2 / 3)
 		},
-		priceForSeats() {
-			let passengerCount = parseInt(this.details.passengers.adults) + parseInt(this.details.passengers.children)
-			return passengerCount * 150000
+		seatPrice() {
+			return 150000
+		},
+		seatsDepartureCount() {
+			let sum = 0
+			this.details.passengerDetails.forEach(passenger => {
+				if (passenger.seatDeparture != "") sum += 1
+			})
+			return sum
+		},
+		seatsReturnCount() {
+			let sum = 0
+			this.details.passengerDetails.forEach(passenger => {
+				if (passenger.seatReturn != "") sum += 1
+			})
+			return sum
+		},
+		priceForSeatsDeparture() {
+			return this.seatPrice * this.seatsDepartureCount
+		},
+		priceForSeatsReturn() {
+			return this.seatPrice * this.seatsReturnCount
 		},
 		grandTotal() {
-			return this.pricePerAdult * this.details.passengers.adults + Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) + this.priceForSeats + (this.flightReturn ? this.priceForSeats : 0)
+			return Math.ceil(
+				this.pricePerAdult * this.details.passengers.adults 
+				+ Math.ceil(this.pricePerAdult * this.details.passengers.children * 2 / 3) 
+				+ this.priceForSeatsDeparture
+				+ this.priceForSeatsReturn
+			)
 		}
 	}
 }

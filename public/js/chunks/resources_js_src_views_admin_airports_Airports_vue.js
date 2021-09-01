@@ -324,8 +324,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this.$emit("created", JSON.parse(response.config.data));
-      }).then(function () {
-        _this.cancel();
       });
       this.$swal({
         toast: true,
@@ -335,6 +333,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success',
         title: 'Created'
       });
+      this.dataCreate = {};
+      this.$emit('setShown', false);
     },
     updateData: function updateData(id) {
       var _this2 = this;
@@ -344,8 +344,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this2.$emit("updated", JSON.parse(response.config.data));
-      }).then(function () {
-        _this2.cancel();
       });
       this.$swal({
         toast: true,
@@ -355,6 +353,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success',
         title: 'Updated'
       });
+      this.$emit('updateDataEdit');
+      this.$emit('setShown', false);
     }
   }
 });
@@ -1739,7 +1739,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h3", [_vm._v("Add Airport")])])
+    return _c("div", [_c("h3", [_vm._v("Airport")])])
   }
 ]
 render._withStripped = true

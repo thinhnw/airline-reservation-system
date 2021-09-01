@@ -211,7 +211,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("p", [_vm._v("Please check your email about for your ticket!")]),
+            _c("p", [_vm._v("Please check your email for your ticket!")]),
             _vm._v(" "),
             _c("p", [
               _vm._v("Return home ("),

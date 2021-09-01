@@ -357,20 +357,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -386,8 +372,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         password: '',
         city: '',
         country: '',
-        street: '',
-        telephone: ''
+        street: ''
       },
       checked: [{
         item: 'male',
@@ -407,7 +392,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     var uri = "/api/customer/findUser/".concat(this.userInfo.id);
     axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
-      console.log(res);
       _this.form.email = res.data.customer.email;
       _this.form.firstName = res.data.customer.first_name;
       _this.form.lastName = res.data.customer.last_name;
@@ -416,7 +400,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this.form.city = res.data.customer.city;
       _this.form.country = res.data.customer.country;
       _this.form.street = res.data.customer.address;
-      _this.form.telephone = res.data.customer.tel;
     });
   },
   methods: {
@@ -483,13 +466,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               gender: _this3.selected,
               address: _this3.form.street,
               city: _this3.form.city,
-              country: _this3.form.country,
-              tel: _this3.form.telephone
+              country: _this3.form.country
             };
             var uri_u = "/api/customer/update/".concat(id);
-            axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function (res) {
-              console.log(res);
-
+            axios__WEBPACK_IMPORTED_MODULE_0___default().post(uri_u, data).then(function () {
               _this3.$swal({
                 toast: true,
                 position: 'top-end',
@@ -498,24 +478,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 icon: 'success',
                 title: 'Success'
               });
-            }).then(function () {
-              var uri = "/api/customer/findUser/".concat(_this3.userInfo.id);
-              var promise = new Promise(function (resolve) {
-                axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri).then(function (res) {
-                  _this3.form.email = res.data.customer.email;
-                  _this3.form.firstName = res.data.customer.first_name;
-                  _this3.form.lastName = res.data.customer.last_name;
-                  _this3.selected = res.data.customer.gender.toLowerCase();
-                  _this3.form.password = res.data.customer.password;
-                  _this3.form.city = res.data.customer.city;
-                  _this3.form.country = res.data.customer.country;
-                  _this3.form.street = res.data.customer.address;
-                  _this3.form.telephone = res.data.customer.tel;
-                });
-                resolve(true);
-              });
-              promise.then(function () {
-                _this3.toggleEdit();
+
+              _this3.$router.push({
+                name: 'home'
               });
             });
           } else {
@@ -18404,11 +18369,11 @@ var render = function() {
                     _c("div", { staticClass: "text-center" }, [
                       _c("h4", [
                         _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.form.firstName) +
+                          "\n                            " +
+                            _vm._s(_vm.userInfo.first_name) +
                             " " +
-                            _vm._s(_vm.form.lastName) +
-                            "\n                    "
+                            _vm._s(_vm.userInfo.last_name) +
+                            "\n                        "
                         )
                       ])
                     ])
@@ -18419,9 +18384,9 @@ var render = function() {
                 _c("div", [
                   _c("i", { staticClass: "fas fa-star text-warning" }),
                   _vm._v(
-                    "\n                Your skymiles: " +
+                    "\n                    Your skymiles: " +
                       _vm._s(_vm.userInfo.skymiles) +
-                      "\n            "
+                      "\n                "
                   )
                 ])
               ]
@@ -18439,7 +18404,7 @@ var render = function() {
                     _c("b-col", [
                       _c("label", { attrs: { for: "" } }, [_vm._v("Email")]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.email))])
+                      _c("p", [_vm._v(_vm._s(_vm.userInfo.email))])
                     ]),
                     _vm._v(" "),
                     _c("b-col", [
@@ -18447,7 +18412,7 @@ var render = function() {
                         _vm._v("Phone Number")
                       ]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.telephone))])
+                      _c("p", [_vm._v(_vm._s(_vm.userInfo.tel))])
                     ])
                   ],
                   1
@@ -18465,15 +18430,11 @@ var render = function() {
                   "b-row",
                   [
                     _c("b-col", [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Street")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.street))])
+                      _c("label", { attrs: { for: "" } }, [_vm._v("Street")])
                     ]),
                     _vm._v(" "),
                     _c("b-col", [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("City")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.city))])
+                      _c("label", { attrs: { for: "" } }, [_vm._v("City")])
                     ])
                   ],
                   1
@@ -18483,17 +18444,13 @@ var render = function() {
                   "b-row",
                   [
                     _c("b-col", [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Country")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.country))])
+                      _c("label", { attrs: { for: "" } }, [_vm._v("Country")])
                     ]),
                     _vm._v(" "),
                     _c("b-col", [
                       _c("label", { attrs: { for: "" } }, [
                         _vm._v("Postal Code")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.form.zip_code))])
+                      ])
                     ])
                   ],
                   1
@@ -18593,15 +18550,15 @@ var render = function() {
                       "b-form-group",
                       {
                         attrs: {
-                          id: "input-group-1",
+                          id: "input-group-2",
                           label: "First Name:",
-                          "label-for": "input-1"
+                          "label-for": "input-2"
                         }
                       },
                       [
                         _c("b-form-input", {
                           attrs: {
-                            id: "input-1",
+                            id: "input-2",
                             placeholder: "Enter first name",
                             required: ""
                           },
@@ -18649,43 +18606,15 @@ var render = function() {
                       "b-form-group",
                       {
                         attrs: {
-                          id: "input-group-3",
-                          label: "Telephone:",
-                          "label-for": "input-3"
-                        }
-                      },
-                      [
-                        _c("b-form-input", {
-                          attrs: {
-                            id: "input-3",
-                            placeholder: "Enter your telephone",
-                            required: ""
-                          },
-                          model: {
-                            value: _vm.form.telephone,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "telephone", $$v)
-                            },
-                            expression: "form.telephone"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-form-group",
-                      {
-                        attrs: {
-                          id: "input-group-4",
+                          id: "input-group-2",
                           label: "Street:",
-                          "label-for": "input-4"
+                          "label-for": "input-2"
                         }
                       },
                       [
                         _c("b-form-input", {
                           attrs: {
-                            id: "input-4",
+                            id: "input-2",
                             placeholder: "Enter your street",
                             required: ""
                           },
@@ -18705,15 +18634,15 @@ var render = function() {
                       "b-form-group",
                       {
                         attrs: {
-                          id: "input-group-5",
+                          id: "input-group-2",
                           label: "City:",
-                          "label-for": "input-5"
+                          "label-for": "input-2"
                         }
                       },
                       [
                         _c("b-form-input", {
                           attrs: {
-                            id: "input-5",
+                            id: "input-2",
                             placeholder: "Enter your city",
                             required: ""
                           },
@@ -18733,15 +18662,15 @@ var render = function() {
                       "b-form-group",
                       {
                         attrs: {
-                          id: "input-group-6",
+                          id: "input-group-2",
                           label: "Country:",
-                          "label-for": "input-6"
+                          "label-for": "input-2"
                         }
                       },
                       [
                         _c("b-form-input", {
                           attrs: {
-                            id: "input-6",
+                            id: "input-2",
                             placeholder: "Enter your country",
                             required: ""
                           },
@@ -18762,7 +18691,7 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     _c("b-form-group", {
-                      attrs: { id: "input-group-8" },
+                      attrs: { id: "input-group-4" },
                       scopedSlots: _vm._u(
                         [
                           {

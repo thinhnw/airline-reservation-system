@@ -28,9 +28,6 @@ class TicketController extends Controller
             $ticket->reservation->update([
                 'status' => 'CHECKED-IN'
             ]);
-            return response()->json([
-                'ticket' => $ticket
-            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => $th->getMessage()

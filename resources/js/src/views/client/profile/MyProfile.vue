@@ -1,13 +1,13 @@
 <template>
 
-    <div class="p-4">
+	<div class="p-4">
         <div v-if="!isEdit">
             <div class="d-flex align-items-center justify-content-between mb-5">
                 <div class="d-flex align-items-center">
                     <b-avatar variant="secondary" size="lg" class="mr-3"></b-avatar>
                     <div class="text-center">
                         <h4>
-                            {{ form.firstName }} {{ form.lastName }}
+                            {{ userInfo.first_name }} {{ userInfo.last_name }}
                         </h4>
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                 <b-row>
                     <b-col>
                         <label for="">Email</label>
-                        <p>{{ form.email }}</p>
+                        <p>{{ userInfo.email }}</p>
                     </b-col>
                     <b-col>
                         <label for="">Phone Number</label>
-                        <p>{{ form.telephone}}</p>
+                        <p>{{ userInfo.tel }}</p>
                     </b-col>
                 </b-row>
             </div>
@@ -34,26 +34,17 @@
                 <b-row>
                     <b-col>
                         <label for="">Street</label>
-                        <p>{{ form.street }}</p>
-
-
                     </b-col>
                     <b-col>
                         <label for="">City</label>
-                        <p>{{ form.city }}</p>
-
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
                         <label for="">Country</label>
-                        <p>{{ form.country }}</p>
-
                     </b-col>
                     <b-col>
                         <label for="">Postal Code</label>
-                        <p>{{ form.zip_code }}</p>
-
                     </b-col>
                 </b-row>
             </div>
@@ -76,9 +67,9 @@
             </b-form>
             <b-form @submit.prevent="onSubmit(userInfo.id)" @reset="onReset" v-if="!showCheckPass"  class="formStyle">
 
-                <b-form-group id="input-group-1" label="First Name:" label-for="input-1">
+                <b-form-group id="input-group-2" label="First Name:" label-for="input-2">
                     <b-form-input
-                        id="input-1"
+                        id="input-2"
                         v-model="form.firstName"
                         placeholder="Enter first name"
                         required
@@ -93,66 +84,61 @@
                         required
                     ></b-form-input>
                 </b-form-group>
-                <b-form-group id="input-group-3" label="Telephone:" label-for="input-3">
-                    <b-form-input
-                        id="input-3"
-                        v-model="form.telephone"
-                        placeholder="Enter your telephone"
-                        required
-                    ></b-form-input>
-                </b-form-group>
 
-                <b-form-group id="input-group-4" label="Street:" label-for="input-4">
+                <b-form-group id="input-group-2" label="Street:" label-for="input-2">
                     <b-form-input
-                        id="input-4"
+                        id="input-2"
                         v-model="form.street"
                         placeholder="Enter your street"
                         required
                     ></b-form-input>
                 </b-form-group>
-                <b-form-group id="input-group-5" label="City:" label-for="input-5">
+                <b-form-group id="input-group-2" label="City:" label-for="input-2">
                     <b-form-input
-                        id="input-5"
+                        id="input-2"
                         v-model="form.city"
                         placeholder="Enter your city"
                         required
                     ></b-form-input>
                 </b-form-group>
-                <b-form-group id="input-group-6" label="Country:" label-for="input-6">
+                <b-form-group id="input-group-2" label="Country:" label-for="input-2">
                     <b-form-input
-                        id="input-6"
+                        id="input-2"
                         v-model="form.country"
                         placeholder="Enter your country"
                         required
                     ></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-7" label="Password:" label-for="input-7" v-if=false>
+                <b-form-group id="input-group-2" label="Password:" label-for="input-2" v-if="false">
                     <b-form-input
-                        id="input-7"
+                        id="input-2"
                         v-model="form.password"
                         placeholder="Enter password"
                         required
                         type="password"
+                        readonly
                     ></b-form-input>
                 </b-form-group>
 
 
 
-                <b-form-group id="input-group-8" v-slot="{ ariaDescribedby }">
+                <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
                     <b-form-radio-group
                         v-model="selected"
                         :options="checked"
                         class="mb-3"
                         value-field="item"
                         text-field="name"
+
                     ></b-form-radio-group>
                 </b-form-group>
+
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Cancel</b-button>
             </b-form>
         </div>
-    </div>
+	</div>
 
 
 </template>
@@ -161,11 +147,11 @@
 import { mapGetters } from 'vuex'
 import axios from "axios";
 export default {
-    computed: {
-        ...mapGetters({
-            userInfo: 'auth/userInfo'
-        })
-    },
+	computed: {
+		...mapGetters({
+			userInfo: 'auth/userInfo'
+		})
+	},
     data() {
         return {
             form: {
@@ -176,7 +162,6 @@ export default {
                 city:'',
                 country:'',
                 street:'',
-                telephone:''
             },
             checked: [
                 { item: 'male', name: 'Male' },
@@ -192,7 +177,6 @@ export default {
     created() {
         let uri = `/api/customer/findUser/${this.userInfo.id}`;
         axios.get(uri).then(res => {
-            console.log(res)
             this.form.email=res.data.customer.email;
             this.form.firstName=res.data.customer.first_name;
             this.form.lastName=res.data.customer.last_name;
@@ -201,7 +185,6 @@ export default {
             this.form.city=res.data.customer.city;
             this.form.country=res.data.customer.country;
             this.form.street=res.data.customer.address;
-            this.form.telephone=res.data.customer.tel;
         });
     },
     methods: {
@@ -242,8 +225,7 @@ export default {
                     icon: 'error',
                     title: 'Password must be 6 digits',
                 });
-            }
-            else{
+            }else{
                 const myPromise=new Promise(resolve=>{
                     axios.post(uri, {password: password}).then(res => {
                         resolve(res.data.result)
@@ -260,13 +242,10 @@ export default {
                             gender: this.selected,
                             address:this.form.street,
                             city:this.form.city,
-                            country:this.form.country,
-                            tel:this.form.telephone
+                            country:this.form.country
                         };
-
                         let uri_u = `/api/customer/update/${id}`;
-                        axios.post(uri_u, data).then((res) => {
-                            console.log(res)
+                        axios.post(uri_u, data).then(() => {
                             this.$swal({
                                 toast: true,
                                 position: 'top-end',
@@ -275,28 +254,8 @@ export default {
                                 icon: 'success',
                                 title: 'Success',
                             });
-
-                        }).then(()=>{
-                            let uri = `/api/customer/findUser/${this.userInfo.id}`;
-                            const promise=new Promise(resolve => {
-                                axios.get(uri).then(res => {
-                                    this.form.email=res.data.customer.email;
-                                    this.form.firstName=res.data.customer.first_name;
-                                    this.form.lastName=res.data.customer.last_name;
-                                    this.selected=res.data.customer.gender.toLowerCase();
-                                    this.form.password=res.data.customer.password;
-                                    this.form.city=res.data.customer.city;
-                                    this.form.country=res.data.customer.country;
-                                    this.form.street=res.data.customer.address;
-                                    this.form.telephone=res.data.customer.tel;
-                                });
-                                resolve(true)
-                            })
-                            promise.then(()=>{
-                                this.toggleEdit();
-                            })
-
-                        })
+                            this.$router.push({name:'home'})
+                        });
                     }else {
 
                         this.$swal({
@@ -324,7 +283,7 @@ export default {
 </script>
 
 <style>
-.swal2-container{
-    top: 72px !important;
-}
+ .swal2-container{
+     top: 72px !important;
+ }
 </style>

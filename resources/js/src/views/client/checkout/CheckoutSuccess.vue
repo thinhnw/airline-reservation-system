@@ -3,7 +3,7 @@
 		<b-row>
 			<b-col class="py-5 text-center">
 				<p><em class="text-primary">Your transaction has been made successfully!</em></p>
-				<p>Please check your email about for your ticket!</p>
+				<p>Please check your email for your ticket!</p>
 				<p>Return home (<span>{{timer}}</span>)</p>
 			</b-col>
 		</b-row>

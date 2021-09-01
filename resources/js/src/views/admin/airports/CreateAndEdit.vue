@@ -10,7 +10,7 @@
                     <i class="far fa-times"></i>
                 </div>
                 <div>
-                    <h3>Add Airport</h3>
+                    <h3>Airport</h3>
                 </div>
             </div>
             <div class=" mb-3">
@@ -212,9 +212,7 @@ export default {
             axios.post(uri_cr, this.dataCreate).then((response) => {
                 console.log(response)
                 this.$emit("created", JSON.parse(response.config.data));
-            }).then(()=>{
-                this.cancel();
-            })
+            });
             this.$swal({
                 toast: true,
                 position: 'top-end',
@@ -223,15 +221,15 @@ export default {
                 icon: 'success',
                 title: 'Created',
             });
+            this.dataCreate = {}
+            this.$emit('setShown', false)
         },
         updateData(id) {
             let uri_u = `/api/airport/update/${id}`;
             axios.post(uri_u, this.dataEdit).then((response) => {
                 console.log(response)
                 this.$emit("updated", JSON.parse(response.config.data));
-            }).then(()=>{
-                this.cancel();
-            })
+            });
             this.$swal({
                 toast: true,
                 position: 'top-end',
@@ -240,7 +238,8 @@ export default {
                 icon: 'success',
                 title: 'Updated',
             });
-
+            this.$emit('updateDataEdit')
+            this.$emit('setShown', false)
         },
     },
 }

@@ -20,7 +20,6 @@ class Customer extends Model
         'city',
         'country',
         'address',
-        'tel'
 
     ];
 
